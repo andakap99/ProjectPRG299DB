@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ProjectPRG299DB.Company">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Object" Collapsed="true">
+    <Position X="2" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ProjectPRG299DB.Client">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ProjectPRG299DB.Contact">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ProjectPRG299DB.ContactPosition">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ProjectPRG299DB.Interview">
+    <Position X="9.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ProjectPRG299DB.Position">
+    <Position X="11.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ProjectPRG299DB.Resume">
+    <Position X="14" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ProjectPRG299DB.School">
+    <Position X="16.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ProjectPRG299DB.PRG299DB">
+    <Position X="4" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>PRG299DB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectPRG299DB.ClientDB">
+    <Position X="0.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAABAAAQ=</HashCode>
+      <FileName>ClientDB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectPRG299DB.CompanyDB">
+    <Position X="2.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAIAAAAAAAAAAAECQAAAAAAAAAA=</HashCode>
+      <FileName>CompanyDB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectPRG299DB.ContactDB">
+    <Position X="5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACBCAAAAAAAAAAAAQAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>ContactDB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectPRG299DB.ContactPositionDB">
+    <Position X="7.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>oAAAAEAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>ContactPositionDB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectPRG299DB.InterviewDB">
+    <Position X="0.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQCAAAAAQAAAI=</HashCode>
+      <FileName>InterviewDB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectPRG299DB.PositionDB">
+    <Position X="3" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAiAAAAAAIAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>PositionDB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectPRG299DB.ResumeDB">
+    <Position X="5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QIABAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAgAAAA=</HashCode>
+      <FileName>ResumeDB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectPRG299DB.SchoolDB">
+    <Position X="7.25" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAQAAAECAEAAAAgAAAA=</HashCode>
+      <FileName>SchoolDB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
