@@ -78,14 +78,14 @@ namespace ProjectPRG299DB
                     cEOrd = reader.GetOrdinal("Email");
                 while (reader.Read())
                 {
-                    customer.CustomerID = reader.GetInt32(cIDOrd);
-                    customer.Name = reader.GetString(cNOrd);
-                    customer.Address = reader.GetString(cAOrd);
-                    customer.City = reader.GetString(cCOrd);
-                    customer.State = reader.GetString(cSOrd);
-                    customer.ZipCode = reader.GetString(cZCOrd);
-                    customer.Phone = reader.GetString(cPOrd);
-                    customer.Email = reader.GetString(cEOrd);
+                    client.ClientID = reader.GetInt32(cIDOrd);
+                    client.Name = reader.GetString(cNOrd);
+                    client.Address = reader.GetString(cAOrd);
+                    client.City = reader.GetString(cCOrd);
+                    client.State = reader.GetString(cSOrd);
+                    client.ZipCode = reader.GetString(cZCOrd);
+                    client.Phone = reader.GetString(cPOrd);
+                    client.Email = reader.GetString(cEOrd);
                 }
             }
             catch (SqlException ex)
@@ -96,15 +96,15 @@ namespace ProjectPRG299DB
             {
                 connection.Close();
             }
-            return customer;
+            return client;
         }
 
         public static bool DeleteClient()
         {
-            SqlConnection connection = TechSupportDB.GetConnection();
-            string deleteStatement = "DELETE FROM Customers WHERE CustomerID = @CustomerID";
+            SqlConnection connection = PRG299DB.GetConnection();
+            string deleteStatement = "DELETE FROM Clients WHERE ClientID = @ClientID";
             SqlCommand DeleteCommand = new SqlCommand(deleteStatement, connection);
-            DeleteCommand.Parameters.AddWithValue("@CustomerID", cust.CustomerID);
+            DeleteCommand.Parameters.AddWithValue("@ClientID", cust.ClientID);
             try
             {
                 connection.Open();
@@ -124,37 +124,37 @@ namespace ProjectPRG299DB
             }
         }
 
-        public static int AddClient()
+        public static int AddClient(Client client)
         {
-            SqlConnection connection = TechSupportDB.GetConnection();
+            SqlConnection connection = PRG299DB.GetConnection();
             string insertStatement =
-                "INSERT Customers " +
+                "INSERT Clients " +
                   "(Name, Address, " +
                 "City, State, ZipCode, Phone, Email) " +
                 "VALUES (@Name, @Address, " +
                 "@City, @State, @ZipCode, @Phone, @Email)";
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
-            insertCommand.Parameters.AddWithValue("@Name", customer.Name);
-            insertCommand.Parameters.AddWithValue("@Address", customer.Address);
-            insertCommand.Parameters.AddWithValue("@City", customer.City);
-            insertCommand.Parameters.AddWithValue("@State", customer.State);
-            insertCommand.Parameters.AddWithValue("@ZipCode", customer.ZipCode);
-            if (customer.Phone == "")
+            insertCommand.Parameters.AddWithValue("@Name", client.Name);
+            insertCommand.Parameters.AddWithValue("@Address", client.Address);
+            insertCommand.Parameters.AddWithValue("@City", client.City);
+            insertCommand.Parameters.AddWithValue("@State", client.State);
+            insertCommand.Parameters.AddWithValue("@ZipCode", client.ZipCode);
+            if (client.Phone == "")
                 insertCommand.Parameters.AddWithValue("@Phone", DBNull.Value);
             else
-                insertCommand.Parameters.AddWithValue("@Phone", customer.Phone);
-            if (customer.Email == "")
+                insertCommand.Parameters.AddWithValue("@Phone", client.Phone);
+            if (client.Email == "")
                 insertCommand.Parameters.AddWithValue("@Email",
                     DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@Email",
-                    customer.Email);
+                    client.Email);
             try
             {
                 connection.Open();
                 insertCommand.ExecuteNonQuery();
                 string selectStatement =
-                    "SELECT IDENT_CURRENT('Customers') FROM Customers";
+                    "SELECT IDENT_CURRENT('Clients') FROM Clients";
                 SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
                 int vendorID = Convert.ToInt32(selectCommand.ExecuteScalar());
                 return vendorID;
@@ -171,9 +171,9 @@ namespace ProjectPRG299DB
 
         public static bool UpdateClient()
         {
-            SqlConnection connection = TechSupportDB.GetConnection();
+            SqlConnection connection = PRG299DB.GetConnection();
             string updateStatement =
-                "UPDATE Customers SET " +
+                "UPDATE Clients SET " +
                   "Name = @NewName, " +
                   "Address = @NewAddress, " +
                   "City = @NewCity, " +
@@ -181,7 +181,7 @@ namespace ProjectPRG299DB
                   "ZipCode = @NewZipCode, " +
                   "Phone = @NewPhone, " +
                   "Email = @NewEmail " +
-                "WHERE CustomerID = @OldCustomerID " +
+                "WHERE ClientID = @OldClientID " +
                   "AND Name = @OldName " +
                   "AND Address = @OldAddress " +
                   "AND City = @OldCity " +
@@ -192,38 +192,38 @@ namespace ProjectPRG299DB
                   "AND (Email = @OldEmail " +
                       "OR Email IS NULL AND @OldEmail IS NULL)";
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
-            updateCommand.Parameters.AddWithValue("@NewName", newCustomer.Name);
-            updateCommand.Parameters.AddWithValue("@NewAddress", newCustomer.Address);
-            updateCommand.Parameters.AddWithValue("@NewCity", newCustomer.City);
-            updateCommand.Parameters.AddWithValue("@NewState", newCustomer.State);
-            updateCommand.Parameters.AddWithValue("@NewZipCode", newCustomer.ZipCode);
-            if (newCustomer.Phone == "")
+            updateCommand.Parameters.AddWithValue("@NewName", newClient.Name);
+            updateCommand.Parameters.AddWithValue("@NewAddress", newClient.Address);
+            updateCommand.Parameters.AddWithValue("@NewCity", newClient.City);
+            updateCommand.Parameters.AddWithValue("@NewState", newClient.State);
+            updateCommand.Parameters.AddWithValue("@NewZipCode", newClient.ZipCode);
+            if (newClient.Phone == "")
                 updateCommand.Parameters.AddWithValue("@NewPhone", DBNull.Value);
             else
-                updateCommand.Parameters.AddWithValue("@NewPhone", newCustomer.Phone);
-            if (newCustomer.Email == "")
+                updateCommand.Parameters.AddWithValue("@NewPhone", newClient.Phone);
+            if (newClient.Email == "")
                 updateCommand.Parameters.AddWithValue("@NewEmail",
                     DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@NewEmail",
-                    newCustomer.Email);
+                    newClient.Email);
 
-            updateCommand.Parameters.AddWithValue("@OldCustomerID", oldCustomer.CustomerID);
-            updateCommand.Parameters.AddWithValue("@OldName", oldCustomer.Name);
-            updateCommand.Parameters.AddWithValue("@OldAddress", oldCustomer.Address);
-            updateCommand.Parameters.AddWithValue("@OldCity", oldCustomer.City);
-            updateCommand.Parameters.AddWithValue("@OldState", oldCustomer.State);
-            updateCommand.Parameters.AddWithValue("@OldZipCode", oldCustomer.ZipCode);
-            if (oldCustomer.Phone == "")
+            updateCommand.Parameters.AddWithValue("@OldClientID", oldClient.ClientID);
+            updateCommand.Parameters.AddWithValue("@OldName", oldClient.Name);
+            updateCommand.Parameters.AddWithValue("@OldAddress", oldClient.Address);
+            updateCommand.Parameters.AddWithValue("@OldCity", oldClient.City);
+            updateCommand.Parameters.AddWithValue("@OldState", oldClient.State);
+            updateCommand.Parameters.AddWithValue("@OldZipCode", oldClient.ZipCode);
+            if (oldClient.Phone == "")
                 updateCommand.Parameters.AddWithValue("@OldPhone", DBNull.Value);
             else
-                updateCommand.Parameters.AddWithValue("@OldPhone", oldCustomer.Phone);
-            if (oldCustomer.Email == "")
+                updateCommand.Parameters.AddWithValue("@OldPhone", oldClient.Phone);
+            if (oldClient.Email == "")
                 updateCommand.Parameters.AddWithValue("@OldEmail",
                     DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@OldEmail",
-                    oldCustomer.Email);
+                    oldClient.Email);
 
             try
             {

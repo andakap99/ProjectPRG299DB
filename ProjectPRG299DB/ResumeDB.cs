@@ -45,17 +45,17 @@ namespace ProjectPRG299DB
         }
         public static List<Resume> GetResumeByRow()
         {
-            Customer customer = new Customer();
-            SqlConnection connection = TechSupportDB.GetConnection();
-            string selectStatement = "SELECT CustomerID, Name, Address, " +
-                "City, State, ZipCode, Phone, Email FROM dbo.Customers WHERE CustomerID = @CustomerID";
+            Resume resume = new Resume();
+            SqlConnection connection = PRG299DB.GetConnection();
+            string selectStatement = "SELECT ResumeID, Name, Address, " +
+                "City, State, ZipCode, Phone, Email FROM dbo.Resumes WHERE ResumeID = @ResumeID";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
-            selectCommand.Parameters.AddWithValue("@CustomerID", customerID);
+            selectCommand.Parameters.AddWithValue("@ResumeID", resumeID);
             try
             {
                 connection.Open();
                 SqlDataReader reader = selectCommand.ExecuteReader();
-                int cIDOrd = reader.GetOrdinal("CustomerID"),
+                int cIDOrd = reader.GetOrdinal("ResumeID"),
                     cNOrd = reader.GetOrdinal("Name"),
                     cAOrd = reader.GetOrdinal("Address"),
                     cCOrd = reader.GetOrdinal("City"),
@@ -65,14 +65,14 @@ namespace ProjectPRG299DB
                     cEOrd = reader.GetOrdinal("Email");
                 while (reader.Read())
                 {
-                    customer.CustomerID = reader.GetInt32(cIDOrd);
-                    customer.Name = reader.GetString(cNOrd);
-                    customer.Address = reader.GetString(cAOrd);
-                    customer.City = reader.GetString(cCOrd);
-                    customer.State = reader.GetString(cSOrd);
-                    customer.ZipCode = reader.GetString(cZCOrd);
-                    customer.Phone = reader.GetString(cPOrd);
-                    customer.Email = reader.GetString(cEOrd);
+                    resume.ResumeID = reader.GetInt32(cIDOrd);
+                    resume.Name = reader.GetString(cNOrd);
+                    resume.Address = reader.GetString(cAOrd);
+                    resume.City = reader.GetString(cCOrd);
+                    resume.State = reader.GetString(cSOrd);
+                    resume.ZipCode = reader.GetString(cZCOrd);
+                    resume.Phone = reader.GetString(cPOrd);
+                    resume.Email = reader.GetString(cEOrd);
                 }
             }
             catch (SqlException ex)
@@ -83,15 +83,15 @@ namespace ProjectPRG299DB
             {
                 connection.Close();
             }
-            return customer;
+            return resume;
         }
 
         public static bool DeleteResume()
         {
-            SqlConnection connection = TechSupportDB.GetConnection();
-            string deleteStatement = "DELETE FROM Customers WHERE CustomerID = @CustomerID";
+            SqlConnection connection = PRG299DB.GetConnection();
+            string deleteStatement = "DELETE FROM Resumes WHERE ResumeID = @ResumeID";
             SqlCommand DeleteCommand = new SqlCommand(deleteStatement, connection);
-            DeleteCommand.Parameters.AddWithValue("@CustomerID", cust.CustomerID);
+            DeleteCommand.Parameters.AddWithValue("@ResumeID", cust.ResumeID);
             try
             {
                 connection.Open();
@@ -113,35 +113,35 @@ namespace ProjectPRG299DB
 
         public static int AddResume()
         {
-            SqlConnection connection = TechSupportDB.GetConnection();
+            SqlConnection connection = PRG299DB.GetConnection();
             string insertStatement =
-                "INSERT Customers " +
+                "INSERT Resumes " +
                   "(Name, Address, " +
                 "City, State, ZipCode, Phone, Email) " +
                 "VALUES (@Name, @Address, " +
                 "@City, @State, @ZipCode, @Phone, @Email)";
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
-            insertCommand.Parameters.AddWithValue("@Name", customer.Name);
-            insertCommand.Parameters.AddWithValue("@Address", customer.Address);
-            insertCommand.Parameters.AddWithValue("@City", customer.City);
-            insertCommand.Parameters.AddWithValue("@State", customer.State);
-            insertCommand.Parameters.AddWithValue("@ZipCode", customer.ZipCode);
-            if (customer.Phone == "")
+            insertCommand.Parameters.AddWithValue("@Name", resume.Name);
+            insertCommand.Parameters.AddWithValue("@Address", resume.Address);
+            insertCommand.Parameters.AddWithValue("@City", resume.City);
+            insertCommand.Parameters.AddWithValue("@State", resume.State);
+            insertCommand.Parameters.AddWithValue("@ZipCode", resume.ZipCode);
+            if (resume.Phone == "")
                 insertCommand.Parameters.AddWithValue("@Phone", DBNull.Value);
             else
-                insertCommand.Parameters.AddWithValue("@Phone", customer.Phone);
-            if (customer.Email == "")
+                insertCommand.Parameters.AddWithValue("@Phone", resume.Phone);
+            if (resume.Email == "")
                 insertCommand.Parameters.AddWithValue("@Email",
                     DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@Email",
-                    customer.Email);
+                    resume.Email);
             try
             {
                 connection.Open();
                 insertCommand.ExecuteNonQuery();
                 string selectStatement =
-                    "SELECT IDENT_CURRENT('Customers') FROM Customers";
+                    "SELECT IDENT_CURRENT('Resumes') FROM Resumes";
                 SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
                 int vendorID = Convert.ToInt32(selectCommand.ExecuteScalar());
                 return vendorID;
@@ -158,9 +158,9 @@ namespace ProjectPRG299DB
 
         public static bool UpdateResume()
         {
-            SqlConnection connection = TechSupportDB.GetConnection();
+            SqlConnection connection = PRG299DB.GetConnection();
             string updateStatement =
-                "UPDATE Customers SET " +
+                "UPDATE Resumes SET " +
                   "Name = @NewName, " +
                   "Address = @NewAddress, " +
                   "City = @NewCity, " +
@@ -168,7 +168,7 @@ namespace ProjectPRG299DB
                   "ZipCode = @NewZipCode, " +
                   "Phone = @NewPhone, " +
                   "Email = @NewEmail " +
-                "WHERE CustomerID = @OldCustomerID " +
+                "WHERE ResumeID = @OldResumeID " +
                   "AND Name = @OldName " +
                   "AND Address = @OldAddress " +
                   "AND City = @OldCity " +
@@ -179,38 +179,38 @@ namespace ProjectPRG299DB
                   "AND (Email = @OldEmail " +
                       "OR Email IS NULL AND @OldEmail IS NULL)";
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
-            updateCommand.Parameters.AddWithValue("@NewName", newCustomer.Name);
-            updateCommand.Parameters.AddWithValue("@NewAddress", newCustomer.Address);
-            updateCommand.Parameters.AddWithValue("@NewCity", newCustomer.City);
-            updateCommand.Parameters.AddWithValue("@NewState", newCustomer.State);
-            updateCommand.Parameters.AddWithValue("@NewZipCode", newCustomer.ZipCode);
-            if (newCustomer.Phone == "")
+            updateCommand.Parameters.AddWithValue("@NewName", newResume.Name);
+            updateCommand.Parameters.AddWithValue("@NewAddress", newResume.Address);
+            updateCommand.Parameters.AddWithValue("@NewCity", newResume.City);
+            updateCommand.Parameters.AddWithValue("@NewState", newResume.State);
+            updateCommand.Parameters.AddWithValue("@NewZipCode", newResume.ZipCode);
+            if (newResume.Phone == "")
                 updateCommand.Parameters.AddWithValue("@NewPhone", DBNull.Value);
             else
-                updateCommand.Parameters.AddWithValue("@NewPhone", newCustomer.Phone);
-            if (newCustomer.Email == "")
+                updateCommand.Parameters.AddWithValue("@NewPhone", newResume.Phone);
+            if (newResume.Email == "")
                 updateCommand.Parameters.AddWithValue("@NewEmail",
                     DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@NewEmail",
-                    newCustomer.Email);
+                    newResume.Email);
 
-            updateCommand.Parameters.AddWithValue("@OldCustomerID", oldCustomer.CustomerID);
-            updateCommand.Parameters.AddWithValue("@OldName", oldCustomer.Name);
-            updateCommand.Parameters.AddWithValue("@OldAddress", oldCustomer.Address);
-            updateCommand.Parameters.AddWithValue("@OldCity", oldCustomer.City);
-            updateCommand.Parameters.AddWithValue("@OldState", oldCustomer.State);
-            updateCommand.Parameters.AddWithValue("@OldZipCode", oldCustomer.ZipCode);
-            if (oldCustomer.Phone == "")
+            updateCommand.Parameters.AddWithValue("@OldResumeID", oldResume.ResumeID);
+            updateCommand.Parameters.AddWithValue("@OldName", oldResume.Name);
+            updateCommand.Parameters.AddWithValue("@OldAddress", oldResume.Address);
+            updateCommand.Parameters.AddWithValue("@OldCity", oldResume.City);
+            updateCommand.Parameters.AddWithValue("@OldState", oldResume.State);
+            updateCommand.Parameters.AddWithValue("@OldZipCode", oldResume.ZipCode);
+            if (oldResume.Phone == "")
                 updateCommand.Parameters.AddWithValue("@OldPhone", DBNull.Value);
             else
-                updateCommand.Parameters.AddWithValue("@OldPhone", oldCustomer.Phone);
-            if (oldCustomer.Email == "")
+                updateCommand.Parameters.AddWithValue("@OldPhone", oldResume.Phone);
+            if (oldResume.Email == "")
                 updateCommand.Parameters.AddWithValue("@OldEmail",
                     DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@OldEmail",
-                    oldCustomer.Email);
+                    oldResume.Email);
 
             try
             {
