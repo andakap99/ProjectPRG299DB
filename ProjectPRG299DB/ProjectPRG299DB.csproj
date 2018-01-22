@@ -53,6 +53,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResumeDB.cs" />
     <Compile Include="SchoolDB.cs" />
+    <Compile Include="StateDB.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />

@@ -55,8 +55,48 @@ namespace ProjectPRG299DB
             return clientList;
         }
 
-        public static List<Client> GetClientByRow()
+        public static List<Client> GetClientByRow(int clientID)
         {
+            Client client = new Client();
+            SqlConnection connection = PRG299DB.GetConnection();
+            string selectStatement = "SELECT ClientID, FirstName, LastName, BirthDate, StreetName, " +
+                "City, State, ZipCode, CellPhone FROM dbo.Client WHERE ClientID = @ClientID";
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            selectCommand.Parameters.AddWithValue("@ClientID", clientID);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                int cIDOrd = reader.GetOrdinal("ClientID"),
+                    cFNOrd = reader.GetOrdinal("FirstName"),
+                    cLNOrd = reader.GetOrdinal("LastName"),
+                    cAOrd = reader.GetOrdinal("Address"),
+                    cCOrd = reader.GetOrdinal("City"),
+                    cSOrd = reader.GetOrdinal("State"),
+                    cZCOrd = reader.GetOrdinal("ZipCode"),
+                    cPOrd = reader.GetOrdinal("Phone"),
+                    cEOrd = reader.GetOrdinal("Email");
+                while (reader.Read())
+                {
+                    customer.CustomerID = reader.GetInt32(cIDOrd);
+                    customer.Name = reader.GetString(cNOrd);
+                    customer.Address = reader.GetString(cAOrd);
+                    customer.City = reader.GetString(cCOrd);
+                    customer.State = reader.GetString(cSOrd);
+                    customer.ZipCode = reader.GetString(cZCOrd);
+                    customer.Phone = reader.GetString(cPOrd);
+                    customer.Email = reader.GetString(cEOrd);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return customer;
             throw new System.NotImplementedException();
         }
 

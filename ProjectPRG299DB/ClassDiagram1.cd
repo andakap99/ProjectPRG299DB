@@ -1,39 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="ProjectPRG299DB.Company">
-    <Position X="2.75" Y="1.75" Width="1.5" />
-    <TypeIdentifier />
-  </Class>
   <Class Name="System.Object" Collapsed="true">
     <Position X="2" Y="0.5" Width="1.5" />
-    <TypeIdentifier />
-  </Class>
-  <Class Name="ProjectPRG299DB.Client">
-    <Position X="0.5" Y="1.75" Width="1.5" />
-    <TypeIdentifier />
-  </Class>
-  <Class Name="ProjectPRG299DB.Contact">
-    <Position X="5" Y="1.75" Width="1.5" />
-    <TypeIdentifier />
-  </Class>
-  <Class Name="ProjectPRG299DB.ContactPosition">
-    <Position X="7.25" Y="1.75" Width="1.5" />
-    <TypeIdentifier />
-  </Class>
-  <Class Name="ProjectPRG299DB.Interview">
-    <Position X="9.5" Y="1.75" Width="1.5" />
-    <TypeIdentifier />
-  </Class>
-  <Class Name="ProjectPRG299DB.Position">
-    <Position X="11.75" Y="1.75" Width="1.5" />
-    <TypeIdentifier />
-  </Class>
-  <Class Name="ProjectPRG299DB.Resume">
-    <Position X="14" Y="1.75" Width="1.5" />
-    <TypeIdentifier />
-  </Class>
-  <Class Name="ProjectPRG299DB.School">
-    <Position X="16.25" Y="1.75" Width="1.5" />
     <TypeIdentifier />
   </Class>
   <Class Name="ProjectPRG299DB.PRG299DB">
@@ -98,6 +66,38 @@
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAQAAAECAEAAAAgAAAA=</HashCode>
       <FileName>SchoolDB.cs</FileName>
     </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectPRG299DB.School">
+    <Position X="16.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ProjectPRG299DB.Resume">
+    <Position X="14" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ProjectPRG299DB.Position">
+    <Position X="11.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ProjectPRG299DB.Interview">
+    <Position X="9.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ProjectPRG299DB.ContactPosition">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ProjectPRG299DB.Contact">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ProjectPRG299DB.Client">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ProjectPRG299DB.Company">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
