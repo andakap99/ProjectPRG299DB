@@ -38,7 +38,7 @@ namespace ProjectPRG299DB
             }
             return contactpositionList;
         }
-        public static List<ContactPosition> GetContactPositionByRow()
+        public static ContactPosition GetContactPositionByRow(int contactpositionID)
         {
             ContactPosition contactposition = new ContactPosition();
             SqlConnection connection = PRG299DB.GetConnection();
@@ -81,12 +81,12 @@ namespace ProjectPRG299DB
             return contactposition;
         }
 
-        public static bool DeleteContactPosition()
+        public static bool DeleteContactPosition(ContactPosition contactposition)
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string deleteStatement = "DELETE FROM ContactPositions WHERE ContactPositionID = @ContactPositionID";
             SqlCommand DeleteCommand = new SqlCommand(deleteStatement, connection);
-            DeleteCommand.Parameters.AddWithValue("@ContactPositionID", cust.ContactPositionID);
+            DeleteCommand.Parameters.AddWithValue("@ContactPositionID", contactposition.ContactPositionID);
             try
             {
                 connection.Open();
@@ -106,7 +106,7 @@ namespace ProjectPRG299DB
             }
         }
 
-        public static int AddContactPosition()
+        public static int AddContactPosition(ContactPosition contactposition)
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string insertStatement =
@@ -151,7 +151,7 @@ namespace ProjectPRG299DB
             }
         }
 
-        public static bool UpdateContactPosition()
+        public static bool UpdateContactPosition(ContactPosition oldContactPosition, ContactPosition newContactPosition)
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string updateStatement =

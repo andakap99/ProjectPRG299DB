@@ -55,7 +55,7 @@ namespace ProjectPRG299DB
             return clientList;
         }
 
-        public static List<Client> GetClientByRow(int clientID)
+        public static Client GetClientByRow(int clientID)
         {
             Client client = new Client();
             SqlConnection connection = PRG299DB.GetConnection();
@@ -99,12 +99,12 @@ namespace ProjectPRG299DB
             return client;
         }
 
-        public static bool DeleteClient()
+        public static bool DeleteClient(Client client)
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string deleteStatement = "DELETE FROM Clients WHERE ClientID = @ClientID";
             SqlCommand DeleteCommand = new SqlCommand(deleteStatement, connection);
-            DeleteCommand.Parameters.AddWithValue("@ClientID", cust.ClientID);
+            DeleteCommand.Parameters.AddWithValue("@ClientID", client.ClientID);
             try
             {
                 connection.Open();
@@ -169,7 +169,7 @@ namespace ProjectPRG299DB
             }
         }
 
-        public static bool UpdateClient()
+        public static bool UpdateClient(Client oldClient, Client newClient)
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string updateStatement =

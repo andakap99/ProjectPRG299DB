@@ -51,7 +51,7 @@ namespace ProjectPRG299DB
             }
             return SchoolList;
         }
-        public static List<School> GetSchoolByRow()
+        public static School GetSchoolByRow(int schoolID)
         {
             School school = new School();
             SqlConnection connection = PRG299DB.GetConnection();
@@ -94,12 +94,12 @@ namespace ProjectPRG299DB
             return school;
         }
 
-        public static bool DeleteSchool()
+        public static bool DeleteSchool(School school)
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string deleteStatement = "DELETE FROM Schools WHERE SchoolID = @SchoolID";
             SqlCommand DeleteCommand = new SqlCommand(deleteStatement, connection);
-            DeleteCommand.Parameters.AddWithValue("@SchoolID", cust.SchoolID);
+            DeleteCommand.Parameters.AddWithValue("@SchoolID", school.SchoolID);
             try
             {
                 connection.Open();
