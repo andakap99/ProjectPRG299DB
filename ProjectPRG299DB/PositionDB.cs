@@ -47,7 +47,7 @@ namespace ProjectPRG299DB
             }
             return positionList;
         }
-        public static List<Position> GetPositionByRow()
+        public static Position GetPositionByRow(int positionID)
         {
             Position position = new Position();
             SqlConnection connection = PRG299DB.GetConnection();
@@ -90,12 +90,12 @@ namespace ProjectPRG299DB
             return position;
         }
 
-        public static bool DeletePosition()
+        public static bool DeletePosition(Position position)
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string deleteStatement = "DELETE FROM Positions WHERE PositionID = @PositionID";
             SqlCommand DeleteCommand = new SqlCommand(deleteStatement, connection);
-            DeleteCommand.Parameters.AddWithValue("@PositionID", cust.PositionID);
+            DeleteCommand.Parameters.AddWithValue("@PositionID", position.PositionID);
             try
             {
                 connection.Open();
@@ -115,7 +115,7 @@ namespace ProjectPRG299DB
             }
         }
 
-        public static int AddPosition()
+        public static int AddPosition(Position position)
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string insertStatement =
@@ -160,7 +160,7 @@ namespace ProjectPRG299DB
             }
         }
 
-        public static bool UpdatePosition()
+        public static bool UpdatePosition(Position oldPosition, Position newPosition)
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string updateStatement =

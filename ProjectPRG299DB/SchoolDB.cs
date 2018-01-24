@@ -51,12 +51,12 @@ namespace ProjectPRG299DB
             }
             return SchoolList;
         }
-        public static List<School> GetSchoolByRow()
+        public static School GetSchoolByRow(int schoolID)
         {
             School school = new School();
             SqlConnection connection = PRG299DB.GetConnection();
-            string selectStatement = "SELECT SchoolID, Name, Address, " +
-                "City, State, ZipCode, Phone, Email FROM dbo.Schools WHERE SchoolID = @SchoolID";
+            string selectStatement = "SELECT SchoolID, SchoolName, StreetName, " +
+                "City, State, ZipCode, NumberOfYearsAttended, Graduated FROM dbo.School WHERE SchoolID = @SchoolID";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             selectCommand.Parameters.AddWithValue("@SchoolID", schoolID);
             try
@@ -64,23 +64,23 @@ namespace ProjectPRG299DB
                 connection.Open();
                 SqlDataReader reader = selectCommand.ExecuteReader();
                 int cIDOrd = reader.GetOrdinal("SchoolID"),
-                    cNOrd = reader.GetOrdinal("Name"),
-                    cAOrd = reader.GetOrdinal("Address"),
+                    cNOrd = reader.GetOrdinal("SchoolName"),
+                    cAOrd = reader.GetOrdinal("StreetName"),
                     cCOrd = reader.GetOrdinal("City"),
                     cSOrd = reader.GetOrdinal("State"),
                     cZCOrd = reader.GetOrdinal("ZipCode"),
-                    cPOrd = reader.GetOrdinal("Phone"),
-                    cEOrd = reader.GetOrdinal("Email");
+                    cPOrd = reader.GetOrdinal("NumberOfYearsAttended"),
+                    cEOrd = reader.GetOrdinal("Graduated");
                 while (reader.Read())
                 {
                     school.SchoolID = reader.GetInt32(cIDOrd);
-                    school.Name = reader.GetString(cNOrd);
-                    school.Address = reader.GetString(cAOrd);
+                    school.SchoolName = reader.GetString(cNOrd);
+                    school.StreetName = reader.GetString(cAOrd);
                     school.City = reader.GetString(cCOrd);
                     school.State = reader.GetString(cSOrd);
                     school.ZipCode = reader.GetString(cZCOrd);
-                    school.Phone = reader.GetString(cPOrd);
-                    school.Email = reader.GetString(cEOrd);
+                    school.NumberOfYearsAttended = reader.GetString(cPOrd);
+                    school.Graduated = reader.GetString(cEOrd);
                 }
             }
             catch (SqlException ex)
@@ -94,12 +94,12 @@ namespace ProjectPRG299DB
             return school;
         }
 
-        public static bool DeleteSchool()
+        public static bool DeleteSchool(School school)
         {
             SqlConnection connection = PRG299DB.GetConnection();
-            string deleteStatement = "DELETE FROM Schools WHERE SchoolID = @SchoolID";
+            string deleteStatement = "DELETE FROM School WHERE SchoolID = @SchoolID";
             SqlCommand DeleteCommand = new SqlCommand(deleteStatement, connection);
-            DeleteCommand.Parameters.AddWithValue("@SchoolID", cust.SchoolID);
+            DeleteCommand.Parameters.AddWithValue("@SchoolID", school.SchoolID);
             try
             {
                 connection.Open();
@@ -119,37 +119,37 @@ namespace ProjectPRG299DB
             }
         }
 
-        public static int AddSchool()
+        public static int AddSchool(School school)
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string insertStatement =
-                "INSERT Schools " +
-                  "(Name, Address, " +
-                "City, State, ZipCode, Phone, Email) " +
-                "VALUES (@Name, @Address, " +
-                "@City, @State, @ZipCode, @Phone, @Email)";
+                "INSERT School " +
+                  "(SchoolName, StreetName, " +
+                "City, State, ZipCode, NumberOfYearsAttended, Graduated) " +
+                "VALUES (@SchoolName, @StreetName, " +
+                "@City, @State, @ZipCode, @NumberOfYearsAttended, @Graduated)";
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
-            insertCommand.Parameters.AddWithValue("@Name", school.Name);
-            insertCommand.Parameters.AddWithValue("@Address", school.Address);
+            insertCommand.Parameters.AddWithValue("@SchoolName", school.SchoolName);
+            insertCommand.Parameters.AddWithValue("@StreetName", school.StreetName);
             insertCommand.Parameters.AddWithValue("@City", school.City);
             insertCommand.Parameters.AddWithValue("@State", school.State);
             insertCommand.Parameters.AddWithValue("@ZipCode", school.ZipCode);
-            if (school.Phone == "")
-                insertCommand.Parameters.AddWithValue("@Phone", DBNull.Value);
+            if (school.NumberOfYearsAttended == "")
+                insertCommand.Parameters.AddWithValue("@NumberOfYearsAttended", DBNull.Value);
             else
-                insertCommand.Parameters.AddWithValue("@Phone", school.Phone);
-            if (school.Email == "")
-                insertCommand.Parameters.AddWithValue("@Email",
+                insertCommand.Parameters.AddWithValue("@NumberOfYearsAttended", school.NumberOfYearsAttended);
+            if (school.Graduated == "")
+                insertCommand.Parameters.AddWithValue("@Graduated",
                     DBNull.Value);
             else
-                insertCommand.Parameters.AddWithValue("@Email",
-                    school.Email);
+                insertCommand.Parameters.AddWithValue("@Graduated",
+                    school.Graduated);
             try
             {
                 connection.Open();
                 insertCommand.ExecuteNonQuery();
                 string selectStatement =
-                    "SELECT IDENT_CURRENT('Schools') FROM Schools";
+                    "SELECT IDENT_CURRENT('School') FROM School";
                 SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
                 int vendorID = Convert.ToInt32(selectCommand.ExecuteScalar());
                 return vendorID;
@@ -164,7 +164,7 @@ namespace ProjectPRG299DB
             }
         }
 
-        public static bool UpdateSchool()
+        public static bool UpdateSchool(School oldSchool, School newSchool)
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string updateStatement =

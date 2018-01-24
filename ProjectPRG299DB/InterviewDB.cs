@@ -45,7 +45,7 @@ namespace ProjectPRG299DB
             }
             return interviewList;
         }
-        public static List<Interview> GetInterviewByRow()
+        public static Interview GetInterviewByRow(int interviewID)
         {
             Interview interview = new Interview();
             SqlConnection connection = PRG299DB.GetConnection();
@@ -88,12 +88,12 @@ namespace ProjectPRG299DB
             return interview;
         }
 
-        public static bool DeleteInterview()
+        public static bool DeleteInterview(Interview interview)
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string deleteStatement = "DELETE FROM Interviews WHERE InterviewID = @InterviewID";
             SqlCommand DeleteCommand = new SqlCommand(deleteStatement, connection);
-            DeleteCommand.Parameters.AddWithValue("@InterviewID", cust.InterviewID);
+            DeleteCommand.Parameters.AddWithValue("@InterviewID", interview.InterviewID);
             try
             {
                 connection.Open();
@@ -113,7 +113,7 @@ namespace ProjectPRG299DB
             }
         }
 
-        public static int AddInterview()
+        public static int AddInterview(Interview interview)
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string insertStatement =
@@ -158,7 +158,7 @@ namespace ProjectPRG299DB
             }
         }
 
-        public static bool UpdateInterview()
+        public static bool UpdateInterview(Interview oldInterview, Interview newInterview)
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string updateStatement =

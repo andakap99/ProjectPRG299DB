@@ -49,7 +49,7 @@ namespace ProjectPRG299DB
             }
             return contactList;
         }
-        public static List<Contact> GetContactByRow()
+        public static Contact GetContactByRow(int contactID)
         {
             Contact contact = new Contact();
             SqlConnection connection = PRG299DB.GetConnection();
@@ -92,12 +92,12 @@ namespace ProjectPRG299DB
             return contact;
         }
 
-        public static bool DeleteContact()
+        public static bool DeleteContact(Contact contact)
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string deleteStatement = "DELETE FROM Contacts WHERE ContactID = @ContactID";
             SqlCommand DeleteCommand = new SqlCommand(deleteStatement, connection);
-            DeleteCommand.Parameters.AddWithValue("@ContactID", cust.ContactID);
+            DeleteCommand.Parameters.AddWithValue("@ContactID", contact.ContactID);
             try
             {
                 connection.Open();
@@ -117,7 +117,7 @@ namespace ProjectPRG299DB
             }
         }
 
-        public static int AddContact()
+        public static int AddContact(Contact contact)
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string insertStatement =
@@ -162,7 +162,7 @@ namespace ProjectPRG299DB
             }
         }
 
-        public static bool UpdateContact()
+        public static bool UpdateContact(Contact oldContact, Contact newContact)
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string updateStatement =

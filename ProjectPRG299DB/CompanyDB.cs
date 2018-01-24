@@ -55,7 +55,7 @@ namespace ProjectPRG299DB
             }
             return companyList;
         }
-        public static Company GetCompanyByRow( int companyID)
+        public static Company GetCompanyByRow(int companyID)
         {
             Company company = new Company();
             SqlConnection connection = PRG299DB.GetConnection();
@@ -98,12 +98,12 @@ namespace ProjectPRG299DB
             return company;
         }
 
-        public static bool DeleteCompany()
+        public static bool DeleteCompany(Company company)
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string deleteStatement = "DELETE FROM Companys WHERE CompanyID = @CompanyID";
             SqlCommand DeleteCommand = new SqlCommand(deleteStatement, connection);
-            DeleteCommand.Parameters.AddWithValue("@CompanyID", cust.CompanyID);
+            DeleteCommand.Parameters.AddWithValue("@CompanyID", company.CompanyID);
             try
             {
                 connection.Open();
@@ -123,7 +123,7 @@ namespace ProjectPRG299DB
             }
         }
 
-        public static int AddCompany()
+        public static int AddCompany(Company company)
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string insertStatement =
@@ -168,7 +168,7 @@ namespace ProjectPRG299DB
             }
         }
 
-        public static bool UpdateCompany()
+        public static bool UpdateCompany(Company oldCompany, Company newCompany)
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string updateStatement =

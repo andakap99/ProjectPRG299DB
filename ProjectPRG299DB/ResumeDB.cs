@@ -43,7 +43,7 @@ namespace ProjectPRG299DB
             }
             return resumeList;
         }
-        public static List<Resume> GetResumeByRow()
+        public static Resume GetResumeByRow(int resumeID)
         {
             Resume resume = new Resume();
             SqlConnection connection = PRG299DB.GetConnection();
@@ -86,12 +86,12 @@ namespace ProjectPRG299DB
             return resume;
         }
 
-        public static bool DeleteResume()
+        public static bool DeleteResume(Resume resume)
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string deleteStatement = "DELETE FROM Resumes WHERE ResumeID = @ResumeID";
             SqlCommand DeleteCommand = new SqlCommand(deleteStatement, connection);
-            DeleteCommand.Parameters.AddWithValue("@ResumeID", cust.ResumeID);
+            DeleteCommand.Parameters.AddWithValue("@ResumeID", resume.ResumeID);
             try
             {
                 connection.Open();
@@ -111,7 +111,7 @@ namespace ProjectPRG299DB
             }
         }
 
-        public static int AddResume()
+        public static int AddResume(Resume resume)
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string insertStatement =
@@ -156,7 +156,7 @@ namespace ProjectPRG299DB
             }
         }
 
-        public static bool UpdateResume()
+        public static bool UpdateResume(Resume oldResume, Resume newResume)
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string updateStatement =
