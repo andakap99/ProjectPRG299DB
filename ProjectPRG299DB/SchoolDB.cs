@@ -129,11 +129,26 @@ namespace ProjectPRG299DB
                 "VALUES (@SchoolName, @StreetName, " +
                 "@City, @State, @ZipCode, @NumberOfYearsAttended, @Graduated)";
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
-            insertCommand.Parameters.AddWithValue("@SchoolName", school.SchoolName);
-            insertCommand.Parameters.AddWithValue("@StreetName", school.StreetName);
-            insertCommand.Parameters.AddWithValue("@City", school.City);
-            insertCommand.Parameters.AddWithValue("@State", school.State);
-            insertCommand.Parameters.AddWithValue("@ZipCode", school.ZipCode);
+            if (school.SchoolName == "")
+                insertCommand.Parameters.AddWithValue("@SchoolName", DBNull.Value);
+            else
+                insertCommand.Parameters.AddWithValue("@SchoolName", school.SchoolName);
+            if (school.StreetName == "")
+                insertCommand.Parameters.AddWithValue("@StreetName", DBNull.Value);
+            else
+                insertCommand.Parameters.AddWithValue("@StreetName", school.StreetName);
+            if (school.City == "")
+                insertCommand.Parameters.AddWithValue("@City", DBNull.Value);
+            else
+                insertCommand.Parameters.AddWithValue("@City", school.City);
+            if(school.State == "")
+                insertCommand.Parameters.AddWithValue("@State", DBNull.Value);
+            else
+                insertCommand.Parameters.AddWithValue("@State", school.State);
+            if (school.ZipCode == "")
+                insertCommand.Parameters.AddWithValue("@ZipCode", DBNull.Value);
+            else
+                insertCommand.Parameters.AddWithValue("@ZipCode", school.ZipCode);
             if (school.NumberOfYearsAttended == "")
                 insertCommand.Parameters.AddWithValue("@NumberOfYearsAttended", DBNull.Value);
             else
@@ -168,58 +183,91 @@ namespace ProjectPRG299DB
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string updateStatement =
-                "UPDATE Schools SET " +
-                  "Name = @NewName, " +
-                  "Address = @NewAddress, " +
+                "UPDATE School SET " +
+                  "SchoolName = @NewSchoolName, " +
+                  "StreetName = @NewStreetName, " +
                   "City = @NewCity, " +
                   "State = @NewState, " +
                   "ZipCode = @NewZipCode, " +
-                  "Phone = @NewPhone, " +
-                  "Email = @NewEmail " +
+                  "NumberofYearsAttended = @NewNumberofYearsAttended, " +
+                  "Graduated = @NewGraduated " +
                 "WHERE SchoolID = @OldSchoolID " +
-                  "AND Name = @OldName " +
-                  "AND Address = @OldAddress " +
+                  "AND SchoolName = @OldSchoolName " +
+                      "OR SchoolName IS NULL AND @OldSchoolName IS NULL) " +
+                  "AND StreetName = @OldStreetName " +
+                      "OR StreetName IS NULL AND @OldStreetName IS NULL) " +
                   "AND City = @OldCity " +
+                      "OR City IS NULL AND @OldCity IS NULL) " +
                   "AND State = @OldState " +
+                      "OR State IS NULL AND @OldState IS NULL) " +
                   "AND ZipCode = @OldZipCode " +
-                  "AND (Phone = @OldPhone " +
-                      "OR Phone IS NULL AND @OldPhone IS NULL) " +
-                  "AND (Email = @OldEmail " +
-                      "OR Email IS NULL AND @OldEmail IS NULL)";
+                      "OR ZipCode IS NULL AND @OldZipCode IS NULL) " +
+                  "AND (NumberofYearsAttended = @OldNumberofYearsAttended " +
+                      "OR NumberofYearsAttended IS NULL AND @OldNumberofYearsAttended IS NULL) " +
+                  "AND (Graduated = @OldGraduated " +
+                      "OR Graduated IS NULL AND @OldGraduated IS NULL)";
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
-            updateCommand.Parameters.AddWithValue("@NewName", newSchool.Name);
-            updateCommand.Parameters.AddWithValue("@NewAddress", newSchool.Address);
-            updateCommand.Parameters.AddWithValue("@NewCity", newSchool.City);
-            updateCommand.Parameters.AddWithValue("@NewState", newSchool.State);
-            updateCommand.Parameters.AddWithValue("@NewZipCode", newSchool.ZipCode);
-            if (newSchool.Phone == "")
-                updateCommand.Parameters.AddWithValue("@NewPhone", DBNull.Value);
+            if (newSchool.SchoolName == "")
+                updateCommand.Parameters.AddWithValue("@NewSchoolName", DBNull.Value);
             else
-                updateCommand.Parameters.AddWithValue("@NewPhone", newSchool.Phone);
-            if (newSchool.Email == "")
-                updateCommand.Parameters.AddWithValue("@NewEmail",
+                updateCommand.Parameters.AddWithValue("@NewSchoolName", newSchool.SchoolName);
+            if (newSchool.StreetName == "")
+                updateCommand.Parameters.AddWithValue("@NewStreetName", DBNull.Value);
+            else
+                updateCommand.Parameters.AddWithValue("@NewStreetName", newSchool.StreetName);
+            if (newSchool.City == "")
+                updateCommand.Parameters.AddWithValue("@NewCity", DBNull.Value);
+            else
+                updateCommand.Parameters.AddWithValue("@NewCity", newSchool.City);
+            if (newSchool.State == "")
+                updateCommand.Parameters.AddWithValue("@NewState", DBNull.Value);
+            else
+                updateCommand.Parameters.AddWithValue("@NewState", newSchool.State);
+            if (newSchool.ZipCode == "")
+                updateCommand.Parameters.AddWithValue("@NewZipCode", DBNull.Value);
+            else
+                updateCommand.Parameters.AddWithValue("@NewZipCode", newSchool.ZipCode);
+            if (newSchool.NumberOfYearsAttended == "")
+                updateCommand.Parameters.AddWithValue("@NewNumberOfYearsAttended", DBNull.Value);
+            else
+                updateCommand.Parameters.AddWithValue("@NewNumberOfYearsAttended", newSchool.NumberOfYearsAttended);
+            if (newSchool.Graduated == "")
+                updateCommand.Parameters.AddWithValue("@NewGraduated",
                     DBNull.Value);
             else
-                updateCommand.Parameters.AddWithValue("@NewEmail",
-                    newSchool.Email);
-
+                updateCommand.Parameters.AddWithValue("@NewGraduated",
+                    newSchool.Graduated);
             updateCommand.Parameters.AddWithValue("@OldSchoolID", oldSchool.SchoolID);
-            updateCommand.Parameters.AddWithValue("@OldName", oldSchool.Name);
-            updateCommand.Parameters.AddWithValue("@OldAddress", oldSchool.Address);
-            updateCommand.Parameters.AddWithValue("@OldCity", oldSchool.City);
-            updateCommand.Parameters.AddWithValue("@OldState", oldSchool.State);
-            updateCommand.Parameters.AddWithValue("@OldZipCode", oldSchool.ZipCode);
-            if (oldSchool.Phone == "")
-                updateCommand.Parameters.AddWithValue("@OldPhone", DBNull.Value);
+            if (oldSchool.SchoolName == "")
+                updateCommand.Parameters.AddWithValue("@OldSchoolName", DBNull.Value);
             else
-                updateCommand.Parameters.AddWithValue("@OldPhone", oldSchool.Phone);
-            if (oldSchool.Email == "")
-                updateCommand.Parameters.AddWithValue("@OldEmail",
+                updateCommand.Parameters.AddWithValue("@OldSchoolName", oldSchool.SchoolName);
+            if (oldSchool.StreetName == "")
+                updateCommand.Parameters.AddWithValue("@OldStreetName", DBNull.Value);
+            else
+                updateCommand.Parameters.AddWithValue("@OldStreetName", oldSchool.StreetName);
+            if (oldSchool.City == "")
+                updateCommand.Parameters.AddWithValue("@OldCity", DBNull.Value);
+            else
+                updateCommand.Parameters.AddWithValue("@OldCity", oldSchool.City);
+            if (oldSchool.State == "")
+                updateCommand.Parameters.AddWithValue("@OldState", DBNull.Value);
+            else
+                updateCommand.Parameters.AddWithValue("@OldState", oldSchool.State);
+            if (oldSchool.ZipCode == "")
+                updateCommand.Parameters.AddWithValue("@OldZipCode", DBNull.Value);
+            else
+                updateCommand.Parameters.AddWithValue("@OldZipCode", oldSchool.ZipCode);
+            if (oldSchool.NumberOfYearsAttended == "")
+                updateCommand.Parameters.AddWithValue("@OldNumberOfYearsAttended", DBNull.Value);
+            else
+                updateCommand.Parameters.AddWithValue("@OldNumberOfYearsAttended", oldSchool.NumberOfYearsAttended);
+            if (oldSchool.Graduated == "")
+                updateCommand.Parameters.AddWithValue("@OldGraduated",
                     DBNull.Value);
             else
-                updateCommand.Parameters.AddWithValue("@OldEmail",
-                    oldSchool.Email);
-
+                updateCommand.Parameters.AddWithValue("@OldGraduated",
+                    oldSchool.Graduated);
             try
             {
                 connection.Open();
