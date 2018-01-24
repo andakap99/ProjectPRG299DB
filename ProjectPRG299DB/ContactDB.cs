@@ -53,8 +53,8 @@ namespace ProjectPRG299DB
         {
             Contact contact = new Contact();
             SqlConnection connection = PRG299DB.GetConnection();
-            string selectStatement = "SELECT ContactID, Name, Address, " +
-                "City, State, ZipCode, Phone, Email FROM dbo.Contacts WHERE ContactID = @ContactID";
+            string selectStatement = "SELECT ContactID, FirstName, LastName, " +
+                "EmailAddress, PhoneNumber, CellPhone, AdditionalNotes FROM dbo.Contact WHERE ContactID = @ContactID";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             selectCommand.Parameters.AddWithValue("@ContactID", contactID);
             try
@@ -62,23 +62,21 @@ namespace ProjectPRG299DB
                 connection.Open();
                 SqlDataReader reader = selectCommand.ExecuteReader();
                 int cIDOrd = reader.GetOrdinal("ContactID"),
-                    cNOrd = reader.GetOrdinal("Name"),
-                    cAOrd = reader.GetOrdinal("Address"),
-                    cCOrd = reader.GetOrdinal("City"),
-                    cSOrd = reader.GetOrdinal("State"),
-                    cZCOrd = reader.GetOrdinal("ZipCode"),
-                    cPOrd = reader.GetOrdinal("Phone"),
-                    cEOrd = reader.GetOrdinal("Email");
+                    cNOrd = reader.GetOrdinal("FirstName"),
+                    cAOrd = reader.GetOrdinal("LastName"),
+                    cCOrd = reader.GetOrdinal("EmailAddress"),
+                    cSOrd = reader.GetOrdinal("PhoneNumber"),
+                    cZCOrd = reader.GetOrdinal("CellPhone"),
+                    cPOrd = reader.GetOrdinal("AdditionalNotes");
                 while (reader.Read())
                 {
                     contact.ContactID = reader.GetInt32(cIDOrd);
-                    contact.Name = reader.GetString(cNOrd);
-                    contact.Address = reader.GetString(cAOrd);
-                    contact.City = reader.GetString(cCOrd);
-                    contact.State = reader.GetString(cSOrd);
-                    contact.ZipCode = reader.GetString(cZCOrd);
-                    contact.Phone = reader.GetString(cPOrd);
-                    contact.Email = reader.GetString(cEOrd);
+                    contact.FirstName = reader.GetString(cNOrd);
+                    contact.LastName = reader.GetString(cAOrd);
+                    contact.EmailAddress = reader.GetString(cCOrd);
+                    contact.PhoneNumber = reader.GetString(cSOrd);
+                    contact.CellPhone = reader.GetString(cZCOrd);
+                    contact.AdditionalNotes = reader.GetString(cPOrd);
                 }
             }
             catch (SqlException ex)
@@ -95,7 +93,7 @@ namespace ProjectPRG299DB
         public static bool DeleteContact(Contact contact)
         {
             SqlConnection connection = PRG299DB.GetConnection();
-            string deleteStatement = "DELETE FROM Contacts WHERE ContactID = @ContactID";
+            string deleteStatement = "DELETE FROM Contact WHERE ContactID = @ContactID";
             SqlCommand DeleteCommand = new SqlCommand(deleteStatement, connection);
             DeleteCommand.Parameters.AddWithValue("@ContactID", contact.ContactID);
             try
@@ -121,33 +119,38 @@ namespace ProjectPRG299DB
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string insertStatement =
-                "INSERT Contacts " +
-                  "(Name, Address, " +
-                "City, State, ZipCode, Phone, Email) " +
-                "VALUES (@Name, @Address, " +
-                "@City, @State, @ZipCode, @Phone, @Email)";
+                "INSERT Contact " +
+                  "(FirstName, LastName, " +
+                "EmailAddress, PhoneNumber, CellPhone, AdditionalNotes) " +
+                "VALUES (@FirstName, @LastName, " +
+                "@EmailAddress, @PhoneNumber, @CellPhone, @AdditionalNotes)";
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
-            insertCommand.Parameters.AddWithValue("@Name", contact.Name);
-            insertCommand.Parameters.AddWithValue("@Address", contact.Address);
-            insertCommand.Parameters.AddWithValue("@City", contact.City);
-            insertCommand.Parameters.AddWithValue("@State", contact.State);
-            insertCommand.Parameters.AddWithValue("@ZipCode", contact.ZipCode);
-            if (contact.Phone == "")
-                insertCommand.Parameters.AddWithValue("@Phone", DBNull.Value);
+
+            insertCommand.Parameters.AddWithValue("@FirstName", contact.FirstName);
+
+            insertCommand.Parameters.AddWithValue("@LastName", contact.LastName);
+            if(contact.EmailAddress == "")
+                insertCommand.Parameters.AddWithValue("@EmailAddress", DBNull.Value);
             else
-                insertCommand.Parameters.AddWithValue("@Phone", contact.Phone);
-            if (contact.Email == "")
-                insertCommand.Parameters.AddWithValue("@Email",
-                    DBNull.Value);
+                insertCommand.Parameters.AddWithValue("@EmailAddress", contact.EmailAddress);
+            if(contact.PhoneNumber == "")
+                insertCommand.Parameters.AddWithValue("@PhoneNumber", DBNull.Value);
             else
-                insertCommand.Parameters.AddWithValue("@Email",
-                    contact.Email);
+                insertCommand.Parameters.AddWithValue("@PhoneNumber", contact.PhoneNumber);
+            if(contact.CellPhone == "")
+                insertCommand.Parameters.AddWithValue("@CellPhone", DBNull.Value);
+            else
+                insertCommand.Parameters.AddWithValue("@CellPhone", contact.CellPhone);
+            if(contact.AdditionalNotes == "")
+                insertCommand.Parameters.AddWithValue("@AdditionalNotes", DBNull.Value);
+            else
+                insertCommand.Parameters.AddWithValue("@AdditionalNotes", contact.AdditionalNotes);
             try
             {
                 connection.Open();
                 insertCommand.ExecuteNonQuery();
                 string selectStatement =
-                    "SELECT IDENT_CURRENT('Contacts') FROM Contacts";
+                    "SELECT IDENT_CURRENT('Contact') FROM Contact";
                 SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
                 int vendorID = Convert.ToInt32(selectCommand.ExecuteScalar());
                 return vendorID;
@@ -166,7 +169,7 @@ namespace ProjectPRG299DB
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string updateStatement =
-                "UPDATE Contacts SET " +
+                "UPDATE Contact SET " +
                   "Name = @NewName, " +
                   "Address = @NewAddress, " +
                   "City = @NewCity, " +
