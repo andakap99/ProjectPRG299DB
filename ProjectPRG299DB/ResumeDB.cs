@@ -47,8 +47,8 @@ namespace ProjectPRG299DB
         {
             Resume resume = new Resume();
             SqlConnection connection = PRG299DB.GetConnection();
-            string selectStatement = "SELECT ResumeID, Name, Address, " +
-                "City, State, ZipCode, Phone, Email FROM dbo.Resumes WHERE ResumeID = @ResumeID";
+            string selectStatement = "SELECT ResumeID, RSCDirectoryPath, SchoolID, " +
+                "ClientID FROM dbo.Resume WHERE ResumeID = @ResumeID";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             selectCommand.Parameters.AddWithValue("@ResumeID", resumeID);
             try
@@ -56,23 +56,15 @@ namespace ProjectPRG299DB
                 connection.Open();
                 SqlDataReader reader = selectCommand.ExecuteReader();
                 int cIDOrd = reader.GetOrdinal("ResumeID"),
-                    cNOrd = reader.GetOrdinal("Name"),
-                    cAOrd = reader.GetOrdinal("Address"),
-                    cCOrd = reader.GetOrdinal("City"),
-                    cSOrd = reader.GetOrdinal("State"),
-                    cZCOrd = reader.GetOrdinal("ZipCode"),
-                    cPOrd = reader.GetOrdinal("Phone"),
-                    cEOrd = reader.GetOrdinal("Email");
+                    cNOrd = reader.GetOrdinal("RSCDirectoryPath"),
+                    cAOrd = reader.GetOrdinal("SchoolID"),
+                    cCOrd = reader.GetOrdinal("ClientID");
                 while (reader.Read())
                 {
                     resume.ResumeID = reader.GetInt32(cIDOrd);
-                    resume.Name = reader.GetString(cNOrd);
-                    resume.Address = reader.GetString(cAOrd);
-                    resume.City = reader.GetString(cCOrd);
-                    resume.State = reader.GetString(cSOrd);
-                    resume.ZipCode = reader.GetString(cZCOrd);
-                    resume.Phone = reader.GetString(cPOrd);
-                    resume.Email = reader.GetString(cEOrd);
+                    resume.RSCDirectoryPath = reader.GetString(cNOrd);
+                    resume.SchoolID = reader.GetInt32(cAOrd);
+                    resume.ClientID = reader.GetInt32(cCOrd);
                 }
             }
             catch (SqlException ex)
@@ -89,7 +81,7 @@ namespace ProjectPRG299DB
         public static bool DeleteResume(Resume resume)
         {
             SqlConnection connection = PRG299DB.GetConnection();
-            string deleteStatement = "DELETE FROM Resumes WHERE ResumeID = @ResumeID";
+            string deleteStatement = "DELETE FROM Resume WHERE ResumeID = @ResumeID";
             SqlCommand DeleteCommand = new SqlCommand(deleteStatement, connection);
             DeleteCommand.Parameters.AddWithValue("@ResumeID", resume.ResumeID);
             try
@@ -115,33 +107,30 @@ namespace ProjectPRG299DB
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string insertStatement =
-                "INSERT Resumes " +
-                  "(Name, Address, " +
-                "City, State, ZipCode, Phone, Email) " +
-                "VALUES (@Name, @Address, " +
-                "@City, @State, @ZipCode, @Phone, @Email)";
+                "INSERT Resume " +
+                  "(RSCDirectoryPath, SchoolID, " +
+                "ClientID) " +
+                "VALUES (@RSCDirectoryPath, @SchoolID, " +
+                "@ClientID)";
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
-            insertCommand.Parameters.AddWithValue("@Name", resume.Name);
-            insertCommand.Parameters.AddWithValue("@Address", resume.Address);
-            insertCommand.Parameters.AddWithValue("@City", resume.City);
-            insertCommand.Parameters.AddWithValue("@State", resume.State);
-            insertCommand.Parameters.AddWithValue("@ZipCode", resume.ZipCode);
-            if (resume.Phone == "")
-                insertCommand.Parameters.AddWithValue("@Phone", DBNull.Value);
+            if (resume.RSCDirectoryPath == "")
+                insertCommand.Parameters.AddWithValue("@RSCDirectoryPath", DBNull.Value);
             else
-                insertCommand.Parameters.AddWithValue("@Phone", resume.Phone);
-            if (resume.Email == "")
-                insertCommand.Parameters.AddWithValue("@Email",
-                    DBNull.Value);
+                insertCommand.Parameters.AddWithValue("@RSCDirectoryPath", resume.RSCDirectoryPath);
+            if (resume.SchoolID.ToString() == "")
+                insertCommand.Parameters.AddWithValue("@SchoolID", DBNull.Value);
             else
-                insertCommand.Parameters.AddWithValue("@Email",
-                    resume.Email);
+                insertCommand.Parameters.AddWithValue("@SchoolID", resume.SchoolID);
+            if (resume.ClientID.ToString() == "")
+                insertCommand.Parameters.AddWithValue("@ClientID", DBNull.Value);
+            else
+                insertCommand.Parameters.AddWithValue("@ClientID", resume.ClientID);
             try
             {
                 connection.Open();
                 insertCommand.ExecuteNonQuery();
                 string selectStatement =
-                    "SELECT IDENT_CURRENT('Resumes') FROM Resumes";
+                    "SELECT IDENT_CURRENT('Resume') FROM Resume";
                 SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
                 int vendorID = Convert.ToInt32(selectCommand.ExecuteScalar());
                 return vendorID;
@@ -160,57 +149,44 @@ namespace ProjectPRG299DB
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string updateStatement =
-                "UPDATE Resumes SET " +
-                  "Name = @NewName, " +
-                  "Address = @NewAddress, " +
-                  "City = @NewCity, " +
-                  "State = @NewState, " +
-                  "ZipCode = @NewZipCode, " +
-                  "Phone = @NewPhone, " +
-                  "Email = @NewEmail " +
+                "UPDATE Resume SET " +
+                  "RSCDirectoryPath = @NewRSCDirectoryPath, " +
+                  "SchoolID = @NewSchoolID, " +
+                  "ClientID = @NewClientID " +
                 "WHERE ResumeID = @OldResumeID " +
-                  "AND Name = @OldName " +
-                  "AND Address = @OldAddress " +
-                  "AND City = @OldCity " +
-                  "AND State = @OldState " +
-                  "AND ZipCode = @OldZipCode " +
-                  "AND (Phone = @OldPhone " +
-                      "OR Phone IS NULL AND @OldPhone IS NULL) " +
-                  "AND (Email = @OldEmail " +
-                      "OR Email IS NULL AND @OldEmail IS NULL)";
+                  "AND RSCDirectoryPath = @OldRSCDirectoryPath " +
+                      "OR RSCDirectoryPath IS NULL AND @OldRSCDirectoryPath IS NULL) " +
+                  "AND SchoolID = @OldSchoolID " +
+                      "OR SchoolID IS NULL AND @OldSchoolID IS NULL) " +
+                  "AND ClientID = @OldClientID " +
+                      "OR ClientID IS NULL AND @OldClientID IS NULL)";
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
-            updateCommand.Parameters.AddWithValue("@NewName", newResume.Name);
-            updateCommand.Parameters.AddWithValue("@NewAddress", newResume.Address);
-            updateCommand.Parameters.AddWithValue("@NewCity", newResume.City);
-            updateCommand.Parameters.AddWithValue("@NewState", newResume.State);
-            updateCommand.Parameters.AddWithValue("@NewZipCode", newResume.ZipCode);
-            if (newResume.Phone == "")
-                updateCommand.Parameters.AddWithValue("@NewPhone", DBNull.Value);
+            if (newResume.RSCDirectoryPath == "")
+                updateCommand.Parameters.AddWithValue("@NewRSCDirectoryPath", DBNull.Value);
             else
-                updateCommand.Parameters.AddWithValue("@NewPhone", newResume.Phone);
-            if (newResume.Email == "")
-                updateCommand.Parameters.AddWithValue("@NewEmail",
-                    DBNull.Value);
+                updateCommand.Parameters.AddWithValue("@NewRSCDirectoryPath", newResume.RSCDirectoryPath);
+            if (newResume.SchoolID.ToString() == "")
+                updateCommand.Parameters.AddWithValue("@NewSchoolID", DBNull.Value);
             else
-                updateCommand.Parameters.AddWithValue("@NewEmail",
-                    newResume.Email);
+                updateCommand.Parameters.AddWithValue("@NewSchoolID", newResume.SchoolID);
+            if (newResume.ClientID.ToString() == "")
+                updateCommand.Parameters.AddWithValue("@NewClientID", DBNull.Value);
+            else
+                updateCommand.Parameters.AddWithValue("@NewClientID", newResume.ClientID);
 
             updateCommand.Parameters.AddWithValue("@OldResumeID", oldResume.ResumeID);
-            updateCommand.Parameters.AddWithValue("@OldName", oldResume.Name);
-            updateCommand.Parameters.AddWithValue("@OldAddress", oldResume.Address);
-            updateCommand.Parameters.AddWithValue("@OldCity", oldResume.City);
-            updateCommand.Parameters.AddWithValue("@OldState", oldResume.State);
-            updateCommand.Parameters.AddWithValue("@OldZipCode", oldResume.ZipCode);
-            if (oldResume.Phone == "")
-                updateCommand.Parameters.AddWithValue("@OldPhone", DBNull.Value);
+            if (oldResume.RSCDirectoryPath == "")
+                updateCommand.Parameters.AddWithValue("@OldRSCDirectoryPath", DBNull.Value);
             else
-                updateCommand.Parameters.AddWithValue("@OldPhone", oldResume.Phone);
-            if (oldResume.Email == "")
-                updateCommand.Parameters.AddWithValue("@OldEmail",
-                    DBNull.Value);
+                updateCommand.Parameters.AddWithValue("@OldRSCDirectoryPath", oldResume.RSCDirectoryPath);
+            if (oldResume.SchoolID.ToString() == "")
+                updateCommand.Parameters.AddWithValue("@OldSchoolID", DBNull.Value);
             else
-                updateCommand.Parameters.AddWithValue("@OldEmail",
-                    oldResume.Email);
+                updateCommand.Parameters.AddWithValue("@OldSchoolID", oldResume.SchoolID);
+            if (oldResume.ClientID.ToString() == "")
+                updateCommand.Parameters.AddWithValue("@OldClientID", DBNull.Value);
+            else
+                updateCommand.Parameters.AddWithValue("@OldClientID", oldResume.ClientID);
 
             try
             {
