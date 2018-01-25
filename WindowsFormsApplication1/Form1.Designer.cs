@@ -124,7 +124,7 @@
             // 
             // clientBindingSource
             // 
-            this.clientBindingSource.DataSource = typeof(ProjectPRG299DB.Client);
+ //           this.clientBindingSource.DataSource = typeof(ProjectPRG299DB.Client);
             // 
             // clientBindingNavigator
             // 

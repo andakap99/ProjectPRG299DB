@@ -205,7 +205,7 @@ namespace ProjectPRG299DB
             else
                 updateCommand.Parameters.AddWithValue("@NewResumeID", newPosition.ResumeID);
 
-            updateCommand.Parameters.AddWithValue("@OldPositionID", oldPosition.PositionID)
+            updateCommand.Parameters.AddWithValue("@OldPositionID", oldPosition.PositionID);
             if (oldPosition.PositionName == "")
                 updateCommand.Parameters.AddWithValue("@OldPositionName", DBNull.Value);
             else
