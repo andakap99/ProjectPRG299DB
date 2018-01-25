@@ -53,8 +53,8 @@ namespace ProjectPRG299DB
         {
             Contact contact = new Contact();
             SqlConnection connection = PRG299DB.GetConnection();
-            string selectStatement = "SELECT ContactID, Name, Address, " +
-                "City, State, ZipCode, Phone, Email FROM dbo.Contacts WHERE ContactID = @ContactID";
+            string selectStatement = "SELECT ContactID, FirstName, LastName, " +
+                "EmailAddress, PhoneNumber, CellPhone, AdditionalNotes FROM dbo.Contact WHERE ContactID = @ContactID";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             selectCommand.Parameters.AddWithValue("@ContactID", contactID);
             try
@@ -62,23 +62,21 @@ namespace ProjectPRG299DB
                 connection.Open();
                 SqlDataReader reader = selectCommand.ExecuteReader();
                 int cIDOrd = reader.GetOrdinal("ContactID"),
-                    cNOrd = reader.GetOrdinal("Name"),
-                    cAOrd = reader.GetOrdinal("Address"),
-                    cCOrd = reader.GetOrdinal("City"),
-                    cSOrd = reader.GetOrdinal("State"),
-                    cZCOrd = reader.GetOrdinal("ZipCode"),
-                    cPOrd = reader.GetOrdinal("Phone"),
-                    cEOrd = reader.GetOrdinal("Email");
+                    cNOrd = reader.GetOrdinal("FirstName"),
+                    cAOrd = reader.GetOrdinal("LastName"),
+                    cCOrd = reader.GetOrdinal("EmailAddress"),
+                    cSOrd = reader.GetOrdinal("PhoneNumber"),
+                    cZCOrd = reader.GetOrdinal("CellPhone"),
+                    cPOrd = reader.GetOrdinal("AdditionalNotes");
                 while (reader.Read())
                 {
                     contact.ContactID = reader.GetInt32(cIDOrd);
-                    contact.Name = reader.GetString(cNOrd);
-                    contact.Address = reader.GetString(cAOrd);
-                    contact.City = reader.GetString(cCOrd);
-                    contact.State = reader.GetString(cSOrd);
-                    contact.ZipCode = reader.GetString(cZCOrd);
-                    contact.Phone = reader.GetString(cPOrd);
-                    contact.Email = reader.GetString(cEOrd);
+                    contact.FirstName = reader.GetString(cNOrd);
+                    contact.LastName = reader.GetString(cAOrd);
+                    contact.EmailAddress = reader.GetString(cCOrd);
+                    contact.PhoneNumber = reader.GetString(cSOrd);
+                    contact.CellPhone = reader.GetString(cZCOrd);
+                    contact.AdditionalNotes = reader.GetString(cPOrd);
                 }
             }
             catch (SqlException ex)
@@ -95,7 +93,7 @@ namespace ProjectPRG299DB
         public static bool DeleteContact(Contact contact)
         {
             SqlConnection connection = PRG299DB.GetConnection();
-            string deleteStatement = "DELETE FROM Contacts WHERE ContactID = @ContactID";
+            string deleteStatement = "DELETE FROM Contact WHERE ContactID = @ContactID";
             SqlCommand DeleteCommand = new SqlCommand(deleteStatement, connection);
             DeleteCommand.Parameters.AddWithValue("@ContactID", contact.ContactID);
             try
@@ -121,33 +119,36 @@ namespace ProjectPRG299DB
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string insertStatement =
-                "INSERT Contacts " +
-                  "(Name, Address, " +
-                "City, State, ZipCode, Phone, Email) " +
-                "VALUES (@Name, @Address, " +
-                "@City, @State, @ZipCode, @Phone, @Email)";
+                "INSERT Contact " +
+                  "(FirstName, LastName, " +
+                "EmailAddress, PhoneNumber, CellPhone, AdditionalNotes) " +
+                "VALUES (@FirstName, @LastName, " +
+                "@EmailAddress, @PhoneNumber, @CellPhone, @AdditionalNotes)";
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
-            insertCommand.Parameters.AddWithValue("@Name", contact.Name);
-            insertCommand.Parameters.AddWithValue("@Address", contact.Address);
-            insertCommand.Parameters.AddWithValue("@City", contact.City);
-            insertCommand.Parameters.AddWithValue("@State", contact.State);
-            insertCommand.Parameters.AddWithValue("@ZipCode", contact.ZipCode);
-            if (contact.Phone == "")
-                insertCommand.Parameters.AddWithValue("@Phone", DBNull.Value);
+            insertCommand.Parameters.AddWithValue("@FirstName", contact.FirstName);
+            insertCommand.Parameters.AddWithValue("@LastName", contact.LastName);
+            if(contact.EmailAddress == "")
+                insertCommand.Parameters.AddWithValue("@EmailAddress", DBNull.Value);
             else
-                insertCommand.Parameters.AddWithValue("@Phone", contact.Phone);
-            if (contact.Email == "")
-                insertCommand.Parameters.AddWithValue("@Email",
-                    DBNull.Value);
+                insertCommand.Parameters.AddWithValue("@EmailAddress", contact.EmailAddress);
+            if(contact.PhoneNumber == "")
+                insertCommand.Parameters.AddWithValue("@PhoneNumber", DBNull.Value);
             else
-                insertCommand.Parameters.AddWithValue("@Email",
-                    contact.Email);
+                insertCommand.Parameters.AddWithValue("@PhoneNumber", contact.PhoneNumber);
+            if(contact.CellPhone == "")
+                insertCommand.Parameters.AddWithValue("@CellPhone", DBNull.Value);
+            else
+                insertCommand.Parameters.AddWithValue("@CellPhone", contact.CellPhone);
+            if(contact.AdditionalNotes == "")
+                insertCommand.Parameters.AddWithValue("@AdditionalNotes", DBNull.Value);
+            else
+                insertCommand.Parameters.AddWithValue("@AdditionalNotes", contact.AdditionalNotes);
             try
             {
                 connection.Open();
                 insertCommand.ExecuteNonQuery();
                 string selectStatement =
-                    "SELECT IDENT_CURRENT('Contacts') FROM Contacts";
+                    "SELECT IDENT_CURRENT('Contact') FROM Contact";
                 SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
                 int vendorID = Convert.ToInt32(selectCommand.ExecuteScalar());
                 return vendorID;
@@ -166,57 +167,63 @@ namespace ProjectPRG299DB
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string updateStatement =
-                "UPDATE Contacts SET " +
-                  "Name = @NewName, " +
-                  "Address = @NewAddress, " +
-                  "City = @NewCity, " +
-                  "State = @NewState, " +
-                  "ZipCode = @NewZipCode, " +
-                  "Phone = @NewPhone, " +
-                  "Email = @NewEmail " +
+                "UPDATE Contact SET " +
+                  "FirstName = @NewFirstName, " +
+                  "LastName = @NewLastName, " +
+                  "EmailAddress = @NewEmailAddress, " +
+                  "PhoneNumber = @NewPhoneNumber, " +
+                  "CellPhone = @NewCellPhone, " +
+                  "AdditionalNotes = @NewAdditionalNotes " +
                 "WHERE ContactID = @OldContactID " +
-                  "AND Name = @OldName " +
-                  "AND Address = @OldAddress " +
-                  "AND City = @OldCity " +
-                  "AND State = @OldState " +
-                  "AND ZipCode = @OldZipCode " +
-                  "AND (Phone = @OldPhone " +
-                      "OR Phone IS NULL AND @OldPhone IS NULL) " +
-                  "AND (Email = @OldEmail " +
-                      "OR Email IS NULL AND @OldEmail IS NULL)";
+                  "AND FirstName = @OldName " +
+                  "AND LastName = @OldLastName " +
+                  "AND (EmailAddress = @OldEmailAddress " +
+                      "OR EmailAddress IS NULL AND @OldEmailAddress IS NULL) " +
+                  "AND (PhoneNumber = @OldPhoneNumber " +
+                      "OR PhoneNumber IS NULL AND @OldPhoneNumber IS NULL)" +
+                  "AND (CellPhone = @OldCellPhone " +
+                      "OR CellPhone IS NULL AND @OldCellPhone IS NULL) " +
+                  "AND (AdditionalNotes = @OldAdditionalNotes " +
+                      "OR AdditionalNotes IS NULL AND @OldAdditionalNotes IS NULL)";
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
-            updateCommand.Parameters.AddWithValue("@NewName", newContact.Name);
-            updateCommand.Parameters.AddWithValue("@NewAddress", newContact.Address);
-            updateCommand.Parameters.AddWithValue("@NewCity", newContact.City);
-            updateCommand.Parameters.AddWithValue("@NewState", newContact.State);
-            updateCommand.Parameters.AddWithValue("@NewZipCode", newContact.ZipCode);
-            if (newContact.Phone == "")
-                updateCommand.Parameters.AddWithValue("@NewPhone", DBNull.Value);
+            updateCommand.Parameters.AddWithValue("@NewFirstName", newContact.FirstName);
+            updateCommand.Parameters.AddWithValue("@NewLastName", newContact.LastName);
+            if (newContact.EmailAddress == "")
+                updateCommand.Parameters.AddWithValue("@NewEmailAddress", DBNull.Value);
             else
-                updateCommand.Parameters.AddWithValue("@NewPhone", newContact.Phone);
-            if (newContact.Email == "")
-                updateCommand.Parameters.AddWithValue("@NewEmail",
-                    DBNull.Value);
+                updateCommand.Parameters.AddWithValue("@NewEmailAddress", newContact.EmailAddress);
+            if (newContact.PhoneNumber == "")
+                updateCommand.Parameters.AddWithValue("@NewPhoneNumber", DBNull.Value);
             else
-                updateCommand.Parameters.AddWithValue("@NewEmail",
-                    newContact.Email);
+                updateCommand.Parameters.AddWithValue("@NewPhoneNumber", newContact.PhoneNumber);
+            if (newContact.CellPhone == "")
+                updateCommand.Parameters.AddWithValue("@NewCellPhone", DBNull.Value);
+            else
+                updateCommand.Parameters.AddWithValue("@NewCellPhone", newContact.CellPhone);
+            if (newContact.AdditionalNotes == "")
+                updateCommand.Parameters.AddWithValue("@NewAdditionalNotes", DBNull.Value);
+            else
+                updateCommand.Parameters.AddWithValue("@NewAdditionalNotes", newContact.AdditionalNotes);
 
             updateCommand.Parameters.AddWithValue("@OldContactID", oldContact.ContactID);
-            updateCommand.Parameters.AddWithValue("@OldName", oldContact.Name);
-            updateCommand.Parameters.AddWithValue("@OldAddress", oldContact.Address);
-            updateCommand.Parameters.AddWithValue("@OldCity", oldContact.City);
-            updateCommand.Parameters.AddWithValue("@OldState", oldContact.State);
-            updateCommand.Parameters.AddWithValue("@OldZipCode", oldContact.ZipCode);
-            if (oldContact.Phone == "")
-                updateCommand.Parameters.AddWithValue("@OldPhone", DBNull.Value);
+            updateCommand.Parameters.AddWithValue("@OldFirstName", oldContact.FirstName);
+            updateCommand.Parameters.AddWithValue("@OldLastName", oldContact.LastName);
+            if (oldContact.EmailAddress == "")
+                updateCommand.Parameters.AddWithValue("@OldEmailAddress", DBNull.Value);
             else
-                updateCommand.Parameters.AddWithValue("@OldPhone", oldContact.Phone);
-            if (oldContact.Email == "")
-                updateCommand.Parameters.AddWithValue("@OldEmail",
-                    DBNull.Value);
+                updateCommand.Parameters.AddWithValue("@OldEmailAddress", oldContact.EmailAddress);
+            if (oldContact.PhoneNumber == "")
+                updateCommand.Parameters.AddWithValue("@OldPhoneNumber", DBNull.Value);
             else
-                updateCommand.Parameters.AddWithValue("@OldEmail",
-                    oldContact.Email);
+                updateCommand.Parameters.AddWithValue("@OldPhoneNumber", oldContact.PhoneNumber);
+            if (oldContact.CellPhone == "")
+                updateCommand.Parameters.AddWithValue("@OldCellPhone", DBNull.Value);
+            else
+                updateCommand.Parameters.AddWithValue("@OldCellPhone", oldContact.CellPhone);
+            if (oldContact.AdditionalNotes == "")
+                updateCommand.Parameters.AddWithValue("@OldAdditionalNotes", DBNull.Value);
+            else
+                updateCommand.Parameters.AddWithValue("@OldAdditionalNotes", oldContact.AdditionalNotes);
 
             try
             {

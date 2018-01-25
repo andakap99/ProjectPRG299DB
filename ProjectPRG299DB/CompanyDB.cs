@@ -68,23 +68,27 @@ namespace ProjectPRG299DB
                 connection.Open();
                 SqlDataReader reader = selectCommand.ExecuteReader();
                 int cIDOrd = reader.GetOrdinal("CompanyID"),
-                    cNOrd = reader.GetOrdinal("Name"),
-                    cAOrd = reader.GetOrdinal("Address"),
-                    cCOrd = reader.GetOrdinal("City"),
-                    cSOrd = reader.GetOrdinal("State"),
-                    cZCOrd = reader.GetOrdinal("ZipCode"),
-                    cPOrd = reader.GetOrdinal("Phone"),
-                    cEOrd = reader.GetOrdinal("Email");
+                     cNOrd = reader.GetOrdinal("CompanyName"),
+                     cBNaOrd = reader.GetOrdinal("BuildingName"),
+                     cBNuOrd = reader.GetOrdinal("BuildingNumber"),
+                     cAOrd = reader.GetOrdinal("StreetAddress"),
+                     cCOrd = reader.GetOrdinal("City"),
+                     cSOrd = reader.GetOrdinal("State"),
+                     cZCOrd = reader.GetOrdinal("ZipCode"),
+                     cPOrd = reader.GetOrdinal("Website"),
+                     cEOrd = reader.GetOrdinal("AdditionalNotes");
                 while (reader.Read())
                 {
                     company.CompanyID = reader.GetInt32(cIDOrd);
-                    company.Name = reader.GetString(cNOrd);
-                    company.Address = reader.GetString(cAOrd);
+                    company.CompanyName = reader.GetString(cNOrd);
+                    company.BuildingName = reader.GetString(cBNaOrd);
+                    company.BuildingNumber = reader.GetString(cBNuOrd);
+                    company.StreetAddress = reader.GetString(cAOrd);
                     company.City = reader.GetString(cCOrd);
                     company.State = reader.GetString(cSOrd);
                     company.ZipCode = reader.GetString(cZCOrd);
-                    company.Phone = reader.GetString(cPOrd);
-                    company.Email = reader.GetString(cEOrd);
+                    company.Website = reader.GetString(cPOrd);
+                    company.AdditionalNotes = reader.GetString(cEOrd);
                 }
             }
             catch (SqlException ex)
