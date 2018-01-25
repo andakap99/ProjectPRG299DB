@@ -59,8 +59,8 @@ namespace ProjectPRG299DB
         {
             Company company = new Company();
             SqlConnection connection = PRG299DB.GetConnection();
-            string selectStatement = "SELECT CompanyID, Name, Address, " +
-                "City, State, ZipCode, Phone, Email FROM dbo.Companys WHERE CompanyID = @CompanyID";
+            string selectStatement = "SELECT CompanyID, CompanyName, BuildingName, BuildingNumber, StreetAddress, " +
+                "City, State, ZipCode, Website, AdditionalNotes FROM dbo.Company WHERE CompanyID = @CompanyID";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             selectCommand.Parameters.AddWithValue("@CompanyID", companyID);
             try
@@ -105,7 +105,7 @@ namespace ProjectPRG299DB
         public static bool DeleteCompany(Company company)
         {
             SqlConnection connection = PRG299DB.GetConnection();
-            string deleteStatement = "DELETE FROM Companys WHERE CompanyID = @CompanyID";
+            string deleteStatement = "DELETE FROM Company WHERE CompanyID = @CompanyID";
             SqlCommand DeleteCommand = new SqlCommand(deleteStatement, connection);
             DeleteCommand.Parameters.AddWithValue("@CompanyID", company.CompanyID);
             try

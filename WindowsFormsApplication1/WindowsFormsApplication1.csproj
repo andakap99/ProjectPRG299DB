@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ProjectPRG299BLL">
+      <HintPath>..\ProjectPRG299BLL\bin\Debug\ProjectPRG299BLL.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -66,6 +69,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\ProjectPRG299DB.Client.datasource" />
+    <None Include="Properties\DataSources\ProjectPRG299DB.Company.datasource" />
+    <None Include="Properties\DataSources\ProjectPRG299DB.Contact.datasource" />
+    <None Include="Properties\DataSources\ProjectPRG299DB.ContactPosition.datasource" />
+    <None Include="Properties\DataSources\ProjectPRG299DB.Interview.datasource" />
+    <None Include="Properties\DataSources\ProjectPRG299DB.Position.datasource" />
+    <None Include="Properties\DataSources\ProjectPRG299DB.Resume.datasource" />
+    <None Include="Properties\DataSources\ProjectPRG299DB.School.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
