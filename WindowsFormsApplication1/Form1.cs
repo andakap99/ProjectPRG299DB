@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProjectPRG299BLL;
 
 namespace WindowsFormsApplication1
 {
@@ -18,7 +19,7 @@ namespace WindowsFormsApplication1
             
         }
 
-        private void clientDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void clientBindingNavigator_RefreshItems(object sender, EventArgs e)
         {
 
         }

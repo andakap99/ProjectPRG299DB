@@ -131,33 +131,36 @@ namespace ProjectPRG299DB
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string insertStatement =
-                "INSERT Companys " +
-                  "(Name, Address, " +
-                "City, State, ZipCode, Phone, Email) " +
-                "VALUES (@Name, @Address, " +
-                "@City, @State, @ZipCode, @Phone, @Email)";
+                "INSERT Company " +
+                  "(CompanyID, CompanyName, BuildingName, BuildingNumber, StreetAddress, " +
+                "City, State, ZipCode, Website, AdditionalNotes) " +
+                "VALUES (@CompanyID, @CompanyName, @BuildingName, @BuildingNumber, @StreetAddress, " +
+                "@City, @State, @ZipCode, @Website, @AdditionalNotes)";
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
-            insertCommand.Parameters.AddWithValue("@Name", company.Name);
-            insertCommand.Parameters.AddWithValue("@Address", company.Address);
+            insertCommand.Parameters.AddWithValue("@CompanyID", company.CompanyID);
+            insertCommand.Parameters.AddWithValue("@CompanyName", company.CompanyName);
+            insertCommand.Parameters.AddWithValue("@BuildingName", company.BuildingName);
+            insertCommand.Parameters.AddWithValue("@BuildingNumber", company.BuildingNumber);
+            insertCommand.Parameters.AddWithValue("@StreetAddress", company.StreetAddress);
             insertCommand.Parameters.AddWithValue("@City", company.City);
             insertCommand.Parameters.AddWithValue("@State", company.State);
             insertCommand.Parameters.AddWithValue("@ZipCode", company.ZipCode);
-            if (company.Phone == "")
-                insertCommand.Parameters.AddWithValue("@Phone", DBNull.Value);
+            if (company.Website == "")
+                insertCommand.Parameters.AddWithValue("@Website", DBNull.Value);
             else
-                insertCommand.Parameters.AddWithValue("@Phone", company.Phone);
-            if (company.Email == "")
-                insertCommand.Parameters.AddWithValue("@Email",
+                insertCommand.Parameters.AddWithValue("@Website", company.Website);
+            if (company.AdditionalNotes == "")
+                insertCommand.Parameters.AddWithValue("@AdditionalNotes",
                     DBNull.Value);
             else
-                insertCommand.Parameters.AddWithValue("@Email",
-                    company.Email);
+                insertCommand.Parameters.AddWithValue("@AdditionalNotes",
+                    company.AdditionalNotes);
             try
             {
                 connection.Open();
                 insertCommand.ExecuteNonQuery();
                 string selectStatement =
-                    "SELECT IDENT_CURRENT('Companys') FROM Companys";
+                    "SELECT IDENT_CURRENT('Company') FROM Company";
                 SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
                 int vendorID = Convert.ToInt32(selectCommand.ExecuteScalar());
                 return vendorID;
@@ -176,14 +179,16 @@ namespace ProjectPRG299DB
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string updateStatement =
-                "UPDATE Companys SET " +
-                  "Name = @NewName, " +
-                  "Address = @NewAddress, " +
+                "UPDATE Company SET " +
+                  "CompanyName = @NewCompanyName, " +
+                  "BuildingName = @NewBuildingName, " +
+                  "BuildingNumber = @NewBuildingNumber, " +
+                  "StreetAddress = @NewStreetAddress, " +
                   "City = @NewCity, " +
                   "State = @NewState, " +
                   "ZipCode = @NewZipCode, " +
-                  "Phone = @NewPhone, " +
-                  "Email = @NewEmail " +
+                  "Website = @NewWebsite, " +
+                  "AdditionalNotes = @NewAdditionalNotes " +
                 "WHERE CompanyID = @OldCompanyID " +
                   "AND Name = @OldName " +
                   "AND Address = @OldAddress " +
@@ -195,38 +200,43 @@ namespace ProjectPRG299DB
                   "AND (Email = @OldEmail " +
                       "OR Email IS NULL AND @OldEmail IS NULL)";
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
-            updateCommand.Parameters.AddWithValue("@NewName", newCompany.Name);
-            updateCommand.Parameters.AddWithValue("@NewAddress", newCompany.Address);
+            updateCommand.Parameters.AddWithValue("@NewCompanyName", newCompany.CompanyName);
+            updateCommand.Parameters.AddWithValue("@NewBuildingName", newCompany.BuildingName);
+            updateCommand.Parameters.AddWithValue("@NewBuildingNumber", newCompany.BuildingNumber);
+            updateCommand.Parameters.AddWithValue("@NewStreetAddress", newCompany.StreetAddress);
             updateCommand.Parameters.AddWithValue("@NewCity", newCompany.City);
             updateCommand.Parameters.AddWithValue("@NewState", newCompany.State);
             updateCommand.Parameters.AddWithValue("@NewZipCode", newCompany.ZipCode);
-            if (newCompany.Phone == "")
-                updateCommand.Parameters.AddWithValue("@NewPhone", DBNull.Value);
+            if (newCompany.Website == "")
+                updateCommand.Parameters.AddWithValue("@NewWebsite", DBNull.Value);
             else
-                updateCommand.Parameters.AddWithValue("@NewPhone", newCompany.Phone);
-            if (newCompany.Email == "")
-                updateCommand.Parameters.AddWithValue("@NewEmail",
+                updateCommand.Parameters.AddWithValue("@NewWebsite", newCompany.Website);
+            if (newCompany.AdditionalNotes == "")
+                updateCommand.Parameters.AddWithValue("@NewAdditionalNotes",
                     DBNull.Value);
             else
-                updateCommand.Parameters.AddWithValue("@NewEmail",
-                    newCompany.Email);
+                updateCommand.Parameters.AddWithValue("@NewAdditionalNotes",
+                    newCompany.AdditionalNotes);
 
             updateCommand.Parameters.AddWithValue("@OldCompanyID", oldCompany.CompanyID);
-            updateCommand.Parameters.AddWithValue("@OldName", oldCompany.Name);
-            updateCommand.Parameters.AddWithValue("@OldAddress", oldCompany.Address);
+            updateCommand.Parameters.AddWithValue("@OldCompanyID", oldCompany.CompanyID);
+            updateCommand.Parameters.AddWithValue("@OldCompanyName", oldCompany.CompanyName);
+            updateCommand.Parameters.AddWithValue("@OldBuildingName", oldCompany.BuildingName);
+            updateCommand.Parameters.AddWithValue("@OldBuildingNumber", oldCompany.BuildingNumber);
+            updateCommand.Parameters.AddWithValue("@OldStreetAddress", oldCompany.StreetAddress);
             updateCommand.Parameters.AddWithValue("@OldCity", oldCompany.City);
             updateCommand.Parameters.AddWithValue("@OldState", oldCompany.State);
             updateCommand.Parameters.AddWithValue("@OldZipCode", oldCompany.ZipCode);
-            if (oldCompany.Phone == "")
-                updateCommand.Parameters.AddWithValue("@OldPhone", DBNull.Value);
+            if (oldCompany.Website == "")
+                updateCommand.Parameters.AddWithValue("@OldWebsite", DBNull.Value);
             else
-                updateCommand.Parameters.AddWithValue("@OldPhone", oldCompany.Phone);
-            if (oldCompany.Email == "")
-                updateCommand.Parameters.AddWithValue("@OldEmail",
+                updateCommand.Parameters.AddWithValue("@OldWebsite", oldCompany.Website);
+            if (oldCompany.AdditionalNotes == "")
+                updateCommand.Parameters.AddWithValue("@OldAdditionalNotes",
                     DBNull.Value);
             else
-                updateCommand.Parameters.AddWithValue("@OldEmail",
-                    oldCompany.Email);
+                updateCommand.Parameters.AddWithValue("@OldAdditionalNotes",
+                    oldCompany.AdditionalNotes);
 
             try
             {
