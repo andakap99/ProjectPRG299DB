@@ -10,7 +10,7 @@ namespace ProjectPRG299DB
     {
         public static SqlConnection GetConnection()
         {
-            string connectionString = "Data Source=localhost\\SQLExpress2014;Initial Catalog=PRG299DB;Integrated Security=True";
+            string connectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=PRG299DB;Integrated Security=True";
             SqlConnection connection = new SqlConnection(connectionString);
             return connection;
         }

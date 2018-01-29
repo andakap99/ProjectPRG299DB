@@ -36,6 +36,9 @@
     <Reference Include="ProjectPRG299BLL">
       <HintPath>..\ProjectPRG299BLL\bin\Debug\ProjectPRG299BLL.dll</HintPath>
     </Reference>
+    <Reference Include="ProjectPRG299DB">
+      <HintPath>..\ProjectPRG299DB\bin\Debug\ProjectPRG299DB.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
