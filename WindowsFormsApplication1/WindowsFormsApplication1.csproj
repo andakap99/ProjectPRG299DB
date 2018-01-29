@@ -36,9 +36,6 @@
     <Reference Include="ProjectPRG299BLL">
       <HintPath>..\ProjectPRG299BLL\bin\Debug\ProjectPRG299BLL.dll</HintPath>
     </Reference>
-    <Reference Include="ProjectPRG299DB">
-      <HintPath>..\ProjectPRG299DB\bin\Debug\ProjectPRG299DB.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -92,6 +89,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectPRG299DB\ProjectPRG299DB.csproj">
+      <Project>{48d2d0b5-04f4-4476-8e41-cb1a59a954f6}</Project>
+      <Name>ProjectPRG299DB</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

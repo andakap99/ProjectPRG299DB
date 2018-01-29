@@ -23,6 +23,8 @@ namespace WindowsFormsApplication1
         private List<Resume> resumeList;
         private List<School> schoolList;
         CurrencyManager cm;
+        private ContextMenu aMD;
+
         public frmPRG299()
         {
             InitializeComponent();
@@ -31,6 +33,7 @@ namespace WindowsFormsApplication1
 
         private void frmPRG299_Load(object sender, EventArgs e)
         {
+            aMD = new ContextMenu();
             LoadClientList();   
         }
         private void LoadClientList()
@@ -138,6 +141,56 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
         }
+        private void DotShow( DataGridViewCellMouseEventArgs e)
+        {
+            aMD.Dispose();
+            if (e.Button == MouseButtons.Right)
+            {
 
+                aMD.MenuItems.Add("Add New " + tabControl1.SelectedTab.Text + " Row");
+                aMD.MenuItems.Add("Modify " + tabControl1.SelectedTab.Text + " Table");
+                aMD.MenuItems.Add("Delete Row From " + tabControl1.SelectedTab.Text + " Table");
+                aMD.Show(this, new Point(e.X + 5, e.Y + 80));
+            }
+        }
+        private void clientDataGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DotShow(e);
+        }
+
+        private void companyDataGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DotShow(e);
+        }
+
+        private void contactDataGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DotShow(e);
+        }
+
+        private void contactPositionDataGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DotShow(e);
+        }
+
+        private void interviewDataGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DotShow(e);
+        }
+
+        private void positionDataGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DotShow(e);
+        }
+
+        private void resumeDataGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DotShow(e);
+        }
+
+        private void schoolDataGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DotShow(e);
+        }
     }
 }
