@@ -69,7 +69,7 @@ namespace WindowsFormsApplication1
             {
                 contactList = ContactDB.GetContact();
                 contactDataGridView.DataSource = contactList;
-                cm = (CurrencyManager)companyDataGridView.BindingContext[contactList];
+                cm = (CurrencyManager)contactDataGridView.BindingContext[contactList];
             }
             catch (SqlException ex)
             {
@@ -81,8 +81,8 @@ namespace WindowsFormsApplication1
             try
             {
                 coPoList = ContactPositionDB.GetContactPosition();
-                companyDataGridView.DataSource = coPoList;
-                cm = (CurrencyManager)companyDataGridView.BindingContext[coPoList];
+                contactPositionDataGridView.DataSource = coPoList;
+                cm = (CurrencyManager)contactPositionDataGridView.BindingContext[coPoList];
             }
             catch (SqlException ex)
             {
@@ -94,8 +94,8 @@ namespace WindowsFormsApplication1
             try
             {
                 interviewList = InterviewDB.GetInterview();
-                companyDataGridView.DataSource = interviewList;
-                cm = (CurrencyManager)companyDataGridView.BindingContext[interviewList];
+                interviewDataGridView.DataSource = interviewList;
+                cm = (CurrencyManager)interviewDataGridView.BindingContext[interviewList];
             }
             catch (SqlException ex)
             {
@@ -106,9 +106,9 @@ namespace WindowsFormsApplication1
         {
             try
             {
-                companyList = CompanyDB.GetCompany();
-                companyDataGridView.DataSource = companyList;
-                cm = (CurrencyManager)companyDataGridView.BindingContext[companyList];
+                positionList = PositionDB.GetPosition();
+                positionDataGridView.DataSource = positionList;
+                cm = (CurrencyManager)positionDataGridView.BindingContext[positionList];
             }
             catch (SqlException ex)
             {
@@ -119,9 +119,9 @@ namespace WindowsFormsApplication1
         {
             try
             {
-                companyList = CompanyDB.GetCompany();
-                companyDataGridView.DataSource = companyList;
-                cm = (CurrencyManager)companyDataGridView.BindingContext[companyList];
+                resumeList = ResumeDB.GetResume();
+                resumeDataGridView.DataSource = resumeList;
+                cm = (CurrencyManager)resumeDataGridView.BindingContext[resumeList];
             }
             catch (SqlException ex)
             {
@@ -133,8 +133,8 @@ namespace WindowsFormsApplication1
             try
             {
                 schoolList = SchoolDB.GetSchool();
-                companyDataGridView.DataSource = schoolList;
-                cm = (CurrencyManager)companyDataGridView.BindingContext[schoolList];
+                schoolDataGridView.DataSource = schoolList;
+                cm = (CurrencyManager)schoolDataGridView.BindingContext[schoolList];
             }
             catch (SqlException ex)
             {
