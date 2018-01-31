@@ -34,7 +34,8 @@ namespace WindowsFormsApplication1
         private void frmPRG299_Load(object sender, EventArgs e)
         {
             aMD = new ContextMenu();
-            LoadClientList();   
+            LoadClientList();
+
         }
         private void LoadClientList()
         {
@@ -191,6 +192,22 @@ namespace WindowsFormsApplication1
         private void schoolDataGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             DotShow(e);
+        }
+
+        private void AddToolStripMenu_MouseHover(object sender, EventArgs e)
+        {
+            AddToolStripMenu.ToolTipText = "Add new row to the " + tabControl1.SelectedTab.Text + " table";
+
+        }
+
+        private void modifyToolStripMenu_MouseHover(object sender, EventArgs e)
+        {
+            modifyToolStripMenu.ToolTipText = "Modify the selected row of the " + tabControl1.SelectedTab.Text + " table";
+        }
+
+        private void deleteToolStripMenu_MouseHover(object sender, EventArgs e)
+        {
+            deleteToolStripMenu.ToolTipText = "Delete selected row from " + tabControl1.SelectedTab.Text + " table";
         }
     }
 }

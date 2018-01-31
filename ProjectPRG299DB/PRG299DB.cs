@@ -10,8 +10,13 @@ namespace ProjectPRG299DB
     {
         public static SqlConnection GetConnection()
         {
-            string connectionString = "Data Source=localhost\\SQLEXPRESS2014;Initial Catalog=PRG299DB;Integrated Security=True";
-            SqlConnection connection = new SqlConnection(connectionString);
+            SqlConnectionStringBuilder connectionString = new SqlConnectionStringBuilder();
+            connectionString.DataSource = "(LocalDB)\\MSSQLLocalDB";
+            connectionString.AttachDBFilename = "|DataDirectory|\\PRG299.mdf";
+            connectionString.IntegratedSecurity = true;
+            string connectString = connectionString.ConnectionString;
+                        
+            SqlConnection connection = new SqlConnection(connectString);
             return connection;
         }
     }
