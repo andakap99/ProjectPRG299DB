@@ -32,8 +32,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.AddToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.modifyToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.clientDataGridView = new System.Windows.Forms.DataGridView();
@@ -111,30 +111,6 @@
             this.dataGridViewTextBoxColumn56 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn55 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.schoolBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.clientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.companyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contactToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contactPositionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.interviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.positionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.resumeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.schoolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clientToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.companyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.contactToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.contactPositionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.interviewToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.positionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.resumeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.schoolToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.clientRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.companyRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contactRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contactPositionRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.interviewToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.positionRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.resumeRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.schoolRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -169,8 +145,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.AddToolStripMenu,
-            this.toolStripMenuItem3,
-            this.toolStripMenuItem4});
+            this.modifyToolStripMenu,
+            this.deleteToolStripMenu});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.ShowItemToolTips = true;
@@ -187,49 +163,25 @@
             // AddToolStripMenu
             // 
             this.AddToolStripMenu.AutoToolTip = true;
-            this.AddToolStripMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.clientToolStripMenuItem,
-            this.companyToolStripMenuItem,
-            this.contactToolStripMenuItem,
-            this.contactPositionToolStripMenuItem,
-            this.interviewToolStripMenuItem,
-            this.positionToolStripMenuItem,
-            this.resumeToolStripMenuItem,
-            this.schoolToolStripMenuItem});
             this.AddToolStripMenu.Name = "AddToolStripMenu";
             this.AddToolStripMenu.Size = new System.Drawing.Size(41, 20);
             this.AddToolStripMenu.Text = "Add";
-            this.AddToolStripMenu.ToolTipText = "Add to the current table";
+            this.AddToolStripMenu.ToolTipText = "\r\n";
+            this.AddToolStripMenu.MouseHover += new System.EventHandler(this.AddToolStripMenu_MouseHover);
             // 
-            // toolStripMenuItem3
+            // modifyToolStripMenu
             // 
-            this.toolStripMenuItem3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.clientToolStripMenuItem1,
-            this.companyToolStripMenuItem1,
-            this.contactToolStripMenuItem1,
-            this.contactPositionToolStripMenuItem1,
-            this.interviewToolStripMenuItem1,
-            this.positionToolStripMenuItem1,
-            this.resumeToolStripMenuItem1,
-            this.schoolToolStripMenuItem1});
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(57, 20);
-            this.toolStripMenuItem3.Text = "Modify";
+            this.modifyToolStripMenu.Name = "modifyToolStripMenu";
+            this.modifyToolStripMenu.Size = new System.Drawing.Size(57, 20);
+            this.modifyToolStripMenu.Text = "Modify";
+            this.modifyToolStripMenu.MouseHover += new System.EventHandler(this.modifyToolStripMenu_MouseHover);
             // 
-            // toolStripMenuItem4
+            // deleteToolStripMenu
             // 
-            this.toolStripMenuItem4.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.clientRowToolStripMenuItem,
-            this.companyRowToolStripMenuItem,
-            this.contactRowToolStripMenuItem,
-            this.contactPositionRowToolStripMenuItem,
-            this.interviewToolStripMenuItem2,
-            this.positionRowToolStripMenuItem,
-            this.resumeRowToolStripMenuItem,
-            this.schoolRowToolStripMenuItem});
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(52, 20);
-            this.toolStripMenuItem4.Text = "Delete";
+            this.deleteToolStripMenu.Name = "deleteToolStripMenu";
+            this.deleteToolStripMenu.Size = new System.Drawing.Size(52, 20);
+            this.deleteToolStripMenu.Text = "Delete";
+            this.deleteToolStripMenu.MouseHover += new System.EventHandler(this.deleteToolStripMenu_MouseHover);
             // 
             // tabControl1
             // 
@@ -840,150 +792,6 @@
             // 
             this.schoolBindingSource.DataSource = typeof(ProjectPRG299DB.School);
             // 
-            // clientToolStripMenuItem
-            // 
-            this.clientToolStripMenuItem.Name = "clientToolStripMenuItem";
-            this.clientToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.clientToolStripMenuItem.Text = "Client";
-            // 
-            // companyToolStripMenuItem
-            // 
-            this.companyToolStripMenuItem.Name = "companyToolStripMenuItem";
-            this.companyToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.companyToolStripMenuItem.Text = "Company";
-            // 
-            // contactToolStripMenuItem
-            // 
-            this.contactToolStripMenuItem.Name = "contactToolStripMenuItem";
-            this.contactToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.contactToolStripMenuItem.Text = "Contact";
-            // 
-            // contactPositionToolStripMenuItem
-            // 
-            this.contactPositionToolStripMenuItem.Name = "contactPositionToolStripMenuItem";
-            this.contactPositionToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.contactPositionToolStripMenuItem.Text = "Contact Position";
-            // 
-            // interviewToolStripMenuItem
-            // 
-            this.interviewToolStripMenuItem.Name = "interviewToolStripMenuItem";
-            this.interviewToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.interviewToolStripMenuItem.Text = "Interview";
-            // 
-            // positionToolStripMenuItem
-            // 
-            this.positionToolStripMenuItem.Name = "positionToolStripMenuItem";
-            this.positionToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.positionToolStripMenuItem.Text = "Position";
-            // 
-            // resumeToolStripMenuItem
-            // 
-            this.resumeToolStripMenuItem.Name = "resumeToolStripMenuItem";
-            this.resumeToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.resumeToolStripMenuItem.Text = "Resume";
-            // 
-            // schoolToolStripMenuItem
-            // 
-            this.schoolToolStripMenuItem.Name = "schoolToolStripMenuItem";
-            this.schoolToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.schoolToolStripMenuItem.Text = "School";
-            // 
-            // clientToolStripMenuItem1
-            // 
-            this.clientToolStripMenuItem1.Name = "clientToolStripMenuItem1";
-            this.clientToolStripMenuItem1.Size = new System.Drawing.Size(162, 22);
-            this.clientToolStripMenuItem1.Text = "Client";
-            // 
-            // companyToolStripMenuItem1
-            // 
-            this.companyToolStripMenuItem1.Name = "companyToolStripMenuItem1";
-            this.companyToolStripMenuItem1.Size = new System.Drawing.Size(162, 22);
-            this.companyToolStripMenuItem1.Text = "Company";
-            // 
-            // contactToolStripMenuItem1
-            // 
-            this.contactToolStripMenuItem1.Name = "contactToolStripMenuItem1";
-            this.contactToolStripMenuItem1.Size = new System.Drawing.Size(162, 22);
-            this.contactToolStripMenuItem1.Text = "Contact";
-            // 
-            // contactPositionToolStripMenuItem1
-            // 
-            this.contactPositionToolStripMenuItem1.Name = "contactPositionToolStripMenuItem1";
-            this.contactPositionToolStripMenuItem1.Size = new System.Drawing.Size(162, 22);
-            this.contactPositionToolStripMenuItem1.Text = "Contact Position";
-            // 
-            // interviewToolStripMenuItem1
-            // 
-            this.interviewToolStripMenuItem1.Name = "interviewToolStripMenuItem1";
-            this.interviewToolStripMenuItem1.Size = new System.Drawing.Size(162, 22);
-            this.interviewToolStripMenuItem1.Text = "Interview";
-            // 
-            // positionToolStripMenuItem1
-            // 
-            this.positionToolStripMenuItem1.Name = "positionToolStripMenuItem1";
-            this.positionToolStripMenuItem1.Size = new System.Drawing.Size(162, 22);
-            this.positionToolStripMenuItem1.Text = "Position";
-            // 
-            // resumeToolStripMenuItem1
-            // 
-            this.resumeToolStripMenuItem1.Name = "resumeToolStripMenuItem1";
-            this.resumeToolStripMenuItem1.Size = new System.Drawing.Size(162, 22);
-            this.resumeToolStripMenuItem1.Text = "Resume";
-            // 
-            // schoolToolStripMenuItem1
-            // 
-            this.schoolToolStripMenuItem1.Name = "schoolToolStripMenuItem1";
-            this.schoolToolStripMenuItem1.Size = new System.Drawing.Size(162, 22);
-            this.schoolToolStripMenuItem1.Text = "School";
-            // 
-            // clientRowToolStripMenuItem
-            // 
-            this.clientRowToolStripMenuItem.Name = "clientRowToolStripMenuItem";
-            this.clientRowToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.clientRowToolStripMenuItem.Text = "Client Row";
-            // 
-            // companyRowToolStripMenuItem
-            // 
-            this.companyRowToolStripMenuItem.Name = "companyRowToolStripMenuItem";
-            this.companyRowToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.companyRowToolStripMenuItem.Text = "Company Row";
-            // 
-            // contactRowToolStripMenuItem
-            // 
-            this.contactRowToolStripMenuItem.Name = "contactRowToolStripMenuItem";
-            this.contactRowToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.contactRowToolStripMenuItem.Text = "Contact Row";
-            // 
-            // contactPositionRowToolStripMenuItem
-            // 
-            this.contactPositionRowToolStripMenuItem.Name = "contactPositionRowToolStripMenuItem";
-            this.contactPositionRowToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.contactPositionRowToolStripMenuItem.Text = "Contact Position Row";
-            // 
-            // interviewToolStripMenuItem2
-            // 
-            this.interviewToolStripMenuItem2.Name = "interviewToolStripMenuItem2";
-            this.interviewToolStripMenuItem2.Size = new System.Drawing.Size(188, 22);
-            this.interviewToolStripMenuItem2.Text = "Interview Row";
-            // 
-            // positionRowToolStripMenuItem
-            // 
-            this.positionRowToolStripMenuItem.Name = "positionRowToolStripMenuItem";
-            this.positionRowToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.positionRowToolStripMenuItem.Text = "Position Row";
-            // 
-            // resumeRowToolStripMenuItem
-            // 
-            this.resumeRowToolStripMenuItem.Name = "resumeRowToolStripMenuItem";
-            this.resumeRowToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.resumeRowToolStripMenuItem.Text = "Resume Row";
-            // 
-            // schoolRowToolStripMenuItem
-            // 
-            this.schoolRowToolStripMenuItem.Name = "schoolRowToolStripMenuItem";
-            this.schoolRowToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.schoolRowToolStripMenuItem.Text = "School Row";
-            // 
             // frmPRG299
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1050,8 +858,8 @@
         private System.Windows.Forms.TabPage tabPage8;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem AddToolStripMenu;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem modifyToolStripMenu;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenu;
         private System.Windows.Forms.DataGridView companyDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
@@ -1120,30 +928,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn33;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn34;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn35;
-        private System.Windows.Forms.ToolStripMenuItem clientToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem companyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem contactToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem contactPositionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem interviewToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem positionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem resumeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem schoolToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem clientToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem companyToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem contactToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem contactPositionToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem interviewToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem positionToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem resumeToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem schoolToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem clientRowToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem companyRowToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem contactRowToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem contactPositionRowToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem interviewToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem positionRowToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem resumeRowToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem schoolRowToolStripMenuItem;
     }
 }
 
