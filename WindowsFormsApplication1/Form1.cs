@@ -35,8 +35,24 @@ namespace WindowsFormsApplication1
         {
             aMD = new ContextMenu();
             LoadClientList();
+            LoadCompanyList();
+            LoadContactList();
+            LoadContactPostionList();
+            LoadInterviewList();
+            LoadPositionList();
+            LoadResumeList();
+            LoadSchoolList();
+
+            AddToolStripMenu.ToolTipText = "Add new row to the " + tabControl1.SelectedTab.Text + " table";
+            modifyToolStripMenu.ToolTipText = "Modify the selected row of the " + tabControl1.SelectedTab.Text + " table";
+            deleteToolStripMenu.ToolTipText = "Delete selected row from " + tabControl1.SelectedTab.Text + " table";
+
 
         }
+
+
+
+
         private void LoadClientList()
         {
             try
@@ -50,6 +66,7 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
         }
+
 
         private void LoadCompanyList()
         {
@@ -194,20 +211,19 @@ namespace WindowsFormsApplication1
             DotShow(e);
         }
 
-        private void AddToolStripMenu_MouseHover(object sender, EventArgs e)
+        private void tabControl1_Selected(object sender, TabControlEventArgs e)
         {
             AddToolStripMenu.ToolTipText = "Add new row to the " + tabControl1.SelectedTab.Text + " table";
-
-        }
-
-        private void modifyToolStripMenu_MouseHover(object sender, EventArgs e)
-        {
             modifyToolStripMenu.ToolTipText = "Modify the selected row of the " + tabControl1.SelectedTab.Text + " table";
+            deleteToolStripMenu.ToolTipText = "Delete selected row from " + tabControl1.SelectedTab.Text + " table";
         }
 
-        private void deleteToolStripMenu_MouseHover(object sender, EventArgs e)
+        private void AddModifyToolStripMenu_Click(object sender, EventArgs e)
         {
-            deleteToolStripMenu.ToolTipText = "Delete selected row from " + tabControl1.SelectedTab.Text + " table";
+            frmAUI UpdateInsertForm = new frmAUI();
+            UpdateInsertForm.MdiParent = this;
+            UpdateInsertForm.ShowDialog();
+            
         }
     }
 }

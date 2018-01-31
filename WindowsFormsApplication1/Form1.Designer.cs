@@ -163,25 +163,27 @@
             // AddToolStripMenu
             // 
             this.AddToolStripMenu.AutoToolTip = true;
+            this.AddToolStripMenu.MergeIndex = 0;
             this.AddToolStripMenu.Name = "AddToolStripMenu";
             this.AddToolStripMenu.Size = new System.Drawing.Size(41, 20);
             this.AddToolStripMenu.Text = "Add";
             this.AddToolStripMenu.ToolTipText = "\r\n";
-            this.AddToolStripMenu.MouseHover += new System.EventHandler(this.AddToolStripMenu_MouseHover);
+            this.AddToolStripMenu.Click += new System.EventHandler(this.AddModifyToolStripMenu_Click);
             // 
             // modifyToolStripMenu
             // 
+            this.modifyToolStripMenu.MergeIndex = 0;
             this.modifyToolStripMenu.Name = "modifyToolStripMenu";
             this.modifyToolStripMenu.Size = new System.Drawing.Size(57, 20);
             this.modifyToolStripMenu.Text = "Modify";
-            this.modifyToolStripMenu.MouseHover += new System.EventHandler(this.modifyToolStripMenu_MouseHover);
+            this.modifyToolStripMenu.Click += new System.EventHandler(this.AddModifyToolStripMenu_Click);
             // 
             // deleteToolStripMenu
             // 
+            this.deleteToolStripMenu.MergeIndex = 0;
             this.deleteToolStripMenu.Name = "deleteToolStripMenu";
             this.deleteToolStripMenu.Size = new System.Drawing.Size(52, 20);
             this.deleteToolStripMenu.Text = "Delete";
-            this.deleteToolStripMenu.MouseHover += new System.EventHandler(this.deleteToolStripMenu_MouseHover);
             // 
             // tabControl1
             // 
@@ -197,8 +199,10 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 28);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.ShowToolTips = true;
             this.tabControl1.Size = new System.Drawing.Size(958, 429);
             this.tabControl1.TabIndex = 1;
+            this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl1_Selected);
             // 
             // tabPage1
             // 
