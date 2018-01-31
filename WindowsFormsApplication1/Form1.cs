@@ -23,6 +23,7 @@ namespace WindowsFormsApplication1
         private List<Resume> resumeList;
         private List<School> schoolList;
         CurrencyManager cm;
+        public static frmPRG299 mainForm;
         private ContextMenu aMD;
 
         public frmPRG299()
@@ -221,7 +222,7 @@ namespace WindowsFormsApplication1
         private void AddModifyToolStripMenu_Click(object sender, EventArgs e)
         {
             frmAUI UpdateInsertForm = new frmAUI();
-            UpdateInsertForm.MdiParent = this;
+            UpdateInsertForm.MdiParent = mainForm;
             UpdateInsertForm.ShowDialog();
             
         }
