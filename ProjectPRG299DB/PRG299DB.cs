@@ -11,8 +11,8 @@ namespace ProjectPRG299DB
         public static SqlConnection GetConnection()
         {
             SqlConnectionStringBuilder connectionString = new SqlConnectionStringBuilder();
-            connectionString.DataSource = "(LocalDB)\\MSSQLLocalDB";
-            connectionString.AttachDBFilename = "|DataDirectory|\\PRG299.mdf";
+            connectionString.DataSource = "(localdb)\\MSSQLLocalDB";
+            connectionString.AttachDBFilename = "|DataDirectory|\\PRG299DB.mdf";
             connectionString.IntegratedSecurity = true;
             string connectString = connectionString.ConnectionString;
                         
