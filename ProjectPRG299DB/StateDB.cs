@@ -37,6 +37,10 @@ namespace ProjectPRG299DB
             {
                 throw ex;
             }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
             finally
             {
                 connection.Close();

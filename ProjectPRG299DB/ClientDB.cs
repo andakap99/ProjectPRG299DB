@@ -48,6 +48,10 @@ namespace ProjectPRG299DB
             {
                 throw ex;
             }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
             finally
             {
                 connection.Close();
@@ -93,6 +97,10 @@ namespace ProjectPRG299DB
             {
                 throw ex;
             }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
             finally
             {
                 connection.Close();
@@ -116,6 +124,10 @@ namespace ProjectPRG299DB
                     return false;
             }
             catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -158,6 +170,10 @@ namespace ProjectPRG299DB
                 return vendorID;
             }
             catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -225,6 +241,10 @@ namespace ProjectPRG299DB
                     return false;
             }
             catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
             {
                 throw ex;
             }
