@@ -269,42 +269,66 @@ namespace WindowsFormsApplication1
                     UpdateInsertForm.addMenuClicked = false;
                     if (tabControl1.SelectedTab.Text == "Client")
                     {
+                        UpdateInsertForm.client = ClientDB.GetClientByRow((int)clientDataGridView.CurrentCell.Value);
+                        UpdateInsertForm.clientBindingSource.Clear();
+                        UpdateInsertForm.clientBindingSource.Add(UpdateInsertForm.client);
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
 
                     }
                     else if (tabControl1.SelectedTab.Text == "Company")
                     {
+                        UpdateInsertForm.company = CompanyDB.GetCompanyByRow((int)companyDataGridView.CurrentCell.Value);
+                        UpdateInsertForm.companyBindingSource.Clear();
+                        UpdateInsertForm.companyBindingSource.Add(UpdateInsertForm.company);
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
                     }
                     else if (tabControl1.SelectedTab.Text == "Contact")
                     {
+                        UpdateInsertForm.contact = ContactDB.GetContactByRow((int)contactDataGridView.CurrentCell.Value);
+                        UpdateInsertForm.contactBindingSource.Clear();
+                        UpdateInsertForm.contactBindingSource.Add(UpdateInsertForm.contact);
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
                     }
                     else if (tabControl1.SelectedTab.Text == "Contact Position")
                     {
+                        UpdateInsertForm.contactPosition = ContactPositionDB.GetContactPositionByRow((int)contactPositionDataGridView.CurrentCell.Value);
+                        UpdateInsertForm.contactPositionBindingSource.Clear();
+                        UpdateInsertForm.contactPositionBindingSource.Add(UpdateInsertForm.contactPosition);
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
                     }
                     else if (tabControl1.SelectedTab.Text == "Interview")
                     {
+                        UpdateInsertForm.interview = InterviewDB.GetInterviewByRow((int)interviewDataGridView.CurrentCell.Value);
+                        UpdateInsertForm.interviewBindingSource.Clear();
+                        UpdateInsertForm.interviewBindingSource.Add(UpdateInsertForm.interview);
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
                     }
                     else if (tabControl1.SelectedTab.Text == "Position")
                     {
+                        UpdateInsertForm.position = PositionDB.GetPositionByRow((int)positionDataGridView.CurrentCell.Value);
+                        UpdateInsertForm.positionBindingSource.Clear();
+                        UpdateInsertForm.positionBindingSource.Add(UpdateInsertForm.position);
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
                     }
                     else if (tabControl1.SelectedTab.Text == "Resume")
                     {
+                        UpdateInsertForm.resume = ResumeDB.GetResumeByRow((int)resumeDataGridView.CurrentCell.Value);
+                        UpdateInsertForm.resumeBindingSource.Clear();
+                        UpdateInsertForm.resumeBindingSource.Add(UpdateInsertForm.resume);
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
                     }
                     else if (tabControl1.SelectedTab.Text == "School")
                     {
+                        UpdateInsertForm.school = SchoolDB.GetSchoolByRow((int)schoolDataGridView.CurrentCell.Value);
+                        UpdateInsertForm.schoolBindingSource.Clear();
+                        UpdateInsertForm.schoolBindingSource.Add(UpdateInsertForm.school);
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
                     }

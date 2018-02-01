@@ -50,6 +50,7 @@ namespace WindowsFormsApplication1
             StateComboBoxes();
             if (addMenuClicked)
             {
+                btnInsertUpdate.Text = "Add";
                 if (Text == "Add Client")
                     newClient = new Client();
                 if (Text == "Add Company")
@@ -66,9 +67,11 @@ namespace WindowsFormsApplication1
                     newResume = new Resume();
                 if (Text == "Add School")
                     newSchool = new School();
+
             }
             else
             {
+                btnInsertUpdate.Text = "Modify";
                 if (Text == "Modify Client")
                 {
                     newClient = new Client();
@@ -141,7 +144,7 @@ namespace WindowsFormsApplication1
             newClient.BirthDate = client.BirthDate;
             newClient.StreetName = client.StreetName;
             newClient.City = client.City;
-            newClient.State = client.State;
+            stateComboBox.SelectedValue = client.State;
             newClient.ZipCode = client.ZipCode;
             newClient.CellPhone = client.CellPhone;                      
         }
@@ -153,7 +156,7 @@ namespace WindowsFormsApplication1
             newCompany.BuildingNumber = company.BuildingNumber;
             newCompany.StreetAddress = company.StreetAddress;
             newCompany.City = company.City;
-            newCompany.State = company.State;
+            stateComboBox1.SelectedValue = company.State;
             newCompany.ZipCode = company.ZipCode;
             newCompany.Website = company.Website;
             newCompany.AdditionalNotes = company.AdditionalNotes;
@@ -204,7 +207,7 @@ namespace WindowsFormsApplication1
             newSchool.SchoolName = school.SchoolName;
             newSchool.StreetName = school.StreetName;
             newSchool.City = school.City;
-            newSchool.State = school.State;
+            stateComboBox2.SelectedValue = school.State;
             newSchool.ZipCode = school.ZipCode;
             newSchool.NumberOfYearsAttended = school.NumberOfYearsAttended;
             newSchool.Graduated = school.Graduated;
