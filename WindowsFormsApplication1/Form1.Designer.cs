@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.fileToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.AddToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.modifyToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -143,7 +143,7 @@
             // 
             this.menuStrip1.ImeMode = System.Windows.Forms.ImeMode.On;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
+            this.fileToolStripMenu,
             this.AddToolStripMenu,
             this.modifyToolStripMenu,
             this.deleteToolStripMenu});
@@ -154,11 +154,11 @@
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // toolStripMenuItem1
+            // fileToolStripMenu
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(37, 20);
-            this.toolStripMenuItem1.Text = "&File";
+            this.fileToolStripMenu.Name = "fileToolStripMenu";
+            this.fileToolStripMenu.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenu.Text = "&File";
             // 
             // AddToolStripMenu
             // 
@@ -860,7 +860,7 @@
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.TabPage tabPage7;
         private System.Windows.Forms.TabPage tabPage8;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenu;
         private System.Windows.Forms.ToolStripMenuItem AddToolStripMenu;
         private System.Windows.Forms.ToolStripMenuItem modifyToolStripMenu;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenu;

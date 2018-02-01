@@ -27,12 +27,98 @@ namespace WindowsFormsApplication1
         public bool resLVVisible = false;
         public bool schLVVisible = false;
         private List<State> stateList;
+        public Client client;
+        private Client newClient;
+        public Company company;
+        private Company newCompany;
+        public Contact contact;
+        private Contact newContact;
+        public ContactPosition contactPosition;
+        private ContactPosition newContactPosition;
+        public Interview interview;
+        private Interview newInterview;
+        public Position position;
+        private Position newPostion;
+        public Resume resume;
+        private Resume newResume;
+        public School school;
+        private School newSchool;
 
         private void frmAUI_Load(object sender, EventArgs e)
         {
-            StateComboBoxes();
 
+            StateComboBoxes();
+            if (addMenuClicked)
+            {
+                if (Text == "Add Client")
+                    newClient = new Client();
+                if (Text == "Add Company")
+                    newCompany = new Company();
+                if (Text == "Add Contact")
+                    newContact = new Contact();
+                if (Text == "Add Contact Position")
+                    newContactPosition = new ContactPosition();
+                if (Text == "Add Interview")
+                    newInterview = new Interview();
+                if (Text == "Add Position")
+                    newPostion = new Position();
+                if (Text == "Add Resume")
+                    newResume = new Resume();
+                if (Text == "Add School")
+                    newSchool = new School();
+            }
+            else
+            {
+                if (Text == "Modify Client")
+                {
+                    newClient = new Client();
+                    PutNewClient();
+                }
+
+                if (Text == "Modify Company")
+                {
+                    newCompany = new Company();
+                    PutNewCompany();
+                }
+
+                if (Text == "Modify Contact")
+                {
+                    newContact = new Contact();
+                    PutNewContact();
+                }
+
+                if (Text == "Modify Contact Position")
+                {
+                    newContactPosition = new ContactPosition();
+                    PutNewContactPosition();
+                }
+
+                if (Text == "Modify Interview")
+                {
+                    newInterview = new Interview();
+                    PutNewInterview();
+                }
+
+                if (Text == "Modify Position")
+                {
+                    newPostion = new Position();
+                    PutNewPosition();
+                }
+
+                if (Text == "Modify Resume")
+                {
+                    newResume = new Resume();
+                    PutNewResume();
+                }
+
+                if (Text == "Modify School")
+                {
+                    newSchool = new School();
+                    PutNewSchool();
+                }
+            }
         }
+
         private void StateComboBoxes()
         {
             try
@@ -47,6 +133,130 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
         }
+        private void PutNewClient()
+        {
+            newClient.ClientID = client.ClientID;
+            newClient.FirstName = client.FirstName;
+            newClient.LastName = client.LastName;
+            newClient.BirthDate = client.BirthDate;
+            newClient.StreetName = client.StreetName;
+            newClient.City = client.City;
+            newClient.State = client.State;
+            newClient.ZipCode = client.ZipCode;
+            newClient.CellPhone = client.CellPhone;                      
+        }
+        private void PutNewCompany()
+        {
+            newCompany.CompanyID = company.CompanyID;
+            newCompany.CompanyName = company.CompanyName;
+            newCompany.BuildingName = company.BuildingName;
+            newCompany.BuildingNumber = company.BuildingNumber;
+            newCompany.StreetAddress = company.StreetAddress;
+            newCompany.City = company.City;
+            newCompany.State = company.State;
+            newCompany.ZipCode = company.ZipCode;
+            newCompany.Website = company.Website;
+            newCompany.AdditionalNotes = company.AdditionalNotes;
+        }
+        private void PutNewContact()
+        {
+            newContact.ContactID = contact.ContactID;
+            newContact.FirstName = contact.FirstName;
+            newContact.LastName = contact.LastName;
+            newContact.EmailAddress = contact.EmailAddress;
+            newContact.PhoneNumber = contact.PhoneNumber;
+            newContact.CellPhone = contact.CellPhone;
+            newContact.AdditionalNotes = contact.AdditionalNotes;
+        }
+        private void PutNewContactPosition()
+        {
+            newContactPosition.ContactID = contactPosition.ContactID;
+            newContactPosition.PositionID = contactPosition.PositionID;
+        }
+        private void PutNewInterview()
+        {
+            newInterview.InterviewID = interview.InterviewID;
+            newInterview.PositionID = interview.PositionID;
+            newInterview.CompanyID = interview.CompanyID;
+            newInterview.ContactID = interview.ContactID;
+            newInterview.DateTimeInterview = interview.DateTimeInterview;
+            newInterview.AdditionalNotes = interview.AdditionalNotes;
+        }
+        private void PutNewPosition()
+        {
+            newPostion.PositionID = position.PositionID;
+            newPostion.PositionName = position.PositionName;
+            newPostion.Description = position.Description;
+            newPostion.CompanyID = position.CompanyID;
+            newPostion.AdditionalNotes = position.AdditionalNotes;
+            newPostion.ResumeID = position.ResumeID;
+        }
+        private void PutNewResume()
+        {
+            newResume.ResumeID = resume.ResumeID;
+            newResume.RSCDirectoryPath = resume.RSCDirectoryPath;
+            newResume.SchoolID = resume.SchoolID;
+            newResume.SchoolID = resume.SchoolID;
+        }
+        private void PutNewSchool()
+        {
+            newSchool.SchoolID = school.SchoolID;
+            newSchool.SchoolName = school.SchoolName;
+            newSchool.StreetName = school.StreetName;
+            newSchool.City = school.City;
+            newSchool.State = school.State;
+            newSchool.ZipCode = school.ZipCode;
+            newSchool.NumberOfYearsAttended = school.NumberOfYearsAttended;
+            newSchool.Graduated = school.Graduated;
+        }
+
+        public void AllLVVisible(string visible)
+        {
+            if ("Client" != visible)
+                cliLVVisible = false;
+            else
+                cliLVVisible = true;
+            if ("Company" != visible)
+                comLVVisible = false;
+            else
+                comLVVisible = true;
+            if ("Contact" != visible)
+                conLVVisible = false;
+            else
+                conLVVisible = true;
+            if ("Contact Position" != visible)
+                conPosLVVisible = false;
+            else
+                conPosLVVisible = true;
+            if ("Interview" != visible)
+                intLVVisible = false;
+            else
+                intLVVisible = true;
+            if ("Position" != visible)
+                posLVVisible = false;
+            else
+                posLVVisible = true;
+            if ("Resume" != visible)
+                resLVVisible = false;
+            else
+                resLVVisible = true;
+            if ("School" != visible)
+                schLVVisible = false;
+            else
+                schLVVisible = true;
+        }
+        public void AllListView()
+        {
+            ClientListView();
+            CompanyListView();
+            ContactListView();
+            ContactPositionListView();
+            InterviewListView();
+            PositionListView();
+            ResumeListView();
+            SchoolListView();
+        }
+
         private void ClientListView()
         {
             if (cliLVVisible)
@@ -90,7 +300,7 @@ namespace WindowsFormsApplication1
         }
         private void CompanyListView()
         {
-            if(comLVVisible)
+            if (comLVVisible)
             {
                 companyIDLabel.Visible = true;
                 companyIDTextBox.Visible = true;
@@ -139,7 +349,7 @@ namespace WindowsFormsApplication1
         }
         private void ContactListView()
         {
-            if(conLVVisible)
+            if (conLVVisible)
             {
                 contactIDLabel.Visible = true;
                 contactIDTextBox.Visible = true;

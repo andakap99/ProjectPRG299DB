@@ -75,7 +75,6 @@ namespace WindowsFormsApplication1
             {
                 companyList = CompanyDB.GetCompany();
                 companyDataGridView.DataSource = companyList;
-                cm = (CurrencyManager)companyDataGridView.BindingContext[companyList];
             }
             catch (SqlException ex)
             {
@@ -88,7 +87,6 @@ namespace WindowsFormsApplication1
             {
                 contactList = ContactDB.GetContact();
                 contactDataGridView.DataSource = contactList;
-                cm = (CurrencyManager)contactDataGridView.BindingContext[contactList];
             }
             catch (SqlException ex)
             {
@@ -101,7 +99,6 @@ namespace WindowsFormsApplication1
             {
                 coPoList = ContactPositionDB.GetContactPosition();
                 contactPositionDataGridView.DataSource = coPoList;
-                cm = (CurrencyManager)contactPositionDataGridView.BindingContext[coPoList];
             }
             catch (SqlException ex)
             {
@@ -114,7 +111,6 @@ namespace WindowsFormsApplication1
             {
                 interviewList = InterviewDB.GetInterview();
                 interviewDataGridView.DataSource = interviewList;
-                cm = (CurrencyManager)interviewDataGridView.BindingContext[interviewList];
             }
             catch (SqlException ex)
             {
@@ -127,7 +123,6 @@ namespace WindowsFormsApplication1
             {
                 positionList = PositionDB.GetPosition();
                 positionDataGridView.DataSource = positionList;
-                cm = (CurrencyManager)positionDataGridView.BindingContext[positionList];
             }
             catch (SqlException ex)
             {
@@ -140,7 +135,6 @@ namespace WindowsFormsApplication1
             {
                 resumeList = ResumeDB.GetResume();
                 resumeDataGridView.DataSource = resumeList;
-                cm = (CurrencyManager)resumeDataGridView.BindingContext[resumeList];
             }
             catch (SqlException ex)
             {
@@ -153,7 +147,6 @@ namespace WindowsFormsApplication1
             {
                 schoolList = SchoolDB.GetSchool();
                 schoolDataGridView.DataSource = schoolList;
-                cm = (CurrencyManager)schoolDataGridView.BindingContext[schoolList];
             }
             catch (SqlException ex)
             {
@@ -222,9 +215,112 @@ namespace WindowsFormsApplication1
         private void AddModifyToolStripMenu_Click(object sender, EventArgs e)
         {
             frmAUI UpdateInsertForm = new frmAUI();
-            UpdateInsertForm.MdiParent = mainForm;
-            UpdateInsertForm.ShowDialog();
-            
+            try
+            {
+                if (AddToolStripMenu.Selected)
+                {
+                    UpdateInsertForm.Text =  "Add " + tabControl1.SelectedTab.Text;
+                    UpdateInsertForm.addMenuClicked = true;
+                    if(tabControl1.SelectedTab.Text == "Client")
+                    {
+                        UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
+                        UpdateInsertForm.AllListView();
+                        
+                    }
+                    else if (tabControl1.SelectedTab.Text == "Company")
+                    {
+                        UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
+                        UpdateInsertForm.AllListView();
+                    }
+                    else if (tabControl1.SelectedTab.Text == "Contact")
+                    {
+                        UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
+                        UpdateInsertForm.AllListView();
+                    }
+                    else if (tabControl1.SelectedTab.Text == "Contact Position")
+                    {
+                        UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
+                        UpdateInsertForm.AllListView();
+                    }
+                    else if (tabControl1.SelectedTab.Text == "Interview")
+                    {
+                        UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
+                        UpdateInsertForm.AllListView();
+                    }
+                    else if (tabControl1.SelectedTab.Text == "Position")
+                    {
+                        UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
+                        UpdateInsertForm.AllListView();
+                    }
+                    else if (tabControl1.SelectedTab.Text == "Resume")
+                    {
+                        UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
+                        UpdateInsertForm.AllListView();
+                    }
+                    else if (tabControl1.SelectedTab.Text == "School")
+                    {
+                        UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
+                        UpdateInsertForm.AllListView();
+                    }                    
+                }
+                else
+                {
+                    UpdateInsertForm.Text = "Modify " + tabControl1.SelectedTab.Text;
+                    UpdateInsertForm.addMenuClicked = false;
+                    if (tabControl1.SelectedTab.Text == "Client")
+                    {
+                        UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
+                        UpdateInsertForm.AllListView();
+
+                    }
+                    else if (tabControl1.SelectedTab.Text == "Company")
+                    {
+                        UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
+                        UpdateInsertForm.AllListView();
+                    }
+                    else if (tabControl1.SelectedTab.Text == "Contact")
+                    {
+                        UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
+                        UpdateInsertForm.AllListView();
+                    }
+                    else if (tabControl1.SelectedTab.Text == "Contact Position")
+                    {
+                        UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
+                        UpdateInsertForm.AllListView();
+                    }
+                    else if (tabControl1.SelectedTab.Text == "Interview")
+                    {
+                        UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
+                        UpdateInsertForm.AllListView();
+                    }
+                    else if (tabControl1.SelectedTab.Text == "Position")
+                    {
+                        UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
+                        UpdateInsertForm.AllListView();
+                    }
+                    else if (tabControl1.SelectedTab.Text == "Resume")
+                    {
+                        UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
+                        UpdateInsertForm.AllListView();
+                    }
+                    else if (tabControl1.SelectedTab.Text == "School")
+                    {
+                        UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
+                        UpdateInsertForm.AllListView();
+                    }
+                }
+                
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message, x.GetType().ToString());
+            }
+            finally
+            {
+                UpdateInsertForm.MdiParent = mainForm;
+                UpdateInsertForm.ShowDialog();
+            }
         }
+
     }
 }
