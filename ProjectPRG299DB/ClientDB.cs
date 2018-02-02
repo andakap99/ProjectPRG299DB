@@ -18,7 +18,7 @@ namespace ProjectPRG299DB
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             try
             {
-                connection.Open();
+                connection.Open(); 
                 SqlDataReader reader = selectCommand.ExecuteReader();
                 int cIDOrd = reader.GetOrdinal("ClientID"),
                     cFOrd = reader.GetOrdinal("FirstName"),

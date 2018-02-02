@@ -15,7 +15,7 @@ namespace ProjectPRG299DB
             connectionString.AttachDBFilename = "|DataDirectory|\\PRG299DB.mdf";
             connectionString.IntegratedSecurity = true;
             string connectString = connectionString.ConnectionString;
-                        
+
             SqlConnection connection = new SqlConnection(connectString);
             return connection;
         }
