@@ -14,6 +14,14 @@ namespace WindowsFormsApplication1
 {
     public partial class frmPRG299 : Form
     {
+        private Client client;
+        private Company company;
+        private Contact contact;
+        private ContactPosition coPo;
+        private Interview interview;
+        private Position position;
+        private Resume resume;
+        private School school;
         private List<Client> clientList;
         private List<Company> companyList;
         private List<Contact> contactList;
@@ -22,6 +30,7 @@ namespace WindowsFormsApplication1
         private List<Position> positionList;
         private List<Resume> resumeList;
         private List<School> schoolList;
+
         CurrencyManager cm;
         public static frmPRG299 mainForm;
         private ContextMenu aMD;
@@ -223,12 +232,22 @@ namespace WindowsFormsApplication1
                     UpdateInsertForm.addMenuClicked = true;
                     if(tabControl1.SelectedTab.Text == "Client")
                     {
+                        client = UpdateInsertForm.newClient;                       
+                        UpdateInsertForm.stateList = StateDB.GetStateList();
+                        UpdateInsertForm.stateComboBox.DataSource = UpdateInsertForm.stateList;
+                        clientBindingSource.Clear();
+                        clientBindingSource.Add(UpdateInsertForm.client);
+                        clientDataGridView.DataSource = clientList;
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
                         
                     }
                     else if (tabControl1.SelectedTab.Text == "Company")
                     {
+                        UpdateInsertForm.stateList = StateDB.GetStateList();
+                        UpdateInsertForm.stateComboBox1.DataSource = UpdateInsertForm.stateList;
+                        UpdateInsertForm.companyBindingSource.Clear();
+                        UpdateInsertForm.companyBindingSource.Add(UpdateInsertForm.company);
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
                     }
@@ -343,6 +362,23 @@ namespace WindowsFormsApplication1
             {
                 UpdateInsertForm.MdiParent = mainForm;
                 UpdateInsertForm.ShowDialog();
+                if (UpdateInsertForm.cliLVVisible)
+                    ((CurrencyManager)clientDataGridView.BindingContext[clientList]).Refresh();
+                if (UpdateInsertForm.comLVVisible)
+                    ((CurrencyManager)companyDataGridView.BindingContext[companyList]).Refresh();
+                if (UpdateInsertForm.conLVVisible)
+                    ((CurrencyManager)contactDataGridView.BindingContext[contactList]).Refresh();
+                if (UpdateInsertForm.conPosLVVisible)
+                    ((CurrencyManager)contactPositionDataGridView.BindingContext[coPoList]).Refresh();
+                if (UpdateInsertForm.intLVVisible)
+                    ((CurrencyManager)interviewDataGridView.BindingContext[interviewList]).Refresh();
+                if (UpdateInsertForm.posLVVisible)
+                    ((CurrencyManager)positionDataGridView.BindingContext[positionList]).Refresh();
+                if (UpdateInsertForm.resLVVisible)
+                    ((CurrencyManager)resumeDataGridView.BindingContext[resumeList]).Refresh();
+                if (UpdateInsertForm.schLVVisible)
+                    ((CurrencyManager)schoolDataGridView.BindingContext[schoolList]).Refresh();
+
             }
         }
 

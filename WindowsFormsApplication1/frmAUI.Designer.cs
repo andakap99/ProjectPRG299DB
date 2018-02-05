@@ -1215,6 +1215,7 @@
             this.btnInsertUpdate.TabIndex = 104;
             this.btnInsertUpdate.Text = "button1";
             this.btnInsertUpdate.UseVisualStyleBackColor = true;
+            this.btnInsertUpdate.Click += new System.EventHandler(this.btnInsertUpdate_Click);
             // 
             // btnCancel
             // 
@@ -1224,6 +1225,7 @@
             this.btnCancel.TabIndex = 105;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // frmAUI
             // 
@@ -1354,60 +1356,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.DateTimePicker birthDateDateTimePicker;
-        private System.Windows.Forms.TextBox cellPhoneTextBox;
-        private System.Windows.Forms.TextBox cityTextBox;
-        private System.Windows.Forms.TextBox clientIDTextBox;
-        private System.Windows.Forms.TextBox firstNameTextBox;
-        private System.Windows.Forms.TextBox lastNameTextBox;
-        private System.Windows.Forms.ComboBox stateComboBox;
-        private System.Windows.Forms.TextBox streetNameTextBox;
-        private System.Windows.Forms.TextBox zipCodeTextBox;
-        private System.Windows.Forms.TextBox additionalNotesTextBox;
-        private System.Windows.Forms.TextBox buildingNameTextBox;
-        private System.Windows.Forms.TextBox buildingNumberTextBox;
-        private System.Windows.Forms.TextBox cityTextBox1;
-        private System.Windows.Forms.TextBox companyIDTextBox;
-        private System.Windows.Forms.TextBox companyNameTextBox;
-        private System.Windows.Forms.ComboBox stateComboBox1;
-        private System.Windows.Forms.TextBox streetAddressTextBox;
-        private System.Windows.Forms.TextBox websiteTextBox;
-        private System.Windows.Forms.TextBox zipCodeTextBox1;
-        private System.Windows.Forms.TextBox additionalNotesTextBox1;
-        private System.Windows.Forms.TextBox cellPhoneTextBox1;
-        private System.Windows.Forms.TextBox contactIDTextBox;
-        private System.Windows.Forms.TextBox emailAddressTextBox;
-        private System.Windows.Forms.TextBox firstNameTextBox1;
-        private System.Windows.Forms.TextBox lastNameTextBox1;
-        private System.Windows.Forms.TextBox phoneNumberTextBox;
-        private System.Windows.Forms.TextBox contactIDTextBox1;
-        private System.Windows.Forms.TextBox positionIDTextBox;
-        private System.Windows.Forms.TextBox additionalNotesTextBox2;
-        private System.Windows.Forms.TextBox companyIDTextBox1;
-        private System.Windows.Forms.TextBox contactIDTextBox2;
-        private System.Windows.Forms.DateTimePicker dateTimeInterviewDateTimePicker;
-        private System.Windows.Forms.TextBox interviewIDTextBox;
-        private System.Windows.Forms.TextBox positionIDTextBox1;
-        private System.Windows.Forms.TextBox additionalNotesTextBox3;
-        private System.Windows.Forms.TextBox companyIDTextBox2;
-        private System.Windows.Forms.TextBox descriptionTextBox;
-        private System.Windows.Forms.TextBox positionIDTextBox2;
-        private System.Windows.Forms.TextBox positionNameTextBox;
-        private System.Windows.Forms.TextBox resumeIDTextBox;
-        private System.Windows.Forms.TextBox clientIDTextBox1;
-        private System.Windows.Forms.TextBox resumeIDTextBox1;
-        private System.Windows.Forms.TextBox rSCDirectoryPathTextBox;
-        private System.Windows.Forms.TextBox schoolIDTextBox;
-        private System.Windows.Forms.TextBox cityTextBox2;
-        private System.Windows.Forms.TextBox graduatedTextBox;
-        private System.Windows.Forms.TextBox numberOfYearsAttendedTextBox;
-        private System.Windows.Forms.TextBox schoolIDTextBox1;
-        private System.Windows.Forms.TextBox schoolNameTextBox;
-        private System.Windows.Forms.ComboBox stateComboBox2;
-        private System.Windows.Forms.TextBox streetNameTextBox1;
-        private System.Windows.Forms.TextBox zipCodeTextBox2;
-        private System.Windows.Forms.Button btnInsertUpdate;
-        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label cellPhoneLabel;
         private System.Windows.Forms.Label cityLabel;
         private System.Windows.Forms.Label clientIDLabel;
@@ -1469,5 +1417,59 @@
         public System.Windows.Forms.BindingSource resumeBindingSource;
         public System.Windows.Forms.BindingSource schoolBindingSource;
         public System.Windows.Forms.BindingSource positionBindingSource;
+        public System.Windows.Forms.DateTimePicker birthDateDateTimePicker;
+        public System.Windows.Forms.TextBox cellPhoneTextBox;
+        public System.Windows.Forms.TextBox cityTextBox;
+        public System.Windows.Forms.TextBox clientIDTextBox;
+        public System.Windows.Forms.TextBox firstNameTextBox;
+        public System.Windows.Forms.TextBox lastNameTextBox;
+        public System.Windows.Forms.ComboBox stateComboBox;
+        public System.Windows.Forms.TextBox streetNameTextBox;
+        public System.Windows.Forms.TextBox zipCodeTextBox;
+        public System.Windows.Forms.TextBox additionalNotesTextBox;
+        public System.Windows.Forms.TextBox buildingNameTextBox;
+        public System.Windows.Forms.TextBox buildingNumberTextBox;
+        public System.Windows.Forms.TextBox cityTextBox1;
+        public System.Windows.Forms.TextBox companyIDTextBox;
+        public System.Windows.Forms.TextBox companyNameTextBox;
+        public System.Windows.Forms.ComboBox stateComboBox1;
+        public System.Windows.Forms.TextBox streetAddressTextBox;
+        public System.Windows.Forms.TextBox websiteTextBox;
+        public System.Windows.Forms.TextBox zipCodeTextBox1;
+        public System.Windows.Forms.TextBox additionalNotesTextBox1;
+        public System.Windows.Forms.TextBox cellPhoneTextBox1;
+        public System.Windows.Forms.TextBox contactIDTextBox;
+        public System.Windows.Forms.TextBox emailAddressTextBox;
+        public System.Windows.Forms.TextBox firstNameTextBox1;
+        public System.Windows.Forms.TextBox lastNameTextBox1;
+        public System.Windows.Forms.TextBox phoneNumberTextBox;
+        public System.Windows.Forms.TextBox contactIDTextBox1;
+        public System.Windows.Forms.TextBox positionIDTextBox;
+        public System.Windows.Forms.TextBox additionalNotesTextBox2;
+        public System.Windows.Forms.TextBox companyIDTextBox1;
+        public System.Windows.Forms.TextBox contactIDTextBox2;
+        public System.Windows.Forms.DateTimePicker dateTimeInterviewDateTimePicker;
+        public System.Windows.Forms.TextBox interviewIDTextBox;
+        public System.Windows.Forms.TextBox positionIDTextBox1;
+        public System.Windows.Forms.TextBox additionalNotesTextBox3;
+        public System.Windows.Forms.TextBox companyIDTextBox2;
+        public System.Windows.Forms.TextBox descriptionTextBox;
+        public System.Windows.Forms.TextBox positionIDTextBox2;
+        public System.Windows.Forms.TextBox positionNameTextBox;
+        public System.Windows.Forms.TextBox resumeIDTextBox;
+        public System.Windows.Forms.TextBox clientIDTextBox1;
+        public System.Windows.Forms.TextBox resumeIDTextBox1;
+        public System.Windows.Forms.TextBox rSCDirectoryPathTextBox;
+        public System.Windows.Forms.TextBox schoolIDTextBox;
+        public System.Windows.Forms.TextBox cityTextBox2;
+        public System.Windows.Forms.TextBox graduatedTextBox;
+        public System.Windows.Forms.TextBox numberOfYearsAttendedTextBox;
+        public System.Windows.Forms.TextBox schoolIDTextBox1;
+        public System.Windows.Forms.TextBox schoolNameTextBox;
+        public System.Windows.Forms.ComboBox stateComboBox2;
+        public System.Windows.Forms.TextBox streetNameTextBox1;
+        public System.Windows.Forms.TextBox zipCodeTextBox2;
+        public System.Windows.Forms.Button btnInsertUpdate;
+        public System.Windows.Forms.Button btnCancel;
     }
 }
