@@ -26,9 +26,9 @@ namespace WindowsFormsApplication1
         public bool posLVVisible = false;
         public bool resLVVisible = false;
         public bool schLVVisible = false;
-        private List<State> stateList;
+        public List<State> stateList;
         public Client client;
-        private Client newClient;
+        public Client newClient;
         public Company company;
         private Company newCompany;
         public Contact contact;
@@ -52,7 +52,12 @@ namespace WindowsFormsApplication1
             {
                 btnInsertUpdate.Text = "Add";
                 if (Text == "Add Client")
+                {
                     newClient = new Client();
+                    clientBindingSource.Clear();
+                    clientBindingSource.Add(newClient);
+
+                }
                 if (Text == "Add Company")
                     newCompany = new Company();
                 if (Text == "Add Contact")
@@ -127,8 +132,8 @@ namespace WindowsFormsApplication1
             try
             {
                 stateList = StateDB.GetStateList();
-                stateComboBox.DataSource = stateList;
-                stateComboBox1.DataSource = stateList;
+                //stateComboBox.DataSource = stateList;
+                //stateComboBox1.DataSource = stateList;
                 stateComboBox2.DataSource = stateList;
             }
             catch (Exception ex)
@@ -144,7 +149,7 @@ namespace WindowsFormsApplication1
             newClient.BirthDate = client.BirthDate;
             newClient.StreetName = client.StreetName;
             newClient.City = client.City;
-            stateComboBox.SelectedValue = client.State;
+            newClient.State = client.State;
             newClient.ZipCode = client.ZipCode;
             newClient.CellPhone = client.CellPhone;                      
         }
@@ -156,7 +161,7 @@ namespace WindowsFormsApplication1
             newCompany.BuildingNumber = company.BuildingNumber;
             newCompany.StreetAddress = company.StreetAddress;
             newCompany.City = company.City;
-            stateComboBox1.SelectedValue = company.State;
+            newCompany.State = company.State;
             newCompany.ZipCode = company.ZipCode;
             newCompany.Website = company.Website;
             newCompany.AdditionalNotes = company.AdditionalNotes;
@@ -280,6 +285,8 @@ namespace WindowsFormsApplication1
                 stateComboBox.Visible = true;
                 zipCodeLabel.Visible = true;
                 zipCodeTextBox.Visible = true;
+                cellPhoneLabel.Visible = true;
+                cellPhoneTextBox.Visible = true;
             }
             else
             {
@@ -299,6 +306,8 @@ namespace WindowsFormsApplication1
                 stateComboBox.Visible = false;
                 zipCodeLabel.Visible = false;
                 zipCodeTextBox.Visible = false;
+                cellPhoneLabel.Visible = false;
+                cellPhoneTextBox.Visible = false;
             }
         }
         private void CompanyListView()
@@ -541,28 +550,34 @@ namespace WindowsFormsApplication1
         {
             if(addMenuClicked)
             {
-//                newCompany.State = stateComboBox1.SelectedValue.ToString();
-  //              newSchool.State = stateComboBox2.SelectedValue.ToString();
+                //newClient.State = stateComboBox.SelectedValue.ToString();
+                //newCompany.State = stateComboBox1.SelectedValue.ToString();
+                //newSchool.State = stateComboBox2.SelectedValue.ToString();
                 try
                 {
-                    if (cliLVVisible)
+                    if(cliLVVisible)
                     {
-                        newClient.State = stateComboBox.SelectedValue.ToString();
-
-                        newClient.ClientID = ClientDB.AddClient(newClient);
+ //                       newClient.BirthDate = birthDateDateTimePicker.Value;
+                        ClientDB.AddClient(newClient);
                         client = newClient;
-
+                        DialogResult = DialogResult.OK;
                     }
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show(ex.Message,  ex.GetType().ToString());
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
                 }
             }
             else
             {
 
+
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

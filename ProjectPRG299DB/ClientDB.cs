@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 using System.Data.SqlClient;
 using ProjectPRG299BLL;
 
@@ -40,6 +41,8 @@ namespace ProjectPRG299DB
                     clientA.City = reader.GetString(cCOrd);
                     clientA.State = reader.GetString(cSOrd);
                     clientA.ZipCode = reader.GetString(cZCOrd);
+                    if (clientA.CellPhone == null)
+                        clientA.CellPhone = "";
                     clientA.CellPhone = reader.GetString(cPOrd);
                     clientList.Add(clientA);
                 }
@@ -141,7 +144,7 @@ namespace ProjectPRG299DB
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string insertStatement =
-                "INSERT Client " +
+                "INSERT INTO Client " +
                   "(FirstName, LastName, BirthDate, StreetName, " +
                 "City, State, ZipCode, CellPhone) " +
                 "VALUES (@FirstName, @LastName, @BirthDate, @StreetName, " +
@@ -152,11 +155,12 @@ namespace ProjectPRG299DB
             if(client.BirthDate != DateTime)
                 {
             insertCommand.Parameters.AddWithValue("@BirthDate", client.BirthDate);
+            insertCommand.Parameters["@BirthDate"].SqlDbType = SqlDbType.DateTime;
             insertCommand.Parameters.AddWithValue("@StreetName", client.StreetName);
-            insertCommand.Parameters.AddWithValue("@City", client.City);
+            insertCommand.Parameters.AddWithValue("@City", client.City );
             insertCommand.Parameters.AddWithValue("@State", client.State);
             insertCommand.Parameters.AddWithValue("@ZipCode", client.ZipCode);
-            if (client.CellPhone == "")
+            if (client.CellPhone == null)
                 insertCommand.Parameters.AddWithValue("@CellPhone", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@CellPhone", client.CellPhone);
