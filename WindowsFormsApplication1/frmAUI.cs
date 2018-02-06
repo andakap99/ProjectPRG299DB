@@ -52,7 +52,12 @@ namespace WindowsFormsApplication1
             {
                 btnInsertUpdate.Text = "Add";
                 if (Text == "Add Client")
+                {
                     newClient = new Client();
+                    clientBindingSource.Clear();
+                    clientBindingSource.Add(newClient);
+
+                }
                 if (Text == "Add Company")
                     newCompany = new Company();
                 if (Text == "Add Contact")
@@ -552,7 +557,7 @@ namespace WindowsFormsApplication1
                 {
                     if(cliLVVisible)
                     {
-                        newClient.BirthDate = birthDateDateTimePicker.Value;
+ //                       newClient.BirthDate = birthDateDateTimePicker.Value;
                         ClientDB.AddClient(newClient);
                         client = newClient;
                         DialogResult = DialogResult.OK;
@@ -565,6 +570,7 @@ namespace WindowsFormsApplication1
             }
             else
             {
+
 
             }
         }

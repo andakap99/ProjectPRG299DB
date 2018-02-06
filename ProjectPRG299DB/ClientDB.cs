@@ -41,6 +41,8 @@ namespace ProjectPRG299DB
                     clientA.City = reader.GetString(cCOrd);
                     clientA.State = reader.GetString(cSOrd);
                     clientA.ZipCode = reader.GetString(cZCOrd);
+                    if (clientA.CellPhone == null)
+                        clientA.CellPhone = "";
                     clientA.CellPhone = reader.GetString(cPOrd);
                     clientList.Add(clientA);
                 }
@@ -148,18 +150,18 @@ namespace ProjectPRG299DB
                 "VALUES (@FirstName, @LastName, @BirthDate, @StreetName, " +
                 "@City, @State, @ZipCode, @CellPhone)";
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
-            insertCommand.Parameters.AddWithValue("@FirstName", client.FirstName ?? (object)DBNull.Value);
-            insertCommand.Parameters.AddWithValue("@LastName", client.LastName ?? (object)DBNull.Value);
+            insertCommand.Parameters.AddWithValue("@FirstName", client.FirstName);
+            insertCommand.Parameters.AddWithValue("@LastName", client.LastName);
             insertCommand.Parameters.AddWithValue("@BirthDate", client.BirthDate);
             insertCommand.Parameters["@BirthDate"].SqlDbType = SqlDbType.DateTime;
-            insertCommand.Parameters.AddWithValue("@StreetName", client.StreetName ?? (object)DBNull.Value);
-            insertCommand.Parameters.AddWithValue("@City", client.City ?? (object)DBNull.Value);
-            insertCommand.Parameters.AddWithValue("@State", client.State ?? (object)DBNull.Value);
-            insertCommand.Parameters.AddWithValue("@ZipCode", client.ZipCode ?? (object)DBNull.Value);
-            if (client.CellPhone == "")
+            insertCommand.Parameters.AddWithValue("@StreetName", client.StreetName);
+            insertCommand.Parameters.AddWithValue("@City", client.City );
+            insertCommand.Parameters.AddWithValue("@State", client.State);
+            insertCommand.Parameters.AddWithValue("@ZipCode", client.ZipCode);
+            if (client.CellPhone == null)
                 insertCommand.Parameters.AddWithValue("@CellPhone", DBNull.Value);
             else
-                insertCommand.Parameters.AddWithValue("@CellPhone", client.CellPhone ?? (object)DBNull.Value);
+                insertCommand.Parameters.AddWithValue("@CellPhone", client.CellPhone);
 
             try
             {
