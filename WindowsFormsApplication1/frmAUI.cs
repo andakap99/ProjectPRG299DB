@@ -536,5 +536,33 @@ namespace WindowsFormsApplication1
                 graduatedTextBox.Visible = false;
             }
         }
+
+        private void btnInsertUpdate_Click(object sender, EventArgs e)
+        {
+            if(addMenuClicked)
+            {
+//                newCompany.State = stateComboBox1.SelectedValue.ToString();
+  //              newSchool.State = stateComboBox2.SelectedValue.ToString();
+                try
+                {
+                    if (cliLVVisible)
+                    {
+                        newClient.State = stateComboBox.SelectedValue.ToString();
+
+                        newClient.ClientID = ClientDB.AddClient(newClient);
+                        client = newClient;
+
+                    }
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message,  ex.GetType().ToString());
+                }
+            }
+            else
+            {
+
+            }
+        }
     }
 }

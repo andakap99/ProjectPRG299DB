@@ -136,7 +136,7 @@ namespace ProjectPRG299DB
                 connection.Close();
             }
         }
-
+        DateTime date =new(
         public static int AddClient(Client client)
         {
             SqlConnection connection = PRG299DB.GetConnection();
@@ -149,6 +149,8 @@ namespace ProjectPRG299DB
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
             insertCommand.Parameters.AddWithValue("@FirstName", client.FirstName);
             insertCommand.Parameters.AddWithValue("@LastName", client.LastName);
+            if(client.BirthDate != DateTime)
+                {
             insertCommand.Parameters.AddWithValue("@BirthDate", client.BirthDate);
             insertCommand.Parameters.AddWithValue("@StreetName", client.StreetName);
             insertCommand.Parameters.AddWithValue("@City", client.City);

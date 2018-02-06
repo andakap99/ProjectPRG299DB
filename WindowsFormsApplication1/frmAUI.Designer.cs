@@ -1215,6 +1215,7 @@
             this.btnInsertUpdate.TabIndex = 104;
             this.btnInsertUpdate.Text = "button1";
             this.btnInsertUpdate.UseVisualStyleBackColor = true;
+            this.btnInsertUpdate.Click += new System.EventHandler(this.btnInsertUpdate_Click);
             // 
             // btnCancel
             // 
