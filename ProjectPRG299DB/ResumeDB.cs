@@ -125,15 +125,15 @@ namespace ProjectPRG299DB
                 "VALUES (@RSCDirectoryPath, @SchoolID, " +
                 "@ClientID)";
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
-            if (resume.RSCDirectoryPath == "")
+            if (resume.RSCDirectoryPath == null)
                 insertCommand.Parameters.AddWithValue("@RSCDirectoryPath", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@RSCDirectoryPath", resume.RSCDirectoryPath);
-            if (resume.SchoolID.ToString() == "")
+            if (resume.SchoolID.ToString() == null)
                 insertCommand.Parameters.AddWithValue("@SchoolID", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@SchoolID", resume.SchoolID);
-            if (resume.ClientID.ToString() == "")
+            if (resume.ClientID.ToString() == null)
                 insertCommand.Parameters.AddWithValue("@ClientID", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@ClientID", resume.ClientID);
@@ -177,29 +177,29 @@ namespace ProjectPRG299DB
                   "AND ClientID = @OldClientID " +
                       "OR ClientID IS NULL AND @OldClientID IS NULL)";
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
-            if (newResume.RSCDirectoryPath == "")
+            if (newResume.RSCDirectoryPath == null)
                 updateCommand.Parameters.AddWithValue("@NewRSCDirectoryPath", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@NewRSCDirectoryPath", newResume.RSCDirectoryPath);
-            if (newResume.SchoolID.ToString() == "")
+            if (newResume.SchoolID.ToString() == null)
                 updateCommand.Parameters.AddWithValue("@NewSchoolID", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@NewSchoolID", newResume.SchoolID);
-            if (newResume.ClientID.ToString() == "")
+            if (newResume.ClientID.ToString() == null)
                 updateCommand.Parameters.AddWithValue("@NewClientID", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@NewClientID", newResume.ClientID);
 
             updateCommand.Parameters.AddWithValue("@OldResumeID", oldResume.ResumeID);
-            if (oldResume.RSCDirectoryPath == "")
+            if (oldResume.RSCDirectoryPath == null)
                 updateCommand.Parameters.AddWithValue("@OldRSCDirectoryPath", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@OldRSCDirectoryPath", oldResume.RSCDirectoryPath);
-            if (oldResume.SchoolID.ToString() == "")
+            if (oldResume.SchoolID.ToString() == null)
                 updateCommand.Parameters.AddWithValue("@OldSchoolID", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@OldSchoolID", oldResume.SchoolID);
-            if (oldResume.ClientID.ToString() == "")
+            if (oldResume.ClientID.ToString() == null)
                 updateCommand.Parameters.AddWithValue("@OldClientID", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@OldClientID", oldResume.ClientID);

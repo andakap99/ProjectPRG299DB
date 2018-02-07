@@ -96,7 +96,12 @@ namespace ProjectPRG299DB
                     client.City = reader.GetString(cCOrd);
                     client.State = reader.GetString(cSOrd);
                     client.ZipCode = reader.GetString(cZCOrd);
-                    client.CellPhone = reader.GetString(cPOrd);
+                    if (reader["CellPhone"].Equals(DBNull.Value))
+                    {
+                        client.CellPhone = "";
+                    }
+                    else
+                        client.CellPhone = reader.GetString(cPOrd);
                 }
             }
             catch (SqlException ex)
@@ -195,48 +200,49 @@ namespace ProjectPRG299DB
             SqlConnection connection = PRG299DB.GetConnection();
             string updateStatement =
                 "UPDATE Client SET " +
-                  "Name = @NewName, " +
-                  "Address = @NewAddress, " +
+                  "FirstName = @NewFirstName, " +
+                  "LastName = @NewLastName, " +
+                  "BirthDate = @NewBirthDate, " +
+                  "StreetName = @NewStreetName, " +
                   "City = @NewCity, " +
                   "State = @NewState, " +
                   "ZipCode = @NewZipCode, " +
-                  "Phone = @NewPhone, " +
-                  "Email = @NewEmail " +
+                  "CellPhone = @NewCellPhone " +
                 "WHERE ClientID = @OldClientID " +
-                  "AND Name = @OldName " +
-                  "AND Address = @OldAddress " +
+                  "AND FirstName = @OldFirstName " +
+                  "AND LastName = @OldLastName " +
+                  "AND Birthdate = @OldBirthDate" +
+                  "AND StreetName = @OldStreetName " +
                   "AND City = @OldCity " +
                   "AND State = @OldState " +
                   "AND ZipCode = @OldZipCode " +
-                  "AND (Phone = @OldPhone " +
-                      "OR Phone IS NULL AND @OldPhone IS NULL) " +
-                  "AND (Email = @OldEmail " +
-                      "OR Email IS NULL AND @OldEmail IS NULL)";
+                  "AND (CellPhone = @OldCellPhone " +
+                      "OR CellPhone IS NULL AND @OldCellPhone IS NULL)";
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
-            updateCommand.Parameters.AddWithValue("@FirstName", newClient.FirstName);
-            updateCommand.Parameters.AddWithValue("@LastName", newClient.LastName);
-            updateCommand.Parameters.AddWithValue("@BirthDate", newClient.BirthDate);
-            updateCommand.Parameters.AddWithValue("@StreetName", newClient.StreetName);
-            updateCommand.Parameters.AddWithValue("@City", newClient.City);
-            updateCommand.Parameters.AddWithValue("@State", newClient.State);
-            updateCommand.Parameters.AddWithValue("@ZipCode", newClient.ZipCode);
-            if (newClient.CellPhone == "")
-                updateCommand.Parameters.AddWithValue("@CellPhone", DBNull.Value);
+            updateCommand.Parameters.AddWithValue("@NewFirstName", newClient.FirstName);
+            updateCommand.Parameters.AddWithValue("@NewLastName", newClient.LastName);
+            updateCommand.Parameters.AddWithValue("@NewBirthDate", newClient.BirthDate);
+            updateCommand.Parameters.AddWithValue("@NewStreetName", newClient.StreetName);
+            updateCommand.Parameters.AddWithValue("@NewCity", newClient.City);
+            updateCommand.Parameters.AddWithValue("@NewState", newClient.State);
+            updateCommand.Parameters.AddWithValue("@NewZipCode", newClient.ZipCode);
+            if (newClient.CellPhone == null)
+                updateCommand.Parameters.AddWithValue("@NewCellPhone", DBNull.Value);
             else
-                updateCommand.Parameters.AddWithValue("@CellPhone", newClient.CellPhone);
+                updateCommand.Parameters.AddWithValue("@NewCellPhone", newClient.CellPhone);
 
             updateCommand.Parameters.AddWithValue("@OldClientID", oldClient.ClientID);
-            updateCommand.Parameters.AddWithValue("@FirstName", oldClient.FirstName);
-            updateCommand.Parameters.AddWithValue("@LastName", oldClient.LastName);
-            updateCommand.Parameters.AddWithValue("@BirthDate", oldClient.BirthDate);
-            updateCommand.Parameters.AddWithValue("@StreetName", oldClient.StreetName);
-            updateCommand.Parameters.AddWithValue("@City", oldClient.City);
-            updateCommand.Parameters.AddWithValue("@State", oldClient.State);
-            updateCommand.Parameters.AddWithValue("@ZipCode", oldClient.ZipCode);
-            if (oldClient.CellPhone == "")
-                updateCommand.Parameters.AddWithValue("@CellPhone", DBNull.Value);
+            updateCommand.Parameters.AddWithValue("@OldFirstName", oldClient.FirstName);
+            updateCommand.Parameters.AddWithValue("@OldLastName", oldClient.LastName);
+            updateCommand.Parameters.AddWithValue("@OldBirthDate", oldClient.BirthDate);
+            updateCommand.Parameters.AddWithValue("@OldStreetName", oldClient.StreetName);
+            updateCommand.Parameters.AddWithValue("@OldCity", oldClient.City);
+            updateCommand.Parameters.AddWithValue("@OldState", oldClient.State);
+            updateCommand.Parameters.AddWithValue("@OldZipCode", oldClient.ZipCode);
+            if (oldClient.CellPhone == null)
+                updateCommand.Parameters.AddWithValue("@OldCellPhone", DBNull.Value);
             else
-                updateCommand.Parameters.AddWithValue("@CellPhone", oldClient.CellPhone);
+                updateCommand.Parameters.AddWithValue("@OldCellPhone", oldClient.CellPhone);
 
             try
             {

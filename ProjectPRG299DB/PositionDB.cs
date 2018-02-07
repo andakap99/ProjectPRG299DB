@@ -133,23 +133,23 @@ namespace ProjectPRG299DB
                 "VALUES (@PositionName, @Description, " +
                 "@CompanyID, @AdditionalNotes, @ResumeID)";
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
-            if(position.PositionName == "")
+            if(position.PositionName == null)
                 insertCommand.Parameters.AddWithValue("@PositionName", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@PositionName", position.PositionName);
-            if(position.Description == "")
+            if(position.Description == null)
                 insertCommand.Parameters.AddWithValue("@Description", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@Description", position.Description);
-            if(position.CompanyID.ToString() == "")
+            if(position.CompanyID.ToString() == null)
                 insertCommand.Parameters.AddWithValue("@CompanyID", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@CompanyID", position.CompanyID);
-            if(position.AdditionalNotes == "")
+            if(position.AdditionalNotes == null)
                 insertCommand.Parameters.AddWithValue("@AdditionalNotes", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@AdditionalNotes", position.AdditionalNotes);
-            if(position.ResumeID.ToString() == "")
+            if(position.ResumeID.ToString() == null)
                 insertCommand.Parameters.AddWithValue("@ResumeID", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@ResumeID", position.ResumeID);
@@ -200,45 +200,45 @@ namespace ProjectPRG299DB
                   "ResumeID = @OldResumeID " +
                       "OR ResumeID IS NULL AND @OldResumeID IS NULL)";
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
-            if (newPosition.PositionName == "")
+            if (newPosition.PositionName == null)
                 updateCommand.Parameters.AddWithValue("@NewPositionName", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@NewPositionName", newPosition.PositionName);
-            if (newPosition.Description == "")
+            if (newPosition.Description == null)
                 updateCommand.Parameters.AddWithValue("@NewDescription", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@NewDescription", newPosition.Description);
-            if (newPosition.CompanyID.ToString() == "")
+            if (newPosition.CompanyID.ToString() == null)
                 updateCommand.Parameters.AddWithValue("@NewCompanyID", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@NewCompanyID", newPosition.CompanyID);
-            if (newPosition.AdditionalNotes == "")
+            if (newPosition.AdditionalNotes == null)
                 updateCommand.Parameters.AddWithValue("@NewAdditionalNotes", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@NewAdditionalNotes", newPosition.AdditionalNotes);
-            if (newPosition.ResumeID.ToString() == "")
+            if (newPosition.ResumeID.ToString() == null)
                 updateCommand.Parameters.AddWithValue("@NewResumeID", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@NewResumeID", newPosition.ResumeID);
 
             updateCommand.Parameters.AddWithValue("@OldPositionID", oldPosition.PositionID);
-            if (oldPosition.PositionName == "")
+            if (oldPosition.PositionName == null)
                 updateCommand.Parameters.AddWithValue("@OldPositionName", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@OldPositionName", oldPosition.PositionName);
-            if (oldPosition.Description == "")
+            if (oldPosition.Description == null)
                 updateCommand.Parameters.AddWithValue("@OldDescription", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@OldDescription", oldPosition.Description);
-            if (oldPosition.CompanyID.ToString() == "")
+            if (oldPosition.CompanyID.ToString() == null)
                 updateCommand.Parameters.AddWithValue("@OldCompanyID", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@OldCompanyID", oldPosition.CompanyID);
-            if (oldPosition.AdditionalNotes == "")
+            if (oldPosition.AdditionalNotes == null)
                 updateCommand.Parameters.AddWithValue("@OldAdditionalNotes", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@OldAdditionalNotes", oldPosition.AdditionalNotes);
-            if (oldPosition.ResumeID.ToString() == "")
+            if (oldPosition.ResumeID.ToString() == null)
                 updateCommand.Parameters.AddWithValue("@OldResumeID", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@OldResumeID", oldPosition.ResumeID);

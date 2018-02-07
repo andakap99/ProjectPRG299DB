@@ -244,40 +244,67 @@ namespace WindowsFormsApplication1
                     }
                     else if (tabControl1.SelectedTab.Text == "Company")
                     {
+                        company = UpdateInsertForm.newCompany;
                         UpdateInsertForm.stateList = StateDB.GetStateList();
                         UpdateInsertForm.stateComboBox1.DataSource = UpdateInsertForm.stateList;
                         UpdateInsertForm.companyBindingSource.Clear();
-                        UpdateInsertForm.companyBindingSource.Add(UpdateInsertForm.company);
+                        UpdateInsertForm.companyBindingSource.Add(UpdateInsertForm.newCompany);
+                        companyDataGridView.DataSource = companyList;
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
                     }
                     else if (tabControl1.SelectedTab.Text == "Contact")
                     {
+                        contact = UpdateInsertForm.newContact;
+                        UpdateInsertForm.contactBindingSource.Clear();
+                        UpdateInsertForm.contactBindingSource.Add(UpdateInsertForm.newContact);
+                        contactDataGridView.DataSource = contactList;
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
                     }
                     else if (tabControl1.SelectedTab.Text == "Contact Position")
                     {
+                        coPo = UpdateInsertForm.newContactPosition;
+                        UpdateInsertForm.contactPositionBindingSource.Clear();
+                        UpdateInsertForm.contactPositionBindingSource.Add(UpdateInsertForm.newContactPosition);
+                        contactPositionDataGridView.DataSource = coPoList;
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
                     }
                     else if (tabControl1.SelectedTab.Text == "Interview")
                     {
+                        interview = UpdateInsertForm.newInterview;
+                        UpdateInsertForm.interviewBindingSource.Clear();
+                        UpdateInsertForm.interviewBindingSource.Add(UpdateInsertForm.newInterview);
+                        interviewDataGridView.DataSource = interviewList;
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
                     }
                     else if (tabControl1.SelectedTab.Text == "Position")
                     {
+                        position = UpdateInsertForm.newPostion;
+                        UpdateInsertForm.positionBindingSource.Clear();
+                        UpdateInsertForm.positionBindingSource.Add(UpdateInsertForm.newPostion);
+                        positionDataGridView.DataSource = positionList;
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
                     }
                     else if (tabControl1.SelectedTab.Text == "Resume")
                     {
+                        resume = UpdateInsertForm.newResume;
+                        UpdateInsertForm.resumeBindingSource.Clear();
+                        UpdateInsertForm.resumeBindingSource.Add(UpdateInsertForm.newResume);
+                        resumeDataGridView.DataSource = resumeList;
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
                     }
                     else if (tabControl1.SelectedTab.Text == "School")
                     {
+                        school = UpdateInsertForm.newSchool;
+                        UpdateInsertForm.stateList = StateDB.GetStateList();
+                        UpdateInsertForm.stateComboBox2.DataSource = UpdateInsertForm.stateList;
+                        UpdateInsertForm.schoolBindingSource.Clear();
+                        UpdateInsertForm.schoolBindingSource.Add(UpdateInsertForm.newSchool);
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
                     }                    

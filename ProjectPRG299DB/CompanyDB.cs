@@ -40,8 +40,14 @@ namespace ProjectPRG299DB
                     comp.City = reader.GetString(cCOrd);
                     comp.State = reader.GetString(cSOrd);
                     comp.ZipCode = reader.GetString(cZCOrd);
-                    comp.Website = reader.GetString(cPOrd);
-                    comp.AdditionalNotes = reader.GetString(cEOrd);
+                    if (reader["Website"].Equals(DBNull.Value))
+                        comp.Website = "";
+                    else
+                        comp.Website = reader.GetString(cPOrd);
+                    if (reader["AdditionalNotes"].Equals(DBNull.Value))
+                        comp.AdditionalNotes = "";
+                    else
+                        comp.AdditionalNotes = reader.GetString(cEOrd);
                     companyList.Add(comp);
                 }
             }
@@ -91,8 +97,14 @@ namespace ProjectPRG299DB
                     company.City = reader.GetString(cCOrd);
                     company.State = reader.GetString(cSOrd);
                     company.ZipCode = reader.GetString(cZCOrd);
-                    company.Website = reader.GetString(cPOrd);
-                    company.AdditionalNotes = reader.GetString(cEOrd);
+                    if (reader["Website"].Equals(DBNull.Value))
+                        company.Website = "";
+                    else
+                        company.Website = reader.GetString(cPOrd);
+                    if (reader["AdditionalNotes"].Equals(DBNull.Value))
+                        company.AdditionalNotes = "";
+                    else
+                        company.AdditionalNotes = reader.GetString(cEOrd);
                 }
             }
             catch (SqlException ex)
@@ -157,11 +169,11 @@ namespace ProjectPRG299DB
             insertCommand.Parameters.AddWithValue("@City", company.City);
             insertCommand.Parameters.AddWithValue("@State", company.State);
             insertCommand.Parameters.AddWithValue("@ZipCode", company.ZipCode);
-            if (company.Website == "")
+            if (company.Website == null)
                 insertCommand.Parameters.AddWithValue("@Website", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@Website", company.Website);
-            if (company.AdditionalNotes == "")
+            if (company.AdditionalNotes == null)
                 insertCommand.Parameters.AddWithValue("@AdditionalNotes",
                     DBNull.Value);
             else
@@ -223,11 +235,11 @@ namespace ProjectPRG299DB
             updateCommand.Parameters.AddWithValue("@NewCity", newCompany.City);
             updateCommand.Parameters.AddWithValue("@NewState", newCompany.State);
             updateCommand.Parameters.AddWithValue("@NewZipCode", newCompany.ZipCode);
-            if (newCompany.Website == "")
+            if (newCompany.Website == null)
                 updateCommand.Parameters.AddWithValue("@NewWebsite", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@NewWebsite", newCompany.Website);
-            if (newCompany.AdditionalNotes == "")
+            if (newCompany.AdditionalNotes == null)
                 updateCommand.Parameters.AddWithValue("@NewAdditionalNotes",
                     DBNull.Value);
             else
@@ -243,11 +255,11 @@ namespace ProjectPRG299DB
             updateCommand.Parameters.AddWithValue("@OldCity", oldCompany.City);
             updateCommand.Parameters.AddWithValue("@OldState", oldCompany.State);
             updateCommand.Parameters.AddWithValue("@OldZipCode", oldCompany.ZipCode);
-            if (oldCompany.Website == "")
+            if (oldCompany.Website == null)
                 updateCommand.Parameters.AddWithValue("@OldWebsite", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@OldWebsite", oldCompany.Website);
-            if (oldCompany.AdditionalNotes == "")
+            if (oldCompany.AdditionalNotes == null)
                 updateCommand.Parameters.AddWithValue("@OldAdditionalNotes",
                     DBNull.Value);
             else

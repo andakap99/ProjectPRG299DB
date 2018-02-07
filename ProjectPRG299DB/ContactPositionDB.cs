@@ -57,6 +57,7 @@ namespace ProjectPRG299DB
                     cNOrd = reader.GetOrdinal("PositionID");
                 while (reader.Read())
                 {
+
                     conpos.ContactID = reader.GetInt32(cIDOrd);
                     conpos.PositionID = reader.GetInt32(cNOrd);
 
@@ -114,14 +115,8 @@ namespace ProjectPRG299DB
                   "(ContactID, PositionID) " +
                 "VALUES (@ContactID, @PositionID)";
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
-            if (contactposition.ContactID.ToString() == "")
-                insertCommand.Parameters.AddWithValue("@ContactID", DBNull.Value);
-            else
-                insertCommand.Parameters.AddWithValue("@ContactID", contactposition.ContactID);
-            if (contactposition.PositionID.ToString() == "")
-                insertCommand.Parameters.AddWithValue("@PositionID", DBNull.Value);
-            else
-                insertCommand.Parameters.AddWithValue("@PositionID", contactposition.PositionID);
+            insertCommand.Parameters.AddWithValue("@ContactID", contactposition.ContactID);
+            insertCommand.Parameters.AddWithValue("@PositionID", contactposition.PositionID);
             try
             {
                 connection.Open();
@@ -154,27 +149,16 @@ namespace ProjectPRG299DB
                   "ContactID = @NewContactID, " +
                   "PositionID = @NewPositionID " +
                 "WHERE ContactID = @OldContactID " +
-                      "OR ContactID IS NULL AND @OldContactID IS NULL) " +
-                  "AND (PositionID = @OldPositionID " +
-                      "OR PositionID IS NULL AND @OldPositionID IS NULL)";
+                  "AND (PositionID = @OldPositionID)";
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
-            if (newContactPosition.ContactID.ToString() == "")
-                updateCommand.Parameters.AddWithValue("@NewContactID", DBNull.Value);
-            else
+            
                 updateCommand.Parameters.AddWithValue("@NewContactID", newContactPosition.ContactID);
-            if (newContactPosition.PositionID.ToString() == "")
-                updateCommand.Parameters.AddWithValue("@NewPositionID", DBNull.Value);
-            else
-                updateCommand.Parameters.AddWithValue("@PositionID", newContactPosition.PositionID);
+            
+                updateCommand.Parameters.AddWithValue("@NewPositionID", newContactPosition.PositionID);
 
-            if (oldContactPosition.ContactID.ToString() == "")
-                updateCommand.Parameters.AddWithValue("@ContactID", DBNull.Value);
-            else
-                updateCommand.Parameters.AddWithValue("@ContactID", oldContactPosition.ContactID);
-            if (oldContactPosition.PositionID.ToString() == "")
-                updateCommand.Parameters.AddWithValue("@PositionID", DBNull.Value);
-            else
-                updateCommand.Parameters.AddWithValue("@PositionID", oldContactPosition.PositionID);
+                updateCommand.Parameters.AddWithValue("@OldContactID", oldContactPosition.ContactID);
+            
+                updateCommand.Parameters.AddWithValue("@OldPositionID", oldContactPosition.PositionID);
 
             try
             {

@@ -137,7 +137,7 @@ namespace ProjectPRG299DB
             insertCommand.Parameters.AddWithValue("@CompanyID", interview.CompanyID);
             insertCommand.Parameters.AddWithValue("@ContactID", interview.ContactID);
             insertCommand.Parameters.AddWithValue("@DateTime", interview.DateTimeInterview);
-            if (interview.AdditionalNotes == "")
+            if (interview.AdditionalNotes == null)
                 insertCommand.Parameters.AddWithValue("@AdditionalNotes", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@AdditionalNotes", interview.AdditionalNotes);
@@ -192,7 +192,7 @@ namespace ProjectPRG299DB
             updateCommand.Parameters.AddWithValue("@CompanyID", newInterview.CompanyID);
             updateCommand.Parameters.AddWithValue("@ContactID", newInterview.ContactID);
             updateCommand.Parameters.AddWithValue("@DateTime", newInterview.DateTimeInterview);
-            if (newInterview.AdditionalNotes == "")
+            if (newInterview.AdditionalNotes == null)
                 updateCommand.Parameters.AddWithValue("@AdditionalNotes", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@AdditionalNotes", newInterview.AdditionalNotes);
@@ -202,7 +202,7 @@ namespace ProjectPRG299DB
             updateCommand.Parameters.AddWithValue("@CompanyID", oldInterview.CompanyID);
             updateCommand.Parameters.AddWithValue("@ContactID", oldInterview.ContactID);
             updateCommand.Parameters.AddWithValue("@DateTime", oldInterview.DateTimeInterview);
-            if (oldInterview.AdditionalNotes == "")
+            if (oldInterview.AdditionalNotes == null)
                 updateCommand.Parameters.AddWithValue("@AdditionalNotes", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@AdditionalNotes", oldInterview.AdditionalNotes);

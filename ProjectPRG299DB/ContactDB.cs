@@ -32,10 +32,22 @@ namespace ProjectPRG299DB
                     cont.ContactID = reader.GetInt32(cIDOrd);
                     cont.FirstName = reader.GetString(cNOrd);
                     cont.LastName = reader.GetString(cAOrd);
-                    cont.EmailAddress = reader.GetString(cCOrd);
-                    cont.PhoneNumber = reader.GetString(cSOrd);
-                    cont.CellPhone = reader.GetString(cZCOrd);
-                    cont.AdditionalNotes = reader.GetString(cPOrd);
+                    if (reader["EmailAddress"].Equals(DBNull.Value))
+                        cont.EmailAddress = "";
+                    else
+                        cont.EmailAddress = reader.GetString(cCOrd);
+                    if (reader["PhoneNumber"].Equals(DBNull.Value))
+                        cont.PhoneNumber = "";
+                    else
+                        cont.PhoneNumber = reader.GetString(cSOrd);
+                    if (reader["CellPhone"].Equals(DBNull.Value))
+                        cont.CellPhone = "";
+                    else
+                        cont.CellPhone = reader.GetString(cZCOrd);
+                    if (reader["AdditionalNotes"].Equals(DBNull.Value))
+                        cont.AdditionalNotes = "";
+                    else
+                        cont.AdditionalNotes = reader.GetString(cPOrd);
                     contactList.Add(cont);
                 }
             }
@@ -77,10 +89,22 @@ namespace ProjectPRG299DB
                     contact.ContactID = reader.GetInt32(cIDOrd);
                     contact.FirstName = reader.GetString(cNOrd);
                     contact.LastName = reader.GetString(cAOrd);
-                    contact.EmailAddress = reader.GetString(cCOrd);
-                    contact.PhoneNumber = reader.GetString(cSOrd);
-                    contact.CellPhone = reader.GetString(cZCOrd);
-                    contact.AdditionalNotes = reader.GetString(cPOrd);
+                    if (reader["EmailAddress"].Equals(DBNull.Value))
+                        contact.EmailAddress = "";
+                    else
+                        contact.EmailAddress = reader.GetString(cCOrd);
+                    if (reader["PhoneNumber"].Equals(DBNull.Value))
+                        contact.PhoneNumber = "";
+                    else 
+                        contact.PhoneNumber = reader.GetString(cSOrd);
+                    if (reader["CellPhone"].Equals(DBNull.Value))
+                        contact.CellPhone = "";
+                    else
+                        contact.CellPhone = reader.GetString(cZCOrd);
+                    if (reader["AdditionalNotes"].Equals(DBNull.Value))
+                        contact.AdditionalNotes = "";
+                    else
+                        contact.AdditionalNotes = reader.GetString(cPOrd);
                 }
             }
             catch (SqlException ex)
@@ -139,19 +163,19 @@ namespace ProjectPRG299DB
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
             insertCommand.Parameters.AddWithValue("@FirstName", contact.FirstName);
             insertCommand.Parameters.AddWithValue("@LastName", contact.LastName);
-            if(contact.EmailAddress == "")
+            if(contact.EmailAddress == null)
                 insertCommand.Parameters.AddWithValue("@EmailAddress", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@EmailAddress", contact.EmailAddress);
-            if(contact.PhoneNumber == "")
+            if(contact.PhoneNumber == null)
                 insertCommand.Parameters.AddWithValue("@PhoneNumber", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@PhoneNumber", contact.PhoneNumber);
-            if(contact.CellPhone == "")
+            if(contact.CellPhone == null)
                 insertCommand.Parameters.AddWithValue("@CellPhone", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@CellPhone", contact.CellPhone);
-            if(contact.AdditionalNotes == "")
+            if(contact.AdditionalNotes == null)
                 insertCommand.Parameters.AddWithValue("@AdditionalNotes", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@AdditionalNotes", contact.AdditionalNotes);
@@ -204,19 +228,19 @@ namespace ProjectPRG299DB
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
             updateCommand.Parameters.AddWithValue("@NewFirstName", newContact.FirstName);
             updateCommand.Parameters.AddWithValue("@NewLastName", newContact.LastName);
-            if (newContact.EmailAddress == "")
+            if (newContact.EmailAddress == null)
                 updateCommand.Parameters.AddWithValue("@NewEmailAddress", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@NewEmailAddress", newContact.EmailAddress);
-            if (newContact.PhoneNumber == "")
+            if (newContact.PhoneNumber == null)
                 updateCommand.Parameters.AddWithValue("@NewPhoneNumber", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@NewPhoneNumber", newContact.PhoneNumber);
-            if (newContact.CellPhone == "")
+            if (newContact.CellPhone == null)
                 updateCommand.Parameters.AddWithValue("@NewCellPhone", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@NewCellPhone", newContact.CellPhone);
-            if (newContact.AdditionalNotes == "")
+            if (newContact.AdditionalNotes == null)
                 updateCommand.Parameters.AddWithValue("@NewAdditionalNotes", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@NewAdditionalNotes", newContact.AdditionalNotes);
@@ -224,19 +248,19 @@ namespace ProjectPRG299DB
             updateCommand.Parameters.AddWithValue("@OldContactID", oldContact.ContactID);
             updateCommand.Parameters.AddWithValue("@OldFirstName", oldContact.FirstName);
             updateCommand.Parameters.AddWithValue("@OldLastName", oldContact.LastName);
-            if (oldContact.EmailAddress == "")
+            if (oldContact.EmailAddress == null)
                 updateCommand.Parameters.AddWithValue("@OldEmailAddress", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@OldEmailAddress", oldContact.EmailAddress);
-            if (oldContact.PhoneNumber == "")
+            if (oldContact.PhoneNumber == null)
                 updateCommand.Parameters.AddWithValue("@OldPhoneNumber", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@OldPhoneNumber", oldContact.PhoneNumber);
-            if (oldContact.CellPhone == "")
+            if (oldContact.CellPhone == null)
                 updateCommand.Parameters.AddWithValue("@OldCellPhone", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@OldCellPhone", oldContact.CellPhone);
-            if (oldContact.AdditionalNotes == "")
+            if (oldContact.AdditionalNotes == null)
                 updateCommand.Parameters.AddWithValue("@OldAdditionalNotes", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@OldAdditionalNotes", oldContact.AdditionalNotes);

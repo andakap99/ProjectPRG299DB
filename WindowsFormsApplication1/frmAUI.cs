@@ -30,19 +30,19 @@ namespace WindowsFormsApplication1
         public Client client;
         public Client newClient;
         public Company company;
-        private Company newCompany;
+        public Company newCompany;
         public Contact contact;
-        private Contact newContact;
+        public Contact newContact;
         public ContactPosition contactPosition;
-        private ContactPosition newContactPosition;
+        public ContactPosition newContactPosition;
         public Interview interview;
-        private Interview newInterview;
+        public Interview newInterview;
         public Position position;
-        private Position newPostion;
+        public Position newPostion;
         public Resume resume;
-        private Resume newResume;
+        public Resume newResume;
         public School school;
-        private School newSchool;
+        public School newSchool;
 
         private void frmAUI_Load(object sender, EventArgs e)
         {
@@ -80,19 +80,25 @@ namespace WindowsFormsApplication1
                 {
                     newInterview = new Interview();
                     interviewBindingSource.Clear();
+                    interviewBindingSource.Add(newInterview);
                 }
                 if (Text == "Add Position")
                 {
                     newPostion = new Position();
-
+                    positionBindingSource.Clear();
+                    positionBindingSource.Add(newPostion);
                 }
                 if (Text == "Add Resume")
                 {
                     newResume = new Resume();
+                    resumeBindingSource.Clear();
+                    resumeBindingSource.Add(newResume);
                 }
                 if (Text == "Add School")
                 {
                     newSchool = new School();
+                    schoolBindingSource.Clear();
+                    schoolBindingSource.Add(newSchool);
                 }
             }
             else
@@ -581,17 +587,161 @@ namespace WindowsFormsApplication1
  //                       newClient.BirthDate = birthDateDateTimePicker.Value;
                         ClientDB.AddClient(newClient);
                         client = newClient;
-                        DialogResult = DialogResult.OK;
+                        DialogResult = DialogResult.Retry;
+                    }
+                    if (comLVVisible)
+                    {
+                        CompanyDB.AddCompany(newCompany);
+                        company = newCompany;
+                        DialogResult = DialogResult.Retry;
+                    }
+                    if (conLVVisible)
+                    {
+                        ContactDB.AddContact(newContact);
+                        contact = newContact;
+                        DialogResult = DialogResult.Retry;
+                    }
+                    if (conPosLVVisible)
+                    {
+                        ContactPositionDB.AddContactPosition(newContactPosition);
+                        contactPosition = newContactPosition;
+                        DialogResult = DialogResult.Retry;
+                    }
+                    if (intLVVisible)
+                    {
+                        InterviewDB.AddInterview(newInterview);
+                        interview = newInterview;
+                        DialogResult = DialogResult.Retry;
+                    }
+                    if (posLVVisible)
+                    {
+                        PositionDB.AddPosition(newPostion);
+                        position = newPostion;
+                        DialogResult = DialogResult.Retry;
+                    }
+                    if (resLVVisible)
+                    {
+                        ResumeDB.AddResume(newResume);
+                        resume = newResume;
+                        DialogResult = DialogResult.Retry;
+                    }
+                    if (schLVVisible)
+                    {
+                        SchoolDB.AddSchool(newSchool);
+                        school = newSchool;
+                        DialogResult = DialogResult.Retry;
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, ex.GetType().ToString());
                 }
             }
             else
             {
-
+                try
+                {
+                    if (cliLVVisible)
+                    {
+                        if(!ClientDB.UpdateClient(client, newClient))
+                        {
+                            MessageBox.Show("Client was modified or deleted", "Error");
+                            DialogResult = DialogResult.Retry;
+                        }
+                        else
+                        {
+                            client = newClient;
+                        }
+                    }
+                    if (comLVVisible)
+                    {
+                        if (!CompanyDB.UpdateCompany(company, newCompany))
+                        {
+                            MessageBox.Show("Company was modified or deleted", "Error");
+                            DialogResult = DialogResult.Retry;
+                        }
+                        else
+                        {
+                            company = newCompany;
+                        }
+                    }
+                    if (conLVVisible)
+                    {
+                        if (!ContactDB.UpdateContact(contact, newContact))
+                        {
+                            MessageBox.Show("Contact was modified or deleted", "Error");
+                            DialogResult = DialogResult.Retry;
+                        }
+                        else
+                        {
+                            contact = newContact;
+                        }
+                    }
+                    if (conPosLVVisible)
+                    {
+                        if (!ContactPositionDB.UpdateContactPosition(contactPosition, newContactPosition))
+                        {
+                            MessageBox.Show("Contact Position was modified or deleted", "Error");
+                            DialogResult = DialogResult.Retry;
+                        }
+                        else
+                        {
+                            contactPosition = newContactPosition;
+                        }
+                    }
+                    if (intLVVisible)
+                    {
+                        if (!InterviewDB.UpdateInterview(interview, newInterview))
+                        {
+                            MessageBox.Show("Interview was modified or deleted", "Error");
+                            DialogResult = DialogResult.Retry;
+                        }
+                        else
+                        {
+                            interview = newInterview;
+                        }
+                    }
+                    if (posLVVisible)
+                    {
+                        if (!PositionDB.UpdatePosition(position, newPostion))
+                        {
+                            MessageBox.Show("Positon was modified or deleted", "Error");
+                            DialogResult = DialogResult.Retry;
+                        }
+                        else
+                        {
+                            position = newPostion;
+                        }
+                    }
+                    if (resLVVisible)
+                    {
+                        if (!ResumeDB.UpdateResume(resume, newResume))
+                        {
+                            MessageBox.Show("Resume was modified or deleted", "Error");
+                            DialogResult = DialogResult.Retry;
+                        }
+                        else
+                        {
+                            resume = newResume;
+                        }
+                    }
+                    if (schLVVisible)
+                    {
+                        if (!SchoolDB.UpdateSchool(school, newSchool))
+                        {
+                            MessageBox.Show("School was modified or deleted", "Error");
+                            DialogResult = DialogResult.Retry;
+                        }
+                        else
+                        {
+                            school = newSchool;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
+                }
 
             }
         }
