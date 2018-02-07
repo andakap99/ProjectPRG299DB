@@ -41,8 +41,11 @@ namespace ProjectPRG299DB
                     clientA.City = reader.GetString(cCOrd);
                     clientA.State = reader.GetString(cSOrd);
                     clientA.ZipCode = reader.GetString(cZCOrd);
-                    if (clientA.CellPhone == null)
+                    if (reader["CellPhone"].Equals(DBNull.Value))
+                    {
                         clientA.CellPhone = "";
+                    }
+                    else
                     clientA.CellPhone = reader.GetString(cPOrd);
                     clientList.Add(clientA);
                 }
@@ -139,7 +142,7 @@ namespace ProjectPRG299DB
                 connection.Close();
             }
         }
-        DateTime date =new(
+        
         public static int AddClient(Client client)
         {
             SqlConnection connection = PRG299DB.GetConnection();
@@ -152,8 +155,6 @@ namespace ProjectPRG299DB
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
             insertCommand.Parameters.AddWithValue("@FirstName", client.FirstName);
             insertCommand.Parameters.AddWithValue("@LastName", client.LastName);
-            if(client.BirthDate != DateTime)
-                {
             insertCommand.Parameters.AddWithValue("@BirthDate", client.BirthDate);
             insertCommand.Parameters["@BirthDate"].SqlDbType = SqlDbType.DateTime;
             insertCommand.Parameters.AddWithValue("@StreetName", client.StreetName);

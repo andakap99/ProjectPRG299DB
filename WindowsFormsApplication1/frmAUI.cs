@@ -59,20 +59,41 @@ namespace WindowsFormsApplication1
 
                 }
                 if (Text == "Add Company")
+                {
                     newCompany = new Company();
+                    companyBindingSource.Clear();
+                    companyBindingSource.Add(newCompany);
+                }
                 if (Text == "Add Contact")
+                {
                     newContact = new Contact();
+                    contactBindingSource.Clear();
+                    contactBindingSource.Add(newContact);
+                }
                 if (Text == "Add Contact Position")
+                {
                     newContactPosition = new ContactPosition();
+                    contactPositionBindingSource.Clear();
+                    contactPositionBindingSource.Add(newContactPosition);
+                }
                 if (Text == "Add Interview")
+                {
                     newInterview = new Interview();
+                    interviewBindingSource.Clear();
+                }
                 if (Text == "Add Position")
+                {
                     newPostion = new Position();
-                if (Text == "Add Resume")
-                    newResume = new Resume();
-                if (Text == "Add School")
-                    newSchool = new School();
 
+                }
+                if (Text == "Add Resume")
+                {
+                    newResume = new Resume();
+                }
+                if (Text == "Add School")
+                {
+                    newSchool = new School();
+                }
             }
             else
             {
