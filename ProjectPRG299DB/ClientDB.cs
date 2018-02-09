@@ -150,13 +150,16 @@ namespace ProjectPRG299DB
         
         public static int AddClient(Client client)
         {
+
             SqlConnection connection = PRG299DB.GetConnection();
             string insertStatement =
+                "SET IDENTITY_INSERT Client ON;" +
                 "INSERT INTO Client " +
                   "(FirstName, LastName, BirthDate, StreetName, " +
                 "City, State, ZipCode, CellPhone) " +
                 "VALUES (@FirstName, @LastName, @BirthDate, @StreetName, " +
-                "@City, @State, @ZipCode, @CellPhone)";
+                "@City, @State, @ZipCode, @CellPhone);" +
+                " SET IDENTITY_INSERT Client OFF;";
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
             insertCommand.Parameters.AddWithValue("@FirstName", client.FirstName);
             insertCommand.Parameters.AddWithValue("@LastName", client.LastName);

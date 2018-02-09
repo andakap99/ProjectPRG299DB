@@ -33,7 +33,10 @@ namespace ProjectPRG299DB
                     interv.CompanyID = reader.GetInt32(cAOrd);
                     interv.ContactID = reader.GetInt32(cford);
                     interv.DateTimeInterview = reader.GetDateTime(cCOrd);
-                    interv.AdditionalNotes = reader.GetString(cSOrd);
+                    if (reader["AdditionalNotes"].Equals(DBNull.Value))
+                        interv.AdditionalNotes = "";
+                    else
+                        interv.AdditionalNotes = reader.GetString(cSOrd);
                     interviewList.Add(interv);
                 }
             }
@@ -76,7 +79,10 @@ namespace ProjectPRG299DB
                     interview.CompanyID = reader.GetInt32(cAOrd);
                     interview.ContactID = reader.GetInt32(cford);
                     interview.DateTimeInterview = reader.GetDateTime(cCOrd);
-                    interview.AdditionalNotes = reader.GetString(cSOrd);
+                    if (reader["AdditionalNotes"].Equals(DBNull.Value))
+                        interview.AdditionalNotes = "";
+                    else
+                        interview.AdditionalNotes = reader.GetString(cSOrd);
                 }
             }
             catch (SqlException ex)

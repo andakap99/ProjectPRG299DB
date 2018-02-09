@@ -29,11 +29,26 @@ namespace ProjectPRG299DB
                 {
                     Position posi = new Position();
                     posi.PositionID = reader.GetInt32(cIDOrd);
-                    posi.PositionName = reader.GetString(cNOrd);
-                    posi.Description = reader.GetString(cAOrd);
-                    posi.CompanyID = reader.GetInt32(cCOrd);
-                    posi.AdditionalNotes = reader.GetString(cSOrd);
-                    posi.ResumeID = reader.GetInt32(cZCOrd);
+                    if (reader[cNOrd].Equals(DBNull.Value))
+                        posi.PositionName = "";
+                    else
+                        posi.PositionName = reader.GetString(cNOrd);
+                    if (reader[cAOrd].Equals(DBNull.Value))
+                        posi.Description = "";
+                    else
+                        posi.Description = reader.GetString(cAOrd);
+                    if (reader[cCOrd].Equals(DBNull.Value))
+                        posi.CompanyID = -1;
+                    else
+                        posi.CompanyID = reader.GetInt32(cCOrd);
+                    if (reader[cSOrd].Equals(DBNull.Value))
+                        posi.AdditionalNotes = "";
+                    else
+                        posi.AdditionalNotes = reader.GetString(cSOrd);
+                    if (reader[cZCOrd].Equals(DBNull.Value))
+                        posi.ResumeID = -1;
+                    else
+                        posi.ResumeID = reader.GetInt32(cZCOrd);
                     positionList.Add(posi);
                 }
             }
@@ -72,11 +87,26 @@ namespace ProjectPRG299DB
                 while (reader.Read())
                 {
                     position.PositionID = reader.GetInt32(cIDOrd);
-                    position.PositionName = reader.GetString(cNOrd);
-                    position.Description = reader.GetString(cAOrd);
-                    position.CompanyID = reader.GetInt32(cCOrd);
-                    position.AdditionalNotes = reader.GetString(cSOrd);
-                    position.ResumeID = reader.GetInt32(cZCOrd);
+                    if (reader[cNOrd].Equals(DBNull.Value))
+                        position.PositionName = "";
+                    else
+                        position.PositionName = reader.GetString(cNOrd);
+                    if (reader[cAOrd].Equals(DBNull.Value))
+                        position.Description = "";
+                    else
+                        position.Description = reader.GetString(cAOrd);
+                    if (reader[cCOrd].Equals(DBNull.Value))
+                        position.CompanyID = -1;
+                    else
+                        position.CompanyID = reader.GetInt32(cCOrd);
+                    if (reader[cSOrd].Equals(DBNull.Value))
+                        position.AdditionalNotes = "";
+                    else
+                        position.AdditionalNotes = reader.GetString(cSOrd);
+                    if (reader[cZCOrd].Equals(DBNull.Value))
+                        position.ResumeID = -1;
+                    else
+                        position.ResumeID = reader.GetInt32(cZCOrd);
                 }
             }
             catch (SqlException ex)

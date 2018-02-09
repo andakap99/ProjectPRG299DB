@@ -30,14 +30,34 @@ namespace ProjectPRG299DB
                 while (reader.Read())
                 {
                     School scho = new School();
-                    scho.SchoolID = reader.GetInt32(cIDOrd);
-                    scho.SchoolName = reader.GetString(cNOrd);
-                    scho.StreetName = reader.GetString(cAOrd);
-                    scho.City = reader.GetString(cCOrd);
-                    scho.State = reader.GetString(cSOrd);
-                    scho.ZipCode = reader.GetString(cZCOrd);
-                    scho.NumberOfYearsAttended = reader.GetString(cPOrd);
-                    scho.Graduated = reader.GetString(cEOrd);
+                    if (reader[cNOrd].Equals(DBNull.Value))
+                        scho.SchoolName = "";
+                    else
+                        scho.SchoolName = reader.GetString(cNOrd);
+                    if (reader[cAOrd].Equals(DBNull.Value))
+                        scho.StreetName = "";
+                    else
+                        scho.StreetName = reader.GetString(cAOrd);
+                    if (reader[cCOrd].Equals(DBNull.Value))
+                        scho.City = "";
+                    else
+                        scho.City = reader.GetString(cCOrd);
+                    if (reader[cSOrd].Equals(DBNull.Value))
+                        scho.State = "";
+                    else
+                        scho.State = reader.GetString(cSOrd);
+                    if (reader[cZCOrd].Equals(DBNull.Value))
+                        scho.ZipCode = "";
+                    else
+                        scho.ZipCode = reader.GetString(cZCOrd);
+                    if (reader[cPOrd].Equals(DBNull.Value))
+                        scho.NumberOfYearsAttended = -1;
+                    else
+                        scho.NumberOfYearsAttended = reader.GetInt32(cPOrd);
+                    if (reader[cEOrd].Equals(DBNull.Value))
+                        scho.Graduated = "";
+                    else
+                        scho.Graduated = reader.GetString(cEOrd);
                     SchoolList.Add(scho);
                 }
             }
@@ -78,13 +98,34 @@ namespace ProjectPRG299DB
                 while (reader.Read())
                 {
                     school.SchoolID = reader.GetInt32(cIDOrd);
-                    school.SchoolName = reader.GetString(cNOrd);
-                    school.StreetName = reader.GetString(cAOrd);
-                    school.City = reader.GetString(cCOrd);
-                    school.State = reader.GetString(cSOrd);
-                    school.ZipCode = reader.GetString(cZCOrd);
-                    school.NumberOfYearsAttended = reader.GetString(cPOrd);
-                    school.Graduated = reader.GetString(cEOrd);
+                    if (reader[cNOrd].Equals(DBNull.Value))
+                        school.SchoolName= "";
+                    else
+                        school.SchoolName = reader.GetString(cNOrd);
+                    if (reader[cAOrd].Equals(DBNull.Value))
+                        school.StreetName = "";
+                    else
+                        school.StreetName = reader.GetString(cAOrd);
+                    if (reader[cCOrd].Equals(DBNull.Value))
+                        school.City = "";
+                    else
+                        school.City = reader.GetString(cCOrd);
+                    if (reader[cSOrd].Equals(DBNull.Value))
+                        school.State = "";
+                    else
+                        school.State = reader.GetString(cSOrd);
+                    if (reader[cZCOrd].Equals(DBNull.Value))
+                        school.ZipCode = "";
+                    else
+                        school.ZipCode = reader.GetString(cZCOrd);
+                    if (reader[cPOrd].Equals(DBNull.Value))
+                        school.NumberOfYearsAttended = -1;
+                    else
+                        school.NumberOfYearsAttended = reader.GetInt32(cPOrd);
+                    if (reader[cEOrd].Equals(DBNull.Value))
+                        school.Graduated = "";
+                    else
+                        school.Graduated = reader.GetString(cEOrd);
                 }
             }
             catch (SqlException ex)
@@ -161,7 +202,7 @@ namespace ProjectPRG299DB
                 insertCommand.Parameters.AddWithValue("@ZipCode", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@ZipCode", school.ZipCode);
-            if (school.NumberOfYearsAttended == null)
+            if (school.NumberOfYearsAttended.ToString() == null)
                 insertCommand.Parameters.AddWithValue("@NumberOfYearsAttended", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@NumberOfYearsAttended", school.NumberOfYearsAttended);
@@ -243,16 +284,14 @@ namespace ProjectPRG299DB
                 updateCommand.Parameters.AddWithValue("@NewZipCode", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@NewZipCode", newSchool.ZipCode);
-            if (newSchool.NumberOfYearsAttended == null)
+            if (newSchool.NumberOfYearsAttended.ToString() == null)
                 updateCommand.Parameters.AddWithValue("@NewNumberOfYearsAttended", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@NewNumberOfYearsAttended", newSchool.NumberOfYearsAttended);
             if (newSchool.Graduated == null)
-                updateCommand.Parameters.AddWithValue("@NewGraduated",
-                    DBNull.Value);
+                updateCommand.Parameters.AddWithValue("@NewGraduated", DBNull.Value);
             else
-                updateCommand.Parameters.AddWithValue("@NewGraduated",
-                    newSchool.Graduated);
+                updateCommand.Parameters.AddWithValue("@NewGraduated", newSchool.Graduated);
             updateCommand.Parameters.AddWithValue("@OldSchoolID", oldSchool.SchoolID);
             if (oldSchool.SchoolName == null)
                 updateCommand.Parameters.AddWithValue("@OldSchoolName", DBNull.Value);
@@ -274,7 +313,7 @@ namespace ProjectPRG299DB
                 updateCommand.Parameters.AddWithValue("@OldZipCode", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@OldZipCode", oldSchool.ZipCode);
-            if (oldSchool.NumberOfYearsAttended == null)
+            if (oldSchool.NumberOfYearsAttended == -1)
                 updateCommand.Parameters.AddWithValue("@OldNumberOfYearsAttended", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@OldNumberOfYearsAttended", oldSchool.NumberOfYearsAttended);

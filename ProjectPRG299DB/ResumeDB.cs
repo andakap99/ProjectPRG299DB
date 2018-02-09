@@ -27,9 +27,18 @@ namespace ProjectPRG299DB
                 {
                     Resume resu = new Resume();
                     resu.ResumeID = reader.GetInt32(cIDOrd);
-                    resu.RSCDirectoryPath = reader.GetString(cNOrd);
-                    resu.SchoolID = reader.GetInt32(cAOrd);
-                    resu.ClientID = reader.GetInt32(cCOrd);
+                    if (reader[cNOrd].Equals(DBNull.Value))
+                        resu.RSCDirectoryPath = "";
+                    else
+                        resu.RSCDirectoryPath = reader.GetString(cNOrd);
+                    if (reader[cAOrd].Equals(DBNull.Value))
+                        resu.SchoolID = -1;
+                    else
+                        resu.SchoolID = reader.GetInt32(cAOrd);
+                    if (reader[cCOrd].Equals(DBNull.Value))
+                        resu.ClientID = -1;
+                    else
+                        resu.ClientID = reader.GetInt32(cCOrd);
                     resumeList.Add(resu);
                 }
             }
@@ -66,9 +75,18 @@ namespace ProjectPRG299DB
                 while (reader.Read())
                 {
                     resume.ResumeID = reader.GetInt32(cIDOrd);
-                    resume.RSCDirectoryPath = reader.GetString(cNOrd);
-                    resume.SchoolID = reader.GetInt32(cAOrd);
-                    resume.ClientID = reader.GetInt32(cCOrd);
+                    if (reader[cNOrd].Equals(DBNull.Value))
+                        resume.RSCDirectoryPath = "";
+                    else
+                        resume.RSCDirectoryPath = reader.GetString(cNOrd);
+                    if (reader[cAOrd].Equals(DBNull.Value))
+                        resume.SchoolID = -1;
+                    else
+                        resume.SchoolID = reader.GetInt32(cAOrd);
+                    if (reader[cCOrd].Equals(DBNull.Value))
+                        resume.ClientID = -1;
+                    else
+                        resume.ClientID = reader.GetInt32(cCOrd);
                 }
             }
             catch (SqlException ex)

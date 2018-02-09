@@ -69,7 +69,6 @@ namespace WindowsFormsApplication1
             {
                 clientList = ClientDB.GetClient();
                 clientDataGridView.DataSource = clientList;
-                cm = (CurrencyManager)clientDataGridView.BindingContext[clientList];
             }
             catch (SqlException ex)
             {
@@ -240,7 +239,7 @@ namespace WindowsFormsApplication1
                         clientDataGridView.DataSource = clientList;
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
-                        
+                        cm = (CurrencyManager)clientDataGridView.BindingContext[clientList];
                     }
                     else if (tabControl1.SelectedTab.Text == "Company")
                     {
@@ -387,11 +386,14 @@ namespace WindowsFormsApplication1
             }
             finally
             {
+
                 UpdateInsertForm.MdiParent = mainForm;
                 UpdateInsertForm.ShowDialog();
                
 
             }
+            cm.Refresh();
+            
         }
 
     }

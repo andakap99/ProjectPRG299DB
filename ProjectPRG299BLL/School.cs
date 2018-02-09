@@ -14,7 +14,7 @@ namespace ProjectPRG299DB
         private string city;
         private string state;
         private string zipCode;
-        private string numberOfYearsAttended;
+        private int numberOfYearsAttended;
         /// <summary></summary>
         private string graduated;
 
@@ -49,7 +49,7 @@ namespace ProjectPRG299DB
             }
         }
 
-        public string NumberOfYearsAttended
+        public int NumberOfYearsAttended
         {
             get
             {
