@@ -155,11 +155,13 @@ namespace ProjectPRG299DB
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string insertStatement =
+                "SET IDENTITY_INSERT Company ON;" +
                 "INSERT Company " +
                   "(CompanyID, CompanyName, BuildingName, BuildingNumber, StreetAddress, " +
                 "City, State, ZipCode, Website, AdditionalNotes) " +
                 "VALUES (@CompanyID, @CompanyName, @BuildingName, @BuildingNumber, @StreetAddress, " +
-                "@City, @State, @ZipCode, @Website, @AdditionalNotes)";
+                "@City, @State, @ZipCode, @Website, @AdditionalNotes);" +
+                " SET IDENTITY_INSERT Company OFF;";
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
             insertCommand.Parameters.AddWithValue("@CompanyID", company.CompanyID);
             insertCommand.Parameters.AddWithValue("@CompanyName", company.CompanyName);

@@ -153,7 +153,7 @@ namespace ProjectPRG299DB
 
             SqlConnection connection = PRG299DB.GetConnection();
             string insertStatement =
-                "SET IDENTITY_INSERT Client ON;" +
+            //    "SET IDENTITY_INSERT Client ON;" +
                 "INSERT INTO Client " +
                   "(FirstName, LastName, BirthDate, StreetName, " +
                 "City, State, ZipCode, CellPhone) " +
@@ -214,7 +214,7 @@ namespace ProjectPRG299DB
                 "WHERE ClientID = @OldClientID " +
                   "AND FirstName = @OldFirstName " +
                   "AND LastName = @OldLastName " +
-                  "AND Birthdate = @OldBirthDate" +
+                  "AND Birthdate = @OldBirthDate " +
                   "AND StreetName = @OldStreetName " +
                   "AND City = @OldCity " +
                   "AND State = @OldState " +
@@ -229,7 +229,7 @@ namespace ProjectPRG299DB
             updateCommand.Parameters.AddWithValue("@NewCity", newClient.City);
             updateCommand.Parameters.AddWithValue("@NewState", newClient.State);
             updateCommand.Parameters.AddWithValue("@NewZipCode", newClient.ZipCode);
-            if (newClient.CellPhone == null)
+            if (newClient.CellPhone == "")
                 updateCommand.Parameters.AddWithValue("@NewCellPhone", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@NewCellPhone", newClient.CellPhone);
@@ -242,7 +242,7 @@ namespace ProjectPRG299DB
             updateCommand.Parameters.AddWithValue("@OldCity", oldClient.City);
             updateCommand.Parameters.AddWithValue("@OldState", oldClient.State);
             updateCommand.Parameters.AddWithValue("@OldZipCode", oldClient.ZipCode);
-            if (oldClient.CellPhone == null)
+            if (oldClient.CellPhone == "")
                 updateCommand.Parameters.AddWithValue("@OldCellPhone", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@OldCellPhone", oldClient.CellPhone);

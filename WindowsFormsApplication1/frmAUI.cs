@@ -17,6 +17,7 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
         }
+        public bool btnModifyClicked;
         public bool addMenuClicked;
         public bool cliLVVisible = false;
         public bool comLVVisible = false;
@@ -46,7 +47,7 @@ namespace WindowsFormsApplication1
 
         private void frmAUI_Load(object sender, EventArgs e)
         {
-
+            btnModifyClicked = true;
             StateComboBoxes();
             if (addMenuClicked)
             {
@@ -108,6 +109,9 @@ namespace WindowsFormsApplication1
                 {
                     newClient = new Client();
                     PutNewClient();
+                    clientBindingSource.Clear();
+                    clientBindingSource.Add(newClient);
+
                 }
 
                 if (Text == "Modify Company")
@@ -168,7 +172,7 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
         }
-        private void PutNewClient()
+        public void PutNewClient()
         {
             newClient.ClientID = client.ClientID;
             newClient.FirstName = client.FirstName;
@@ -180,7 +184,7 @@ namespace WindowsFormsApplication1
             newClient.ZipCode = client.ZipCode;
             newClient.CellPhone = client.CellPhone;                      
         }
-        private void PutNewCompany()
+        public void PutNewCompany()
         {
             newCompany.CompanyID = company.CompanyID;
             newCompany.CompanyName = company.CompanyName;
@@ -642,7 +646,7 @@ namespace WindowsFormsApplication1
                 try
                 {
                     if (cliLVVisible)
-                    {
+                     {
                         if(!ClientDB.UpdateClient(client, newClient))
                         {
                             MessageBox.Show("Client was modified or deleted", "Error");
@@ -651,6 +655,7 @@ namespace WindowsFormsApplication1
                         else
                         {
                             client = newClient;
+                            DialogResult = DialogResult.OK;
                         }
                     }
                     if (comLVVisible)
@@ -663,6 +668,7 @@ namespace WindowsFormsApplication1
                         else
                         {
                             company = newCompany;
+                            DialogResult = DialogResult.OK;
                         }
                     }
                     if (conLVVisible)
@@ -750,5 +756,6 @@ namespace WindowsFormsApplication1
         {
             Close();
         }
+
     }
 }

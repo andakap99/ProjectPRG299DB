@@ -237,6 +237,10 @@ namespace WindowsFormsApplication1
                         UpdateInsertForm.clientBindingSource.Clear();
                         UpdateInsertForm.clientBindingSource.Add(UpdateInsertForm.newClient);
                         clientDataGridView.DataSource = clientList;
+                        foreach (DataGridViewRow row in clientDataGridView.Rows)
+                        {
+                          Client client = (Client)row.DataBoundItem;
+                        }
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
                         cm = (CurrencyManager)clientDataGridView.BindingContext[clientList];
@@ -251,6 +255,7 @@ namespace WindowsFormsApplication1
                         companyDataGridView.DataSource = companyList;
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
+                        cm = (CurrencyManager)companyDataGridView.BindingContext[companyList];
                     }
                     else if (tabControl1.SelectedTab.Text == "Contact")
                     {
@@ -260,6 +265,7 @@ namespace WindowsFormsApplication1
                         contactDataGridView.DataSource = contactList;
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
+                        cm = (CurrencyManager)contactDataGridView.BindingContext[contactList];
                     }
                     else if (tabControl1.SelectedTab.Text == "Contact Position")
                     {
@@ -269,6 +275,7 @@ namespace WindowsFormsApplication1
                         contactPositionDataGridView.DataSource = coPoList;
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
+                        cm = (CurrencyManager)contactPositionDataGridView.BindingContext[coPoList];
                     }
                     else if (tabControl1.SelectedTab.Text == "Interview")
                     {
@@ -278,6 +285,7 @@ namespace WindowsFormsApplication1
                         interviewDataGridView.DataSource = interviewList;
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
+                        cm = (CurrencyManager)interviewDataGridView.BindingContext[interviewList];
                     }
                     else if (tabControl1.SelectedTab.Text == "Position")
                     {
@@ -287,6 +295,7 @@ namespace WindowsFormsApplication1
                         positionDataGridView.DataSource = positionList;
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
+                        cm = (CurrencyManager)positionDataGridView.BindingContext[positionList];
                     }
                     else if (tabControl1.SelectedTab.Text == "Resume")
                     {
@@ -296,6 +305,7 @@ namespace WindowsFormsApplication1
                         resumeDataGridView.DataSource = resumeList;
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
+                        cm = (CurrencyManager)resumeDataGridView.BindingContext[resumeList];
                     }
                     else if (tabControl1.SelectedTab.Text == "School")
                     {
@@ -306,6 +316,7 @@ namespace WindowsFormsApplication1
                         UpdateInsertForm.schoolBindingSource.Add(UpdateInsertForm.newSchool);
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
+                        cm = (CurrencyManager)schoolDataGridView.BindingContext[schoolList];
                     }                    
                 }
                 else
@@ -314,20 +325,31 @@ namespace WindowsFormsApplication1
                     UpdateInsertForm.addMenuClicked = false;
                     if (tabControl1.SelectedTab.Text == "Client")
                     {
-                        UpdateInsertForm.client = ClientDB.GetClientByRow((int)clientDataGridView.CurrentCell.Value);
+                        UpdateInsertForm.stateList = StateDB.GetStateList();
+                        UpdateInsertForm.stateComboBox.DataSource = UpdateInsertForm.stateList;
+                        UpdateInsertForm.newClient = ClientDB.GetClientByRow((int)clientDataGridView.CurrentCell.Value);
+                       UpdateInsertForm.client = ClientDB.GetClientByRow((int)clientDataGridView.CurrentCell.Value);
                         UpdateInsertForm.clientBindingSource.Clear();
-                        UpdateInsertForm.clientBindingSource.Add(UpdateInsertForm.client);
+                        UpdateInsertForm.clientBindingSource.Add(UpdateInsertForm.newClient);
+                        foreach (DataGridViewRow row in clientDataGridView.Rows)
+                        {
+                            Client client = (Client)row.DataBoundItem;
+                        }
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
+                        cm = (CurrencyManager)clientDataGridView.BindingContext[clientList];
 
                     }
                     else if (tabControl1.SelectedTab.Text == "Company")
                     {
+                        UpdateInsertForm.stateList = StateDB.GetStateList();
+                        UpdateInsertForm.stateComboBox1.DataSource = UpdateInsertForm.stateList;
                         UpdateInsertForm.company = CompanyDB.GetCompanyByRow((int)companyDataGridView.CurrentCell.Value);
                         UpdateInsertForm.companyBindingSource.Clear();
                         UpdateInsertForm.companyBindingSource.Add(UpdateInsertForm.company);
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
+                        cm = (CurrencyManager)companyDataGridView.BindingContext[companyList];
                     }
                     else if (tabControl1.SelectedTab.Text == "Contact")
                     {
@@ -336,6 +358,7 @@ namespace WindowsFormsApplication1
                         UpdateInsertForm.contactBindingSource.Add(UpdateInsertForm.contact);
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
+                        cm = (CurrencyManager)contactDataGridView.BindingContext[contactList];
                     }
                     else if (tabControl1.SelectedTab.Text == "Contact Position")
                     {
@@ -344,6 +367,7 @@ namespace WindowsFormsApplication1
                         UpdateInsertForm.contactPositionBindingSource.Add(UpdateInsertForm.contactPosition);
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
+                        cm = (CurrencyManager)contactPositionDataGridView.BindingContext[coPoList];
                     }
                     else if (tabControl1.SelectedTab.Text == "Interview")
                     {
@@ -352,6 +376,7 @@ namespace WindowsFormsApplication1
                         UpdateInsertForm.interviewBindingSource.Add(UpdateInsertForm.interview);
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
+                        cm = (CurrencyManager)interviewDataGridView.BindingContext[interviewList];
                     }
                     else if (tabControl1.SelectedTab.Text == "Position")
                     {
@@ -360,6 +385,7 @@ namespace WindowsFormsApplication1
                         UpdateInsertForm.positionBindingSource.Add(UpdateInsertForm.position);
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
+                        cm = (CurrencyManager)positionDataGridView.BindingContext[positionList];
                     }
                     else if (tabControl1.SelectedTab.Text == "Resume")
                     {
@@ -368,14 +394,18 @@ namespace WindowsFormsApplication1
                         UpdateInsertForm.resumeBindingSource.Add(UpdateInsertForm.resume);
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
+                        cm = (CurrencyManager)resumeDataGridView.BindingContext[resumeList];
                     }
                     else if (tabControl1.SelectedTab.Text == "School")
                     {
+                        UpdateInsertForm.stateList = StateDB.GetStateList();
+                        UpdateInsertForm.stateComboBox2.DataSource = UpdateInsertForm.stateList;
                         UpdateInsertForm.school = SchoolDB.GetSchoolByRow((int)schoolDataGridView.CurrentCell.Value);
                         UpdateInsertForm.schoolBindingSource.Clear();
                         UpdateInsertForm.schoolBindingSource.Add(UpdateInsertForm.school);
                         UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
                         UpdateInsertForm.AllListView();
+                        cm = (CurrencyManager)schoolDataGridView.BindingContext[schoolList];
                     }
                 }
                 
@@ -392,6 +422,7 @@ namespace WindowsFormsApplication1
                
 
             }
+//            if(UpdateInsertForm.btnClicked)
             cm.Refresh();
             
         }
