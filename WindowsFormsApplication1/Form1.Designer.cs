@@ -184,6 +184,7 @@
             this.deleteToolStripMenu.Name = "deleteToolStripMenu";
             this.deleteToolStripMenu.Size = new System.Drawing.Size(52, 20);
             this.deleteToolStripMenu.Text = "Delete";
+            this.deleteToolStripMenu.Click += new System.EventHandler(this.deleteToolStripMenu_Click);
             // 
             // tabControl1
             // 

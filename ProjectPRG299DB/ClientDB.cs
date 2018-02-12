@@ -119,12 +119,12 @@ namespace ProjectPRG299DB
             return client;
         }
 
-        public static bool DeleteClient(Client client)
+        public static bool DeleteClient(int clientID)
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string deleteStatement = "DELETE FROM Client WHERE ClientID = @ClientID";
             SqlCommand DeleteCommand = new SqlCommand(deleteStatement, connection);
-            DeleteCommand.Parameters.AddWithValue("@ClientID", client.ClientID);
+            DeleteCommand.Parameters.AddWithValue("@ClientID", clientID);
             try
             {
                 connection.Open();
