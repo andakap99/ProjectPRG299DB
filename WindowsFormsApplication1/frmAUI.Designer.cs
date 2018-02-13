@@ -621,7 +621,7 @@
             this.firstNameLabel.Location = new System.Drawing.Point(26, 58);
             this.firstNameLabel.Name = "firstNameLabel";
             this.firstNameLabel.Size = new System.Drawing.Size(60, 13);
-            this.firstNameLabel.TabIndex = 9;
+            this.firstNameLabel.TabIndex = 1;
             this.firstNameLabel.Text = "First Name:";
             this.firstNameLabel.Visible = false;
             // 
@@ -631,7 +631,7 @@
             this.lastNameLabel.Location = new System.Drawing.Point(26, 84);
             this.lastNameLabel.Name = "lastNameLabel";
             this.lastNameLabel.Size = new System.Drawing.Size(61, 13);
-            this.lastNameLabel.TabIndex = 11;
+            this.lastNameLabel.TabIndex = 3;
             this.lastNameLabel.Text = "Last Name:";
             this.lastNameLabel.Visible = false;
             // 
@@ -681,7 +681,7 @@
             this.birthDateDateTimePicker.Location = new System.Drawing.Point(101, 107);
             this.birthDateDateTimePicker.Name = "birthDateDateTimePicker";
             this.birthDateDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.birthDateDateTimePicker.TabIndex = 2;
+            this.birthDateDateTimePicker.TabIndex = 3;
             this.birthDateDateTimePicker.Visible = false;
             // 
             // clientBindingSource
@@ -694,7 +694,7 @@
             this.cellPhoneTextBox.Location = new System.Drawing.Point(101, 238);
             this.cellPhoneTextBox.Name = "cellPhoneTextBox";
             this.cellPhoneTextBox.Size = new System.Drawing.Size(200, 20);
-            this.cellPhoneTextBox.TabIndex = 4;
+            this.cellPhoneTextBox.TabIndex = 8;
             this.cellPhoneTextBox.Visible = false;
             // 
             // cityTextBox
@@ -703,7 +703,7 @@
             this.cityTextBox.Location = new System.Drawing.Point(101, 159);
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(200, 20);
-            this.cityTextBox.TabIndex = 6;
+            this.cityTextBox.TabIndex = 5;
             this.cityTextBox.Visible = false;
             // 
             // clientIDTextBox
@@ -723,7 +723,7 @@
             this.firstNameTextBox.Location = new System.Drawing.Point(101, 55);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(200, 20);
-            this.firstNameTextBox.TabIndex = 10;
+            this.firstNameTextBox.TabIndex = 1;
             this.firstNameTextBox.Visible = false;
             // 
             // lastNameTextBox
@@ -732,7 +732,7 @@
             this.lastNameTextBox.Location = new System.Drawing.Point(101, 81);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(200, 20);
-            this.lastNameTextBox.TabIndex = 12;
+            this.lastNameTextBox.TabIndex = 2;
             this.lastNameTextBox.Visible = false;
             // 
             // stateComboBox
@@ -744,7 +744,7 @@
             this.stateComboBox.Location = new System.Drawing.Point(101, 185);
             this.stateComboBox.Name = "stateComboBox";
             this.stateComboBox.Size = new System.Drawing.Size(200, 21);
-            this.stateComboBox.TabIndex = 14;
+            this.stateComboBox.TabIndex = 6;
             this.stateComboBox.ValueMember = "StateCode";
             this.stateComboBox.Visible = false;
             // 
@@ -758,7 +758,7 @@
             this.streetNameTextBox.Location = new System.Drawing.Point(101, 133);
             this.streetNameTextBox.Name = "streetNameTextBox";
             this.streetNameTextBox.Size = new System.Drawing.Size(200, 20);
-            this.streetNameTextBox.TabIndex = 16;
+            this.streetNameTextBox.TabIndex = 4;
             this.streetNameTextBox.Visible = false;
             // 
             // zipCodeTextBox
@@ -767,7 +767,7 @@
             this.zipCodeTextBox.Location = new System.Drawing.Point(101, 212);
             this.zipCodeTextBox.Name = "zipCodeTextBox";
             this.zipCodeTextBox.Size = new System.Drawing.Size(200, 20);
-            this.zipCodeTextBox.TabIndex = 18;
+            this.zipCodeTextBox.TabIndex = 7;
             this.zipCodeTextBox.Visible = false;
             // 
             // additionalNotesTextBox
@@ -776,7 +776,7 @@
             this.additionalNotesTextBox.Location = new System.Drawing.Point(118, 264);
             this.additionalNotesTextBox.Name = "additionalNotesTextBox";
             this.additionalNotesTextBox.Size = new System.Drawing.Size(200, 20);
-            this.additionalNotesTextBox.TabIndex = 19;
+            this.additionalNotesTextBox.TabIndex = 9;
             this.additionalNotesTextBox.Visible = false;
             // 
             // companyBindingSource
@@ -789,7 +789,7 @@
             this.buildingNameTextBox.Location = new System.Drawing.Point(118, 81);
             this.buildingNameTextBox.Name = "buildingNameTextBox";
             this.buildingNameTextBox.Size = new System.Drawing.Size(200, 20);
-            this.buildingNameTextBox.TabIndex = 21;
+            this.buildingNameTextBox.TabIndex = 2;
             this.buildingNameTextBox.Visible = false;
             // 
             // buildingNumberTextBox
@@ -798,7 +798,7 @@
             this.buildingNumberTextBox.Location = new System.Drawing.Point(118, 107);
             this.buildingNumberTextBox.Name = "buildingNumberTextBox";
             this.buildingNumberTextBox.Size = new System.Drawing.Size(200, 20);
-            this.buildingNumberTextBox.TabIndex = 23;
+            this.buildingNumberTextBox.TabIndex = 3;
             this.buildingNumberTextBox.Visible = false;
             // 
             // cityTextBox1
@@ -807,7 +807,7 @@
             this.cityTextBox1.Location = new System.Drawing.Point(118, 159);
             this.cityTextBox1.Name = "cityTextBox1";
             this.cityTextBox1.Size = new System.Drawing.Size(200, 20);
-            this.cityTextBox1.TabIndex = 25;
+            this.cityTextBox1.TabIndex = 5;
             this.cityTextBox1.Visible = false;
             // 
             // companyIDTextBox
@@ -827,7 +827,7 @@
             this.companyNameTextBox.Location = new System.Drawing.Point(118, 54);
             this.companyNameTextBox.Name = "companyNameTextBox";
             this.companyNameTextBox.Size = new System.Drawing.Size(200, 20);
-            this.companyNameTextBox.TabIndex = 29;
+            this.companyNameTextBox.TabIndex = 1;
             this.companyNameTextBox.Visible = false;
             // 
             // stateComboBox1
@@ -839,7 +839,7 @@
             this.stateComboBox1.Location = new System.Drawing.Point(118, 185);
             this.stateComboBox1.Name = "stateComboBox1";
             this.stateComboBox1.Size = new System.Drawing.Size(200, 21);
-            this.stateComboBox1.TabIndex = 31;
+            this.stateComboBox1.TabIndex = 6;
             this.stateComboBox1.ValueMember = "StateCode";
             this.stateComboBox1.Visible = false;
             // 
@@ -849,7 +849,7 @@
             this.streetAddressTextBox.Location = new System.Drawing.Point(118, 133);
             this.streetAddressTextBox.Name = "streetAddressTextBox";
             this.streetAddressTextBox.Size = new System.Drawing.Size(200, 20);
-            this.streetAddressTextBox.TabIndex = 33;
+            this.streetAddressTextBox.TabIndex = 4;
             this.streetAddressTextBox.Visible = false;
             // 
             // websiteTextBox
@@ -858,7 +858,7 @@
             this.websiteTextBox.Location = new System.Drawing.Point(118, 238);
             this.websiteTextBox.Name = "websiteTextBox";
             this.websiteTextBox.Size = new System.Drawing.Size(200, 20);
-            this.websiteTextBox.TabIndex = 35;
+            this.websiteTextBox.TabIndex = 8;
             this.websiteTextBox.Visible = false;
             // 
             // zipCodeTextBox1
@@ -867,7 +867,7 @@
             this.zipCodeTextBox1.Location = new System.Drawing.Point(118, 212);
             this.zipCodeTextBox1.Name = "zipCodeTextBox1";
             this.zipCodeTextBox1.Size = new System.Drawing.Size(200, 20);
-            this.zipCodeTextBox1.TabIndex = 37;
+            this.zipCodeTextBox1.TabIndex = 7;
             this.zipCodeTextBox1.Visible = false;
             // 
             // additionalNotesTextBox1
@@ -876,7 +876,7 @@
             this.additionalNotesTextBox1.Location = new System.Drawing.Point(118, 184);
             this.additionalNotesTextBox1.Name = "additionalNotesTextBox1";
             this.additionalNotesTextBox1.Size = new System.Drawing.Size(200, 20);
-            this.additionalNotesTextBox1.TabIndex = 39;
+            this.additionalNotesTextBox1.TabIndex = 6;
             this.additionalNotesTextBox1.Visible = false;
             // 
             // contactBindingSource
@@ -889,7 +889,7 @@
             this.cellPhoneTextBox1.Location = new System.Drawing.Point(118, 158);
             this.cellPhoneTextBox1.Name = "cellPhoneTextBox1";
             this.cellPhoneTextBox1.Size = new System.Drawing.Size(200, 20);
-            this.cellPhoneTextBox1.TabIndex = 41;
+            this.cellPhoneTextBox1.TabIndex = 5;
             this.cellPhoneTextBox1.Visible = false;
             // 
             // contactIDTextBox
@@ -909,7 +909,7 @@
             this.emailAddressTextBox.Location = new System.Drawing.Point(118, 106);
             this.emailAddressTextBox.Name = "emailAddressTextBox";
             this.emailAddressTextBox.Size = new System.Drawing.Size(200, 20);
-            this.emailAddressTextBox.TabIndex = 45;
+            this.emailAddressTextBox.TabIndex = 3;
             this.emailAddressTextBox.Visible = false;
             // 
             // firstNameTextBox1
@@ -918,7 +918,7 @@
             this.firstNameTextBox1.Location = new System.Drawing.Point(118, 54);
             this.firstNameTextBox1.Name = "firstNameTextBox1";
             this.firstNameTextBox1.Size = new System.Drawing.Size(200, 20);
-            this.firstNameTextBox1.TabIndex = 47;
+            this.firstNameTextBox1.TabIndex = 1;
             this.firstNameTextBox1.Visible = false;
             // 
             // lastNameTextBox1
@@ -927,7 +927,7 @@
             this.lastNameTextBox1.Location = new System.Drawing.Point(118, 80);
             this.lastNameTextBox1.Name = "lastNameTextBox1";
             this.lastNameTextBox1.Size = new System.Drawing.Size(200, 20);
-            this.lastNameTextBox1.TabIndex = 49;
+            this.lastNameTextBox1.TabIndex = 2;
             this.lastNameTextBox1.Visible = false;
             // 
             // phoneNumberTextBox
@@ -936,18 +936,16 @@
             this.phoneNumberTextBox.Location = new System.Drawing.Point(118, 132);
             this.phoneNumberTextBox.Name = "phoneNumberTextBox";
             this.phoneNumberTextBox.Size = new System.Drawing.Size(200, 20);
-            this.phoneNumberTextBox.TabIndex = 51;
+            this.phoneNumberTextBox.TabIndex = 4;
             this.phoneNumberTextBox.Visible = false;
             // 
             // contactIDTextBox1
             // 
             this.contactIDTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactPositionBindingSource, "ContactID", true));
-            this.contactIDTextBox1.Enabled = false;
             this.contactIDTextBox1.Location = new System.Drawing.Point(95, 28);
             this.contactIDTextBox1.Name = "contactIDTextBox1";
-            this.contactIDTextBox1.ReadOnly = true;
             this.contactIDTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.contactIDTextBox1.TabIndex = 53;
+            this.contactIDTextBox1.TabIndex = 1;
             this.contactIDTextBox1.Visible = false;
             // 
             // contactPositionBindingSource
@@ -960,7 +958,7 @@
             this.positionIDTextBox.Location = new System.Drawing.Point(95, 54);
             this.positionIDTextBox.Name = "positionIDTextBox";
             this.positionIDTextBox.Size = new System.Drawing.Size(100, 20);
-            this.positionIDTextBox.TabIndex = 55;
+            this.positionIDTextBox.TabIndex = 2;
             this.positionIDTextBox.Visible = false;
             // 
             // additionalNotesTextBox2
@@ -969,7 +967,7 @@
             this.additionalNotesTextBox2.Location = new System.Drawing.Point(138, 158);
             this.additionalNotesTextBox2.Name = "additionalNotesTextBox2";
             this.additionalNotesTextBox2.Size = new System.Drawing.Size(200, 20);
-            this.additionalNotesTextBox2.TabIndex = 57;
+            this.additionalNotesTextBox2.TabIndex = 5;
             this.additionalNotesTextBox2.Visible = false;
             // 
             // interviewBindingSource
@@ -982,7 +980,7 @@
             this.companyIDTextBox1.Location = new System.Drawing.Point(138, 80);
             this.companyIDTextBox1.Name = "companyIDTextBox1";
             this.companyIDTextBox1.Size = new System.Drawing.Size(200, 20);
-            this.companyIDTextBox1.TabIndex = 59;
+            this.companyIDTextBox1.TabIndex = 2;
             this.companyIDTextBox1.Visible = false;
             // 
             // contactIDTextBox2
@@ -991,7 +989,7 @@
             this.contactIDTextBox2.Location = new System.Drawing.Point(138, 106);
             this.contactIDTextBox2.Name = "contactIDTextBox2";
             this.contactIDTextBox2.Size = new System.Drawing.Size(200, 20);
-            this.contactIDTextBox2.TabIndex = 61;
+            this.contactIDTextBox2.TabIndex = 3;
             this.contactIDTextBox2.Visible = false;
             // 
             // dateTimeInterviewDateTimePicker
@@ -1000,7 +998,7 @@
             this.dateTimeInterviewDateTimePicker.Location = new System.Drawing.Point(138, 132);
             this.dateTimeInterviewDateTimePicker.Name = "dateTimeInterviewDateTimePicker";
             this.dateTimeInterviewDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.dateTimeInterviewDateTimePicker.TabIndex = 63;
+            this.dateTimeInterviewDateTimePicker.TabIndex = 4;
             this.dateTimeInterviewDateTimePicker.Visible = false;
             // 
             // interviewIDTextBox
@@ -1020,7 +1018,7 @@
             this.positionIDTextBox1.Location = new System.Drawing.Point(138, 54);
             this.positionIDTextBox1.Name = "positionIDTextBox1";
             this.positionIDTextBox1.Size = new System.Drawing.Size(200, 20);
-            this.positionIDTextBox1.TabIndex = 67;
+            this.positionIDTextBox1.TabIndex = 1;
             this.positionIDTextBox1.Visible = false;
             // 
             // additionalNotesTextBox3
@@ -1029,7 +1027,7 @@
             this.additionalNotesTextBox3.Location = new System.Drawing.Point(118, 133);
             this.additionalNotesTextBox3.Name = "additionalNotesTextBox3";
             this.additionalNotesTextBox3.Size = new System.Drawing.Size(200, 20);
-            this.additionalNotesTextBox3.TabIndex = 69;
+            this.additionalNotesTextBox3.TabIndex = 4;
             this.additionalNotesTextBox3.Visible = false;
             // 
             // positionBindingSource
@@ -1042,7 +1040,7 @@
             this.companyIDTextBox2.Location = new System.Drawing.Point(118, 107);
             this.companyIDTextBox2.Name = "companyIDTextBox2";
             this.companyIDTextBox2.Size = new System.Drawing.Size(200, 20);
-            this.companyIDTextBox2.TabIndex = 71;
+            this.companyIDTextBox2.TabIndex = 3;
             this.companyIDTextBox2.Visible = false;
             // 
             // descriptionTextBox
@@ -1051,7 +1049,7 @@
             this.descriptionTextBox.Location = new System.Drawing.Point(118, 81);
             this.descriptionTextBox.Name = "descriptionTextBox";
             this.descriptionTextBox.Size = new System.Drawing.Size(200, 20);
-            this.descriptionTextBox.TabIndex = 73;
+            this.descriptionTextBox.TabIndex = 2;
             this.descriptionTextBox.Visible = false;
             // 
             // positionIDTextBox2
@@ -1071,7 +1069,7 @@
             this.positionNameTextBox.Location = new System.Drawing.Point(118, 55);
             this.positionNameTextBox.Name = "positionNameTextBox";
             this.positionNameTextBox.Size = new System.Drawing.Size(200, 20);
-            this.positionNameTextBox.TabIndex = 77;
+            this.positionNameTextBox.TabIndex = 1;
             this.positionNameTextBox.Visible = false;
             // 
             // resumeIDTextBox
@@ -1080,7 +1078,7 @@
             this.resumeIDTextBox.Location = new System.Drawing.Point(118, 159);
             this.resumeIDTextBox.Name = "resumeIDTextBox";
             this.resumeIDTextBox.Size = new System.Drawing.Size(200, 20);
-            this.resumeIDTextBox.TabIndex = 79;
+            this.resumeIDTextBox.TabIndex = 5;
             this.resumeIDTextBox.Visible = false;
             // 
             // clientIDTextBox1
@@ -1089,7 +1087,7 @@
             this.clientIDTextBox1.Location = new System.Drawing.Point(132, 107);
             this.clientIDTextBox1.Name = "clientIDTextBox1";
             this.clientIDTextBox1.Size = new System.Drawing.Size(200, 20);
-            this.clientIDTextBox1.TabIndex = 81;
+            this.clientIDTextBox1.TabIndex = 3;
             this.clientIDTextBox1.Visible = false;
             // 
             // resumeBindingSource
@@ -1113,7 +1111,7 @@
             this.rSCDirectoryPathTextBox.Location = new System.Drawing.Point(132, 55);
             this.rSCDirectoryPathTextBox.Name = "rSCDirectoryPathTextBox";
             this.rSCDirectoryPathTextBox.Size = new System.Drawing.Size(200, 20);
-            this.rSCDirectoryPathTextBox.TabIndex = 85;
+            this.rSCDirectoryPathTextBox.TabIndex = 1;
             this.rSCDirectoryPathTextBox.Visible = false;
             // 
             // schoolIDTextBox
@@ -1122,7 +1120,7 @@
             this.schoolIDTextBox.Location = new System.Drawing.Point(132, 81);
             this.schoolIDTextBox.Name = "schoolIDTextBox";
             this.schoolIDTextBox.Size = new System.Drawing.Size(200, 20);
-            this.schoolIDTextBox.TabIndex = 87;
+            this.schoolIDTextBox.TabIndex = 2;
             this.schoolIDTextBox.Visible = false;
             // 
             // cityTextBox2
@@ -1131,7 +1129,7 @@
             this.cityTextBox2.Location = new System.Drawing.Point(172, 106);
             this.cityTextBox2.Name = "cityTextBox2";
             this.cityTextBox2.Size = new System.Drawing.Size(200, 20);
-            this.cityTextBox2.TabIndex = 89;
+            this.cityTextBox2.TabIndex = 3;
             this.cityTextBox2.Visible = false;
             // 
             // schoolBindingSource
@@ -1144,7 +1142,7 @@
             this.graduatedTextBox.Location = new System.Drawing.Point(172, 211);
             this.graduatedTextBox.Name = "graduatedTextBox";
             this.graduatedTextBox.Size = new System.Drawing.Size(200, 20);
-            this.graduatedTextBox.TabIndex = 91;
+            this.graduatedTextBox.TabIndex = 7;
             this.graduatedTextBox.Visible = false;
             // 
             // numberOfYearsAttendedTextBox
@@ -1153,7 +1151,7 @@
             this.numberOfYearsAttendedTextBox.Location = new System.Drawing.Point(172, 185);
             this.numberOfYearsAttendedTextBox.Name = "numberOfYearsAttendedTextBox";
             this.numberOfYearsAttendedTextBox.Size = new System.Drawing.Size(200, 20);
-            this.numberOfYearsAttendedTextBox.TabIndex = 93;
+            this.numberOfYearsAttendedTextBox.TabIndex = 6;
             this.numberOfYearsAttendedTextBox.Visible = false;
             // 
             // schoolIDTextBox1
@@ -1173,7 +1171,7 @@
             this.schoolNameTextBox.Location = new System.Drawing.Point(172, 54);
             this.schoolNameTextBox.Name = "schoolNameTextBox";
             this.schoolNameTextBox.Size = new System.Drawing.Size(200, 20);
-            this.schoolNameTextBox.TabIndex = 97;
+            this.schoolNameTextBox.TabIndex = 1;
             this.schoolNameTextBox.Visible = false;
             // 
             // stateComboBox2
@@ -1185,7 +1183,7 @@
             this.stateComboBox2.Location = new System.Drawing.Point(172, 132);
             this.stateComboBox2.Name = "stateComboBox2";
             this.stateComboBox2.Size = new System.Drawing.Size(200, 21);
-            this.stateComboBox2.TabIndex = 99;
+            this.stateComboBox2.TabIndex = 4;
             this.stateComboBox2.ValueMember = "StateCode";
             this.stateComboBox2.Visible = false;
             // 
@@ -1195,7 +1193,7 @@
             this.streetNameTextBox1.Location = new System.Drawing.Point(172, 80);
             this.streetNameTextBox1.Name = "streetNameTextBox1";
             this.streetNameTextBox1.Size = new System.Drawing.Size(200, 20);
-            this.streetNameTextBox1.TabIndex = 101;
+            this.streetNameTextBox1.TabIndex = 2;
             this.streetNameTextBox1.Visible = false;
             // 
             // zipCodeTextBox2
@@ -1204,7 +1202,7 @@
             this.zipCodeTextBox2.Location = new System.Drawing.Point(172, 159);
             this.zipCodeTextBox2.Name = "zipCodeTextBox2";
             this.zipCodeTextBox2.Size = new System.Drawing.Size(200, 20);
-            this.zipCodeTextBox2.TabIndex = 103;
+            this.zipCodeTextBox2.TabIndex = 5;
             this.zipCodeTextBox2.Visible = false;
             // 
             // btnInsertUpdate
@@ -1212,7 +1210,7 @@
             this.btnInsertUpdate.Location = new System.Drawing.Point(226, 290);
             this.btnInsertUpdate.Name = "btnInsertUpdate";
             this.btnInsertUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnInsertUpdate.TabIndex = 104;
+            this.btnInsertUpdate.TabIndex = 15;
             this.btnInsertUpdate.Text = "button1";
             this.btnInsertUpdate.UseVisualStyleBackColor = true;
             this.btnInsertUpdate.Click += new System.EventHandler(this.btnInsertUpdate_Click);
@@ -1222,7 +1220,7 @@
             this.btnCancel.Location = new System.Drawing.Point(317, 290);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 105;
+            this.btnCancel.TabIndex = 16;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);

@@ -155,7 +155,7 @@ namespace ProjectPRG299DB
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string insertStatement =
-                "SET IDENTITY_INSERT Company ON;" +
+                "SET IDENTITY_INSERT Company ON; " +
                 "INSERT Company " +
                   "(CompanyID, CompanyName, BuildingName, BuildingNumber, StreetAddress, " +
                 "City, State, ZipCode, Website, AdditionalNotes) " +
@@ -237,11 +237,11 @@ namespace ProjectPRG299DB
             updateCommand.Parameters.AddWithValue("@NewCity", newCompany.City);
             updateCommand.Parameters.AddWithValue("@NewState", newCompany.State);
             updateCommand.Parameters.AddWithValue("@NewZipCode", newCompany.ZipCode);
-            if (newCompany.Website == null)
+            if (newCompany.Website == "")
                 updateCommand.Parameters.AddWithValue("@NewWebsite", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@NewWebsite", newCompany.Website);
-            if (newCompany.AdditionalNotes == null)
+            if (newCompany.AdditionalNotes == "")
                 updateCommand.Parameters.AddWithValue("@NewAdditionalNotes",
                     DBNull.Value);
             else
@@ -257,11 +257,11 @@ namespace ProjectPRG299DB
             updateCommand.Parameters.AddWithValue("@OldCity", oldCompany.City);
             updateCommand.Parameters.AddWithValue("@OldState", oldCompany.State);
             updateCommand.Parameters.AddWithValue("@OldZipCode", oldCompany.ZipCode);
-            if (oldCompany.Website == null)
+            if (oldCompany.Website == "")
                 updateCommand.Parameters.AddWithValue("@OldWebsite", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@OldWebsite", oldCompany.Website);
-            if (oldCompany.AdditionalNotes == null)
+            if (oldCompany.AdditionalNotes == "")
                 updateCommand.Parameters.AddWithValue("@OldAdditionalNotes",
                     DBNull.Value);
             else

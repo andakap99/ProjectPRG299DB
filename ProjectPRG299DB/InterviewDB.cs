@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace ProjectPRG299DB
@@ -133,16 +134,18 @@ namespace ProjectPRG299DB
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string insertStatement =
+                "Set IDENTITY_INSERT Interview ON; " +
                 "INSERT Interview " +
-                  "(PositionID, CompanyID, ContactID, " +
+                "(PositionID, CompanyID, ContactID, " +
                 "DateTime, AdditionalNotes) " +
                 "VALUES (@PositionID, @CompanyID, @ContactID, " +
-                "@DateTime, @AdditionalNotes)";
+                "@DateTime, @AdditionalNotes);" +
+                "Set IDENTITY_INSERT Interview OFF;";
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
             insertCommand.Parameters.AddWithValue("@PositionID", interview.PositionID);
             insertCommand.Parameters.AddWithValue("@CompanyID", interview.CompanyID);
             insertCommand.Parameters.AddWithValue("@ContactID", interview.ContactID);
-            insertCommand.Parameters.AddWithValue("@DateTime", interview.DateTimeInterview);
+            insertCommand.Parameters.AddWithValue("@DateTime", SqlDbType.DateTime);
             if (interview.AdditionalNotes == null)
                 insertCommand.Parameters.AddWithValue("@AdditionalNotes", DBNull.Value);
             else
@@ -198,7 +201,7 @@ namespace ProjectPRG299DB
             updateCommand.Parameters.AddWithValue("@CompanyID", newInterview.CompanyID);
             updateCommand.Parameters.AddWithValue("@ContactID", newInterview.ContactID);
             updateCommand.Parameters.AddWithValue("@DateTime", newInterview.DateTimeInterview);
-            if (newInterview.AdditionalNotes == null)
+            if (newInterview.AdditionalNotes == "")
                 updateCommand.Parameters.AddWithValue("@AdditionalNotes", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@AdditionalNotes", newInterview.AdditionalNotes);
@@ -208,7 +211,7 @@ namespace ProjectPRG299DB
             updateCommand.Parameters.AddWithValue("@CompanyID", oldInterview.CompanyID);
             updateCommand.Parameters.AddWithValue("@ContactID", oldInterview.ContactID);
             updateCommand.Parameters.AddWithValue("@DateTime", oldInterview.DateTimeInterview);
-            if (oldInterview.AdditionalNotes == null)
+            if (oldInterview.AdditionalNotes == "")
                 updateCommand.Parameters.AddWithValue("@AdditionalNotes", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@AdditionalNotes", oldInterview.AdditionalNotes);

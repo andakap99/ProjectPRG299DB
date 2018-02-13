@@ -155,11 +155,14 @@ namespace ProjectPRG299DB
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string insertStatement =
+                "SET IDENTITY_INSERT Contact ON; " +
                 "INSERT Contact " +
                   "(FirstName, LastName, " +
                 "EmailAddress, PhoneNumber, CellPhone, AdditionalNotes) " +
                 "VALUES (@FirstName, @LastName, " +
-                "@EmailAddress, @PhoneNumber, @CellPhone, @AdditionalNotes)";
+                "@EmailAddress, @PhoneNumber, @CellPhone, @AdditionalNotes);" +
+                "SET IDENTITY_INSERT Contact OFF;";
+
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
             insertCommand.Parameters.AddWithValue("@FirstName", contact.FirstName);
             insertCommand.Parameters.AddWithValue("@LastName", contact.LastName);
@@ -228,19 +231,19 @@ namespace ProjectPRG299DB
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
             updateCommand.Parameters.AddWithValue("@NewFirstName", newContact.FirstName);
             updateCommand.Parameters.AddWithValue("@NewLastName", newContact.LastName);
-            if (newContact.EmailAddress == null)
+            if (newContact.EmailAddress == "")
                 updateCommand.Parameters.AddWithValue("@NewEmailAddress", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@NewEmailAddress", newContact.EmailAddress);
-            if (newContact.PhoneNumber == null)
+            if (newContact.PhoneNumber == "")
                 updateCommand.Parameters.AddWithValue("@NewPhoneNumber", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@NewPhoneNumber", newContact.PhoneNumber);
-            if (newContact.CellPhone == null)
+            if (newContact.CellPhone == "")
                 updateCommand.Parameters.AddWithValue("@NewCellPhone", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@NewCellPhone", newContact.CellPhone);
-            if (newContact.AdditionalNotes == null)
+            if (newContact.AdditionalNotes == "")
                 updateCommand.Parameters.AddWithValue("@NewAdditionalNotes", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@NewAdditionalNotes", newContact.AdditionalNotes);
@@ -248,19 +251,19 @@ namespace ProjectPRG299DB
             updateCommand.Parameters.AddWithValue("@OldContactID", oldContact.ContactID);
             updateCommand.Parameters.AddWithValue("@OldFirstName", oldContact.FirstName);
             updateCommand.Parameters.AddWithValue("@OldLastName", oldContact.LastName);
-            if (oldContact.EmailAddress == null)
+            if (oldContact.EmailAddress == "")
                 updateCommand.Parameters.AddWithValue("@OldEmailAddress", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@OldEmailAddress", oldContact.EmailAddress);
-            if (oldContact.PhoneNumber == null)
+            if (oldContact.PhoneNumber == "")
                 updateCommand.Parameters.AddWithValue("@OldPhoneNumber", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@OldPhoneNumber", oldContact.PhoneNumber);
-            if (oldContact.CellPhone == null)
+            if (oldContact.CellPhone == "")
                 updateCommand.Parameters.AddWithValue("@OldCellPhone", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@OldCellPhone", oldContact.CellPhone);
-            if (oldContact.AdditionalNotes == null)
+            if (oldContact.AdditionalNotes == "")
                 updateCommand.Parameters.AddWithValue("@OldAdditionalNotes", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@OldAdditionalNotes", oldContact.AdditionalNotes);
