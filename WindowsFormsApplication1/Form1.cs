@@ -234,7 +234,7 @@ namespace WindowsFormsApplication1
                         UpdateInsertForm.stateList = StateDB.GetStateList();
                         UpdateInsertForm.stateComboBox.DataSource = UpdateInsertForm.stateList;
                         UpdateInsertForm.clientBindingSource.Clear();
-                        UpdateInsertForm.clientBindingSource.Add(UpdateInsertForm.newClient);
+                        UpdateInsertForm.clientBindingSource.Add(client);
                         clientDataGridView.DataSource = clientList;
                         UpdateInsertForm.AllLVVisible(button1.Text);
                         UpdateInsertForm.AllListView();
