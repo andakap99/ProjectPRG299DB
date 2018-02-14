@@ -52,9 +52,9 @@ namespace WindowsFormsApplication1
             LoadResumeList();
             LoadSchoolList();
 
-            AddToolStripMenu.ToolTipText = "Add new row to the " + tabControl1.SelectedTab.Text + " table";
-            modifyToolStripMenu.ToolTipText = "Modify the selected row of the " + tabControl1.SelectedTab.Text + " table";
-            deleteToolStripMenu.ToolTipText = "Delete selected row from " + tabControl1.SelectedTab.Text + " table";
+            //AddToolStripMenu.ToolTipText = "Add new row to the " + tabControl1.SelectedTab.Text + " table";
+            //modifyToolStripMenu.ToolTipText = "Modify the selected row of the " + tabControl1.SelectedTab.Text + " table";
+            //deleteToolStripMenu.ToolTipText = "Delete selected row from " + tabControl1.SelectedTab.Text + " table";
 
 
         }
@@ -160,64 +160,64 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
         }
-        private void DotShow( DataGridViewCellMouseEventArgs e)
-        {
-            aMD.Dispose();
-            if (e.Button == MouseButtons.Right)
-            {
+        //private void DotShow( DataGridViewCellMouseEventArgs e)
+        //{
+        //    aMD.Dispose();
+        //    if (e.Button == MouseButtons.Right)
+        //    {
 
-                aMD.MenuItems.Add("Add New " + tabControl1.SelectedTab.Text + " Row");
-                aMD.MenuItems.Add("Modify " + tabControl1.SelectedTab.Text + " Table");
-                aMD.MenuItems.Add("Delete Row From " + tabControl1.SelectedTab.Text + " Table");
-                aMD.Show(this, new Point(e.X + 5, e.Y + 80));
-            }
-        }
-        private void clientDataGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            DotShow(e);
-        }
+        //        aMD.MenuItems.Add("Add New " + tabControl1.SelectedTab.Text + " Row");
+        //        aMD.MenuItems.Add("Modify " + tabControl1.SelectedTab.Text + " Table");
+        //        aMD.MenuItems.Add("Delete Row From " + tabControl1.SelectedTab.Text + " Table");
+        //        aMD.Show(this, new Point(e.X + 5, e.Y + 80));
+        //    }
+        //}
+        //private void clientDataGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        //{
+        //    DotShow(e);
+        //}
 
-        private void companyDataGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            DotShow(e);
-        }
+        //private void companyDataGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        //{
+        //    DotShow(e);
+        //}
 
-        private void contactDataGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            DotShow(e);
-        }
+        //private void contactDataGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        //{
+        //    DotShow(e);
+        //}
 
-        private void contactPositionDataGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            DotShow(e);
-        }
+        //private void contactPositionDataGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        //{
+        //    DotShow(e);
+        //}
 
-        private void interviewDataGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            DotShow(e);
-        }
+        //private void interviewDataGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        //{
+        //    DotShow(e);
+        //}
 
-        private void positionDataGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            DotShow(e);
-        }
+        //private void positionDataGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        //{
+        //    DotShow(e);
+        //}
 
-        private void resumeDataGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            DotShow(e);
-        }
+        //private void resumeDataGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        //{
+        //    DotShow(e);
+        //}
 
-        private void schoolDataGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            DotShow(e);
-        }
+        //private void schoolDataGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        //{
+        //    DotShow(e);
+        //}
 
-        private void tabControl1_Selected(object sender, TabControlEventArgs e)
-        {
-            AddToolStripMenu.ToolTipText = "Add new row to the " + tabControl1.SelectedTab.Text + " table";
-            modifyToolStripMenu.ToolTipText = "Modify the selected row of the " + tabControl1.SelectedTab.Text + " table";
-            deleteToolStripMenu.ToolTipText = "Delete selected row from " + tabControl1.SelectedTab.Text + " table";
-        }
+        //private void tabControl1_Selected(object sender, TabControlEventArgs e)
+        //{
+        //    AddToolStripMenu.ToolTipText = "Add new row to the " + tabControl1.SelectedTab.Text + " table";
+        //    modifyToolStripMenu.ToolTipText = "Modify the selected row of the " + tabControl1.SelectedTab.Text + " table";
+        //    deleteToolStripMenu.ToolTipText = "Delete selected row from " + tabControl1.SelectedTab.Text + " table";
+        //}
 
         private void AddModifyToolStripMenu_Click(object sender, EventArgs e)
         {
@@ -226,9 +226,9 @@ namespace WindowsFormsApplication1
             {
                 if (AddToolStripMenu.Selected)
                 {
-                    UpdateInsertForm.Text =  "Add " + tabControl1.SelectedTab.Text;
+                    UpdateInsertForm.Text =  "Add " + button1.Text;
                     UpdateInsertForm.addMenuClicked = true;
-                    if(tabControl1.SelectedTab.Text == "Client")
+                    if(button1.Text == "Client")
                     {
                         client = UpdateInsertForm.newClient;                       
                         UpdateInsertForm.stateList = StateDB.GetStateList();
@@ -236,10 +236,10 @@ namespace WindowsFormsApplication1
                         UpdateInsertForm.clientBindingSource.Clear();
                         UpdateInsertForm.clientBindingSource.Add(UpdateInsertForm.newClient);
                         clientDataGridView.DataSource = clientList;
-                        UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
+                        UpdateInsertForm.AllLVVisible(button1.Text);
                         UpdateInsertForm.AllListView();
                     }
-                    else if (tabControl1.SelectedTab.Text == "Company")
+                    else if (button2.Text == "Company")
                     {
                         company = UpdateInsertForm.newCompany;
                         UpdateInsertForm.stateList = StateDB.GetStateList();
@@ -247,70 +247,70 @@ namespace WindowsFormsApplication1
                         UpdateInsertForm.companyBindingSource.Clear();
                         UpdateInsertForm.companyBindingSource.Add(UpdateInsertForm.newCompany);
                         companyDataGridView.DataSource = companyList;
-                        UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
+                        UpdateInsertForm.AllLVVisible(button2.Text);
                         UpdateInsertForm.AllListView();
                     }
-                    else if (tabControl1.SelectedTab.Text == "Contact")
+                    else if (button3.Text == "Contact")
                     {
                         contact = UpdateInsertForm.newContact;
                         UpdateInsertForm.contactBindingSource.Clear();
                         UpdateInsertForm.contactBindingSource.Add(UpdateInsertForm.newContact);
                         contactDataGridView.DataSource = contactList;
-                        UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
+                        UpdateInsertForm.AllLVVisible(button3.Text);
                         UpdateInsertForm.AllListView();
                     }
-                    else if (tabControl1.SelectedTab.Text == "Contact Position")
+                    else if (button4.Text == "Contact Position")
                     {
                         coPo = UpdateInsertForm.newContactPosition;
                         UpdateInsertForm.contactPositionBindingSource.Clear();
                         UpdateInsertForm.contactPositionBindingSource.Add(UpdateInsertForm.newContactPosition);
                         contactPositionDataGridView.DataSource = coPoList;
-                        UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
+                        UpdateInsertForm.AllLVVisible(button4.Text);
                         UpdateInsertForm.AllListView();
                     }
-                    else if (tabControl1.SelectedTab.Text == "Interview")
+                    else if (button5.Text == "Interview")
                     {
                         interview = UpdateInsertForm.newInterview;
                         UpdateInsertForm.interviewBindingSource.Clear();
                         UpdateInsertForm.interviewBindingSource.Add(UpdateInsertForm.newInterview);
                         interviewDataGridView.DataSource = interviewList;
-                        UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
+                        UpdateInsertForm.AllLVVisible(button5.Text);
                         UpdateInsertForm.AllListView();
                     }
-                    else if (tabControl1.SelectedTab.Text == "Position")
+                    else if (button6.Text == "Position")
                     {
                         position = UpdateInsertForm.newPostion;
                         UpdateInsertForm.positionBindingSource.Clear();
                         UpdateInsertForm.positionBindingSource.Add(UpdateInsertForm.newPostion);
                         positionDataGridView.DataSource = positionList;
-                        UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
+                        UpdateInsertForm.AllLVVisible(button6.Text);
                         UpdateInsertForm.AllListView();
                     }
-                    else if (tabControl1.SelectedTab.Text == "Resume")
+                    else if (button7.Text == "Resume")
                     {
                         resume = UpdateInsertForm.newResume;
                         UpdateInsertForm.resumeBindingSource.Clear();
                         UpdateInsertForm.resumeBindingSource.Add(UpdateInsertForm.newResume);
                         resumeDataGridView.DataSource = resumeList;
-                        UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
+                        UpdateInsertForm.AllLVVisible(button7.Text);
                         UpdateInsertForm.AllListView();
                     }
-                    else if (tabControl1.SelectedTab.Text == "School")
+                    else if (button8.Text == "School")
                     {
                         school = UpdateInsertForm.newSchool;
                         UpdateInsertForm.stateList = StateDB.GetStateList();
                         UpdateInsertForm.stateComboBox2.DataSource = UpdateInsertForm.stateList;
                         UpdateInsertForm.schoolBindingSource.Clear();
                         UpdateInsertForm.schoolBindingSource.Add(UpdateInsertForm.newSchool);
-                        UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
+                        UpdateInsertForm.AllLVVisible(button8.Text);
                         UpdateInsertForm.AllListView();
                     }                    
                 }
                 else
                 {
-                    UpdateInsertForm.Text = "Modify " + tabControl1.SelectedTab.Text;
+                    UpdateInsertForm.Text = "Modify";
                     UpdateInsertForm.addMenuClicked = false;
-                    if (tabControl1.SelectedTab.Text == "Client")
+                    if (button1.Text == "Client")
                     {
                         UpdateInsertForm.stateList = StateDB.GetStateList();
                         UpdateInsertForm.stateComboBox.DataSource = UpdateInsertForm.stateList;
@@ -323,68 +323,68 @@ namespace WindowsFormsApplication1
                             client = UpdateInsertForm.newClient;
                         }
                         UpdateInsertForm.clientBindingSource.Add(client);
-                        UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
+                        UpdateInsertForm.AllLVVisible(button1.Text);
                         UpdateInsertForm.AllListView();
 
                     }
-                    else if (tabControl1.SelectedTab.Text == "Company")
+                    else if (button2.Text == "Company")
                     {
                         UpdateInsertForm.stateList = StateDB.GetStateList();
                         UpdateInsertForm.stateComboBox1.DataSource = UpdateInsertForm.stateList;
                         UpdateInsertForm.company = CompanyDB.GetCompanyByRow((int)companyDataGridView.CurrentCell.Value);
                         UpdateInsertForm.companyBindingSource.Clear();
                         UpdateInsertForm.companyBindingSource.Add(UpdateInsertForm.company);
-                        UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
+                        UpdateInsertForm.AllLVVisible(button2.Text);
                         UpdateInsertForm.AllListView();
                     }
-                    else if (tabControl1.SelectedTab.Text == "Contact")
+                    else if (button3.Text == "Contact")
                     {
                         UpdateInsertForm.contact = ContactDB.GetContactByRow((int)contactDataGridView.CurrentCell.Value);
                         UpdateInsertForm.contactBindingSource.Clear();
                         UpdateInsertForm.contactBindingSource.Add(UpdateInsertForm.contact);
-                        UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
+                        UpdateInsertForm.AllLVVisible(button3.Text);
                         UpdateInsertForm.AllListView();
                     }
-                    else if (tabControl1.SelectedTab.Text == "Contact Position")
+                    else if (button4.Text == "Contact Position")
                     {
                         UpdateInsertForm.contactPosition = ContactPositionDB.GetContactPositionByRow((int)contactPositionDataGridView.CurrentCell.Value);
                         UpdateInsertForm.contactPositionBindingSource.Clear();
                         UpdateInsertForm.contactPositionBindingSource.Add(UpdateInsertForm.contactPosition);
-                        UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
+                        UpdateInsertForm.AllLVVisible(button4.Text);
                         UpdateInsertForm.AllListView();
                     }
-                    else if (tabControl1.SelectedTab.Text == "Interview")
+                    else if (button5.Text == "Interview")
                     {
                         UpdateInsertForm.interview = InterviewDB.GetInterviewByRow((int)interviewDataGridView.CurrentCell.Value);
                         UpdateInsertForm.interviewBindingSource.Clear();
                         UpdateInsertForm.interviewBindingSource.Add(UpdateInsertForm.interview);
-                        UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
+                        UpdateInsertForm.AllLVVisible(button5.Text);
                         UpdateInsertForm.AllListView();
                     }
-                    else if (tabControl1.SelectedTab.Text == "Position")
+                    else if (button6.Text == "Position")
                     {
                         UpdateInsertForm.position = PositionDB.GetPositionByRow((int)positionDataGridView.CurrentCell.Value);
                         UpdateInsertForm.positionBindingSource.Clear();
                         UpdateInsertForm.positionBindingSource.Add(UpdateInsertForm.position);
-                        UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
+                        UpdateInsertForm.AllLVVisible(button6.Text);
                         UpdateInsertForm.AllListView();
                     }
-                    else if (tabControl1.SelectedTab.Text == "Resume")
+                    else if (button7.Text == "Resume")
                     {
                         UpdateInsertForm.resume = ResumeDB.GetResumeByRow((int)resumeDataGridView.CurrentCell.Value);
                         UpdateInsertForm.resumeBindingSource.Clear();
                         UpdateInsertForm.resumeBindingSource.Add(UpdateInsertForm.resume);
-                        UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
+                        UpdateInsertForm.AllLVVisible(button7.Text);
                         UpdateInsertForm.AllListView();
                     }
-                    else if (tabControl1.SelectedTab.Text == "School")
+                    else if (button8.Text == "School")
                     {
                         UpdateInsertForm.stateList = StateDB.GetStateList();
                         UpdateInsertForm.stateComboBox2.DataSource = UpdateInsertForm.stateList;
                         UpdateInsertForm.school = SchoolDB.GetSchoolByRow((int)schoolDataGridView.CurrentCell.Value);
                         UpdateInsertForm.schoolBindingSource.Clear();
                         UpdateInsertForm.schoolBindingSource.Add(UpdateInsertForm.school);
-                        UpdateInsertForm.AllLVVisible(tabControl1.SelectedTab.Text);
+                        UpdateInsertForm.AllLVVisible(button8.Text);
                         UpdateInsertForm.AllListView();
                     }
                 }
@@ -410,9 +410,9 @@ namespace WindowsFormsApplication1
             
             try
             {
-                if (tabControl1.SelectedTab.Text == "Client")
+                if (panel3.Visible)
                 {
-                    if (MessageBox.Show("Are you sure you want to delete the row?", "Delete " + tabControl1.SelectedTab.Text + "row", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    if (MessageBox.Show("Are you sure you want to delete the row?", "Delete " + button1.Text + " row", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
                         ClientDB.DeleteClient((int)clientDataGridView.CurrentCell.Value);
                     }                
@@ -424,6 +424,75 @@ namespace WindowsFormsApplication1
 
             }
             LoadClientList();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            panel11.Height = button1.Height;
+            panel11.Top = button1.Top;
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            panel11.Height = button2.Height;
+            panel11.Top = button2.Top;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            panel11.Height = button3.Height;
+            panel11.Top = button3.Top;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            panel11.Height = button4.Height;
+            panel11.Top = button4.Top;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            panel11.Height = button5.Height;
+            panel11.Top = button5.Top;
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            panel11.Height = button6.Height;
+            panel11.Top = button6.Top;
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            panel11.Height = button7.Height;
+            panel11.Top = button7.Top;
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            panel11.Height = button8.Height;
+            panel11.Top = button8.Top;
+        }
+
+        private void panel10_MouseHover(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel10_MouseLeave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_MouseHover(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_MouseLeave(object sender, EventArgs e)
+        {
+
         }
     }
 }
