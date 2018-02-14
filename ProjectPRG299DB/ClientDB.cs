@@ -102,6 +102,10 @@ namespace ProjectPRG299DB
                     }
                     else
                         client.CellPhone = reader.GetString(cPOrd);
+                    if (clientID==client.ClientID)
+                    {
+                        break;
+                    }
                 }
             }
             catch (SqlException ex)
@@ -153,7 +157,7 @@ namespace ProjectPRG299DB
 
             SqlConnection connection = PRG299DB.GetConnection();
             string insertStatement =
-                "SET IDENTITY_INSERT Client ON; " +
+                "SET IDENTITY_INSERT Client ON;" +
                 "INSERT INTO Client " +
                   "(FirstName, LastName, BirthDate, StreetName, " +
                 "City, State, ZipCode, CellPhone) " +

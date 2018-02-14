@@ -757,5 +757,20 @@ namespace WindowsFormsApplication1
             Close();
         }
 
+        private void btnMHover(object sender, EventArgs e)
+        {
+            if (btnInsertUpdate.Focus())
+                btnInsertUpdate.Font = new Font(btnInsertUpdate.Font, FontStyle.Bold);
+            if(btnCancel.Focus())
+                btnCancel.Font = new Font(btnCancel.Font, FontStyle.Bold);
+
+        }
+
+        private void btnMLeave(object sender, EventArgs e)
+        {
+            btnInsertUpdate.Font = new Font(btnInsertUpdate.Font, FontStyle.Regular);
+            btnCancel.Font = new Font(btnCancel.Font, FontStyle.Regular);
+
+        }
     }
 }

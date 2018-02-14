@@ -158,6 +158,8 @@
             // additionalNotesLabel1
             // 
             this.additionalNotesLabel1.AutoSize = true;
+            this.additionalNotesLabel1.BackColor = System.Drawing.Color.Blue;
+            this.additionalNotesLabel1.ForeColor = System.Drawing.Color.White;
             this.additionalNotesLabel1.Location = new System.Drawing.Point(25, 187);
             this.additionalNotesLabel1.Name = "additionalNotesLabel1";
             this.additionalNotesLabel1.Size = new System.Drawing.Size(87, 13);
@@ -168,6 +170,8 @@
             // cellPhoneLabel1
             // 
             this.cellPhoneLabel1.AutoSize = true;
+            this.cellPhoneLabel1.BackColor = System.Drawing.Color.Blue;
+            this.cellPhoneLabel1.ForeColor = System.Drawing.Color.White;
             this.cellPhoneLabel1.Location = new System.Drawing.Point(25, 161);
             this.cellPhoneLabel1.Name = "cellPhoneLabel1";
             this.cellPhoneLabel1.Size = new System.Drawing.Size(61, 13);
@@ -178,6 +182,8 @@
             // contactIDLabel
             // 
             this.contactIDLabel.AutoSize = true;
+            this.contactIDLabel.BackColor = System.Drawing.Color.Blue;
+            this.contactIDLabel.ForeColor = System.Drawing.Color.White;
             this.contactIDLabel.Location = new System.Drawing.Point(25, 31);
             this.contactIDLabel.Name = "contactIDLabel";
             this.contactIDLabel.Size = new System.Drawing.Size(61, 13);
@@ -188,6 +194,8 @@
             // emailAddressLabel
             // 
             this.emailAddressLabel.AutoSize = true;
+            this.emailAddressLabel.BackColor = System.Drawing.Color.Blue;
+            this.emailAddressLabel.ForeColor = System.Drawing.Color.White;
             this.emailAddressLabel.Location = new System.Drawing.Point(25, 109);
             this.emailAddressLabel.Name = "emailAddressLabel";
             this.emailAddressLabel.Size = new System.Drawing.Size(76, 13);
@@ -198,6 +206,8 @@
             // firstNameLabel1
             // 
             this.firstNameLabel1.AutoSize = true;
+            this.firstNameLabel1.BackColor = System.Drawing.Color.Blue;
+            this.firstNameLabel1.ForeColor = System.Drawing.Color.White;
             this.firstNameLabel1.Location = new System.Drawing.Point(25, 57);
             this.firstNameLabel1.Name = "firstNameLabel1";
             this.firstNameLabel1.Size = new System.Drawing.Size(60, 13);
@@ -208,6 +218,8 @@
             // lastNameLabel1
             // 
             this.lastNameLabel1.AutoSize = true;
+            this.lastNameLabel1.BackColor = System.Drawing.Color.Blue;
+            this.lastNameLabel1.ForeColor = System.Drawing.Color.White;
             this.lastNameLabel1.Location = new System.Drawing.Point(25, 83);
             this.lastNameLabel1.Name = "lastNameLabel1";
             this.lastNameLabel1.Size = new System.Drawing.Size(61, 13);
@@ -218,6 +230,8 @@
             // phoneNumberLabel
             // 
             this.phoneNumberLabel.AutoSize = true;
+            this.phoneNumberLabel.BackColor = System.Drawing.Color.Blue;
+            this.phoneNumberLabel.ForeColor = System.Drawing.Color.White;
             this.phoneNumberLabel.Location = new System.Drawing.Point(25, 135);
             this.phoneNumberLabel.Name = "phoneNumberLabel";
             this.phoneNumberLabel.Size = new System.Drawing.Size(81, 13);
@@ -228,6 +242,8 @@
             // contactIDLabel1
             // 
             this.contactIDLabel1.AutoSize = true;
+            this.contactIDLabel1.BackColor = System.Drawing.Color.Blue;
+            this.contactIDLabel1.ForeColor = System.Drawing.Color.White;
             this.contactIDLabel1.Location = new System.Drawing.Point(28, 31);
             this.contactIDLabel1.Name = "contactIDLabel1";
             this.contactIDLabel1.Size = new System.Drawing.Size(61, 13);
@@ -238,6 +254,8 @@
             // positionIDLabel
             // 
             this.positionIDLabel.AutoSize = true;
+            this.positionIDLabel.BackColor = System.Drawing.Color.Blue;
+            this.positionIDLabel.ForeColor = System.Drawing.Color.White;
             this.positionIDLabel.Location = new System.Drawing.Point(28, 57);
             this.positionIDLabel.Name = "positionIDLabel";
             this.positionIDLabel.Size = new System.Drawing.Size(61, 13);
@@ -248,6 +266,8 @@
             // additionalNotesLabel2
             // 
             this.additionalNotesLabel2.AutoSize = true;
+            this.additionalNotesLabel2.BackColor = System.Drawing.Color.Blue;
+            this.additionalNotesLabel2.ForeColor = System.Drawing.Color.White;
             this.additionalNotesLabel2.Location = new System.Drawing.Point(27, 161);
             this.additionalNotesLabel2.Name = "additionalNotesLabel2";
             this.additionalNotesLabel2.Size = new System.Drawing.Size(87, 13);
@@ -258,6 +278,8 @@
             // companyIDLabel1
             // 
             this.companyIDLabel1.AutoSize = true;
+            this.companyIDLabel1.BackColor = System.Drawing.Color.Blue;
+            this.companyIDLabel1.ForeColor = System.Drawing.Color.White;
             this.companyIDLabel1.Location = new System.Drawing.Point(27, 83);
             this.companyIDLabel1.Name = "companyIDLabel1";
             this.companyIDLabel1.Size = new System.Drawing.Size(68, 13);
@@ -268,6 +290,8 @@
             // contactIDLabel2
             // 
             this.contactIDLabel2.AutoSize = true;
+            this.contactIDLabel2.BackColor = System.Drawing.Color.Blue;
+            this.contactIDLabel2.ForeColor = System.Drawing.Color.White;
             this.contactIDLabel2.Location = new System.Drawing.Point(27, 109);
             this.contactIDLabel2.Name = "contactIDLabel2";
             this.contactIDLabel2.Size = new System.Drawing.Size(61, 13);
@@ -278,6 +302,8 @@
             // dateTimeInterviewLabel
             // 
             this.dateTimeInterviewLabel.AutoSize = true;
+            this.dateTimeInterviewLabel.BackColor = System.Drawing.Color.Blue;
+            this.dateTimeInterviewLabel.ForeColor = System.Drawing.Color.White;
             this.dateTimeInterviewLabel.Location = new System.Drawing.Point(27, 136);
             this.dateTimeInterviewLabel.Name = "dateTimeInterviewLabel";
             this.dateTimeInterviewLabel.Size = new System.Drawing.Size(105, 13);
@@ -288,6 +314,8 @@
             // interviewIDLabel
             // 
             this.interviewIDLabel.AutoSize = true;
+            this.interviewIDLabel.BackColor = System.Drawing.Color.Blue;
+            this.interviewIDLabel.ForeColor = System.Drawing.Color.White;
             this.interviewIDLabel.Location = new System.Drawing.Point(27, 31);
             this.interviewIDLabel.Name = "interviewIDLabel";
             this.interviewIDLabel.Size = new System.Drawing.Size(67, 13);
@@ -298,6 +326,8 @@
             // positionIDLabel1
             // 
             this.positionIDLabel1.AutoSize = true;
+            this.positionIDLabel1.BackColor = System.Drawing.Color.Blue;
+            this.positionIDLabel1.ForeColor = System.Drawing.Color.White;
             this.positionIDLabel1.Location = new System.Drawing.Point(27, 57);
             this.positionIDLabel1.Name = "positionIDLabel1";
             this.positionIDLabel1.Size = new System.Drawing.Size(61, 13);
@@ -308,6 +338,8 @@
             // additionalNotesLabel3
             // 
             this.additionalNotesLabel3.AutoSize = true;
+            this.additionalNotesLabel3.BackColor = System.Drawing.Color.Blue;
+            this.additionalNotesLabel3.ForeColor = System.Drawing.Color.White;
             this.additionalNotesLabel3.Location = new System.Drawing.Point(25, 136);
             this.additionalNotesLabel3.Name = "additionalNotesLabel3";
             this.additionalNotesLabel3.Size = new System.Drawing.Size(87, 13);
@@ -318,6 +350,8 @@
             // companyIDLabel2
             // 
             this.companyIDLabel2.AutoSize = true;
+            this.companyIDLabel2.BackColor = System.Drawing.Color.Blue;
+            this.companyIDLabel2.ForeColor = System.Drawing.Color.White;
             this.companyIDLabel2.Location = new System.Drawing.Point(25, 110);
             this.companyIDLabel2.Name = "companyIDLabel2";
             this.companyIDLabel2.Size = new System.Drawing.Size(68, 13);
@@ -328,6 +362,8 @@
             // descriptionLabel
             // 
             this.descriptionLabel.AutoSize = true;
+            this.descriptionLabel.BackColor = System.Drawing.Color.Blue;
+            this.descriptionLabel.ForeColor = System.Drawing.Color.White;
             this.descriptionLabel.Location = new System.Drawing.Point(25, 84);
             this.descriptionLabel.Name = "descriptionLabel";
             this.descriptionLabel.Size = new System.Drawing.Size(63, 13);
@@ -338,6 +374,8 @@
             // positionIDLabel2
             // 
             this.positionIDLabel2.AutoSize = true;
+            this.positionIDLabel2.BackColor = System.Drawing.Color.Blue;
+            this.positionIDLabel2.ForeColor = System.Drawing.Color.White;
             this.positionIDLabel2.Location = new System.Drawing.Point(25, 32);
             this.positionIDLabel2.Name = "positionIDLabel2";
             this.positionIDLabel2.Size = new System.Drawing.Size(61, 13);
@@ -348,6 +386,8 @@
             // positionNameLabel
             // 
             this.positionNameLabel.AutoSize = true;
+            this.positionNameLabel.BackColor = System.Drawing.Color.Blue;
+            this.positionNameLabel.ForeColor = System.Drawing.Color.White;
             this.positionNameLabel.Location = new System.Drawing.Point(25, 58);
             this.positionNameLabel.Name = "positionNameLabel";
             this.positionNameLabel.Size = new System.Drawing.Size(78, 13);
@@ -358,6 +398,8 @@
             // resumeIDLabel
             // 
             this.resumeIDLabel.AutoSize = true;
+            this.resumeIDLabel.BackColor = System.Drawing.Color.Blue;
+            this.resumeIDLabel.ForeColor = System.Drawing.Color.White;
             this.resumeIDLabel.Location = new System.Drawing.Point(25, 162);
             this.resumeIDLabel.Name = "resumeIDLabel";
             this.resumeIDLabel.Size = new System.Drawing.Size(63, 13);
@@ -368,6 +410,8 @@
             // clientIDLabel1
             // 
             this.clientIDLabel1.AutoSize = true;
+            this.clientIDLabel1.BackColor = System.Drawing.Color.Blue;
+            this.clientIDLabel1.ForeColor = System.Drawing.Color.White;
             this.clientIDLabel1.Location = new System.Drawing.Point(27, 110);
             this.clientIDLabel1.Name = "clientIDLabel1";
             this.clientIDLabel1.Size = new System.Drawing.Size(50, 13);
@@ -378,6 +422,8 @@
             // resumeIDLabel1
             // 
             this.resumeIDLabel1.AutoSize = true;
+            this.resumeIDLabel1.BackColor = System.Drawing.Color.Blue;
+            this.resumeIDLabel1.ForeColor = System.Drawing.Color.White;
             this.resumeIDLabel1.Location = new System.Drawing.Point(27, 32);
             this.resumeIDLabel1.Name = "resumeIDLabel1";
             this.resumeIDLabel1.Size = new System.Drawing.Size(63, 13);
@@ -388,6 +434,8 @@
             // rSCDirectoryPathLabel
             // 
             this.rSCDirectoryPathLabel.AutoSize = true;
+            this.rSCDirectoryPathLabel.BackColor = System.Drawing.Color.Blue;
+            this.rSCDirectoryPathLabel.ForeColor = System.Drawing.Color.White;
             this.rSCDirectoryPathLabel.Location = new System.Drawing.Point(27, 58);
             this.rSCDirectoryPathLabel.Name = "rSCDirectoryPathLabel";
             this.rSCDirectoryPathLabel.Size = new System.Drawing.Size(99, 13);
@@ -398,6 +446,8 @@
             // schoolIDLabel
             // 
             this.schoolIDLabel.AutoSize = true;
+            this.schoolIDLabel.BackColor = System.Drawing.Color.Blue;
+            this.schoolIDLabel.ForeColor = System.Drawing.Color.White;
             this.schoolIDLabel.Location = new System.Drawing.Point(27, 84);
             this.schoolIDLabel.Name = "schoolIDLabel";
             this.schoolIDLabel.Size = new System.Drawing.Size(57, 13);
@@ -408,6 +458,8 @@
             // cityLabel2
             // 
             this.cityLabel2.AutoSize = true;
+            this.cityLabel2.BackColor = System.Drawing.Color.Blue;
+            this.cityLabel2.ForeColor = System.Drawing.Color.White;
             this.cityLabel2.Location = new System.Drawing.Point(29, 109);
             this.cityLabel2.Name = "cityLabel2";
             this.cityLabel2.Size = new System.Drawing.Size(27, 13);
@@ -418,6 +470,8 @@
             // graduatedLabel
             // 
             this.graduatedLabel.AutoSize = true;
+            this.graduatedLabel.BackColor = System.Drawing.Color.Blue;
+            this.graduatedLabel.ForeColor = System.Drawing.Color.White;
             this.graduatedLabel.Location = new System.Drawing.Point(29, 214);
             this.graduatedLabel.Name = "graduatedLabel";
             this.graduatedLabel.Size = new System.Drawing.Size(60, 13);
@@ -428,6 +482,8 @@
             // numberOfYearsAttendedLabel
             // 
             this.numberOfYearsAttendedLabel.AutoSize = true;
+            this.numberOfYearsAttendedLabel.BackColor = System.Drawing.Color.Blue;
+            this.numberOfYearsAttendedLabel.ForeColor = System.Drawing.Color.White;
             this.numberOfYearsAttendedLabel.Location = new System.Drawing.Point(29, 188);
             this.numberOfYearsAttendedLabel.Name = "numberOfYearsAttendedLabel";
             this.numberOfYearsAttendedLabel.Size = new System.Drawing.Size(137, 13);
@@ -438,6 +494,8 @@
             // schoolIDLabel1
             // 
             this.schoolIDLabel1.AutoSize = true;
+            this.schoolIDLabel1.BackColor = System.Drawing.Color.Blue;
+            this.schoolIDLabel1.ForeColor = System.Drawing.Color.White;
             this.schoolIDLabel1.Location = new System.Drawing.Point(29, 31);
             this.schoolIDLabel1.Name = "schoolIDLabel1";
             this.schoolIDLabel1.Size = new System.Drawing.Size(57, 13);
@@ -448,6 +506,8 @@
             // schoolNameLabel
             // 
             this.schoolNameLabel.AutoSize = true;
+            this.schoolNameLabel.BackColor = System.Drawing.Color.Blue;
+            this.schoolNameLabel.ForeColor = System.Drawing.Color.White;
             this.schoolNameLabel.Location = new System.Drawing.Point(29, 57);
             this.schoolNameLabel.Name = "schoolNameLabel";
             this.schoolNameLabel.Size = new System.Drawing.Size(74, 13);
@@ -458,6 +518,8 @@
             // stateLabel2
             // 
             this.stateLabel2.AutoSize = true;
+            this.stateLabel2.BackColor = System.Drawing.Color.Blue;
+            this.stateLabel2.ForeColor = System.Drawing.Color.White;
             this.stateLabel2.Location = new System.Drawing.Point(29, 135);
             this.stateLabel2.Name = "stateLabel2";
             this.stateLabel2.Size = new System.Drawing.Size(35, 13);
@@ -468,6 +530,8 @@
             // streetNameLabel1
             // 
             this.streetNameLabel1.AutoSize = true;
+            this.streetNameLabel1.BackColor = System.Drawing.Color.Blue;
+            this.streetNameLabel1.ForeColor = System.Drawing.Color.White;
             this.streetNameLabel1.Location = new System.Drawing.Point(29, 83);
             this.streetNameLabel1.Name = "streetNameLabel1";
             this.streetNameLabel1.Size = new System.Drawing.Size(69, 13);
@@ -478,6 +542,8 @@
             // zipCodeLabel2
             // 
             this.zipCodeLabel2.AutoSize = true;
+            this.zipCodeLabel2.BackColor = System.Drawing.Color.Blue;
+            this.zipCodeLabel2.ForeColor = System.Drawing.Color.White;
             this.zipCodeLabel2.Location = new System.Drawing.Point(29, 162);
             this.zipCodeLabel2.Name = "zipCodeLabel2";
             this.zipCodeLabel2.Size = new System.Drawing.Size(53, 13);
@@ -488,6 +554,8 @@
             // additionalNotesLabel
             // 
             this.additionalNotesLabel.AutoSize = true;
+            this.additionalNotesLabel.BackColor = System.Drawing.Color.Blue;
+            this.additionalNotesLabel.ForeColor = System.Drawing.Color.White;
             this.additionalNotesLabel.Location = new System.Drawing.Point(25, 267);
             this.additionalNotesLabel.Name = "additionalNotesLabel";
             this.additionalNotesLabel.Size = new System.Drawing.Size(87, 13);
@@ -498,6 +566,8 @@
             // buildingNameLabel
             // 
             this.buildingNameLabel.AutoSize = true;
+            this.buildingNameLabel.BackColor = System.Drawing.Color.Blue;
+            this.buildingNameLabel.ForeColor = System.Drawing.Color.White;
             this.buildingNameLabel.Location = new System.Drawing.Point(25, 84);
             this.buildingNameLabel.Name = "buildingNameLabel";
             this.buildingNameLabel.Size = new System.Drawing.Size(78, 13);
@@ -508,6 +578,8 @@
             // buildingNumberLabel
             // 
             this.buildingNumberLabel.AutoSize = true;
+            this.buildingNumberLabel.BackColor = System.Drawing.Color.Blue;
+            this.buildingNumberLabel.ForeColor = System.Drawing.Color.White;
             this.buildingNumberLabel.Location = new System.Drawing.Point(25, 110);
             this.buildingNumberLabel.Name = "buildingNumberLabel";
             this.buildingNumberLabel.Size = new System.Drawing.Size(87, 13);
@@ -518,6 +590,8 @@
             // cityLabel1
             // 
             this.cityLabel1.AutoSize = true;
+            this.cityLabel1.BackColor = System.Drawing.Color.Blue;
+            this.cityLabel1.ForeColor = System.Drawing.Color.White;
             this.cityLabel1.Location = new System.Drawing.Point(25, 162);
             this.cityLabel1.Name = "cityLabel1";
             this.cityLabel1.Size = new System.Drawing.Size(27, 13);
@@ -528,6 +602,8 @@
             // companyIDLabel
             // 
             this.companyIDLabel.AutoSize = true;
+            this.companyIDLabel.BackColor = System.Drawing.Color.Blue;
+            this.companyIDLabel.ForeColor = System.Drawing.Color.White;
             this.companyIDLabel.Location = new System.Drawing.Point(25, 31);
             this.companyIDLabel.Name = "companyIDLabel";
             this.companyIDLabel.Size = new System.Drawing.Size(68, 13);
@@ -538,6 +614,8 @@
             // companyNameLabel
             // 
             this.companyNameLabel.AutoSize = true;
+            this.companyNameLabel.BackColor = System.Drawing.Color.Blue;
+            this.companyNameLabel.ForeColor = System.Drawing.Color.White;
             this.companyNameLabel.Location = new System.Drawing.Point(25, 57);
             this.companyNameLabel.Name = "companyNameLabel";
             this.companyNameLabel.Size = new System.Drawing.Size(85, 13);
@@ -548,6 +626,8 @@
             // stateLabel1
             // 
             this.stateLabel1.AutoSize = true;
+            this.stateLabel1.BackColor = System.Drawing.Color.Blue;
+            this.stateLabel1.ForeColor = System.Drawing.Color.White;
             this.stateLabel1.Location = new System.Drawing.Point(25, 188);
             this.stateLabel1.Name = "stateLabel1";
             this.stateLabel1.Size = new System.Drawing.Size(35, 13);
@@ -558,6 +638,8 @@
             // streetAddressLabel
             // 
             this.streetAddressLabel.AutoSize = true;
+            this.streetAddressLabel.BackColor = System.Drawing.Color.Blue;
+            this.streetAddressLabel.ForeColor = System.Drawing.Color.White;
             this.streetAddressLabel.Location = new System.Drawing.Point(25, 136);
             this.streetAddressLabel.Name = "streetAddressLabel";
             this.streetAddressLabel.Size = new System.Drawing.Size(79, 13);
@@ -568,6 +650,8 @@
             // websiteLabel
             // 
             this.websiteLabel.AutoSize = true;
+            this.websiteLabel.BackColor = System.Drawing.Color.Blue;
+            this.websiteLabel.ForeColor = System.Drawing.Color.White;
             this.websiteLabel.Location = new System.Drawing.Point(25, 241);
             this.websiteLabel.Name = "websiteLabel";
             this.websiteLabel.Size = new System.Drawing.Size(49, 13);
@@ -578,6 +662,8 @@
             // zipCodeLabel1
             // 
             this.zipCodeLabel1.AutoSize = true;
+            this.zipCodeLabel1.BackColor = System.Drawing.Color.Blue;
+            this.zipCodeLabel1.ForeColor = System.Drawing.Color.White;
             this.zipCodeLabel1.Location = new System.Drawing.Point(25, 215);
             this.zipCodeLabel1.Name = "zipCodeLabel1";
             this.zipCodeLabel1.Size = new System.Drawing.Size(53, 13);
@@ -588,6 +674,8 @@
             // cellPhoneLabel
             // 
             this.cellPhoneLabel.AutoSize = true;
+            this.cellPhoneLabel.BackColor = System.Drawing.Color.Blue;
+            this.cellPhoneLabel.ForeColor = System.Drawing.Color.White;
             this.cellPhoneLabel.Location = new System.Drawing.Point(26, 241);
             this.cellPhoneLabel.Name = "cellPhoneLabel";
             this.cellPhoneLabel.Size = new System.Drawing.Size(61, 13);
@@ -598,6 +686,8 @@
             // cityLabel
             // 
             this.cityLabel.AutoSize = true;
+            this.cityLabel.BackColor = System.Drawing.Color.Blue;
+            this.cityLabel.ForeColor = System.Drawing.Color.White;
             this.cityLabel.Location = new System.Drawing.Point(26, 162);
             this.cityLabel.Name = "cityLabel";
             this.cityLabel.Size = new System.Drawing.Size(27, 13);
@@ -608,6 +698,8 @@
             // clientIDLabel
             // 
             this.clientIDLabel.AutoSize = true;
+            this.clientIDLabel.BackColor = System.Drawing.Color.Blue;
+            this.clientIDLabel.ForeColor = System.Drawing.Color.White;
             this.clientIDLabel.Location = new System.Drawing.Point(26, 32);
             this.clientIDLabel.Name = "clientIDLabel";
             this.clientIDLabel.Size = new System.Drawing.Size(50, 13);
@@ -618,6 +710,8 @@
             // firstNameLabel
             // 
             this.firstNameLabel.AutoSize = true;
+            this.firstNameLabel.BackColor = System.Drawing.Color.Blue;
+            this.firstNameLabel.ForeColor = System.Drawing.Color.White;
             this.firstNameLabel.Location = new System.Drawing.Point(26, 58);
             this.firstNameLabel.Name = "firstNameLabel";
             this.firstNameLabel.Size = new System.Drawing.Size(60, 13);
@@ -628,6 +722,8 @@
             // lastNameLabel
             // 
             this.lastNameLabel.AutoSize = true;
+            this.lastNameLabel.BackColor = System.Drawing.Color.Blue;
+            this.lastNameLabel.ForeColor = System.Drawing.Color.White;
             this.lastNameLabel.Location = new System.Drawing.Point(26, 84);
             this.lastNameLabel.Name = "lastNameLabel";
             this.lastNameLabel.Size = new System.Drawing.Size(61, 13);
@@ -638,6 +734,8 @@
             // stateLabel
             // 
             this.stateLabel.AutoSize = true;
+            this.stateLabel.BackColor = System.Drawing.Color.Blue;
+            this.stateLabel.ForeColor = System.Drawing.Color.White;
             this.stateLabel.Location = new System.Drawing.Point(26, 188);
             this.stateLabel.Name = "stateLabel";
             this.stateLabel.Size = new System.Drawing.Size(35, 13);
@@ -648,6 +746,8 @@
             // streetNameLabel
             // 
             this.streetNameLabel.AutoSize = true;
+            this.streetNameLabel.BackColor = System.Drawing.Color.Blue;
+            this.streetNameLabel.ForeColor = System.Drawing.Color.White;
             this.streetNameLabel.Location = new System.Drawing.Point(26, 136);
             this.streetNameLabel.Name = "streetNameLabel";
             this.streetNameLabel.Size = new System.Drawing.Size(69, 13);
@@ -658,6 +758,8 @@
             // zipCodeLabel
             // 
             this.zipCodeLabel.AutoSize = true;
+            this.zipCodeLabel.BackColor = System.Drawing.Color.Blue;
+            this.zipCodeLabel.ForeColor = System.Drawing.Color.White;
             this.zipCodeLabel.Location = new System.Drawing.Point(26, 215);
             this.zipCodeLabel.Name = "zipCodeLabel";
             this.zipCodeLabel.Size = new System.Drawing.Size(53, 13);
@@ -668,6 +770,8 @@
             // birthDateLabel
             // 
             this.birthDateLabel.AutoSize = true;
+            this.birthDateLabel.BackColor = System.Drawing.Color.Blue;
+            this.birthDateLabel.ForeColor = System.Drawing.Color.White;
             this.birthDateLabel.Location = new System.Drawing.Point(26, 111);
             this.birthDateLabel.Name = "birthDateLabel";
             this.birthDateLabel.Size = new System.Drawing.Size(57, 13);
@@ -708,6 +812,7 @@
             // 
             // clientIDTextBox
             // 
+            this.clientIDTextBox.BackColor = System.Drawing.Color.Blue;
             this.clientIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clientBindingSource, "ClientID", true));
             this.clientIDTextBox.Enabled = false;
             this.clientIDTextBox.Location = new System.Drawing.Point(101, 29);
@@ -812,6 +917,7 @@
             // 
             // companyIDTextBox
             // 
+            this.companyIDTextBox.BackColor = System.Drawing.Color.Blue;
             this.companyIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.companyBindingSource, "CompanyID", true));
             this.companyIDTextBox.Enabled = false;
             this.companyIDTextBox.Location = new System.Drawing.Point(118, 28);
@@ -894,6 +1000,7 @@
             // 
             // contactIDTextBox
             // 
+            this.contactIDTextBox.BackColor = System.Drawing.Color.Blue;
             this.contactIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactBindingSource, "ContactID", true));
             this.contactIDTextBox.Enabled = false;
             this.contactIDTextBox.Location = new System.Drawing.Point(118, 28);
@@ -1003,6 +1110,7 @@
             // 
             // interviewIDTextBox
             // 
+            this.interviewIDTextBox.BackColor = System.Drawing.Color.Blue;
             this.interviewIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.interviewBindingSource, "InterviewID", true));
             this.interviewIDTextBox.Enabled = false;
             this.interviewIDTextBox.Location = new System.Drawing.Point(138, 28);
@@ -1054,6 +1162,7 @@
             // 
             // positionIDTextBox2
             // 
+            this.positionIDTextBox2.BackColor = System.Drawing.Color.Blue;
             this.positionIDTextBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.positionBindingSource, "PositionID", true));
             this.positionIDTextBox2.Enabled = false;
             this.positionIDTextBox2.Location = new System.Drawing.Point(118, 29);
@@ -1096,6 +1205,7 @@
             // 
             // resumeIDTextBox1
             // 
+            this.resumeIDTextBox1.BackColor = System.Drawing.Color.Blue;
             this.resumeIDTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.resumeBindingSource, "ResumeID", true));
             this.resumeIDTextBox1.Enabled = false;
             this.resumeIDTextBox1.Location = new System.Drawing.Point(132, 29);
@@ -1156,6 +1266,7 @@
             // 
             // schoolIDTextBox1
             // 
+            this.schoolIDTextBox1.BackColor = System.Drawing.Color.Blue;
             this.schoolIDTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.schoolBindingSource, "SchoolID", true));
             this.schoolIDTextBox1.Enabled = false;
             this.schoolIDTextBox1.Location = new System.Drawing.Point(172, 28);
@@ -1207,28 +1318,39 @@
             // 
             // btnInsertUpdate
             // 
+            this.btnInsertUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInsertUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.btnInsertUpdate.ForeColor = System.Drawing.Color.White;
             this.btnInsertUpdate.Location = new System.Drawing.Point(226, 290);
             this.btnInsertUpdate.Name = "btnInsertUpdate";
-            this.btnInsertUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnInsertUpdate.Size = new System.Drawing.Size(75, 36);
             this.btnInsertUpdate.TabIndex = 15;
             this.btnInsertUpdate.Text = "button1";
             this.btnInsertUpdate.UseVisualStyleBackColor = true;
             this.btnInsertUpdate.Click += new System.EventHandler(this.btnInsertUpdate_Click);
+            this.btnInsertUpdate.MouseLeave += new System.EventHandler(this.btnMLeave);
+            this.btnInsertUpdate.MouseHover += new System.EventHandler(this.btnMHover);
             // 
             // btnCancel
             // 
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
             this.btnCancel.Location = new System.Drawing.Point(317, 290);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(75, 36);
             this.btnCancel.TabIndex = 16;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.MouseLeave += new System.EventHandler(this.btnMLeave);
+            this.btnCancel.MouseHover += new System.EventHandler(this.btnMHover);
             // 
             // frmAUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Blue;
             this.ClientSize = new System.Drawing.Size(424, 352);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnInsertUpdate);
@@ -1336,6 +1458,7 @@
             this.Controls.Add(this.streetNameTextBox);
             this.Controls.Add(this.zipCodeLabel);
             this.Controls.Add(this.zipCodeTextBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmAUI";
             this.Text = "frmAUI";
             this.Load += new System.EventHandler(this.frmAUI_Load);

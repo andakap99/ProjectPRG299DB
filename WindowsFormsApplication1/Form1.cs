@@ -30,7 +30,7 @@ namespace WindowsFormsApplication1
         private List<Position> positionList;
         private List<Resume> resumeList;
         private List<School> schoolList;
-
+        private bool btnClientClicked = false, btnCompanyClicked = false, btnContactClicked = false, btnContactPositionClicked = false, btnInterviewClicked = false, btnPositionClicked = false, btnResumeClicked = false, btnSchoolClicked = false;
         public static frmPRG299 mainForm;
         private ContextMenu aMD;
 
@@ -226,9 +226,9 @@ namespace WindowsFormsApplication1
             {
                 if (AddToolStripMenu.Selected)
                 {
-                    UpdateInsertForm.Text =  "Add " + button1.Text;
+                    UpdateInsertForm.Text =  "Add " ;
                     UpdateInsertForm.addMenuClicked = true;
-                    if(button1.Text == "Client")
+                    if(btnClientClicked)
                     {
                         client = UpdateInsertForm.newClient;                       
                         UpdateInsertForm.stateList = StateDB.GetStateList();
@@ -239,7 +239,7 @@ namespace WindowsFormsApplication1
                         UpdateInsertForm.AllLVVisible(button1.Text);
                         UpdateInsertForm.AllListView();
                     }
-                    else if (button2.Text == "Company")
+                    else if (btnCompanyClicked)
                     {
                         company = UpdateInsertForm.newCompany;
                         UpdateInsertForm.stateList = StateDB.GetStateList();
@@ -250,7 +250,7 @@ namespace WindowsFormsApplication1
                         UpdateInsertForm.AllLVVisible(button2.Text);
                         UpdateInsertForm.AllListView();
                     }
-                    else if (button3.Text == "Contact")
+                    else if (btnContactClicked)
                     {
                         contact = UpdateInsertForm.newContact;
                         UpdateInsertForm.contactBindingSource.Clear();
@@ -259,7 +259,7 @@ namespace WindowsFormsApplication1
                         UpdateInsertForm.AllLVVisible(button3.Text);
                         UpdateInsertForm.AllListView();
                     }
-                    else if (button4.Text == "Contact Position")
+                    else if (btnContactPositionClicked)
                     {
                         coPo = UpdateInsertForm.newContactPosition;
                         UpdateInsertForm.contactPositionBindingSource.Clear();
@@ -268,7 +268,7 @@ namespace WindowsFormsApplication1
                         UpdateInsertForm.AllLVVisible(button4.Text);
                         UpdateInsertForm.AllListView();
                     }
-                    else if (button5.Text == "Interview")
+                    else if (btnInterviewClicked)
                     {
                         interview = UpdateInsertForm.newInterview;
                         UpdateInsertForm.interviewBindingSource.Clear();
@@ -277,7 +277,7 @@ namespace WindowsFormsApplication1
                         UpdateInsertForm.AllLVVisible(button5.Text);
                         UpdateInsertForm.AllListView();
                     }
-                    else if (button6.Text == "Position")
+                    else if (btnPositionClicked)
                     {
                         position = UpdateInsertForm.newPostion;
                         UpdateInsertForm.positionBindingSource.Clear();
@@ -286,7 +286,7 @@ namespace WindowsFormsApplication1
                         UpdateInsertForm.AllLVVisible(button6.Text);
                         UpdateInsertForm.AllListView();
                     }
-                    else if (button7.Text == "Resume")
+                    else if (btnResumeClicked)
                     {
                         resume = UpdateInsertForm.newResume;
                         UpdateInsertForm.resumeBindingSource.Clear();
@@ -295,7 +295,7 @@ namespace WindowsFormsApplication1
                         UpdateInsertForm.AllLVVisible(button7.Text);
                         UpdateInsertForm.AllListView();
                     }
-                    else if (button8.Text == "School")
+                    else if (btnSchoolClicked)
                     {
                         school = UpdateInsertForm.newSchool;
                         UpdateInsertForm.stateList = StateDB.GetStateList();
@@ -310,24 +310,24 @@ namespace WindowsFormsApplication1
                 {
                     UpdateInsertForm.Text = "Modify";
                     UpdateInsertForm.addMenuClicked = false;
-                    if (button1.Text == "Client")
+                    if (btnClientClicked)
                     {
-                        UpdateInsertForm.stateList = StateDB.GetStateList();
+                       UpdateInsertForm.stateList = StateDB.GetStateList();
                         UpdateInsertForm.stateComboBox.DataSource = UpdateInsertForm.stateList;
-                       // UpdateInsertForm.newClient = ClientDB.GetClientByRow((int)clientDataGridView.CurrentCell.Value);
+                        UpdateInsertForm.newClient = ClientDB.GetClientByRow((int)clientDataGridView.CurrentCell.Value);
                        UpdateInsertForm.client = ClientDB.GetClientByRow((int)clientDataGridView.CurrentCell.Value);
                         UpdateInsertForm.clientBindingSource.Clear();
-                        foreach (DataGridViewRow row in clientDataGridView.Rows)
-                        {
-                            UpdateInsertForm.newClient = (Client)row.DataBoundItem;
+                        //foreach (DataGridViewRow row in clientDataGridView.Rows)
+                        //{
+                        //    UpdateInsertForm.newClient = (Client)row.DataBoundItem;
                             client = UpdateInsertForm.newClient;
-                        }
+                        //}
                         UpdateInsertForm.clientBindingSource.Add(client);
                         UpdateInsertForm.AllLVVisible(button1.Text);
                         UpdateInsertForm.AllListView();
 
                     }
-                    else if (button2.Text == "Company")
+                    else if (btnCompanyClicked)
                     {
                         UpdateInsertForm.stateList = StateDB.GetStateList();
                         UpdateInsertForm.stateComboBox1.DataSource = UpdateInsertForm.stateList;
@@ -337,7 +337,7 @@ namespace WindowsFormsApplication1
                         UpdateInsertForm.AllLVVisible(button2.Text);
                         UpdateInsertForm.AllListView();
                     }
-                    else if (button3.Text == "Contact")
+                    else if (btnContactClicked)
                     {
                         UpdateInsertForm.contact = ContactDB.GetContactByRow((int)contactDataGridView.CurrentCell.Value);
                         UpdateInsertForm.contactBindingSource.Clear();
@@ -345,7 +345,7 @@ namespace WindowsFormsApplication1
                         UpdateInsertForm.AllLVVisible(button3.Text);
                         UpdateInsertForm.AllListView();
                     }
-                    else if (button4.Text == "Contact Position")
+                    else if (btnContactPositionClicked)
                     {
                         UpdateInsertForm.contactPosition = ContactPositionDB.GetContactPositionByRow((int)contactPositionDataGridView.CurrentCell.Value);
                         UpdateInsertForm.contactPositionBindingSource.Clear();
@@ -353,7 +353,7 @@ namespace WindowsFormsApplication1
                         UpdateInsertForm.AllLVVisible(button4.Text);
                         UpdateInsertForm.AllListView();
                     }
-                    else if (button5.Text == "Interview")
+                    else if (btnInterviewClicked)
                     {
                         UpdateInsertForm.interview = InterviewDB.GetInterviewByRow((int)interviewDataGridView.CurrentCell.Value);
                         UpdateInsertForm.interviewBindingSource.Clear();
@@ -361,7 +361,7 @@ namespace WindowsFormsApplication1
                         UpdateInsertForm.AllLVVisible(button5.Text);
                         UpdateInsertForm.AllListView();
                     }
-                    else if (button6.Text == "Position")
+                    else if (btnPositionClicked)
                     {
                         UpdateInsertForm.position = PositionDB.GetPositionByRow((int)positionDataGridView.CurrentCell.Value);
                         UpdateInsertForm.positionBindingSource.Clear();
@@ -369,7 +369,7 @@ namespace WindowsFormsApplication1
                         UpdateInsertForm.AllLVVisible(button6.Text);
                         UpdateInsertForm.AllListView();
                     }
-                    else if (button7.Text == "Resume")
+                    else if (btnResumeClicked)
                     {
                         UpdateInsertForm.resume = ResumeDB.GetResumeByRow((int)resumeDataGridView.CurrentCell.Value);
                         UpdateInsertForm.resumeBindingSource.Clear();
@@ -377,7 +377,7 @@ namespace WindowsFormsApplication1
                         UpdateInsertForm.AllLVVisible(button7.Text);
                         UpdateInsertForm.AllListView();
                     }
-                    else if (button8.Text == "School")
+                    else if (btnSchoolClicked)
                     {
                         UpdateInsertForm.stateList = StateDB.GetStateList();
                         UpdateInsertForm.stateComboBox2.DataSource = UpdateInsertForm.stateList;
@@ -428,61 +428,129 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            panel11.Visible = true;
             panel11.Height = button1.Height;
             panel11.Top = button1.Top;
-            
+            btnClientClicked = true; btnCompanyClicked = false; btnContactClicked = false; btnContactPositionClicked = false;
+            btnInterviewClicked = false; btnPositionClicked = false; btnResumeClicked = false; btnSchoolClicked = false;
+            panel3.Dock = DockStyle.Fill;
+            panel3.Visible = true; panel1.Visible = false; panel9.Visible = false; panel6.Visible = false;
+            panel8.Visible = false; panel5.Visible = false; panel7.Visible = false; panel4.Visible = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            panel11.Visible = true;
             panel11.Height = button2.Height;
             panel11.Top = button2.Top;
+            btnClientClicked = false; btnCompanyClicked = true; btnContactClicked = false; btnContactPositionClicked = false;
+            btnInterviewClicked = false; btnPositionClicked = false; btnResumeClicked = false; btnSchoolClicked = false;
+            panel1.Dock = DockStyle.Fill;
+            panel3.Visible = false; panel1.Visible = true; panel9.Visible = false; panel6.Visible = false;
+            panel8.Visible = false; panel5.Visible = false; panel7.Visible = false; panel4.Visible = false;
+
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            panel11.Visible = true;
             panel11.Height = button3.Height;
             panel11.Top = button3.Top;
+            btnClientClicked = false; btnCompanyClicked = false; btnContactClicked = true; btnContactPositionClicked = false;
+            btnInterviewClicked = false; btnPositionClicked = false; btnResumeClicked = false; btnSchoolClicked = false;
+            panel9.Dock = DockStyle.Fill;
+            panel3.Visible = false; panel1.Visible = false; panel9.Visible = true; panel6.Visible = false;
+            panel8.Visible = false; panel5.Visible = false; panel7.Visible = false; panel4.Visible = false;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
+            panel11.Visible = true;
             panel11.Height = button4.Height;
             panel11.Top = button4.Top;
+            btnClientClicked = false; btnCompanyClicked = false; btnContactClicked = false; btnContactPositionClicked = true;
+            btnInterviewClicked = false; btnPositionClicked = false; btnResumeClicked = false; btnSchoolClicked = false;
+            panel6.Dock = DockStyle.Fill;
+            panel3.Visible = false; panel1.Visible = false; panel9.Visible = false; panel6.Visible = true;
+            panel8.Visible = false; panel5.Visible = false; panel7.Visible = false; panel4.Visible = false;
         }
+
 
         private void button5_Click(object sender, EventArgs e)
         {
+            panel11.Visible = true;
             panel11.Height = button5.Height;
             panel11.Top = button5.Top;
+            btnClientClicked = false; btnCompanyClicked = false; btnContactClicked = false; btnContactPositionClicked = false;
+            btnInterviewClicked = true; btnPositionClicked = false; btnResumeClicked = false; btnSchoolClicked = false;
+            panel8.Dock = DockStyle.Fill;
+            panel3.Visible = false; panel1.Visible = false; panel9.Visible = false; panel6.Visible = false;
+            panel8.Visible = true; panel5.Visible = false; panel7.Visible = false; panel4.Visible = false;
         }
+
+
 
         private void button6_Click(object sender, EventArgs e)
         {
+            panel11.Visible = true;
             panel11.Height = button6.Height;
             panel11.Top = button6.Top;
+            btnClientClicked = false; btnCompanyClicked = false; btnContactClicked = false; btnContactPositionClicked = false;
+            btnInterviewClicked = false; btnPositionClicked = true; btnResumeClicked = false; btnSchoolClicked = false;
+            panel5.Dock = DockStyle.Fill;
+            panel3.Visible = false; panel1.Visible = false; panel9.Visible = false; panel6.Visible = false;
+            panel8.Visible = false; panel5.Visible = true; panel7.Visible = false; panel4.Visible = false;
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
+            panel11.Visible = true;
             panel11.Height = button7.Height;
             panel11.Top = button7.Top;
+            btnClientClicked = false; btnCompanyClicked = false; btnContactClicked = false; btnContactPositionClicked = false;
+            btnInterviewClicked = false; btnPositionClicked = false; btnResumeClicked = true; btnSchoolClicked = false;
+            panel7.Dock = DockStyle.Fill;
+            panel3.Visible = false; panel1.Visible = false; panel9.Visible = false; panel6.Visible = false;
+            panel8.Visible = false; panel5.Visible = false; panel7.Visible = true; panel4.Visible = false;
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
+            panel11.Visible = true;
             panel11.Height = button8.Height;
             panel11.Top = button8.Top;
+            btnClientClicked = false; btnCompanyClicked = false; btnContactClicked = false; btnContactPositionClicked = false;
+            btnInterviewClicked = false; btnPositionClicked = false; btnResumeClicked = false; btnSchoolClicked = true;
+            panel4.Dock = DockStyle.Fill;
+            panel3.Visible = false; panel1.Visible = false; panel9.Visible = false; panel6.Visible = false;
+            panel8.Visible = false; panel5.Visible = false; panel7.Visible = false; panel4.Visible = true;
         }
 
-        private void panel10_MouseHover(object sender, EventArgs e)
+        private void pnlMouseHover(object sender, EventArgs e)
         {
+            panel10.Width = 199;
+            if (btnClientClicked) { panel11.Location = new Point(183, 0); }
+            else if (btnCompanyClicked) { panel11.Location = new Point(183, 70); }
+            else if (btnContactClicked) { panel11.Location = new Point(183, 140);  }
+            else if (btnContactPositionClicked) { panel11.Location = new Point(183, 210); }
+            else if (btnInterviewClicked) { panel11.Location = new Point(183, 280); }
+            else if (btnPositionClicked) { panel11.Location = new Point(183, 350); }
+            else if (btnResumeClicked) { panel11.Location = new Point(183, 490); }
+            else if (btnSchoolClicked) { panel11.Location = new Point(183, 560); }
 
         }
 
-        private void panel10_MouseLeave(object sender, EventArgs e)
+        private void pnlMouseLeave(object sender, EventArgs e)
         {
-
+            panel10.Width = 10;
+            if (btnClientClicked) { panel11.Location = button1.Location; }
+            else if (btnCompanyClicked) { panel11.Location = button2.Location; }
+            else if (btnContactClicked) { panel11.Location = button3.Location; }
+            else if (btnContactPositionClicked) { panel11.Location = button4.Location; }
+            else if (btnInterviewClicked) { panel11.Location = button5.Location; }
+            else if (btnPositionClicked) { panel11.Location = button6.Location; }
+            else if (btnResumeClicked) { panel11.Location = button7.Location; }
+            else if (btnSchoolClicked) { panel11.Location = button8.Location; }
         }
 
         private void panel2_MouseHover(object sender, EventArgs e)
@@ -493,6 +561,11 @@ namespace WindowsFormsApplication1
         private void panel2_MouseLeave(object sender, EventArgs e)
         {
 
+        }
+
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
