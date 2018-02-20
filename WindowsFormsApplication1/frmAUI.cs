@@ -772,5 +772,26 @@ namespace WindowsFormsApplication1
             btnCancel.Font = new Font(btnCancel.Font, FontStyle.Regular);
 
         }
+
+        public bool IsDataValid()
+        {
+            bool isDVB= false;
+            foreach(Control ctrl in Controls)
+            {
+                if (Validator.IsPresent(ctrl))
+                {
+                    isDVB = true;
+                }
+                else
+                {
+                    isDVB = false;
+                    break;
+                }
+            }
+            
+            isDVB = Validator.IsInt32(zipCodeTextBox); 
+            isDVB = Validator.
+            return isDVB;
+        }
     }
 }

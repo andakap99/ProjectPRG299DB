@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TLALab1._4
+namespace WindowsFormsApplication1
 {
     class Validator
     {
@@ -28,7 +28,7 @@ namespace TLALab1._4
             if (control.GetType().ToString() == "System.Windows.Forms.TextBox")
             {
                 TextBox textBox = (TextBox)control;
-                if (textBox.Text == "")
+                if (textBox.Text == "" && textBox.Visible && textBox.Enabled)
                 {
                     MessageBox.Show(textBox.Tag.ToString() + " is a required field.", Title);
                     textBox.Focus();
@@ -42,7 +42,7 @@ namespace TLALab1._4
             else if (control.GetType().ToString() == "System.Windows.Forms.ComboBox")
             {
                 ComboBox comboBox = (ComboBox)control;
-                if (comboBox.SelectedIndex == -1)
+                if (comboBox.SelectedIndex == -1 && comboBox.Visible)
                 {
                     MessageBox.Show(comboBox.Tag.ToString() + " is a required field.", Title);
                     comboBox.Focus();
@@ -75,8 +75,15 @@ namespace TLALab1._4
         {
             try
             {
-                Convert.ToInt32(textBox.Text);
-                return true;
+                if (textBox.Visible && textBox.Enabled)
+                {
+                    Convert.ToInt32(textBox.Text);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch (FormatException)
             {
