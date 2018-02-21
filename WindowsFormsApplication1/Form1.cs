@@ -196,8 +196,8 @@ namespace WindowsFormsApplication1
          //               client = UpdateInsertForm.newClient;                       
                         UpdateInsertForm.stateList = StateDB.GetStateList();
                         UpdateInsertForm.stateComboBox.DataSource = UpdateInsertForm.stateList;
-         //               UpdateInsertForm.clientBindingSource.Clear();
-           //             UpdateInsertForm.clientBindingSource.Add(client);
+                        clientBindingSource.Clear();
+                        clientBindingSource.Add(client);
                         clientDataGridView.DataSource = clientList;
                         UpdateInsertForm.AllLVVisible(button1.Text);
                         UpdateInsertForm.AllListView();
@@ -465,6 +465,11 @@ namespace WindowsFormsApplication1
             panel8.Visible = false; panel5.Visible = true; panel7.Visible = false; panel4.Visible = false;
         }
 
+        private void companyDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
         private void button7_Click(object sender, EventArgs e)
         {
             panel11.Visible = true;
@@ -498,22 +503,23 @@ namespace WindowsFormsApplication1
             else if (btnContactPositionClicked) { panel11.Location = new Point(183, 210); }
             else if (btnInterviewClicked) { panel11.Location = new Point(183, 280); }
             else if (btnPositionClicked) { panel11.Location = new Point(183, 350); }
-            else if (btnResumeClicked) { panel11.Location = new Point(183, 490); }
-            else if (btnSchoolClicked) { panel11.Location = new Point(183, 560); }
+            else if (btnResumeClicked) { panel11.Location = new Point(183, 420); }
+            else if (btnSchoolClicked) { panel11.Location = new Point(183, 490); }
 
         }
 
         private void pnlMouseLeave(object sender, EventArgs e)
         {
-            panel10.Width = 10;
-            if (btnClientClicked) { panel11.Location = button1.Location; }
-            else if (btnCompanyClicked) { panel11.Location = button2.Location; }
-            else if (btnContactClicked) { panel11.Location = button3.Location; }
-            else if (btnContactPositionClicked) { panel11.Location = button4.Location; }
-            else if (btnInterviewClicked) { panel11.Location = button5.Location; }
-            else if (btnPositionClicked) { panel11.Location = button6.Location; }
-            else if (btnResumeClicked) { panel11.Location = button7.Location; }
-            else if (btnSchoolClicked) { panel11.Location = button8.Location; }
+            
+            if (btnClientClicked) { panel11.Location = button1.Location; panel10.Width = 10; }
+            else if (btnCompanyClicked) { panel11.Location = button2.Location; panel10.Width = 10; }
+            else if (btnContactClicked) { panel11.Location = button3.Location; panel10.Width = 10; }
+            else if (btnContactPositionClicked) { panel11.Location = button4.Location; panel10.Width = 10; }
+            else if (btnInterviewClicked) { panel11.Location = button5.Location; panel10.Width = 10; }
+            else if (btnPositionClicked) { panel11.Location = button6.Location; panel10.Width = 10; }
+            else if (btnResumeClicked) { panel11.Location = button7.Location; panel10.Width = 10; }
+            else if (btnSchoolClicked) { panel11.Location = button8.Location; panel10.Width = 10; }
+            
             
         }
 

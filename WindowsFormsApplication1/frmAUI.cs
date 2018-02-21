@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectPRG299BLL;
 using ProjectPRG299DB;
+using static WindowsFormsApplication1.Validator;
 namespace WindowsFormsApplication1
 {
     public partial class frmAUI : Form
@@ -579,176 +580,179 @@ namespace WindowsFormsApplication1
 
         private void btnInsertUpdate_Click(object sender, EventArgs e)
         {
-            if(addMenuClicked)
+            if (IsDataValid())
             {
-                //newClient.State = stateComboBox.SelectedValue.ToString();
-                //newCompany.State = stateComboBox1.SelectedValue.ToString();
-                //newSchool.State = stateComboBox2.SelectedValue.ToString();
-                try
+                if (addMenuClicked)
                 {
-                    if(cliLVVisible)
+                    //newClient.State = stateComboBox.SelectedValue.ToString();
+                    //newCompany.State = stateComboBox1.SelectedValue.ToString();
+                    //newSchool.State = stateComboBox2.SelectedValue.ToString();
+                    try
                     {
- //                       newClient.BirthDate = birthDateDateTimePicker.Value;
-                        ClientDB.AddClient(newClient);
-                        client = newClient;
-                        DialogResult = DialogResult.Retry;
-                    }
-                    if (comLVVisible)
-                    {
-                        CompanyDB.AddCompany(newCompany);
-                        company = newCompany;
-                        DialogResult = DialogResult.Retry;
-                    }
-                    if (conLVVisible)
-                    {
-                        ContactDB.AddContact(newContact);
-                        contact = newContact;
-                        DialogResult = DialogResult.Retry;
-                    }
-                    if (conPosLVVisible)
-                    {
-                        ContactPositionDB.AddContactPosition(newContactPosition);
-                        contactPosition = newContactPosition;
-                        DialogResult = DialogResult.Retry;
-                    }
-                    if (intLVVisible)
-                    {
-                        InterviewDB.AddInterview(newInterview);
-                        interview = newInterview;
-                        DialogResult = DialogResult.Retry;
-                    }
-                    if (posLVVisible)
-                    {
-                        PositionDB.AddPosition(newPostion);
-                        position = newPostion;
-                        DialogResult = DialogResult.Retry;
-                    }
-                    if (resLVVisible)
-                    {
-                        ResumeDB.AddResume(newResume);
-                        resume = newResume;
-                        DialogResult = DialogResult.Retry;
-                    }
-                    if (schLVVisible)
-                    {
-                        SchoolDB.AddSchool(newSchool);
-                        school = newSchool;
-                        DialogResult = DialogResult.Retry;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, ex.GetType().ToString());
-                }
-            }
-            else
-            {
-                try
-                {
-                    if (cliLVVisible)
-                     {
-                        if(!ClientDB.UpdateClient(client, newClient))
+                        if (cliLVVisible)
                         {
-                            MessageBox.Show("Client was modified or deleted", "Error");
-                            DialogResult = DialogResult.Retry;
-                        }
-                        else
-                        {
+                            //                       newClient.BirthDate = birthDateDateTimePicker.Value;
+                            ClientDB.AddClient(newClient);
                             client = newClient;
-                            DialogResult = DialogResult.OK;
-                        }
-                    }
-                    if (comLVVisible)
-                    {
-                        if (!CompanyDB.UpdateCompany(company, newCompany))
-                        {
-                            MessageBox.Show("Company was modified or deleted", "Error");
                             DialogResult = DialogResult.Retry;
                         }
-                        else
+                        if (comLVVisible)
                         {
+                            CompanyDB.AddCompany(newCompany);
                             company = newCompany;
-                            DialogResult = DialogResult.OK;
-                        }
-                    }
-                    if (conLVVisible)
-                    {
-                        if (!ContactDB.UpdateContact(contact, newContact))
-                        {
-                            MessageBox.Show("Contact was modified or deleted", "Error");
                             DialogResult = DialogResult.Retry;
                         }
-                        else
+                        if (conLVVisible)
                         {
+                            ContactDB.AddContact(newContact);
                             contact = newContact;
-                        }
-                    }
-                    if (conPosLVVisible)
-                    {
-                        if (!ContactPositionDB.UpdateContactPosition(contactPosition, newContactPosition))
-                        {
-                            MessageBox.Show("Contact Position was modified or deleted", "Error");
                             DialogResult = DialogResult.Retry;
                         }
-                        else
+                        if (conPosLVVisible)
                         {
+                            ContactPositionDB.AddContactPosition(newContactPosition);
                             contactPosition = newContactPosition;
-                        }
-                    }
-                    if (intLVVisible)
-                    {
-                        if (!InterviewDB.UpdateInterview(interview, newInterview))
-                        {
-                            MessageBox.Show("Interview was modified or deleted", "Error");
                             DialogResult = DialogResult.Retry;
                         }
-                        else
+                        if (intLVVisible)
                         {
+                            InterviewDB.AddInterview(newInterview);
                             interview = newInterview;
-                        }
-                    }
-                    if (posLVVisible)
-                    {
-                        if (!PositionDB.UpdatePosition(position, newPostion))
-                        {
-                            MessageBox.Show("Positon was modified or deleted", "Error");
                             DialogResult = DialogResult.Retry;
                         }
-                        else
+                        if (posLVVisible)
                         {
+                            PositionDB.AddPosition(newPostion);
                             position = newPostion;
-                        }
-                    }
-                    if (resLVVisible)
-                    {
-                        if (!ResumeDB.UpdateResume(resume, newResume))
-                        {
-                            MessageBox.Show("Resume was modified or deleted", "Error");
                             DialogResult = DialogResult.Retry;
                         }
-                        else
+                        if (resLVVisible)
                         {
+                            ResumeDB.AddResume(newResume);
                             resume = newResume;
-                        }
-                    }
-                    if (schLVVisible)
-                    {
-                        if (!SchoolDB.UpdateSchool(school, newSchool))
-                        {
-                            MessageBox.Show("School was modified or deleted", "Error");
                             DialogResult = DialogResult.Retry;
                         }
-                        else
+                        if (schLVVisible)
                         {
+                            SchoolDB.AddSchool(newSchool);
                             school = newSchool;
+                            DialogResult = DialogResult.Retry;
                         }
                     }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, ex.GetType().ToString());
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.Message, ex.GetType().ToString());
-                }
+                    try
+                    {
+                        if (cliLVVisible)
+                        {
+                            if (!ClientDB.UpdateClient(client, newClient))
+                            {
+                                MessageBox.Show("Client was modified or deleted", "Error");
+                                DialogResult = DialogResult.Retry;
+                            }
+                            else
+                            {
+                                client = newClient;
+                                DialogResult = DialogResult.OK;
+                            }
+                        }
+                        if (comLVVisible)
+                        {
+                            if (!CompanyDB.UpdateCompany(company, newCompany))
+                            {
+                                MessageBox.Show("Company was modified or deleted", "Error");
+                                DialogResult = DialogResult.Retry;
+                            }
+                            else
+                            {
+                                company = newCompany;
+                                DialogResult = DialogResult.OK;
+                            }
+                        }
+                        if (conLVVisible)
+                        {
+                            if (!ContactDB.UpdateContact(contact, newContact))
+                            {
+                                MessageBox.Show("Contact was modified or deleted", "Error");
+                                DialogResult = DialogResult.Retry;
+                            }
+                            else
+                            {
+                                contact = newContact;
+                            }
+                        }
+                        if (conPosLVVisible)
+                        {
+                            if (!ContactPositionDB.UpdateContactPosition(contactPosition, newContactPosition))
+                            {
+                                MessageBox.Show("Contact Position was modified or deleted", "Error");
+                                DialogResult = DialogResult.Retry;
+                            }
+                            else
+                            {
+                                contactPosition = newContactPosition;
+                            }
+                        }
+                        if (intLVVisible)
+                        {
+                            if (!InterviewDB.UpdateInterview(interview, newInterview))
+                            {
+                                MessageBox.Show("Interview was modified or deleted", "Error");
+                                DialogResult = DialogResult.Retry;
+                            }
+                            else
+                            {
+                                interview = newInterview;
+                            }
+                        }
+                        if (posLVVisible)
+                        {
+                            if (!PositionDB.UpdatePosition(position, newPostion))
+                            {
+                                MessageBox.Show("Positon was modified or deleted", "Error");
+                                DialogResult = DialogResult.Retry;
+                            }
+                            else
+                            {
+                                position = newPostion;
+                            }
+                        }
+                        if (resLVVisible)
+                        {
+                            if (!ResumeDB.UpdateResume(resume, newResume))
+                            {
+                                MessageBox.Show("Resume was modified or deleted", "Error");
+                                DialogResult = DialogResult.Retry;
+                            }
+                            else
+                            {
+                                resume = newResume;
+                            }
+                        }
+                        if (schLVVisible)
+                        {
+                            if (!SchoolDB.UpdateSchool(school, newSchool))
+                            {
+                                MessageBox.Show("School was modified or deleted", "Error");
+                                DialogResult = DialogResult.Retry;
+                            }
+                            else
+                            {
+                                school = newSchool;
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, ex.GetType().ToString());
+                    }
 
+                }
             }
         }
 
@@ -775,10 +779,12 @@ namespace WindowsFormsApplication1
 
         public bool IsDataValid()
         {
-            bool isDVB= false;
-            foreach(Control ctrl in Controls)
+            bool isDVB = false;
+            
+
+            foreach (Control ctrl in Controls)
             {
-                if (Validator.IsPresent(ctrl))
+                if (IsPresent(ctrl))
                 {
                     isDVB = true;
                 }
@@ -788,10 +794,52 @@ namespace WindowsFormsApplication1
                     break;
                 }
             }
-            
-            isDVB = Validator.IsInt32(zipCodeTextBox); 
-            isDVB = Validator.
+            if (IsPhoneNumber(cellPhoneTextBox) & IsInt32(zipCodeTextBox)
+                | IsPhoneNumber(cellPhoneTextBox1) & IsPhoneNumber(phoneNumberTextBox)
+                | IsInt32(contactIDTextBox1) & IsInt32(positionIDTextBox)
+                | IsInt32(positionIDTextBox1) & IsInt32(companyIDTextBox1) & IsInt32(contactIDTextBox2)
+                | IsInt32(companyIDTextBox2) & IsInt32(resumeIDTextBox)
+                | IsInt32(schoolIDTextBox) & IsInt32(clientIDTextBox1)
+                | IsInt32(zipCodeTextBox1) & IsInt32(buildingNumberTextBox)
+                | IsInt32(zipCodeTextBox2))
+            {
+                isDVB = true;
+                int firstZip=0;
+                int lastZip=0;
+                int firstZip1=0;
+                int lastZip1=0;
+                int firstZip2=0;
+                int lastZip2=0;
+                if (Text.Contains("Client"))
+                {
+                    firstZip = stateList[stateComboBox.SelectedIndex].FirstZipCode;
+                    lastZip = stateList[stateComboBox.SelectedIndex].LastZipCode;
+                }
+                if (Text.Contains("Company"))
+                {
+                    firstZip1 = stateList[stateComboBox1.SelectedIndex].FirstZipCode;
+                    lastZip1 = stateList[stateComboBox1.SelectedIndex].LastZipCode;
+                }
+                if (Text.Contains("School"))
+                {
+                    firstZip2 = stateList[stateComboBox2.SelectedIndex].FirstZipCode;
+                    lastZip2 = stateList[stateComboBox2.SelectedIndex].LastZipCode;
+                }
+                    if (IsStateZipCode(zipCodeTextBox, firstZip, lastZip)
+                    || IsStateZipCode(zipCodeTextBox1, firstZip1, lastZip1)
+                    || IsStateZipCode(zipCodeTextBox2, firstZip2, lastZip2))
+                {
+                    isDVB = true;
+                }
+                else
+                    isDVB = false;
+            }
+            else
+                isDVB = false;
+
+
             return isDVB;
+        
         }
     }
 }

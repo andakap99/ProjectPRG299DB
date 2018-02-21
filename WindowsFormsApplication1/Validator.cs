@@ -96,10 +96,14 @@ namespace WindowsFormsApplication1
         public static bool IsStateZipCode(TextBox textBox,
             int firstZip, int lastZip)
         {
-            int zipCode = Convert.ToInt32(textBox.Text);
+            int zipCode = 0;
+            if (textBox.Text == "")
+            { return false; }
+            else
+                zipCode = Convert.ToInt32(textBox.Text);
             if (zipCode <= firstZip || zipCode >= lastZip)
             {
-                MessageBox.Show(textBox.Tag.ToString() + " must be within this range: " +
+                MessageBox.Show("ZipCode must be within this range: " +
                     firstZip + " to " + lastZip + ".", Title);
                 textBox.Focus();
                 return false;
@@ -114,9 +118,13 @@ namespace WindowsFormsApplication1
         {
             string phoneChars = textBox.Text.Replace(".", "");
             try
-            {
-                Convert.ToInt64(phoneChars);
-                return true;
+            {   if (textBox.Text == "")
+                { return false; }
+                else
+                {
+                    Convert.ToInt64(phoneChars);
+                    return true;
+                }
             }
             catch (FormatException)
             {
