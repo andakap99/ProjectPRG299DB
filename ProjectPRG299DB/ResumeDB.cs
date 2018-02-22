@@ -137,13 +137,11 @@ namespace ProjectPRG299DB
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string insertStatement =
-                "Set IDENTITY_INSERT Resume ON; " +
                 "INSERT Resume " +
                   "(RSCDirectoryPath, SchoolID, " +
                 "ClientID) " +
                 "VALUES (@RSCDirectoryPath, @SchoolID, " +
-                "@ClientID);" +
-                "Set IDENTITY_INSERT Resume OFF;";
+                "@ClientID);"; 
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
             if (resume.RSCDirectoryPath == null)
                 insertCommand.Parameters.AddWithValue("@RSCDirectoryPath", DBNull.Value);

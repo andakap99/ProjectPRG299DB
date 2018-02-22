@@ -119,42 +119,56 @@ namespace WindowsFormsApplication1
                 {
                     newCompany = new Company();
                     PutNewCompany();
+                    companyBindingSource.Clear();
+                    companyBindingSource.Add(newCompany);
                 }
 
                 if (Text == "Modify Contact")
                 {
                     newContact = new Contact();
                     PutNewContact();
+                    contactBindingSource.Clear();
+                    contactBindingSource.Add(newContact);
                 }
 
                 if (Text == "Modify Contact Position")
                 {
                     newContactPosition = new ContactPosition();
                     PutNewContactPosition();
+                    contactPositionBindingSource.Clear();
+                    contactPositionBindingSource.Add(newContactPosition);
                 }
 
                 if (Text == "Modify Interview")
                 {
                     newInterview = new Interview();
                     PutNewInterview();
+                    interviewBindingSource.Clear();
+                    interviewBindingSource.Add(newInterview);
                 }
 
                 if (Text == "Modify Position")
                 {
                     newPostion = new Position();
                     PutNewPosition();
+                    positionBindingSource.Clear();
+                    positionBindingSource.Add(newPostion);
                 }
 
                 if (Text == "Modify Resume")
                 {
                     newResume = new Resume();
                     PutNewResume();
+                    resumeBindingSource.Clear();
+                    resumeBindingSource.Add(newResume);
                 }
 
                 if (Text == "Modify School")
                 {
                     newSchool = new School();
                     PutNewSchool();
+                    schoolBindingSource.Clear();
+                    schoolBindingSource.Add(newSchool);
                 }
             }
         }
@@ -784,10 +798,26 @@ namespace WindowsFormsApplication1
 
             foreach (Control ctrl in Controls)
             {
+                
                 if (IsPresent(ctrl))
                 {
                     isDVB = true;
                 }
+                //else if (textBox.Text == "")
+                //{
+                //    if((textBox.Visible && textBox.Text=="" && textBox == cellPhoneTextBox) 
+                //        || (textBox.Visible && textBox.Text == "" && textBox == websiteTextBox && textBox == additionalNotesTextBox)
+                //        || (textBox.Visible && textBox.Text == "" && textBox == emailAddressTextBox && textBox == phoneNumberTextBox && textBox == cellPhoneTextBox1 && textBox == additionalNotesTextBox1)
+                //        || (textBox.Visible && textBox.Text == "" && textBox == additionalNotesTextBox2)
+                //        || (textBox.Visible && textBox.Text == "" && textBox == positionNameTextBox && textBox == descriptionTextBox && textBox == companyIDTextBox1 && textBox == additionalNotesTextBox3 && textBox == resumeIDTextBox)
+            //            || (textBox.Visible && textBox.Text == "" && textBox == rSCDirectoryPathTextBox && textBox == schoolIDTextBox && textBox == clientIDTextBox1)
+            //            || (textBox.Visible && textBox.Text == "" && textBox == schoolNameTextBox && textBox == streetNameTextBox1 && textBox == cityTextBox2 && textBox == zipCodeTextBox2 && textBox == numberOfYearsAttendedTextBox && textBox == graduatedTextBox))
+
+            //        {
+            //        isDVB = true;
+            //    }
+
+            //}
                 else
                 {
                     isDVB = false;

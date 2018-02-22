@@ -157,13 +157,11 @@ namespace ProjectPRG299DB
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string insertStatement =
-                "Set IDENTITY_INSERT Position ON; " +
                 "INSERT Position " +
                 "(PositionName, Description, " +
                 "CompanyID, AdditionalNotes, ResumeID) " +
                 "VALUES (@PositionName, @Description, " +
-                "@CompanyID, @AdditionalNotes, @ResumeID);" +
-                "Set IDENTITY_INSERT Position OFF;";
+                "@CompanyID, @AdditionalNotes, @ResumeID);";
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
             if(position.PositionName == null)
                 insertCommand.Parameters.AddWithValue("@PositionName", DBNull.Value);

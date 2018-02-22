@@ -30,7 +30,19 @@ namespace WindowsFormsApplication1
                 TextBox textBox = (TextBox)control;
                 if (textBox.Text == "" && textBox.Visible && textBox.Enabled)
                 {
-                    MessageBox.Show(textBox.Tag.ToString() + " is a required field.", Title);
+                    if (textBox.Name.Contains("cellPhoneTextBox") || textBox.Name.Contains("websiteTextBox")
+                        || textBox.Name.Contains("additionalNotesTextBox") || textBox.Name.Contains("emailAddressTextBox")
+                        || textBox.Name.Contains("phoneNumberTextBox") || textBox.Name.Contains("cellPhoneTextBox1")
+                        || textBox.Name.Contains("additionalNotesTextBox1") || textBox.Name.Contains("additionalNotesTextBox2")
+                        || textBox.Name.Contains("positionNameTextBox") || textBox.Name.Contains("descriptionTextBox")
+                        || textBox.Name.Contains("companyIDTextBox1") || textBox.Name.Contains("additionalNotesTextBox3")
+                        || textBox.Name.Contains("resumeIDTextBox") || textBox.Name.Contains("rSCDirectoryPathTextBox")
+                        || textBox.Name.Contains("schoolIDTextBox") || textBox.Name.Contains("clientIDTextBox1")
+                        || textBox.Name.Contains("schoolNameTextBox") || textBox.Name.Contains("streetNameTextBox1")
+                        || textBox.Name.Contains("cityTextBox2") || textBox.Name.Contains("zipCodeTextBox2")
+                        || textBox.Name.Contains("numberOfYearsAttendedTextBox") || textBox.Name.Contains("graduatedTextBox"))
+                    { return true; }
+                        MessageBox.Show("Fill in the required field.", Title);
                     textBox.Focus();
                     return false;
                 }
@@ -44,7 +56,7 @@ namespace WindowsFormsApplication1
                 ComboBox comboBox = (ComboBox)control;
                 if (comboBox.SelectedIndex == -1 && comboBox.Visible)
                 {
-                    MessageBox.Show(comboBox.Tag.ToString() + " is a required field.", Title);
+                    MessageBox.Show("State required.", Title);
                     comboBox.Focus();
                     return false;
                 }
@@ -87,7 +99,7 @@ namespace WindowsFormsApplication1
             }
             catch (FormatException)
             {
-                MessageBox.Show(textBox.Tag.ToString() + " must be an integer value.", Title);
+                MessageBox.Show(" Must be an integer value.", Title);
                 textBox.Focus();
                 return false;
             }
@@ -97,10 +109,15 @@ namespace WindowsFormsApplication1
             int firstZip, int lastZip)
         {
             int zipCode = 0;
-            if (textBox.Text == "")
+            if (textBox.Text == "" && textBox.Visible)
             { return false; }
             else
+                if (textBox.Visible)
+            {
                 zipCode = Convert.ToInt32(textBox.Text);
+            }
+            else
+                return true;
             if (zipCode <= firstZip || zipCode >= lastZip)
             {
                 MessageBox.Show("ZipCode must be within this range: " +
@@ -119,7 +136,12 @@ namespace WindowsFormsApplication1
             string phoneChars = textBox.Text.Replace(".", "");
             try
             {   if (textBox.Text == "")
-                { return false; }
+                {
+                    if (textBox.Name.Contains("cellPhoneTextBox") || textBox.Name.Contains("phoneNumberTextBox") || textBox.Name.Contains("cellPhoneTextBox1"))
+                    { return true; }
+                    else
+                        return false;
+                }
                 else
                 {
                     Convert.ToInt64(phoneChars);
@@ -128,7 +150,7 @@ namespace WindowsFormsApplication1
             }
             catch (FormatException)
             {
-                MessageBox.Show(textBox.Tag.ToString() + " must be in this format: " +
+                MessageBox.Show("Must be in this format: " +
                     "999.999.9999.", Title);
                 textBox.Focus();
                 return false;

@@ -187,7 +187,7 @@ namespace WindowsFormsApplication1
             frmAUI UpdateInsertForm = new frmAUI();
             try
             {
-                if (AddToolStripMenu.Selected)
+                if (sender == AddToolStripMenu || sender == button9)
                 {
                     UpdateInsertForm.Text = "Add " + AddTextToFrmAdUpInDotText();
                     UpdateInsertForm.addMenuClicked = true;
@@ -204,27 +204,27 @@ namespace WindowsFormsApplication1
                     }
                     if (btnCompanyClicked)
                     {
-                        company = UpdateInsertForm.newCompany;
+                //        company = UpdateInsertForm.newCompany;
                         UpdateInsertForm.stateList = StateDB.GetStateList();
                         UpdateInsertForm.stateComboBox1.DataSource = UpdateInsertForm.stateList;
-                        UpdateInsertForm.companyBindingSource.Clear();
-                        UpdateInsertForm.companyBindingSource.Add(UpdateInsertForm.newCompany);
+                        companyBindingSource.Clear();
+                        companyBindingSource.Add(company);
                         companyDataGridView.DataSource = companyList;
                         UpdateInsertForm.AllLVVisible(button2.Text);
                         UpdateInsertForm.AllListView();
                     }
                      if (btnContactClicked)
                     {
-                        contact = UpdateInsertForm.newContact;
-                        UpdateInsertForm.contactBindingSource.Clear();
-                        UpdateInsertForm.contactBindingSource.Add(UpdateInsertForm.newContact);
+        //                contact = UpdateInsertForm.newContact;
+                        contactBindingSource.Clear();
+                        contactBindingSource.Add(contact);
                         contactDataGridView.DataSource = contactList;
                         UpdateInsertForm.AllLVVisible(button3.Text);
                         UpdateInsertForm.AllListView();
                     }
                     if (btnContactPositionClicked)
                     {
-                        coPo = UpdateInsertForm.newContactPosition;
+                     //   coPo = UpdateInsertForm.newContactPosition;
                         UpdateInsertForm.contactPositionBindingSource.Clear();
                         UpdateInsertForm.contactPositionBindingSource.Add(UpdateInsertForm.newContactPosition);
                         contactPositionDataGridView.DataSource = coPoList;
@@ -233,7 +233,7 @@ namespace WindowsFormsApplication1
                     }
                     if (btnInterviewClicked)
                     {
-                        interview = UpdateInsertForm.newInterview;
+                       // interview = UpdateInsertForm.newInterview;
                         UpdateInsertForm.interviewBindingSource.Clear();
                         UpdateInsertForm.interviewBindingSource.Add(UpdateInsertForm.newInterview);
                         interviewDataGridView.DataSource = interviewList;
@@ -242,7 +242,7 @@ namespace WindowsFormsApplication1
                     }
                     if (btnPositionClicked)
                     {
-                        position = UpdateInsertForm.newPostion;
+            //            position = UpdateInsertForm.newPostion;
                         UpdateInsertForm.positionBindingSource.Clear();
                         UpdateInsertForm.positionBindingSource.Add(UpdateInsertForm.newPostion);
                         positionDataGridView.DataSource = positionList;
@@ -251,7 +251,7 @@ namespace WindowsFormsApplication1
                     }
                     if (btnResumeClicked)
                     {
-                        resume = UpdateInsertForm.newResume;
+              //          resume = UpdateInsertForm.newResume;
                         UpdateInsertForm.resumeBindingSource.Clear();
                         UpdateInsertForm.resumeBindingSource.Add(UpdateInsertForm.newResume);
                         resumeDataGridView.DataSource = resumeList;
@@ -260,7 +260,7 @@ namespace WindowsFormsApplication1
                     }
                     if (btnSchoolClicked)
                     {
-                        school = UpdateInsertForm.newSchool;
+                //        school = UpdateInsertForm.newSchool;
                         UpdateInsertForm.stateList = StateDB.GetStateList();
                         UpdateInsertForm.stateComboBox2.DataSource = UpdateInsertForm.stateList;
                         UpdateInsertForm.schoolBindingSource.Clear();
@@ -269,7 +269,7 @@ namespace WindowsFormsApplication1
                         UpdateInsertForm.AllListView();
                     }                    
                 }
-                else
+                else if (sender == modifyToolStripMenu || sender == button11)
                 {
                     UpdateInsertForm.Text = "Modify " + AddTextToFrmAdUpInDotText();
                     UpdateInsertForm.addMenuClicked = false;
@@ -294,9 +294,13 @@ namespace WindowsFormsApplication1
                     {
                         UpdateInsertForm.stateList = StateDB.GetStateList();
                         UpdateInsertForm.stateComboBox1.DataSource = UpdateInsertForm.stateList;
-                        UpdateInsertForm.company = CompanyDB.GetCompanyByRow((int)companyDataGridView.CurrentCell.Value);
+                        UpdateInsertForm.newCompany = CompanyDB.GetCompanyByRow((int)companyDataGridView.CurrentCell.Value);
+                       UpdateInsertForm.company = CompanyDB.GetCompanyByRow((int)companyDataGridView.CurrentCell.Value);
                         UpdateInsertForm.companyBindingSource.Clear();
-                        UpdateInsertForm.companyBindingSource.Add(UpdateInsertForm.company);
+
+                        company = UpdateInsertForm.newCompany;
+
+                        UpdateInsertForm.companyBindingSource.Add(company);
                         UpdateInsertForm.AllLVVisible(button2.Text);
                         UpdateInsertForm.AllListView();
                     }
@@ -365,7 +369,22 @@ namespace WindowsFormsApplication1
                
 
             }
-            LoadClientList();
+            if (btnClientClicked)
+                LoadClientList();
+            if (btnCompanyClicked)
+                LoadCompanyList();
+            if (btnContactClicked)
+                LoadContactList();
+            if (btnContactPositionClicked)
+                LoadContactPostionList();
+            if (btnInterviewClicked)
+                LoadInterviewList();
+            if (btnPositionClicked)
+                LoadPositionList();
+            if (btnResumeClicked)
+                LoadResumeList();
+            if (btnSchoolClicked)
+                LoadSchoolList();
         }
 
         private void deleteToolStripMenu_Click(object sender, EventArgs e)

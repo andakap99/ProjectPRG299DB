@@ -134,13 +134,11 @@ namespace ProjectPRG299DB
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string insertStatement =
-                "Set IDENTITY_INSERT Interview ON; " +
                 "INSERT Interview " +
                 "(PositionID, CompanyID, ContactID, " +
                 "DateTime, AdditionalNotes) " +
                 "VALUES (@PositionID, @CompanyID, @ContactID, " +
-                "@DateTime, @AdditionalNotes);" +
-                "Set IDENTITY_INSERT Interview OFF;";
+                "@DateTime, @AdditionalNotes);";
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
             insertCommand.Parameters.AddWithValue("@PositionID", interview.PositionID);
             insertCommand.Parameters.AddWithValue("@CompanyID", interview.CompanyID);

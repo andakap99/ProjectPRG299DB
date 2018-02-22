@@ -176,13 +176,11 @@ namespace ProjectPRG299DB
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string insertStatement =
-                "Set IDENTITY_INSERT School ON; " +
                 "INSERT School " +
                   "(SchoolName, StreetName, " +
                 "City, State, ZipCode, NumberOfYearsAttended, Graduated) " +
                 "VALUES (@SchoolName, @StreetName, " +
-                "@City, @State, @ZipCode, @NumberOfYearsAttended, @Graduated);" +
-                "Set IDENTITY_INSERT School OFF;"; 
+                "@City, @State, @ZipCode, @NumberOfYearsAttended, @Graduated);";
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
             if (school.SchoolName == null)
                 insertCommand.Parameters.AddWithValue("@SchoolName", DBNull.Value);

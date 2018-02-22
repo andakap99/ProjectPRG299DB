@@ -155,13 +155,13 @@ namespace ProjectPRG299DB
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string insertStatement =
-                "SET IDENTITY_INSERT Contact ON; " +
+            //    "SET IDENTITY_INSERT Contact ON; " +
                 "INSERT Contact " +
                   "(FirstName, LastName, " +
                 "EmailAddress, PhoneNumber, CellPhone, AdditionalNotes) " +
                 "VALUES (@FirstName, @LastName, " +
-                "@EmailAddress, @PhoneNumber, @CellPhone, @AdditionalNotes);" +
-                "SET IDENTITY_INSERT Contact OFF;";
+                "@EmailAddress, @PhoneNumber, @CellPhone, @AdditionalNotes);";
+              //  "SET IDENTITY_INSERT Contact OFF;";
 
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
             insertCommand.Parameters.AddWithValue("@FirstName", contact.FirstName);
@@ -218,7 +218,7 @@ namespace ProjectPRG299DB
                   "CellPhone = @NewCellPhone, " +
                   "AdditionalNotes = @NewAdditionalNotes " +
                 "WHERE ContactID = @OldContactID " +
-                  "AND FirstName = @OldName " +
+                  "AND FirstName = @OldFirstName " +
                   "AND LastName = @OldLastName " +
                   "AND (EmailAddress = @OldEmailAddress " +
                       "OR EmailAddress IS NULL AND @OldEmailAddress IS NULL) " +

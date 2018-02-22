@@ -105,6 +105,7 @@ namespace ProjectPRG299DB
                         company.AdditionalNotes = "";
                     else
                         company.AdditionalNotes = reader.GetString(cEOrd);
+                    if (companyID == company.CompanyID) { break; }
                 }
             }
             catch (SqlException ex)
@@ -157,13 +158,12 @@ namespace ProjectPRG299DB
             string insertStatement =
                 //              "SET IDENTITY_INSERT Company ON; " +
                 "INSERT Company " +
-                  "(CompanyID, CompanyName, BuildingName, BuildingNumber, StreetAddress, " +
+                  "(CompanyName, BuildingName, BuildingNumber, StreetAddress, " +
                 "City, State, ZipCode, Website, AdditionalNotes) " +
-                "VALUES (@CompanyID, @CompanyName, @BuildingName, @BuildingNumber, @StreetAddress, " +
+                "VALUES (@CompanyName, @BuildingName, @BuildingNumber, @StreetAddress, " +
                 "@City, @State, @ZipCode, @Website, @AdditionalNotes)"; 
     //            " SET IDENTITY_INSERT Company OFF;";
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
-            insertCommand.Parameters.AddWithValue("@CompanyID", company.CompanyID);
             insertCommand.Parameters.AddWithValue("@CompanyName", company.CompanyName);
             insertCommand.Parameters.AddWithValue("@BuildingName", company.BuildingName);
             insertCommand.Parameters.AddWithValue("@BuildingNumber", company.BuildingNumber);
@@ -220,15 +220,17 @@ namespace ProjectPRG299DB
                   "Website = @NewWebsite, " +
                   "AdditionalNotes = @NewAdditionalNotes " +
                 "WHERE CompanyID = @OldCompanyID " +
-                  "AND Name = @OldName " +
-                  "AND Address = @OldAddress " +
+                  "AND CompanyName = @OldCompanyName " +
+                  "AND BuildingName = @OldBuildingName " +
+                  "AND BuildingNumber = @OldBuildingNumber " +
+                  "AND StreetAddress = @OldStreetAddress " +
                   "AND City = @OldCity " +
                   "AND State = @OldState " +
                   "AND ZipCode = @OldZipCode " +
-                  "AND (Phone = @OldPhone " +
-                      "OR Phone IS NULL AND @OldPhone IS NULL) " +
-                  "AND (Email = @OldEmail " +
-                      "OR Email IS NULL AND @OldEmail IS NULL)";
+                  "AND (Website = @OldWebsite " +
+                      "OR Website IS NULL AND @OldWebsite IS NULL) " +
+                  "AND (AdditionalNotes = @OldAdditionalNotes " +
+                      "OR AdditionalNotes IS NULL AND @OldAdditionalNotes IS NULL)";
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
             updateCommand.Parameters.AddWithValue("@NewCompanyName", newCompany.CompanyName);
             updateCommand.Parameters.AddWithValue("@NewBuildingName", newCompany.BuildingName);
@@ -248,7 +250,6 @@ namespace ProjectPRG299DB
                 updateCommand.Parameters.AddWithValue("@NewAdditionalNotes",
                     newCompany.AdditionalNotes);
 
-            updateCommand.Parameters.AddWithValue("@OldCompanyID", oldCompany.CompanyID);
             updateCommand.Parameters.AddWithValue("@OldCompanyID", oldCompany.CompanyID);
             updateCommand.Parameters.AddWithValue("@OldCompanyName", oldCompany.CompanyName);
             updateCommand.Parameters.AddWithValue("@OldBuildingName", oldCompany.BuildingName);
