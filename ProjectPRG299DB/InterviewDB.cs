@@ -177,42 +177,37 @@ namespace ProjectPRG299DB
             SqlConnection connection = PRG299DB.GetConnection();
             string updateStatement =
                 "UPDATE Interview SET " +
-                  "Name = @NewName, " +
-                  "Address = @NewAddress, " +
-                  "City = @NewCity, " +
-                  "State = @NewState, " +
-                  "ZipCode = @NewZipCode, " +
-                  "Phone = @NewPhone, " +
-                  "Email = @NewEmail " +
+                  "PositionID = @NewPositionID, " +
+                  "CompanyID = @NewCompanyID, " +
+                  "ContactID = @NewContactID, " +
+                  "DateTime = @NewDateTime, " +
+                  "AdditionalNotes = @NewAdditionalNotes " +
                 "WHERE InterviewID = @OldInterviewID " +
-                  "AND Name = @OldName " +
-                  "AND Address = @OldAddress " +
-                  "AND City = @OldCity " +
-                  "AND State = @OldState " +
-                  "AND ZipCode = @OldZipCode " +
-                  "AND (Phone = @OldPhone " +
-                      "OR Phone IS NULL AND @OldPhone IS NULL) " +
-                  "AND (Email = @OldEmail " +
-                      "OR Email IS NULL AND @OldEmail IS NULL)";
+                  "AND PositionID = @OldPositionID " +
+                  "AND CompanyID = @OldCompanyID " +
+                  "AND ContactID = @OldContactID " +
+                  "AND DateTime = @OldDateTime " +
+                  "AND (AdditionalNotes = @OldAdditionalNotes " +
+                      "OR AdditionalNotes IS NULL AND @OldAdditionalNotes IS NULL)";
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
-            updateCommand.Parameters.AddWithValue("@PositionID", newInterview.PositionID);
-            updateCommand.Parameters.AddWithValue("@CompanyID", newInterview.CompanyID);
-            updateCommand.Parameters.AddWithValue("@ContactID", newInterview.ContactID);
-            updateCommand.Parameters.AddWithValue("@DateTime", newInterview.DateTimeInterview);
+            updateCommand.Parameters.AddWithValue("@NewPositionID", newInterview.PositionID);
+            updateCommand.Parameters.AddWithValue("@NewCompanyID", newInterview.CompanyID);
+            updateCommand.Parameters.AddWithValue("@NewContactID", newInterview.ContactID);
+            updateCommand.Parameters.AddWithValue("@NewDateTime", newInterview.DateTimeInterview);
             if (newInterview.AdditionalNotes == "")
-                updateCommand.Parameters.AddWithValue("@AdditionalNotes", DBNull.Value);
+                updateCommand.Parameters.AddWithValue("@NewAdditionalNotes", DBNull.Value);
             else
-                updateCommand.Parameters.AddWithValue("@AdditionalNotes", newInterview.AdditionalNotes);
+                updateCommand.Parameters.AddWithValue("@NewAdditionalNotes", newInterview.AdditionalNotes);
 
-            updateCommand.Parameters.AddWithValue("@InterviewID", oldInterview.InterviewID);
-            updateCommand.Parameters.AddWithValue("@PositionID", oldInterview.PositionID);
-            updateCommand.Parameters.AddWithValue("@CompanyID", oldInterview.CompanyID);
-            updateCommand.Parameters.AddWithValue("@ContactID", oldInterview.ContactID);
-            updateCommand.Parameters.AddWithValue("@DateTime", oldInterview.DateTimeInterview);
+            updateCommand.Parameters.AddWithValue("@OldInterviewID", oldInterview.InterviewID);
+            updateCommand.Parameters.AddWithValue("@OldPositionID", oldInterview.PositionID);
+            updateCommand.Parameters.AddWithValue("@OldCompanyID", oldInterview.CompanyID);
+            updateCommand.Parameters.AddWithValue("@OldContactID", oldInterview.ContactID);
+            updateCommand.Parameters.AddWithValue("@OldDateTime", oldInterview.DateTimeInterview);
             if (oldInterview.AdditionalNotes == "")
-                updateCommand.Parameters.AddWithValue("@AdditionalNotes", DBNull.Value);
+                updateCommand.Parameters.AddWithValue("@OldAdditionalNotes", DBNull.Value);
             else
-                updateCommand.Parameters.AddWithValue("@AdditionalNotes", oldInterview.AdditionalNotes);
+                updateCommand.Parameters.AddWithValue("@OldAdditionalNotes", oldInterview.AdditionalNotes);
 
             try
             {

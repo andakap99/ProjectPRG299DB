@@ -225,8 +225,8 @@ namespace WindowsFormsApplication1
                     if (btnContactPositionClicked)
                     {
                      //   coPo = UpdateInsertForm.newContactPosition;
-                        UpdateInsertForm.contactPositionBindingSource.Clear();
-                        UpdateInsertForm.contactPositionBindingSource.Add(UpdateInsertForm.newContactPosition);
+                        contactPositionBindingSource.Clear();
+                        contactPositionBindingSource.Add(coPo);
                         contactPositionDataGridView.DataSource = coPoList;
                         UpdateInsertForm.AllLVVisible(button4.Text);
                         UpdateInsertForm.AllListView();
@@ -234,8 +234,8 @@ namespace WindowsFormsApplication1
                     if (btnInterviewClicked)
                     {
                        // interview = UpdateInsertForm.newInterview;
-                        UpdateInsertForm.interviewBindingSource.Clear();
-                        UpdateInsertForm.interviewBindingSource.Add(UpdateInsertForm.newInterview);
+                        interviewBindingSource.Clear();
+                        interviewBindingSource.Add(interview);
                         interviewDataGridView.DataSource = interviewList;
                         UpdateInsertForm.AllLVVisible(button5.Text);
                         UpdateInsertForm.AllListView();
@@ -243,8 +243,8 @@ namespace WindowsFormsApplication1
                     if (btnPositionClicked)
                     {
             //            position = UpdateInsertForm.newPostion;
-                        UpdateInsertForm.positionBindingSource.Clear();
-                        UpdateInsertForm.positionBindingSource.Add(UpdateInsertForm.newPostion);
+                        positionBindingSource.Clear();
+                        positionBindingSource.Add(position);
                         positionDataGridView.DataSource = positionList;
                         UpdateInsertForm.AllLVVisible(button6.Text);
                         UpdateInsertForm.AllListView();
@@ -252,8 +252,8 @@ namespace WindowsFormsApplication1
                     if (btnResumeClicked)
                     {
               //          resume = UpdateInsertForm.newResume;
-                        UpdateInsertForm.resumeBindingSource.Clear();
-                        UpdateInsertForm.resumeBindingSource.Add(UpdateInsertForm.newResume);
+                        resumeBindingSource.Clear();
+                        resumeBindingSource.Add(resume);
                         resumeDataGridView.DataSource = resumeList;
                         UpdateInsertForm.AllLVVisible(button7.Text);
                         UpdateInsertForm.AllListView();
@@ -263,8 +263,8 @@ namespace WindowsFormsApplication1
                 //        school = UpdateInsertForm.newSchool;
                         UpdateInsertForm.stateList = StateDB.GetStateList();
                         UpdateInsertForm.stateComboBox2.DataSource = UpdateInsertForm.stateList;
-                        UpdateInsertForm.schoolBindingSource.Clear();
-                        UpdateInsertForm.schoolBindingSource.Add(UpdateInsertForm.newSchool);
+                        schoolBindingSource.Clear();
+                        schoolBindingSource.Add(school);
                         UpdateInsertForm.AllLVVisible(button8.Text);
                         UpdateInsertForm.AllListView();
                     }                    

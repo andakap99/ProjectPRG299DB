@@ -126,6 +126,10 @@ namespace ProjectPRG299DB
                         school.Graduated = "";
                     else
                         school.Graduated = reader.GetString(cEOrd);
+                    if (schoolID==school.SchoolID)
+                    {
+                        break;
+                    }
                 }
             }
             catch (SqlException ex)
