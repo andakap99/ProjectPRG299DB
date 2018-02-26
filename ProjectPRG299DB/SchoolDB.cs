@@ -30,6 +30,8 @@ namespace ProjectPRG299DB
                 while (reader.Read())
                 {
                     School scho = new School();
+                    scho.SchoolID = reader.GetInt32(cIDOrd);
+
                     if (reader[cNOrd].Equals(DBNull.Value))
                         scho.SchoolName = "";
                     else
@@ -147,12 +149,12 @@ namespace ProjectPRG299DB
             return school;
         }
 
-        public static bool DeleteSchool(School school)
+        public static bool DeleteSchool(int schoolID)
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string deleteStatement = "DELETE FROM School WHERE SchoolID = @SchoolID";
             SqlCommand DeleteCommand = new SqlCommand(deleteStatement, connection);
-            DeleteCommand.Parameters.AddWithValue("@SchoolID", school.SchoolID);
+            DeleteCommand.Parameters.AddWithValue("@SchoolID", schoolID);
             try
             {
                 connection.Open();
@@ -253,15 +255,15 @@ namespace ProjectPRG299DB
                   "NumberofYearsAttended = @NewNumberofYearsAttended, " +
                   "Graduated = @NewGraduated " +
                 "WHERE SchoolID = @OldSchoolID " +
-                  "AND SchoolName = @OldSchoolName " +
+                  "AND (SchoolName = @OldSchoolName " +
                       "OR SchoolName IS NULL AND @OldSchoolName IS NULL) " +
-                  "AND StreetName = @OldStreetName " +
+                  "AND (StreetName = @OldStreetName " +
                       "OR StreetName IS NULL AND @OldStreetName IS NULL) " +
-                  "AND City = @OldCity " +
+                  "AND (City = @OldCity " +
                       "OR City IS NULL AND @OldCity IS NULL) " +
-                  "AND State = @OldState " +
+                  "AND (State = @OldState " +
                       "OR State IS NULL AND @OldState IS NULL) " +
-                  "AND ZipCode = @OldZipCode " +
+                  "AND (ZipCode = @OldZipCode " +
                       "OR ZipCode IS NULL AND @OldZipCode IS NULL) " +
                   "AND (NumberofYearsAttended = @OldNumberofYearsAttended " +
                       "OR NumberofYearsAttended IS NULL AND @OldNumberofYearsAttended IS NULL) " +

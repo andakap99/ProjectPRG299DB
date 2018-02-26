@@ -180,7 +180,7 @@ namespace WindowsFormsApplication1
                 stateList = StateDB.GetStateList();
                 //stateComboBox.DataSource = stateList;
                 //stateComboBox1.DataSource = stateList;
-                stateComboBox2.DataSource = stateList;
+               // stateComboBox2.DataSource = stateList;
             }
             catch (Exception ex)
             {
@@ -189,79 +189,139 @@ namespace WindowsFormsApplication1
         }
         public void PutNewClient()
         {
-            newClient.ClientID = client.ClientID;
-            newClient.FirstName = client.FirstName;
-            newClient.LastName = client.LastName;
-            newClient.BirthDate = client.BirthDate;
-            newClient.StreetName = client.StreetName;
-            newClient.City = client.City;
-            newClient.State = client.State;
-            newClient.ZipCode = client.ZipCode;
-            newClient.CellPhone = client.CellPhone;                      
+            try
+            { 
+                newClient.ClientID = client.ClientID;
+                newClient.FirstName = client.FirstName;
+                newClient.LastName = client.LastName;
+                newClient.BirthDate = client.BirthDate;
+                newClient.StreetName = client.StreetName;
+                newClient.City = client.City;
+                newClient.State = client.State;
+                newClient.ZipCode = client.ZipCode;
+                newClient.CellPhone = client.CellPhone;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
         }
         public void PutNewCompany()
         {
-            newCompany.CompanyID = company.CompanyID;
-            newCompany.CompanyName = company.CompanyName;
-            newCompany.BuildingName = company.BuildingName;
-            newCompany.BuildingNumber = company.BuildingNumber;
-            newCompany.StreetAddress = company.StreetAddress;
-            newCompany.City = company.City;
-            newCompany.State = company.State;
-            newCompany.ZipCode = company.ZipCode;
-            newCompany.Website = company.Website;
-            newCompany.AdditionalNotes = company.AdditionalNotes;
+            try
+            { 
+                newCompany.CompanyID = company.CompanyID;
+                newCompany.CompanyName = company.CompanyName;
+                newCompany.BuildingName = company.BuildingName;
+                newCompany.BuildingNumber = company.BuildingNumber;
+                newCompany.StreetAddress = company.StreetAddress;
+                newCompany.City = company.City;
+                newCompany.State = company.State;
+                newCompany.ZipCode = company.ZipCode;
+                newCompany.Website = company.Website;
+                newCompany.AdditionalNotes = company.AdditionalNotes;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+
         }
         private void PutNewContact()
         {
-            newContact.ContactID = contact.ContactID;
-            newContact.FirstName = contact.FirstName;
-            newContact.LastName = contact.LastName;
-            newContact.EmailAddress = contact.EmailAddress;
-            newContact.PhoneNumber = contact.PhoneNumber;
-            newContact.CellPhone = contact.CellPhone;
-            newContact.AdditionalNotes = contact.AdditionalNotes;
+            try
+            { 
+                newContact.ContactID = contact.ContactID;
+                newContact.FirstName = contact.FirstName;
+                newContact.LastName = contact.LastName;
+                newContact.EmailAddress = contact.EmailAddress;
+                newContact.PhoneNumber = contact.PhoneNumber;
+                newContact.CellPhone = contact.CellPhone;
+                newContact.AdditionalNotes = contact.AdditionalNotes;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+
         }
+
         private void PutNewContactPosition()
         {
+            try { 
             newContactPosition.ContactID = contactPosition.ContactID;
             newContactPosition.PositionID = contactPosition.PositionID;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+
         }
         private void PutNewInterview()
         {
-            newInterview.InterviewID = interview.InterviewID;
-            newInterview.PositionID = interview.PositionID;
-            newInterview.CompanyID = interview.CompanyID;
-            newInterview.ContactID = interview.ContactID;
-            newInterview.DateTimeInterview = interview.DateTimeInterview;
-            newInterview.AdditionalNotes = interview.AdditionalNotes;
+            try
+            {
+                newInterview.InterviewID = interview.InterviewID;
+                newInterview.PositionID = interview.PositionID;
+                newInterview.CompanyID = interview.CompanyID;
+                newInterview.ContactID = interview.ContactID;
+                newInterview.DateTimeInterview = interview.DateTimeInterview;
+                newInterview.AdditionalNotes = interview.AdditionalNotes;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+
         }
         private void PutNewPosition()
         {
+            try { 
             newPostion.PositionID = position.PositionID;
             newPostion.PositionName = position.PositionName;
             newPostion.Description = position.Description;
             newPostion.CompanyID = position.CompanyID;
             newPostion.AdditionalNotes = position.AdditionalNotes;
             newPostion.ResumeID = position.ResumeID;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+
         }
         private void PutNewResume()
         {
+            try { 
             newResume.ResumeID = resume.ResumeID;
             newResume.RSCDirectoryPath = resume.RSCDirectoryPath;
             newResume.SchoolID = resume.SchoolID;
             newResume.SchoolID = resume.SchoolID;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+
         }
         private void PutNewSchool()
         {
+            try { 
             newSchool.SchoolID = school.SchoolID;
             newSchool.SchoolName = school.SchoolName;
             newSchool.StreetName = school.StreetName;
             newSchool.City = school.City;
-            stateComboBox2.SelectedValue = school.State;
+            newSchool.State = school.State;
             newSchool.ZipCode = school.ZipCode;
             newSchool.NumberOfYearsAttended = school.NumberOfYearsAttended;
             newSchool.Graduated = school.Graduated;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+
         }
 
         public void AllLVVisible(string visible)
@@ -699,6 +759,7 @@ namespace WindowsFormsApplication1
                             else
                             {
                                 contact = newContact;
+                                DialogResult = DialogResult.OK;
                             }
                         }
                         if (conPosLVVisible)
@@ -711,6 +772,7 @@ namespace WindowsFormsApplication1
                             else
                             {
                                 contactPosition = newContactPosition;
+                                DialogResult = DialogResult.OK;
                             }
                         }
                         if (intLVVisible)
@@ -723,6 +785,7 @@ namespace WindowsFormsApplication1
                             else
                             {
                                 interview = newInterview;
+                                DialogResult = DialogResult.OK;
                             }
                         }
                         if (posLVVisible)
@@ -735,6 +798,7 @@ namespace WindowsFormsApplication1
                             else
                             {
                                 position = newPostion;
+                                DialogResult = DialogResult.OK;
                             }
                         }
                         if (resLVVisible)
@@ -747,6 +811,7 @@ namespace WindowsFormsApplication1
                             else
                             {
                                 resume = newResume;
+                                DialogResult = DialogResult.OK;
                             }
                         }
                         if (schLVVisible)
@@ -759,6 +824,7 @@ namespace WindowsFormsApplication1
                             else
                             {
                                 school = newSchool;
+                                DialogResult = DialogResult.OK;
                             }
                         }
                     }

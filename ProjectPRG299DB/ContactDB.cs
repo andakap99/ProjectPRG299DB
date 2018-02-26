@@ -122,12 +122,12 @@ namespace ProjectPRG299DB
             return contact;
         }
 
-        public static bool DeleteContact(Contact contact)
+        public static bool DeleteContact(int contactID)
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string deleteStatement = "DELETE FROM Contact WHERE ContactID = @ContactID";
             SqlCommand DeleteCommand = new SqlCommand(deleteStatement, connection);
-            DeleteCommand.Parameters.AddWithValue("@ContactID", contact.ContactID);
+            DeleteCommand.Parameters.AddWithValue("@ContactID", contactID);
             try
             {
                 connection.Open();

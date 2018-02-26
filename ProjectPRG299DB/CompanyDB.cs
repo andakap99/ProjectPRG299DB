@@ -123,12 +123,12 @@ namespace ProjectPRG299DB
             return company;
         }
 
-        public static bool DeleteCompany(Company company)
+        public static bool DeleteCompany(int companyID)
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string deleteStatement = "DELETE FROM Company WHERE CompanyID = @CompanyID";
             SqlCommand DeleteCommand = new SqlCommand(deleteStatement, connection);
-            DeleteCommand.Parameters.AddWithValue("@CompanyID", company.CompanyID);
+            DeleteCommand.Parameters.AddWithValue("@CompanyID", companyID);
             try
             {
                 connection.Open();

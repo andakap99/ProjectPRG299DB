@@ -101,12 +101,12 @@ namespace ProjectPRG299DB
             return interview;
         }
 
-        public static bool DeleteInterview(Interview interview)
+        public static bool DeleteInterview(int interviewID)
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string deleteStatement = "DELETE FROM Interview WHERE InterviewID = @InterviewID";
             SqlCommand DeleteCommand = new SqlCommand(deleteStatement, connection);
-            DeleteCommand.Parameters.AddWithValue("@InterviewID", interview.InterviewID);
+            DeleteCommand.Parameters.AddWithValue("@InterviewID", interviewID);
             try
             {
                 connection.Open();
@@ -143,7 +143,8 @@ namespace ProjectPRG299DB
             insertCommand.Parameters.AddWithValue("@PositionID", interview.PositionID);
             insertCommand.Parameters.AddWithValue("@CompanyID", interview.CompanyID);
             insertCommand.Parameters.AddWithValue("@ContactID", interview.ContactID);
-            insertCommand.Parameters.AddWithValue("@DateTime", SqlDbType.DateTime);
+            insertCommand.Parameters.AddWithValue("@DateTime", interview.DateTimeInterview);
+            insertCommand.Parameters["@DateTime"].SqlDbType = SqlDbType.DateTime;
             if (interview.AdditionalNotes == null)
                 insertCommand.Parameters.AddWithValue("@AdditionalNotes", DBNull.Value);
             else

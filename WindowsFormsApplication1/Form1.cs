@@ -14,6 +14,7 @@ namespace WindowsFormsApplication1
 {
     public partial class frmPRG299 : Form
     {
+        private int countlist = 0;
         private Client client;
         private Company company;
         private Contact contact;
@@ -32,6 +33,7 @@ namespace WindowsFormsApplication1
         private List<School> schoolList;
         private bool btnClientClicked = false, btnCompanyClicked = false, btnContactClicked = false, btnContactPositionClicked = false, btnInterviewClicked = false, btnPositionClicked = false, btnResumeClicked = false, btnSchoolClicked = false;
         public static frmPRG299 mainForm;
+        private BindingList<string> columnNameList;
 
         public frmPRG299()
         {
@@ -369,6 +371,10 @@ namespace WindowsFormsApplication1
                
 
             }
+            ReloadDataGrids();
+        }
+        private void ReloadDataGrids()
+        {
             if (btnClientClicked)
                 LoadClientList();
             if (btnCompanyClicked)
@@ -386,7 +392,6 @@ namespace WindowsFormsApplication1
             if (btnSchoolClicked)
                 LoadSchoolList();
         }
-
         private void deleteToolStripMenu_Click(object sender, EventArgs e)
         {
             
@@ -399,17 +404,74 @@ namespace WindowsFormsApplication1
                         ClientDB.DeleteClient((int)clientDataGridView.CurrentCell.Value);
                     }                
                 }
+                if(panel1.Visible)
+                {
+                    if (MessageBox.Show("Are you sure you want to delete the row?", "Delete " + button2.Text + " row", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+                        CompanyDB.DeleteCompany((int)companyDataGridView.CurrentCell.Value);
+                    }
+                }
+                if(panel9.Visible)
+                {
+                    if (MessageBox.Show("Are you sure you want to delete the row?", "Delete " + button3.Text + " row", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+                        ContactDB.DeleteContact((int)contactDataGridView.CurrentCell.Value);
+                    }
+
+                }
+                if (panel6.Visible)
+                {
+                    if (MessageBox.Show("Are you sure you want to delete the row?", "Delete " + button4.Text + " row", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+                        ContactPositionDB.DeleteContactPosition((int)contactPositionDataGridView.CurrentCell.Value);
+                    }
+
+                }
+                if (panel8.Visible)
+                {
+                    if (MessageBox.Show("Are you sure you want to delete the row?", "Delete " + button5.Text + " row", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+                        InterviewDB.DeleteInterview((int)interviewDataGridView.CurrentCell.Value);
+                    }
+
+                }
+                if (panel5.Visible)
+                {
+                    if (MessageBox.Show("Are you sure you want to delete the row?", "Delete " + button6.Text + " row", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+                        PositionDB.DeletePosition((int)positionDataGridView.CurrentCell.Value);
+                    }
+
+                }
+                if (panel7.Visible)
+                {
+                    if (MessageBox.Show("Are you sure you want to delete the row?", "Delete " + button7.Text + " row", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+                        ResumeDB.DeleteResume((int)resumeDataGridView.CurrentCell.Value);
+                    }
+
+                }
+                if (panel4.Visible)
+                {
+                    if (MessageBox.Show("Are you sure you want to delete the row?", "Delete " + button8.Text + " row", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+                        SchoolDB.DeleteSchool((int)schoolDataGridView.CurrentCell.Value);
+                    }
+
+                }
             }
             catch (Exception x)
             {
                 MessageBox.Show(x.Message, x.GetType().ToString());
 
             }
-            LoadClientList();
+            ReloadDataGrids();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            filterToolStripComboBox.Items.Clear();
+            countlist = 0;
             panel11.Visible = true;
             panel11.Height = button1.Height;
             panel11.Top = button1.Top;
@@ -422,6 +484,8 @@ namespace WindowsFormsApplication1
 
         private void button2_Click(object sender, EventArgs e)
         {
+            filterToolStripComboBox.Items.Clear();
+            countlist = 0;
             panel11.Visible = true;
             panel11.Height = button2.Height;
             panel11.Top = button2.Top;
@@ -435,6 +499,8 @@ namespace WindowsFormsApplication1
 
         private void button3_Click(object sender, EventArgs e)
         {
+            filterToolStripComboBox.Items.Clear();
+            countlist = 0;
             panel11.Visible = true;
             panel11.Height = button3.Height;
             panel11.Top = button3.Top;
@@ -447,6 +513,8 @@ namespace WindowsFormsApplication1
 
         private void button4_Click(object sender, EventArgs e)
         {
+            filterToolStripComboBox.Items.Clear();
+            countlist = 0;
             panel11.Visible = true;
             panel11.Height = button4.Height;
             panel11.Top = button4.Top;
@@ -460,6 +528,8 @@ namespace WindowsFormsApplication1
 
         private void button5_Click(object sender, EventArgs e)
         {
+            filterToolStripComboBox.Items.Clear();
+            countlist = 0;
             panel11.Visible = true;
             panel11.Height = button5.Height;
             panel11.Top = button5.Top;
@@ -470,10 +540,10 @@ namespace WindowsFormsApplication1
             panel8.Visible = true; panel5.Visible = false; panel7.Visible = false; panel4.Visible = false;
         }
 
-
-
         private void button6_Click(object sender, EventArgs e)
         {
+            filterToolStripComboBox.Items.Clear();
+            countlist = 0;
             panel11.Visible = true;
             panel11.Height = button6.Height;
             panel11.Top = button6.Top;
@@ -484,13 +554,10 @@ namespace WindowsFormsApplication1
             panel8.Visible = false; panel5.Visible = true; panel7.Visible = false; panel4.Visible = false;
         }
 
-        private void companyDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void button7_Click(object sender, EventArgs e)
         {
+            filterToolStripComboBox.Items.Clear();
+            countlist = 0;
             panel11.Visible = true;
             panel11.Height = button7.Height;
             panel11.Top = button7.Top;
@@ -503,6 +570,8 @@ namespace WindowsFormsApplication1
 
         private void button8_Click(object sender, EventArgs e)
         {
+            filterToolStripComboBox.Items.Clear();
+            countlist = 0;
             panel11.Visible = true;
             panel11.Height = button8.Height;
             panel11.Top = button8.Top;
@@ -512,6 +581,7 @@ namespace WindowsFormsApplication1
             panel3.Visible = false; panel1.Visible = false; panel9.Visible = false; panel6.Visible = false;
             panel8.Visible = false; panel5.Visible = false; panel7.Visible = false; panel4.Visible = true;
         }
+
 
         private void pnlMouseHover(object sender, EventArgs e)
         {
@@ -555,6 +625,233 @@ namespace WindowsFormsApplication1
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
+        }
+        private void filterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (btnClientClicked)
+                {
+                    clientBindingSource.DataSource = clientDataGridView.DataSource;
+                    if (filterToolStripTextBox.Text == "")
+                    {
+                        
+                        clientBindingSource.Sort = filterToolStripComboBox.SelectedItem.ToString() + "ASC";
+                    }
+                    else
+                    { 
+                        clientBindingSource.Filter = filterToolStripComboBox.SelectedItem.ToString() + " LIKE '%" + filterToolStripTextBox.Text + "%'";
+                        clientDataGridView.DataSource = clientBindingSource.DataSource;
+                    }
+                    
+                    clientDataGridView.Update();
+                }
+                if (btnCompanyClicked)
+                {
+
+                }
+                if (btnContactClicked)
+                {
+
+                }
+                if (btnContactPositionClicked)
+                {
+
+                }
+                if (btnInterviewClicked)
+                {
+
+                }
+                if (btnPositionClicked)
+                {
+
+                }
+                if (btnResumeClicked)
+                {
+
+                }
+                if (btnSchoolClicked)
+                {
+
+                }
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message, x.GetType().ToString());
+
+            }
+            finally
+            {
+            }
+        }
+
+        private void removeAllFiltersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (btnClientClicked)
+            {
+            }
+            if (btnCompanyClicked)
+            {
+
+            }
+            if (btnContactClicked)
+            {
+
+            }
+            if (btnContactPositionClicked)
+            {
+
+            }
+            if (btnInterviewClicked)
+            {
+
+            }
+            if (btnPositionClicked)
+            {
+
+            }
+            if (btnResumeClicked)
+            {
+
+            }
+            if (btnSchoolClicked)
+            {
+
+            }
+        }
+
+        private void filterToolStripComboBox_Click(object sender, EventArgs e)
+        {
+            try
+            { 
+                if (panel3.Visible && countlist==0)
+                {
+
+                    columnNameList = new BindingList<string>();
+                    foreach (DataGridViewColumn col in clientDataGridView.Columns)
+                    {
+                        columnNameList.Add(col.HeaderText);
+                    }
+                
+                    for (int i = 0; i < columnNameList.Count; i++)
+                    { 
+                        filterToolStripComboBox.Items.Add(columnNameList[i]);
+                        countlist++;
+
+                    }
+                }
+                if (panel1.Visible)
+                {
+                    List<string> columnNameList = new List<string>();
+                    foreach (DataGridViewColumn col in companyDataGridView.Columns)
+                    {
+                        columnNameList.Add(col.HeaderText);
+                    }
+
+                    for (int i = 0; i < columnNameList.Count; i++)
+                    {
+                        filterToolStripComboBox.Items.Add(columnNameList[i]);
+                        countlist++;
+
+                    }
+                }
+                if (panel9.Visible)
+                {
+                    List<string> columnNameList = new List<string>();
+                    foreach (DataGridViewColumn col in contactDataGridView.Columns)
+                    {
+                        columnNameList.Add(col.HeaderText);
+                    }
+
+                    for (int i = 0; i < columnNameList.Count; i++)
+                    {
+                        filterToolStripComboBox.Items.Add(columnNameList[i]);
+                        countlist++;
+
+                    }
+                }
+                if (panel6.Visible)
+                {
+                    List<string> columnNameList = new List<string>();
+                    foreach (DataGridViewColumn col in contactPositionDataGridView.Columns)
+                    {
+                        columnNameList.Add(col.HeaderText);
+                    }
+
+                    for (int i = 0; i < columnNameList.Count; i++)
+                    {
+                        filterToolStripComboBox.Items.Add(columnNameList[i]);
+                        countlist++;
+
+                    }
+                }
+                if (panel8.Visible)
+                {
+                    List<string> columnNameList = new List<string>();
+                    foreach (DataGridViewColumn col in interviewDataGridView.Columns)
+                    {
+                        columnNameList.Add(col.HeaderText);
+                    }
+
+                    for (int i = 0; i < columnNameList.Count; i++)
+                    {
+                        filterToolStripComboBox.Items.Add(columnNameList[i]);
+                        countlist++;
+
+                    }
+                }
+                if (panel5.Visible)
+                {
+                    List<string> columnNameList = new List<string>();
+                    foreach (DataGridViewColumn col in positionDataGridView.Columns)
+                    {
+                        columnNameList.Add(col.HeaderText);
+                    }
+
+                    for (int i = 0; i < columnNameList.Count; i++)
+                    {
+                        filterToolStripComboBox.Items.Add(columnNameList[i]);
+                        countlist++;
+
+                    }
+                }
+                if (panel7.Visible)
+                {
+                    List<string> columnNameList = new List<string>();
+                    foreach (DataGridViewColumn col in resumeDataGridView.Columns)
+                    {
+                        columnNameList.Add(col.HeaderText);
+                    }
+
+                    for (int i = 0; i < columnNameList.Count; i++)
+                    {
+                        filterToolStripComboBox.Items.Add(columnNameList[i]);
+                        countlist++;
+
+                    }
+                }
+                if (panel4.Visible)
+                {
+                    List<string> columnNameList = new List<string>();
+                    foreach (DataGridViewColumn col in schoolDataGridView.Columns)
+                    {
+                        columnNameList.Add(col.HeaderText);
+                    }
+
+                    for (int i = 0; i < columnNameList.Count; i++)
+                    {
+                        filterToolStripComboBox.Items.Add(columnNameList[i]);
+                        countlist++;
+
+                    }
+                }
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message, x.GetType().ToString());
+
+            }
+
         }
     }
 }

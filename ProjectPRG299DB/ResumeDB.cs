@@ -104,12 +104,12 @@ namespace ProjectPRG299DB
             return resume;
         }
 
-        public static bool DeleteResume(Resume resume)
+        public static bool DeleteResume(int resumeID)
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string deleteStatement = "DELETE FROM Resume WHERE ResumeID = @ResumeID";
             SqlCommand DeleteCommand = new SqlCommand(deleteStatement, connection);
-            DeleteCommand.Parameters.AddWithValue("@ResumeID", resume.ResumeID);
+            DeleteCommand.Parameters.AddWithValue("@ResumeID", resumeID);
             try
             {
                 connection.Open();

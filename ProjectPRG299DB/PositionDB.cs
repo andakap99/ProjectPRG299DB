@@ -124,12 +124,12 @@ namespace ProjectPRG299DB
             return position;
         }
 
-        public static bool DeletePosition(Position position)
+        public static bool DeletePosition(int positionID)
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string deleteStatement = "DELETE FROM Position WHERE PositionID = @PositionID";
             SqlCommand DeleteCommand = new SqlCommand(deleteStatement, connection);
-            DeleteCommand.Parameters.AddWithValue("@PositionID", position.PositionID);
+            DeleteCommand.Parameters.AddWithValue("@PositionID", positionID);
             try
             {
                 connection.Open();

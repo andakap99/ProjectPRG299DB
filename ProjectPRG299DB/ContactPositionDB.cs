@@ -46,7 +46,7 @@ namespace ProjectPRG299DB
         {
             ContactPosition conpos = new ContactPosition();
             SqlConnection connection = PRG299DB.GetConnection();
-            string selectStatement = "ContactID, PositionID FROM dbo.ContactPosition WHERE ContactID = @ContactID";
+            string selectStatement = "SELECT ContactID, PositionID FROM dbo.ContactPosition WHERE ContactID = @ContactID";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             selectCommand.Parameters.AddWithValue("@ContactID", contactpositionID);
             try
@@ -78,12 +78,12 @@ namespace ProjectPRG299DB
             return conpos;
         }
 
-        public static bool DeleteContactPosition(ContactPosition contactposition)
+        public static bool DeleteContactPosition(int contactID)
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string deleteStatement = "DELETE FROM ContactPosition WHERE ContactID = @ContactID";
             SqlCommand DeleteCommand = new SqlCommand(deleteStatement, connection);
-            DeleteCommand.Parameters.AddWithValue("@ContactID", contactposition.ContactID);
+            DeleteCommand.Parameters.AddWithValue("@ContactID", contactID);
             try
             {
                 connection.Open();
@@ -149,7 +149,7 @@ namespace ProjectPRG299DB
                   "ContactID = @NewContactID, " +
                   "PositionID = @NewPositionID " +
                 "WHERE ContactID = @OldContactID " +
-                  "AND (PositionID = @OldPositionID)";
+                  "AND PositionID = @OldPositionID";
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
             
                 updateCommand.Parameters.AddWithValue("@NewContactID", newContactPosition.ContactID);
