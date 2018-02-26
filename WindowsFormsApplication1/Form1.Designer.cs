@@ -38,6 +38,7 @@
             this.filterToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.filterToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.filterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeAllFiltersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -130,7 +131,6 @@
             this.button11 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
-            this.removeAllFiltersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clientDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).BeginInit();
@@ -244,6 +244,13 @@
             this.filterToolStripMenuItem.Size = new System.Drawing.Size(54, 24);
             this.filterToolStripMenuItem.Text = "Filter";
             this.filterToolStripMenuItem.Click += new System.EventHandler(this.filterToolStripMenuItem_Click);
+            // 
+            // removeAllFiltersToolStripMenuItem
+            // 
+            this.removeAllFiltersToolStripMenuItem.Name = "removeAllFiltersToolStripMenuItem";
+            this.removeAllFiltersToolStripMenuItem.Size = new System.Drawing.Size(140, 24);
+            this.removeAllFiltersToolStripMenuItem.Text = "Remove All Filters";
+            this.removeAllFiltersToolStripMenuItem.Click += new System.EventHandler(this.removeAllFiltersToolStripMenuItem_Click);
             // 
             // clientDataGridView
             // 
@@ -1046,13 +1053,6 @@
             this.button9.Text = "Add";
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.AddModifyToolStripMenu_Click);
-            // 
-            // removeAllFiltersToolStripMenuItem
-            // 
-            this.removeAllFiltersToolStripMenuItem.Name = "removeAllFiltersToolStripMenuItem";
-            this.removeAllFiltersToolStripMenuItem.Size = new System.Drawing.Size(140, 24);
-            this.removeAllFiltersToolStripMenuItem.Text = "Remove All Filters";
-            this.removeAllFiltersToolStripMenuItem.Click += new System.EventHandler(this.removeAllFiltersToolStripMenuItem_Click);
             // 
             // frmPRG299
             // 

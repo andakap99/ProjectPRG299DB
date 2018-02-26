@@ -273,5 +273,125 @@ namespace ProjectPRG299DB
                 connection.Close();
             }
         }
+        public static List<Client> GetClientSorted(string columnName)
+        {
+            List<Client> clientList = new List<Client>();
+            SqlConnection connection = PRG299DB.GetConnection();
+            string selectStatement = "SELECT ClientID, FirstName, LastName, BirthDate, StreetName, " +
+                "City, State, ZipCode, CellPhone FROM dbo.Client " +
+                "ORDER BY CASE WHEN @ColumnName = 'ClientID' THEN ClientID END ASC, " +
+                "CASE WHEN @ColumnName = 'FirstName' THEN FirstName END ASC, " +
+                "CASE WHEN @ColumnName = 'LastName' THEN LastName END ASC, " +
+                "CASE WHEN @ColumnName = 'BirthDate' THEN BirthDate END ASC, " +
+                "CASE WHEN @ColumnName = 'StreetName' THEN StreetName END ASC, " +
+                "CASE WHEN @ColumnName = 'City' THEN City END ASC, " +
+                "CASE WHEN @ColumnName = 'ZipCode' THEN ZipCode END ASC, " +
+                "CASE WHEN @ColumnName = 'CellPhone' THEN CellPhone END ASC;";
+
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            selectCommand.Parameters.AddWithValue("@ColumnName", columnName);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                int cIDOrd = reader.GetOrdinal("ClientID"),
+                    cFOrd = reader.GetOrdinal("FirstName"),
+                    cLOrd = reader.GetOrdinal("LastName"),
+                    cBOrd = reader.GetOrdinal("BirthDate"),
+                    cSTROrd = reader.GetOrdinal("StreetName"),
+                    cCOrd = reader.GetOrdinal("City"),
+                    cSOrd = reader.GetOrdinal("State"),
+                    cZCOrd = reader.GetOrdinal("ZipCode"),
+                    cPOrd = reader.GetOrdinal("CellPhone");
+                while (reader.Read())
+                {
+                    Client clientA = new Client();
+                    clientA.ClientID = reader.GetInt32(cIDOrd);
+                    clientA.FirstName = reader.GetString(cFOrd);
+                    clientA.LastName = reader.GetString(cLOrd);
+                    clientA.BirthDate = reader.GetDateTime(cBOrd);
+                    clientA.StreetName = reader.GetString(cSTROrd);
+                    clientA.City = reader.GetString(cCOrd);
+                    clientA.State = reader.GetString(cSOrd);
+                    clientA.ZipCode = reader.GetString(cZCOrd);
+                    if (reader["CellPhone"].Equals(DBNull.Value))
+                    {
+                        clientA.CellPhone = "";
+                    }
+                    else
+                        clientA.CellPhone = reader.GetString(cPOrd);
+                    clientList.Add(clientA);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return clientList;
+        }
+        public static List<Client> GetClientFiltered(string columnName)
+        {
+            List<Client> clientList = new List<Client>();
+            SqlConnection connection = PRG299DB.GetConnection();
+            string selectStatement = "SELECT ClientID, FirstName, LastName, BirthDate, StreetName, " +
+                "City, State, ZipCode, CellPhone FROM dbo.Client";
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                int cIDOrd = reader.GetOrdinal("ClientID"),
+                    cFOrd = reader.GetOrdinal("FirstName"),
+                    cLOrd = reader.GetOrdinal("LastName"),
+                    cBOrd = reader.GetOrdinal("BirthDate"),
+                    cSTROrd = reader.GetOrdinal("StreetName"),
+                    cCOrd = reader.GetOrdinal("City"),
+                    cSOrd = reader.GetOrdinal("State"),
+                    cZCOrd = reader.GetOrdinal("ZipCode"),
+                    cPOrd = reader.GetOrdinal("CellPhone");
+                while (reader.Read())
+                {
+                    Client clientA = new Client();
+                    clientA.ClientID = reader.GetInt32(cIDOrd);
+                    clientA.FirstName = reader.GetString(cFOrd);
+                    clientA.LastName = reader.GetString(cLOrd);
+                    clientA.BirthDate = reader.GetDateTime(cBOrd);
+                    clientA.StreetName = reader.GetString(cSTROrd);
+                    clientA.City = reader.GetString(cCOrd);
+                    clientA.State = reader.GetString(cSOrd);
+                    clientA.ZipCode = reader.GetString(cZCOrd);
+                    if (reader["CellPhone"].Equals(DBNull.Value))
+                    {
+                        clientA.CellPhone = "";
+                    }
+                    else
+                        clientA.CellPhone = reader.GetString(cPOrd);
+                    clientList.Add(clientA);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return clientList;
+        }
+
     }
 }

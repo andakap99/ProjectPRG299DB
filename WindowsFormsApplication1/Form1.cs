@@ -31,9 +31,16 @@ namespace WindowsFormsApplication1
         private List<Position> positionList;
         private List<Resume> resumeList;
         private List<School> schoolList;
+        private BindingList<Client> clientBindingList;
+        private BindingList<Company> companyBindingList;
+        private BindingList<Contact> contactBindingList;
+        private BindingList<ContactPosition> coPoBindingList;
+        private BindingList<Interview> interviewBindingList;
+        private BindingList<Position> positionBindingList;
+        private BindingList<Resume> resumeBindingList;
+        private BindingList<School> schoolBindingList;
         private bool btnClientClicked = false, btnCompanyClicked = false, btnContactClicked = false, btnContactPositionClicked = false, btnInterviewClicked = false, btnPositionClicked = false, btnResumeClicked = false, btnSchoolClicked = false;
         public static frmPRG299 mainForm;
-        private BindingList<string> columnNameList;
 
         public frmPRG299()
         {
@@ -68,6 +75,7 @@ namespace WindowsFormsApplication1
             {
                 clientList = ClientDB.GetClient();
                 clientDataGridView.DataSource = clientList;
+                clientBindingList = new BindingList<Client>(clientList);
             }
             catch (SqlException ex)
             {
@@ -82,6 +90,7 @@ namespace WindowsFormsApplication1
             {
                 companyList = CompanyDB.GetCompany();
                 companyDataGridView.DataSource = companyList;
+                companyBindingList = new BindingList<Company>(companyList);
             }
             catch (SqlException ex)
             {
@@ -94,6 +103,7 @@ namespace WindowsFormsApplication1
             {
                 contactList = ContactDB.GetContact();
                 contactDataGridView.DataSource = contactList;
+                contactBindingList = new BindingList<Contact>(contactList);
             }
             catch (SqlException ex)
             {
@@ -106,6 +116,7 @@ namespace WindowsFormsApplication1
             {
                 coPoList = ContactPositionDB.GetContactPosition();
                 contactPositionDataGridView.DataSource = coPoList;
+                coPoBindingList = new BindingList<ContactPosition>(coPoList);
             }
             catch (SqlException ex)
             {
@@ -118,6 +129,7 @@ namespace WindowsFormsApplication1
             {
                 interviewList = InterviewDB.GetInterview();
                 interviewDataGridView.DataSource = interviewList;
+                interviewBindingList = new BindingList<Interview>(interviewList);
             }
             catch (SqlException ex)
             {
@@ -130,6 +142,7 @@ namespace WindowsFormsApplication1
             {
                 positionList = PositionDB.GetPosition();
                 positionDataGridView.DataSource = positionList;
+                positionBindingList = new BindingList<Position>(positionList);
             }
             catch (SqlException ex)
             {
@@ -142,6 +155,7 @@ namespace WindowsFormsApplication1
             {
                 resumeList = ResumeDB.GetResume();
                 resumeDataGridView.DataSource = resumeList;
+                resumeBindingList = new BindingList<Resume>(resumeList);
             }
             catch (SqlException ex)
             {
@@ -154,6 +168,7 @@ namespace WindowsFormsApplication1
             {
                 schoolList = SchoolDB.GetSchool();
                 schoolDataGridView.DataSource = schoolList;
+                schoolBindingList = new BindingList<School>(schoolList);
             }
             catch (SqlException ex)
             {
@@ -632,16 +647,19 @@ namespace WindowsFormsApplication1
             {
                 if (btnClientClicked)
                 {
-                    clientBindingSource.DataSource = clientDataGridView.DataSource;
-                    if (filterToolStripTextBox.Text == "")
+                    if (filterToolStripComboBox.SelectedItem.ToString()=="" && filterToolStripTextBox.Text == "" || filterToolStripComboBox.SelectedItem!= filterToolStripComboBox.SelectedItem )
                     {
-                        
-                        clientBindingSource.Sort = filterToolStripComboBox.SelectedItem.ToString() + "ASC";
+
+                    }
+                    else if (filterToolStripTextBox.Text == "")
+                    {
+                        clientBindingSource.DataSource = ClientDB.GetClientSorted(filterToolStripComboBox.SelectedText);
+                        clientDataGridView.DataSource = clientBindingSource;                        
                     }
                     else
                     { 
                         clientBindingSource.Filter = filterToolStripComboBox.SelectedItem.ToString() + " LIKE '%" + filterToolStripTextBox.Text + "%'";
-                        clientDataGridView.DataSource = clientBindingSource.DataSource;
+                        clientDataGridView.DataSource = clientBindingSource;
                     }
                     
                     clientDataGridView.Update();
@@ -687,37 +705,16 @@ namespace WindowsFormsApplication1
 
         private void removeAllFiltersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (btnClientClicked)
+            try
             {
+                ReloadDataGrids();
             }
-            if (btnCompanyClicked)
+            catch (Exception x)
             {
+                MessageBox.Show(x.Message, x.GetType().ToString());
 
             }
-            if (btnContactClicked)
-            {
 
-            }
-            if (btnContactPositionClicked)
-            {
-
-            }
-            if (btnInterviewClicked)
-            {
-
-            }
-            if (btnPositionClicked)
-            {
-
-            }
-            if (btnResumeClicked)
-            {
-
-            }
-            if (btnSchoolClicked)
-            {
-
-            }
         }
 
         private void filterToolStripComboBox_Click(object sender, EventArgs e)
@@ -727,10 +724,10 @@ namespace WindowsFormsApplication1
                 if (panel3.Visible && countlist==0)
                 {
 
-                    columnNameList = new BindingList<string>();
+                    List<string> columnNameList = new List<string>();
                     foreach (DataGridViewColumn col in clientDataGridView.Columns)
                     {
-                        columnNameList.Add(col.HeaderText);
+                        columnNameList.Add(col.DataPropertyName);
                     }
                 
                     for (int i = 0; i < columnNameList.Count; i++)
@@ -745,7 +742,7 @@ namespace WindowsFormsApplication1
                     List<string> columnNameList = new List<string>();
                     foreach (DataGridViewColumn col in companyDataGridView.Columns)
                     {
-                        columnNameList.Add(col.HeaderText);
+                        columnNameList.Add(col.DataPropertyName);
                     }
 
                     for (int i = 0; i < columnNameList.Count; i++)
@@ -760,7 +757,7 @@ namespace WindowsFormsApplication1
                     List<string> columnNameList = new List<string>();
                     foreach (DataGridViewColumn col in contactDataGridView.Columns)
                     {
-                        columnNameList.Add(col.HeaderText);
+                        columnNameList.Add(col.DataPropertyName);
                     }
 
                     for (int i = 0; i < columnNameList.Count; i++)
@@ -775,7 +772,7 @@ namespace WindowsFormsApplication1
                     List<string> columnNameList = new List<string>();
                     foreach (DataGridViewColumn col in contactPositionDataGridView.Columns)
                     {
-                        columnNameList.Add(col.HeaderText);
+                        columnNameList.Add(col.DataPropertyName);
                     }
 
                     for (int i = 0; i < columnNameList.Count; i++)
@@ -790,7 +787,7 @@ namespace WindowsFormsApplication1
                     List<string> columnNameList = new List<string>();
                     foreach (DataGridViewColumn col in interviewDataGridView.Columns)
                     {
-                        columnNameList.Add(col.HeaderText);
+                        columnNameList.Add(col.DataPropertyName);
                     }
 
                     for (int i = 0; i < columnNameList.Count; i++)
@@ -805,7 +802,7 @@ namespace WindowsFormsApplication1
                     List<string> columnNameList = new List<string>();
                     foreach (DataGridViewColumn col in positionDataGridView.Columns)
                     {
-                        columnNameList.Add(col.HeaderText);
+                        columnNameList.Add(col.DataPropertyName);
                     }
 
                     for (int i = 0; i < columnNameList.Count; i++)
@@ -820,7 +817,7 @@ namespace WindowsFormsApplication1
                     List<string> columnNameList = new List<string>();
                     foreach (DataGridViewColumn col in resumeDataGridView.Columns)
                     {
-                        columnNameList.Add(col.HeaderText);
+                        columnNameList.Add(col.DataPropertyName);
                     }
 
                     for (int i = 0; i < columnNameList.Count; i++)
@@ -835,7 +832,7 @@ namespace WindowsFormsApplication1
                     List<string> columnNameList = new List<string>();
                     foreach (DataGridViewColumn col in schoolDataGridView.Columns)
                     {
-                        columnNameList.Add(col.HeaderText);
+                        columnNameList.Add(col.DataPropertyName);
                     }
 
                     for (int i = 0; i < columnNameList.Count; i++)
