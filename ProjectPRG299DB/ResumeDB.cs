@@ -244,5 +244,108 @@ namespace ProjectPRG299DB
                 connection.Close();
             }
         }
+        public static List<Resume> GetResumeSorted(string columnName)
+        {
+            List<Resume> resumeList = new List<Resume>();
+            SqlConnection connection = PRG299DB.GetConnection();
+            string selectStatement = "SELECT ResumeID, RSCDirectoryPath, SchoolID, " +
+                "ClientID FROM dbo.Resume " +
+                "ORDER BY CASE WHEN @ColumnName = 'ResumeID' THEN ResumeID END ASC, " +
+                "CASE WHEN @ColumnName = 'RSCDirectoryPath' THEN RSCDirectoryPath END ASC, " +
+                "CASE WHEN @ColumnName = 'SchoolID' THEN SchoolID END ASC, " +
+                "CASE WHEN @ColumnName = 'ClientID' THEN ClientID END ASC;";
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            selectCommand.Parameters.AddWithValue("@ColumnName", columnName);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                int cIDOrd = reader.GetOrdinal("ResumeID"),
+                    cNOrd = reader.GetOrdinal("RSCDirectoryPath"),
+                    cAOrd = reader.GetOrdinal("SchoolID"),
+                    cCOrd = reader.GetOrdinal("ClientID");
+                while (reader.Read())
+                {
+                    Resume resu = new Resume();
+                    resu.ResumeID = reader.GetInt32(cIDOrd);
+                    if (reader[cNOrd].Equals(DBNull.Value))
+                        resu.RSCDirectoryPath = "";
+                    else
+                        resu.RSCDirectoryPath = reader.GetString(cNOrd);
+                    if (reader[cAOrd].Equals(DBNull.Value))
+                        resu.SchoolID = -1;
+                    else
+                        resu.SchoolID = reader.GetInt32(cAOrd);
+                    if (reader[cCOrd].Equals(DBNull.Value))
+                        resu.ClientID = -1;
+                    else
+                        resu.ClientID = reader.GetInt32(cCOrd);
+                    resumeList.Add(resu);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return resumeList;
+        }
+        public static List<Resume> GetResumeFiltered()
+        {
+            List<Resume> resumeList = new List<Resume>();
+            SqlConnection connection = PRG299DB.GetConnection();
+            string selectStatement = "SELECT ResumeID, RSCDirectoryPath, SchoolID, " +
+                "ClientID FROM dbo.Resume";
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                int cIDOrd = reader.GetOrdinal("ResumeID"),
+                    cNOrd = reader.GetOrdinal("RSCDirectoryPath"),
+                    cAOrd = reader.GetOrdinal("SchoolID"),
+                    cCOrd = reader.GetOrdinal("ClientID");
+                while (reader.Read())
+                {
+                    Resume resu = new Resume();
+                    resu.ResumeID = reader.GetInt32(cIDOrd);
+                    if (reader[cNOrd].Equals(DBNull.Value))
+                        resu.RSCDirectoryPath = "";
+                    else
+                        resu.RSCDirectoryPath = reader.GetString(cNOrd);
+                    if (reader[cAOrd].Equals(DBNull.Value))
+                        resu.SchoolID = -1;
+                    else
+                        resu.SchoolID = reader.GetInt32(cAOrd);
+                    if (reader[cCOrd].Equals(DBNull.Value))
+                        resu.ClientID = -1;
+                    else
+                        resu.ClientID = reader.GetInt32(cCOrd);
+                    resumeList.Add(resu);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return resumeList;
+        }
+
     }
 }

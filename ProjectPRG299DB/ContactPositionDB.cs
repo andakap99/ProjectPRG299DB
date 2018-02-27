@@ -182,5 +182,78 @@ namespace ProjectPRG299DB
                 connection.Close();
             }
         }
+        public static List<ContactPosition> GetContactPositionSorted(string columnName)
+        {
+            List<ContactPosition> contactpositionList = new List<ContactPosition>();
+            SqlConnection connection = PRG299DB.GetConnection();
+            string selectStatement = "SELECT ContactID, PositionID FROM dbo.ContactPosition " +
+               "ORDER BY CASE WHEN @ColumnName = 'ContactID' THEN ContactID END ASC, " +
+               "CASE WHEN @ColumnName = 'PositionID' THEN PositionID END ASC;";
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            selectCommand.Parameters.AddWithValue("@ColumnName", columnName);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                int cIDOrd = reader.GetOrdinal("ContactID"),
+                    cNOrd = reader.GetOrdinal("PositionID");
+                while (reader.Read())
+                {
+                    ContactPosition conPos = new ContactPosition();
+                    conPos.ContactID = reader.GetInt32(cIDOrd);
+                    conPos.PositionID = reader.GetInt32(cNOrd);
+                    contactpositionList.Add(conPos);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return contactpositionList;
+        }
+        public static List<ContactPosition> GetContactPositionFiltered()
+        {
+            List<ContactPosition> contactpositionList = new List<ContactPosition>();
+            SqlConnection connection = PRG299DB.GetConnection();
+            string selectStatement = "SELECT ContactID, PositionID FROM dbo.ContactPosition";
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                int cIDOrd = reader.GetOrdinal("ContactID"),
+                    cNOrd = reader.GetOrdinal("PositionID");
+                while (reader.Read())
+                {
+                    ContactPosition conPos = new ContactPosition();
+                    conPos.ContactID = reader.GetInt32(cIDOrd);
+                    conPos.PositionID = reader.GetInt32(cNOrd);
+                    contactpositionList.Add(conPos);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return contactpositionList;
+        }
+
     }
 }

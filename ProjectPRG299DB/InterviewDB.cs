@@ -13,7 +13,7 @@ namespace ProjectPRG299DB
         {
             List<Interview> interviewList = new List<Interview>();
             SqlConnection connection = PRG299DB.GetConnection();
-            string selectStatement = "SELECT InterviewID, PositionID, CompanyID, ContactID," +
+            string selectStatement = "SELECT InterviewID, PositionID, CompanyID, ContactID, " +
                 "DateTime, AdditionalNotes FROM dbo.Interview";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             try
@@ -232,5 +232,106 @@ namespace ProjectPRG299DB
                 connection.Close();
             }
         }
+        public static List<Interview> GetInterviewSorted(string columnName)
+        {
+            List<Interview> interviewList = new List<Interview>();
+            SqlConnection connection = PRG299DB.GetConnection();
+            string selectStatement = "SELECT InterviewID, PositionID, CompanyID, ContactID, " +
+                "DateTime, AdditionalNotes FROM dbo.Interview " +
+                "ORDER BY CASE WHEN @ColumnName = 'InterviewID' THEN InterviewID END ASC, " +
+               "CASE WHEN @ColumnName = 'PositionID' THEN PositionID END ASC, " +
+               "CASE WHEN @ColumnName = 'CompanyID' THEN CompanyID END ASC, " +
+               "CASE WHEN @ColumnName = 'ContactID' THEN ContactID END ASC, " +
+               "CASE WHEN @ColumnName = 'DateTime' THEN DateTime END ASC, " +
+               "CASE WHEN @ColumnName = 'AdditionalNotes' THEN AdditionalNotes END ASC;";
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            selectCommand.Parameters.AddWithValue("@ColumnName", columnName);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                int cIDOrd = reader.GetOrdinal("InterviewID"),
+                    cNOrd = reader.GetOrdinal("PositionID"),
+                    cAOrd = reader.GetOrdinal("CompanyID"),
+                    cford = reader.GetOrdinal("ContactID"),
+                    cCOrd = reader.GetOrdinal("DateTime"),
+                    cSOrd = reader.GetOrdinal("AdditionalNotes");
+                while (reader.Read())
+                {
+                    Interview interv = new Interview();
+                    interv.InterviewID = reader.GetInt32(cIDOrd);
+                    interv.PositionID = reader.GetInt32(cNOrd);
+                    interv.CompanyID = reader.GetInt32(cAOrd);
+                    interv.ContactID = reader.GetInt32(cford);
+                    interv.DateTimeInterview = reader.GetDateTime(cCOrd);
+                    if (reader["AdditionalNotes"].Equals(DBNull.Value))
+                        interv.AdditionalNotes = "";
+                    else
+                        interv.AdditionalNotes = reader.GetString(cSOrd);
+                    interviewList.Add(interv);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return interviewList;
+        }
+        public static List<Interview> GetInterviewFiltered()
+        {
+            List<Interview> interviewList = new List<Interview>();
+            SqlConnection connection = PRG299DB.GetConnection();
+            string selectStatement = "SELECT InterviewID, PositionID, CompanyID, ContactID," +
+                "DateTime, AdditionalNotes FROM dbo.Interview";
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                int cIDOrd = reader.GetOrdinal("InterviewID"),
+                    cNOrd = reader.GetOrdinal("PositionID"),
+                    cAOrd = reader.GetOrdinal("CompanyID"),
+                    cford = reader.GetOrdinal("ContactID"),
+                    cCOrd = reader.GetOrdinal("DateTime"),
+                    cSOrd = reader.GetOrdinal("AdditionalNotes");
+                while (reader.Read())
+                {
+                    Interview interv = new Interview();
+                    interv.InterviewID = reader.GetInt32(cIDOrd);
+                    interv.PositionID = reader.GetInt32(cNOrd);
+                    interv.CompanyID = reader.GetInt32(cAOrd);
+                    interv.ContactID = reader.GetInt32(cford);
+                    interv.DateTimeInterview = reader.GetDateTime(cCOrd);
+                    if (reader["AdditionalNotes"].Equals(DBNull.Value))
+                        interv.AdditionalNotes = "";
+                    else
+                        interv.AdditionalNotes = reader.GetString(cSOrd);
+                    interviewList.Add(interv);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return interviewList;
+        }
+
     }
 }

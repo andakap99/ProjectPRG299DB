@@ -338,13 +338,29 @@ namespace ProjectPRG299DB
             }
             return clientList;
         }
-        public static List<Client> GetClientFiltered(string columnName)
+        public static List<Client> GetClientFiltered(string columnName, string columnfilter)
         {
+            int filtered = 0;
             List<Client> clientList = new List<Client>();
             SqlConnection connection = PRG299DB.GetConnection();
             string selectStatement = "SELECT ClientID, FirstName, LastName, BirthDate, StreetName, " +
-                "City, State, ZipCode, CellPhone FROM dbo.Client";
+                "City, State, ZipCode, CellPhone FROM dbo.Client WHERE CASE WHEN @ColumnName = 'ClientID' THEN = @Filter END "+
+                " CASE WHEN ;";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            selectCommand.Parameters.AddWithValue("@ColumnName", columnName);
+            if (columnName == "ClientID")
+            {
+                int.TryParse(columnfilter, out filtered);
+                selectCommand.Parameters.AddWithValue("@Filter", filtered);
+                selectCommand.Parameters["@Filter"].SqlDbType = SqlDbType.Int;
+            }
+            else
+            {
+                selectCommand.Parameters.AddWithValue("@Filter", columnfilter);
+
+            }
+
+
             try
             {
                 connection.Open();

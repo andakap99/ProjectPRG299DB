@@ -631,18 +631,18 @@ namespace WindowsFormsApplication1
             {
                 if (btnClientClicked)
                 {
-                    if (filterToolStripComboBox.SelectedItem !=filterToolStripComboBox.SelectedItem && filterToolStripTextBox.Text == "" || filterToolStripComboBox.SelectedItem!= filterToolStripComboBox.SelectedItem )
+                    if (filterToolStripComboBox.SelectedItem ==filterToolStripComboBox.SelectedItem && filterToolStripTextBox.Text == "" || filterToolStripComboBox.SelectedItem!= filterToolStripComboBox.SelectedItem )
                     {
 
                     }
                     else if (filterToolStripTextBox.Text == "")
                     {
-                        clientBindingSource.DataSource = ClientDB.GetClientSorted(filterToolStripComboBox.SelectedText);
+                        clientBindingSource.DataSource = ClientDB.GetClientSorted(filterToolStripComboBox.SelectedItem.ToString());
                         clientDataGridView.DataSource = clientBindingSource;                        
                     }
                     else
-                    { 
-                        clientBindingSource.Filter = filterToolStripComboBox.SelectedItem.ToString() + " LIKE '%" + filterToolStripTextBox.Text + "%'";
+                    {
+                        clientBindingSource.DataSource = ClientDB.GetClientFiltered(filterToolStripComboBox.SelectedItem.ToString(), filterToolStripTextBox.Text);
                         clientDataGridView.DataSource = clientBindingSource;
                     }
                     
@@ -688,7 +688,8 @@ namespace WindowsFormsApplication1
                     }
                     else if (filterToolStripTextBox.Text == "")
                     {
-
+                        contactPositionBindingSource.DataSource = ContactPositionDB.GetContactPositionSorted(filterToolStripComboBox.SelectedText);
+                        contactPositionDataGridView.DataSource = contactPositionBindingSource;
                     }
                     else
                     {
@@ -703,7 +704,8 @@ namespace WindowsFormsApplication1
                     }
                     else if (filterToolStripTextBox.Text == "")
                     {
-
+                        interviewBindingSource.DataSource = InterviewDB.GetInterviewSorted(filterToolStripComboBox.SelectedText);
+                        interviewDataGridView.DataSource = interviewBindingSource;
                     }
                     else
                     {
@@ -718,7 +720,8 @@ namespace WindowsFormsApplication1
                     }
                     else if (filterToolStripTextBox.Text == "")
                     {
-
+                        positionBindingSource.DataSource = PositionDB.GetPositionSorted(filterToolStripComboBox.SelectedText);
+                        positionDataGridView.DataSource = positionBindingSource;
                     }
                     else
                     {
@@ -733,7 +736,8 @@ namespace WindowsFormsApplication1
                     }
                     else if (filterToolStripTextBox.Text == "")
                     {
-
+                        resumeBindingSource.DataSource = ResumeDB.GetResumeSorted(filterToolStripComboBox.SelectedText);
+                        resumeDataGridView.DataSource = resumeBindingSource;
                     }
                     else
                     {
@@ -748,7 +752,8 @@ namespace WindowsFormsApplication1
                     }
                     else if (filterToolStripTextBox.Text == "")
                     {
-
+                        schoolBindingSource.DataSource = SchoolDB.GetSchoolSorted(filterToolStripComboBox.SelectedText);
+                        schoolDataGridView.DataSource = schoolBindingSource;
                     }
                     else
                     {

@@ -295,5 +295,130 @@ namespace ProjectPRG299DB
                 connection.Close();
             }
         }
+        public static List<Position> GetPositionSorted(string columnName)
+        {
+            List<Position> positionList = new List<Position>();
+            SqlConnection connection = PRG299DB.GetConnection();
+            string selectStatement = "SELECT PositionID, PositionName, Description, " +
+                "CompanyID, AdditionalNotes, ResumeID FROM dbo.Position " +
+                "ORDER BY CASE WHEN @ColumnName = 'PositionID' THEN PositionID END ASC, " +
+                "CASE WHEN @ColumnName = 'PositionName' THEN PositionName END ASC, " +
+                "CASE WHEN @ColumnName = 'Description' THEN Description END ASC, " +
+                "CASE WHEN @ColumnName = 'CompanyID' THEN CompanyID END ASC, " +
+                "CASE WHEN @ColumnName = 'AdditionalNotes' THEN AdditionalNotes END ASC, " +
+                "CASE WHEN @ColumnName = 'ResumeID' THEN ResumeID END ASC;";
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            selectCommand.Parameters.AddWithValue("@ColumnName", columnName);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                int cIDOrd = reader.GetOrdinal("PositionID"),
+                    cNOrd = reader.GetOrdinal("PositionName"),
+                    cAOrd = reader.GetOrdinal("Description"),
+                    cCOrd = reader.GetOrdinal("CompanyID"),
+                    cSOrd = reader.GetOrdinal("AdditionalNotes"),
+                    cZCOrd = reader.GetOrdinal("ResumeID");
+                while (reader.Read())
+                {
+                    Position posi = new Position();
+                    posi.PositionID = reader.GetInt32(cIDOrd);
+                    if (reader[cNOrd].Equals(DBNull.Value))
+                        posi.PositionName = "";
+                    else
+                        posi.PositionName = reader.GetString(cNOrd);
+                    if (reader[cAOrd].Equals(DBNull.Value))
+                        posi.Description = "";
+                    else
+                        posi.Description = reader.GetString(cAOrd);
+                    if (reader[cCOrd].Equals(DBNull.Value))
+                        posi.CompanyID = -1;
+                    else
+                        posi.CompanyID = reader.GetInt32(cCOrd);
+                    if (reader[cSOrd].Equals(DBNull.Value))
+                        posi.AdditionalNotes = "";
+                    else
+                        posi.AdditionalNotes = reader.GetString(cSOrd);
+                    if (reader[cZCOrd].Equals(DBNull.Value))
+                        posi.ResumeID = -1;
+                    else
+                        posi.ResumeID = reader.GetInt32(cZCOrd);
+                    positionList.Add(posi);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return positionList;
+        }
+        public static List<Position> GetPositionFiltered()
+        {
+            List<Position> positionList = new List<Position>();
+            SqlConnection connection = PRG299DB.GetConnection();
+            string selectStatement = "SELECT PositionID, PositionName, Description, " +
+                "CompanyID, AdditionalNotes, ResumeID FROM dbo.Position";
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                int cIDOrd = reader.GetOrdinal("PositionID"),
+                    cNOrd = reader.GetOrdinal("PositionName"),
+                    cAOrd = reader.GetOrdinal("Description"),
+                    cCOrd = reader.GetOrdinal("CompanyID"),
+                    cSOrd = reader.GetOrdinal("AdditionalNotes"),
+                    cZCOrd = reader.GetOrdinal("ResumeID");
+                while (reader.Read())
+                {
+                    Position posi = new Position();
+                    posi.PositionID = reader.GetInt32(cIDOrd);
+                    if (reader[cNOrd].Equals(DBNull.Value))
+                        posi.PositionName = "";
+                    else
+                        posi.PositionName = reader.GetString(cNOrd);
+                    if (reader[cAOrd].Equals(DBNull.Value))
+                        posi.Description = "";
+                    else
+                        posi.Description = reader.GetString(cAOrd);
+                    if (reader[cCOrd].Equals(DBNull.Value))
+                        posi.CompanyID = -1;
+                    else
+                        posi.CompanyID = reader.GetInt32(cCOrd);
+                    if (reader[cSOrd].Equals(DBNull.Value))
+                        posi.AdditionalNotes = "";
+                    else
+                        posi.AdditionalNotes = reader.GetString(cSOrd);
+                    if (reader[cZCOrd].Equals(DBNull.Value))
+                        posi.ResumeID = -1;
+                    else
+                        posi.ResumeID = reader.GetInt32(cZCOrd);
+                    positionList.Add(posi);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return positionList;
+        }
+
     }
 }

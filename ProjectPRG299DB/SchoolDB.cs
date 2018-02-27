@@ -351,5 +351,154 @@ namespace ProjectPRG299DB
                 connection.Close();
             }
         }
+        public static List<School> GetSchoolSorted(string columnName)
+        {
+            List<School> SchoolList = new List<School>();
+            SqlConnection connection = PRG299DB.GetConnection();
+            string selectStatement = "SELECT SchoolID, SchoolName, StreetName, " +
+                "City, State, ZipCode, NumberOfYearsAttended, Graduated FROM dbo.School " +
+                "ORDER BY CASE WHEN @ColumnName = 'SchoolID' THEN SchoolID END ASC, " +
+                "CASE WHEN @ColumnName = 'SchoolName' THEN SchoolName END ASC, " +
+                "CASE WHEN @ColumnName = 'StreetName' THEN StreetName END ASC, " +
+                "CASE WHEN @ColumnName = 'City' THEN City END ASC, " +
+                "CASE WHEN @ColumnName = 'State' THEN State END ASC, " +
+                "CASE WHEN @ColumnName = 'ZipCode' THEN ZipCode END ASC, " +
+                "CASE WHEN @ColumnName = 'NumberOfYearsAttended' THEN NumberOfYearsAttended END ASC, " +
+                "CASE WHEN @ColumnName = 'Graduated' THEN Graduated END ASC;";
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            selectCommand.Parameters.AddWithValue("@ColumnName", columnName);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                int cIDOrd = reader.GetOrdinal("SchoolID"),
+                    cNOrd = reader.GetOrdinal("SchoolName"),
+                    cAOrd = reader.GetOrdinal("StreetName"),
+                    cCOrd = reader.GetOrdinal("City"),
+                    cSOrd = reader.GetOrdinal("State"),
+                    cZCOrd = reader.GetOrdinal("ZipCode"),
+                    cPOrd = reader.GetOrdinal("NumberOfYearsAttended"),
+                    cEOrd = reader.GetOrdinal("Graduated");
+                while (reader.Read())
+                {
+                    School scho = new School();
+                    scho.SchoolID = reader.GetInt32(cIDOrd);
+
+                    if (reader[cNOrd].Equals(DBNull.Value))
+                        scho.SchoolName = "";
+                    else
+                        scho.SchoolName = reader.GetString(cNOrd);
+                    if (reader[cAOrd].Equals(DBNull.Value))
+                        scho.StreetName = "";
+                    else
+                        scho.StreetName = reader.GetString(cAOrd);
+                    if (reader[cCOrd].Equals(DBNull.Value))
+                        scho.City = "";
+                    else
+                        scho.City = reader.GetString(cCOrd);
+                    if (reader[cSOrd].Equals(DBNull.Value))
+                        scho.State = "";
+                    else
+                        scho.State = reader.GetString(cSOrd);
+                    if (reader[cZCOrd].Equals(DBNull.Value))
+                        scho.ZipCode = "";
+                    else
+                        scho.ZipCode = reader.GetString(cZCOrd);
+                    if (reader[cPOrd].Equals(DBNull.Value))
+                        scho.NumberOfYearsAttended = -1;
+                    else
+                        scho.NumberOfYearsAttended = reader.GetInt32(cPOrd);
+                    if (reader[cEOrd].Equals(DBNull.Value))
+                        scho.Graduated = "";
+                    else
+                        scho.Graduated = reader.GetString(cEOrd);
+                    SchoolList.Add(scho);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return SchoolList;
+        }
+        public static List<School> GetSchoolFiltered()
+        {
+            List<School> SchoolList = new List<School>();
+            SqlConnection connection = PRG299DB.GetConnection();
+            string selectStatement = "SELECT SchoolID, SchoolName, StreetName, " +
+                "City, State, ZipCode, NumberOfYearsAttended, Graduated FROM dbo.School";
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                int cIDOrd = reader.GetOrdinal("SchoolID"),
+                    cNOrd = reader.GetOrdinal("SchoolName"),
+                    cAOrd = reader.GetOrdinal("StreetName"),
+                    cCOrd = reader.GetOrdinal("City"),
+                    cSOrd = reader.GetOrdinal("State"),
+                    cZCOrd = reader.GetOrdinal("ZipCode"),
+                    cPOrd = reader.GetOrdinal("NumberOfYearsAttended"),
+                    cEOrd = reader.GetOrdinal("Graduated");
+                while (reader.Read())
+                {
+                    School scho = new School();
+                    scho.SchoolID = reader.GetInt32(cIDOrd);
+
+                    if (reader[cNOrd].Equals(DBNull.Value))
+                        scho.SchoolName = "";
+                    else
+                        scho.SchoolName = reader.GetString(cNOrd);
+                    if (reader[cAOrd].Equals(DBNull.Value))
+                        scho.StreetName = "";
+                    else
+                        scho.StreetName = reader.GetString(cAOrd);
+                    if (reader[cCOrd].Equals(DBNull.Value))
+                        scho.City = "";
+                    else
+                        scho.City = reader.GetString(cCOrd);
+                    if (reader[cSOrd].Equals(DBNull.Value))
+                        scho.State = "";
+                    else
+                        scho.State = reader.GetString(cSOrd);
+                    if (reader[cZCOrd].Equals(DBNull.Value))
+                        scho.ZipCode = "";
+                    else
+                        scho.ZipCode = reader.GetString(cZCOrd);
+                    if (reader[cPOrd].Equals(DBNull.Value))
+                        scho.NumberOfYearsAttended = -1;
+                    else
+                        scho.NumberOfYearsAttended = reader.GetInt32(cPOrd);
+                    if (reader[cEOrd].Equals(DBNull.Value))
+                        scho.Graduated = "";
+                    else
+                        scho.Graduated = reader.GetString(cEOrd);
+                    SchoolList.Add(scho);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return SchoolList;
+        }
+
     }
 }
