@@ -290,5 +290,128 @@ namespace ProjectPRG299DB
                 connection.Close();
             }
         }
+        public static List<Contact> GetContactSorted(string columnName)
+        {
+            List<Contact> contactList = new List<Contact>();
+            SqlConnection connection = PRG299DB.GetConnection();
+            string selectStatement = "SELECT ContactID, FirstName, LastName, " +
+                "EmailAddress, PhoneNumber, CellPhone, AdditionalNotes FROM dbo.Contact " +
+                "ORDER BY CASE WHEN @ColumnName = 'ContactID' THEN ContactID END ASC, " +
+                "CASE WHEN @ColumnName = 'FirstName' THEN FirstName END ASC, " +
+                "CASE WHEN @ColumnName = 'LastName' THEN LastName END ASC, " +
+                "CASE WHEN @ColumnName = 'EmailAddress' THEN EmailAddress END ASC, " +
+                "CASE WHEN @ColumnName = 'PhoneNumber' THEN PhoneNumber END ASC, " +
+                "CASE WHEN @ColumnName = 'CellPhone' THEN CellPhone END ASC, " +
+                "CASE WHEN @ColumnName = 'AdditionalNotes' THEN AdditionalNotes END ASC;";
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            selectCommand.Parameters.AddWithValue("@ColumnName", columnName);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                int cIDOrd = reader.GetOrdinal("ContactID"),
+                    cNOrd = reader.GetOrdinal("FirstName"),
+                    cAOrd = reader.GetOrdinal("LastName"),
+                    cCOrd = reader.GetOrdinal("EmailAddress"),
+                    cSOrd = reader.GetOrdinal("PhoneNumber"),
+                    cZCOrd = reader.GetOrdinal("CellPhone"),
+                    cPOrd = reader.GetOrdinal("AdditionalNotes");
+                while (reader.Read())
+                {
+                    Contact cont = new Contact();
+                    cont.ContactID = reader.GetInt32(cIDOrd);
+                    cont.FirstName = reader.GetString(cNOrd);
+                    cont.LastName = reader.GetString(cAOrd);
+                    if (reader["EmailAddress"].Equals(DBNull.Value))
+                        cont.EmailAddress = "";
+                    else
+                        cont.EmailAddress = reader.GetString(cCOrd);
+                    if (reader["PhoneNumber"].Equals(DBNull.Value))
+                        cont.PhoneNumber = "";
+                    else
+                        cont.PhoneNumber = reader.GetString(cSOrd);
+                    if (reader["CellPhone"].Equals(DBNull.Value))
+                        cont.CellPhone = "";
+                    else
+                        cont.CellPhone = reader.GetString(cZCOrd);
+                    if (reader["AdditionalNotes"].Equals(DBNull.Value))
+                        cont.AdditionalNotes = "";
+                    else
+                        cont.AdditionalNotes = reader.GetString(cPOrd);
+                    contactList.Add(cont);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return contactList;
+        }
+        public static List<Contact> GetContactFiltered()
+        {
+            List<Contact> contactList = new List<Contact>();
+            SqlConnection connection = PRG299DB.GetConnection();
+            string selectStatement = "SELECT ContactID, FirstName, LastName, " +
+                "EmailAddress, PhoneNumber, CellPhone, AdditionalNotes FROM dbo.Contact";
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                int cIDOrd = reader.GetOrdinal("ContactID"),
+                    cNOrd = reader.GetOrdinal("FirstName"),
+                    cAOrd = reader.GetOrdinal("LastName"),
+                    cCOrd = reader.GetOrdinal("EmailAddress"),
+                    cSOrd = reader.GetOrdinal("PhoneNumber"),
+                    cZCOrd = reader.GetOrdinal("CellPhone"),
+                    cPOrd = reader.GetOrdinal("AdditionalNotes");
+                while (reader.Read())
+                {
+                    Contact cont = new Contact();
+                    cont.ContactID = reader.GetInt32(cIDOrd);
+                    cont.FirstName = reader.GetString(cNOrd);
+                    cont.LastName = reader.GetString(cAOrd);
+                    if (reader["EmailAddress"].Equals(DBNull.Value))
+                        cont.EmailAddress = "";
+                    else
+                        cont.EmailAddress = reader.GetString(cCOrd);
+                    if (reader["PhoneNumber"].Equals(DBNull.Value))
+                        cont.PhoneNumber = "";
+                    else
+                        cont.PhoneNumber = reader.GetString(cSOrd);
+                    if (reader["CellPhone"].Equals(DBNull.Value))
+                        cont.CellPhone = "";
+                    else
+                        cont.CellPhone = reader.GetString(cZCOrd);
+                    if (reader["AdditionalNotes"].Equals(DBNull.Value))
+                        cont.AdditionalNotes = "";
+                    else
+                        cont.AdditionalNotes = reader.GetString(cPOrd);
+                    contactList.Add(cont);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return contactList;
+        }
+
     }
 }

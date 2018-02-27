@@ -31,14 +31,6 @@ namespace WindowsFormsApplication1
         private List<Position> positionList;
         private List<Resume> resumeList;
         private List<School> schoolList;
-        private BindingList<Client> clientBindingList;
-        private BindingList<Company> companyBindingList;
-        private BindingList<Contact> contactBindingList;
-        private BindingList<ContactPosition> coPoBindingList;
-        private BindingList<Interview> interviewBindingList;
-        private BindingList<Position> positionBindingList;
-        private BindingList<Resume> resumeBindingList;
-        private BindingList<School> schoolBindingList;
         private bool btnClientClicked = false, btnCompanyClicked = false, btnContactClicked = false, btnContactPositionClicked = false, btnInterviewClicked = false, btnPositionClicked = false, btnResumeClicked = false, btnSchoolClicked = false;
         public static frmPRG299 mainForm;
 
@@ -75,7 +67,6 @@ namespace WindowsFormsApplication1
             {
                 clientList = ClientDB.GetClient();
                 clientDataGridView.DataSource = clientList;
-                clientBindingList = new BindingList<Client>(clientList);
             }
             catch (SqlException ex)
             {
@@ -90,7 +81,6 @@ namespace WindowsFormsApplication1
             {
                 companyList = CompanyDB.GetCompany();
                 companyDataGridView.DataSource = companyList;
-                companyBindingList = new BindingList<Company>(companyList);
             }
             catch (SqlException ex)
             {
@@ -103,7 +93,6 @@ namespace WindowsFormsApplication1
             {
                 contactList = ContactDB.GetContact();
                 contactDataGridView.DataSource = contactList;
-                contactBindingList = new BindingList<Contact>(contactList);
             }
             catch (SqlException ex)
             {
@@ -116,7 +105,6 @@ namespace WindowsFormsApplication1
             {
                 coPoList = ContactPositionDB.GetContactPosition();
                 contactPositionDataGridView.DataSource = coPoList;
-                coPoBindingList = new BindingList<ContactPosition>(coPoList);
             }
             catch (SqlException ex)
             {
@@ -129,7 +117,6 @@ namespace WindowsFormsApplication1
             {
                 interviewList = InterviewDB.GetInterview();
                 interviewDataGridView.DataSource = interviewList;
-                interviewBindingList = new BindingList<Interview>(interviewList);
             }
             catch (SqlException ex)
             {
@@ -142,7 +129,6 @@ namespace WindowsFormsApplication1
             {
                 positionList = PositionDB.GetPosition();
                 positionDataGridView.DataSource = positionList;
-                positionBindingList = new BindingList<Position>(positionList);
             }
             catch (SqlException ex)
             {
@@ -155,7 +141,6 @@ namespace WindowsFormsApplication1
             {
                 resumeList = ResumeDB.GetResume();
                 resumeDataGridView.DataSource = resumeList;
-                resumeBindingList = new BindingList<Resume>(resumeList);
             }
             catch (SqlException ex)
             {
@@ -168,7 +153,6 @@ namespace WindowsFormsApplication1
             {
                 schoolList = SchoolDB.GetSchool();
                 schoolDataGridView.DataSource = schoolList;
-                schoolBindingList = new BindingList<School>(schoolList);
             }
             catch (SqlException ex)
             {
@@ -647,7 +631,7 @@ namespace WindowsFormsApplication1
             {
                 if (btnClientClicked)
                 {
-                    if (filterToolStripComboBox.SelectedItem.ToString()=="" && filterToolStripTextBox.Text == "" || filterToolStripComboBox.SelectedItem!= filterToolStripComboBox.SelectedItem )
+                    if (filterToolStripComboBox.SelectedItem !=filterToolStripComboBox.SelectedItem && filterToolStripTextBox.Text == "" || filterToolStripComboBox.SelectedItem!= filterToolStripComboBox.SelectedItem )
                     {
 
                     }
@@ -666,31 +650,110 @@ namespace WindowsFormsApplication1
                 }
                 if (btnCompanyClicked)
                 {
+                    if (filterToolStripComboBox.SelectedItem != filterToolStripComboBox.SelectedItem && filterToolStripTextBox.Text=="" || filterToolStripComboBox.SelectedItem != filterToolStripComboBox.SelectedItem)
+                    {
 
+                    }
+                    else if (filterToolStripTextBox.Text == "")
+                    {
+                        companyBindingSource.DataSource = CompanyDB.GetCompanySorted(filterToolStripComboBox.SelectedText);
+                        companyDataGridView.DataSource = companyBindingSource;
+                    }
+                    else
+                    {
+
+                    }
                 }
                 if (btnContactClicked)
                 {
+                    if (filterToolStripComboBox.SelectedItem != filterToolStripComboBox.SelectedItem && filterToolStripTextBox.Text == "" || filterToolStripComboBox.SelectedItem != filterToolStripComboBox.SelectedItem)
+                    {
 
+                    }
+                    else if (filterToolStripTextBox.Text == "")
+                    {
+                        contactBindingSource.DataSource = ContactDB.GetContactSorted(filterToolStripComboBox.SelectedText);
+                        contactDataGridView.DataSource = contactBindingSource;
+                    }
+                    else
+                    {
+
+                    }
                 }
                 if (btnContactPositionClicked)
                 {
+                    if (filterToolStripComboBox.SelectedItem != filterToolStripComboBox.SelectedItem && filterToolStripTextBox.Text == "" || filterToolStripComboBox.SelectedItem != filterToolStripComboBox.SelectedItem)
+                    {
 
+                    }
+                    else if (filterToolStripTextBox.Text == "")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
                 }
                 if (btnInterviewClicked)
                 {
+                    if (filterToolStripComboBox.SelectedItem != filterToolStripComboBox.SelectedItem && filterToolStripTextBox.Text == "" || filterToolStripComboBox.SelectedItem != filterToolStripComboBox.SelectedItem)
+                    {
 
+                    }
+                    else if (filterToolStripTextBox.Text == "")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
                 }
                 if (btnPositionClicked)
                 {
+                    if (filterToolStripComboBox.SelectedItem != filterToolStripComboBox.SelectedItem && filterToolStripTextBox.Text == "" || filterToolStripComboBox.SelectedItem != filterToolStripComboBox.SelectedItem)
+                    {
 
+                    }
+                    else if (filterToolStripTextBox.Text == "")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
                 }
                 if (btnResumeClicked)
                 {
+                    if (filterToolStripComboBox.SelectedItem != filterToolStripComboBox.SelectedItem && filterToolStripTextBox.Text == "" || filterToolStripComboBox.SelectedItem != filterToolStripComboBox.SelectedItem)
+                    {
 
+                    }
+                    else if (filterToolStripTextBox.Text == "")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
                 }
                 if (btnSchoolClicked)
                 {
+                    if (filterToolStripComboBox.SelectedItem != filterToolStripComboBox.SelectedItem && filterToolStripTextBox.Text == "" || filterToolStripComboBox.SelectedItem != filterToolStripComboBox.SelectedItem)
+                    {
 
+                    }
+                    else if (filterToolStripTextBox.Text == "")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
                 }
             }
             catch (Exception x)

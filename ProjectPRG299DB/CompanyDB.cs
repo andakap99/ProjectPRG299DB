@@ -291,5 +291,132 @@ namespace ProjectPRG299DB
                 connection.Close();
             }
         }
+        public static List<Company> GetCompanySorted(string columnName)
+        {
+            List<Company> companyList = new List<Company>();
+            SqlConnection connection = PRG299DB.GetConnection();
+            string selectStatement = "SELECT CompanyID, CompanyName, BuildingName, BuildingNumber, StreetAddress, " +
+                "City, State, ZipCode, Website, AdditionalNotes FROM dbo.Company " + 
+                "ORDER BY CASE WHEN @ColumnName = 'CompanyID' THEN CompanyID END ASC, " +
+                "CASE WHEN @ColumnName = 'CompanyName' THEN CompanyName END ASC, " +
+                "CASE WHEN @ColumnName = 'BuildingName' THEN BuildingName END ASC, " +
+                "CASE WHEN @ColumnName = 'BuildingNumber' THEN BuildingName END ASC, " +
+                "CASE WHEN @ColumnName = 'StreetAddress' THEN StreetAddress END ASC, " +
+                "CASE WHEN @ColumnName = 'City' THEN City END ASC, " +
+                "CASE WHEN @ColumnName = 'State' THEN State END ASC, " +
+                "CASE WHEN @ColumnName = 'ZipCode' THEN ZipCode END ASC, " +
+                "CASE WHEN @ColumnName = 'Website' THEN Website END ASC, " +
+                "CASE WHEN @ColumnName = 'AdditionalNotes' THEN AdditionalNotes END ASC;";
+
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            selectCommand.Parameters.AddWithValue("@ColumnName", columnName);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                int cIDOrd = reader.GetOrdinal("CompanyID"),
+                    cNOrd = reader.GetOrdinal("CompanyName"),
+                    cBNaOrd = reader.GetOrdinal("BuildingName"),
+                    cBNuOrd = reader.GetOrdinal("BuildingNumber"),
+                    cAOrd = reader.GetOrdinal("StreetAddress"),
+                    cCOrd = reader.GetOrdinal("City"),
+                    cSOrd = reader.GetOrdinal("State"),
+                    cZCOrd = reader.GetOrdinal("ZipCode"),
+                    cPOrd = reader.GetOrdinal("Website"),
+                    cEOrd = reader.GetOrdinal("AdditionalNotes");
+                while (reader.Read())
+                {
+                    Company comp = new Company();
+                    comp.CompanyID = reader.GetInt32(cIDOrd);
+                    comp.CompanyName = reader.GetString(cNOrd);
+                    comp.BuildingName = reader.GetString(cBNaOrd);
+                    comp.BuildingNumber = reader.GetString(cBNuOrd);
+                    comp.StreetAddress = reader.GetString(cAOrd);
+                    comp.City = reader.GetString(cCOrd);
+                    comp.State = reader.GetString(cSOrd);
+                    comp.ZipCode = reader.GetString(cZCOrd);
+                    if (reader["Website"].Equals(DBNull.Value))
+                        comp.Website = "";
+                    else
+                        comp.Website = reader.GetString(cPOrd);
+                    if (reader["AdditionalNotes"].Equals(DBNull.Value))
+                        comp.AdditionalNotes = "";
+                    else
+                        comp.AdditionalNotes = reader.GetString(cEOrd);
+                    companyList.Add(comp);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return companyList;
+        }
+        public static List<Company> GetCompanyFiltered()
+        {
+            List<Company> companyList = new List<Company>();
+            SqlConnection connection = PRG299DB.GetConnection();
+            string selectStatement = "SELECT CompanyID, CompanyName, BuildingName, BuildingNumber, StreetAddress, " +
+                "City, State, ZipCode, Website, AdditionalNotes FROM dbo.Company";
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                int cIDOrd = reader.GetOrdinal("CompanyID"),
+                    cNOrd = reader.GetOrdinal("CompanyName"),
+                    cBNaOrd = reader.GetOrdinal("BuildingName"),
+                    cBNuOrd = reader.GetOrdinal("BuildingNumber"),
+                    cAOrd = reader.GetOrdinal("StreetAddress"),
+                    cCOrd = reader.GetOrdinal("City"),
+                    cSOrd = reader.GetOrdinal("State"),
+                    cZCOrd = reader.GetOrdinal("ZipCode"),
+                    cPOrd = reader.GetOrdinal("Website"),
+                    cEOrd = reader.GetOrdinal("AdditionalNotes");
+                while (reader.Read())
+                {
+                    Company comp = new Company();
+                    comp.CompanyID = reader.GetInt32(cIDOrd);
+                    comp.CompanyName = reader.GetString(cNOrd);
+                    comp.BuildingName = reader.GetString(cBNaOrd);
+                    comp.BuildingNumber = reader.GetString(cBNuOrd);
+                    comp.StreetAddress = reader.GetString(cAOrd);
+                    comp.City = reader.GetString(cCOrd);
+                    comp.State = reader.GetString(cSOrd);
+                    comp.ZipCode = reader.GetString(cZCOrd);
+                    if (reader["Website"].Equals(DBNull.Value))
+                        comp.Website = "";
+                    else
+                        comp.Website = reader.GetString(cPOrd);
+                    if (reader["AdditionalNotes"].Equals(DBNull.Value))
+                        comp.AdditionalNotes = "";
+                    else
+                        comp.AdditionalNotes = reader.GetString(cEOrd);
+                    companyList.Add(comp);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return companyList;
+        }
+
     }
 }
