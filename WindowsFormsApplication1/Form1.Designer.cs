@@ -131,6 +131,7 @@
             this.dataGridViewTextBoxColumn42 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn43 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.interviewBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clientDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyDataGridView)).BeginInit();
@@ -172,6 +173,7 @@
             this.deleteToolStripMenu,
             this.filterToolStripComboBox,
             this.filterToolStripTextBox,
+            this.sortToolStripMenuItem,
             this.filterToolStripMenuItem,
             this.removeAllFiltersToolStripMenuItem});
             this.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
@@ -241,8 +243,8 @@
             // filterToolStripMenuItem
             // 
             this.filterToolStripMenuItem.Name = "filterToolStripMenuItem";
-            this.filterToolStripMenuItem.Size = new System.Drawing.Size(87, 24);
-            this.filterToolStripMenuItem.Text = "Sort/Filter";
+            this.filterToolStripMenuItem.Size = new System.Drawing.Size(54, 24);
+            this.filterToolStripMenuItem.Text = "Filter";
             this.filterToolStripMenuItem.Click += new System.EventHandler(this.filterToolStripMenuItem_Click);
             // 
             // removeAllFiltersToolStripMenuItem
@@ -1070,6 +1072,13 @@
             // 
             this.interviewBindingSource.DataSource = typeof(ProjectPRG299DB.Interview);
             // 
+            // sortToolStripMenuItem
+            // 
+            this.sortToolStripMenuItem.Name = "sortToolStripMenuItem";
+            this.sortToolStripMenuItem.Size = new System.Drawing.Size(48, 24);
+            this.sortToolStripMenuItem.Text = "Sort";
+            this.sortToolStripMenuItem.Click += new System.EventHandler(this.sortToolStripMenuItem_Click);
+            // 
             // frmPRG299
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1229,6 +1238,7 @@
         private System.Windows.Forms.ToolStripTextBox filterToolStripTextBox;
         private System.Windows.Forms.ToolStripMenuItem filterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeAllFiltersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sortToolStripMenuItem;
     }
 }
 

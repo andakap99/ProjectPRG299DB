@@ -596,6 +596,83 @@ namespace WindowsFormsApplication1
 
         }
 
+        private void sortToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (btnClientClicked)
+            {
+                if (filterToolStripTextBox.Text == "")
+                {
+                    clientBindingSource.DataSource = ClientDB.GetClientSorted(filterToolStripComboBox.SelectedItem.ToString());
+                    clientDataGridView.DataSource = clientBindingSource;
+                }
+
+                clientDataGridView.Update();
+            }
+            if (btnCompanyClicked)
+            {
+                if (filterToolStripTextBox.Text == "")
+                {
+                    companyBindingSource.DataSource = CompanyDB.GetCompanySorted(filterToolStripComboBox.SelectedText);
+                    companyDataGridView.DataSource = companyBindingSource;
+                }
+
+            }
+            if (btnContactClicked)
+            {
+                if (filterToolStripTextBox.Text == "")
+                {
+                    contactBindingSource.DataSource = ContactDB.GetContactSorted(filterToolStripComboBox.SelectedText);
+                    contactDataGridView.DataSource = contactBindingSource;
+                }
+
+            }
+            if (btnContactPositionClicked)
+            {
+                if (filterToolStripTextBox.Text == "")
+                {
+                    contactPositionBindingSource.DataSource = ContactPositionDB.GetContactPositionSorted(filterToolStripComboBox.SelectedText);
+                    contactPositionDataGridView.DataSource = contactPositionBindingSource;
+                }
+
+            }
+            if (btnInterviewClicked)
+            {
+                if (filterToolStripTextBox.Text == "")
+                {
+                    interviewBindingSource.DataSource = InterviewDB.GetInterviewSorted(filterToolStripComboBox.SelectedText);
+                    interviewDataGridView.DataSource = interviewBindingSource;
+                }
+
+            }
+            if (btnPositionClicked)
+            {
+                if (filterToolStripTextBox.Text == "")
+                {
+                    positionBindingSource.DataSource = PositionDB.GetPositionSorted(filterToolStripComboBox.SelectedText);
+                    positionDataGridView.DataSource = positionBindingSource;
+                }
+
+            }
+            if (btnResumeClicked)
+            {
+                if (filterToolStripTextBox.Text == "")
+                {
+                    resumeBindingSource.DataSource = ResumeDB.GetResumeSorted(filterToolStripComboBox.SelectedText);
+                    resumeDataGridView.DataSource = resumeBindingSource;
+                }
+
+            }
+            if (btnSchoolClicked)
+            {
+                if (filterToolStripTextBox.Text == "")
+                {
+                    schoolBindingSource.DataSource = SchoolDB.GetSchoolSorted(filterToolStripComboBox.SelectedText);
+                    schoolDataGridView.DataSource = schoolBindingSource;
+                }
+
+            }
+        }
+
         private void pnlMouseLeave(object sender, EventArgs e)
         {
             
@@ -631,7 +708,7 @@ namespace WindowsFormsApplication1
             {
                 if (btnClientClicked)
                 {
-                    if (filterToolStripComboBox.SelectedItem ==filterToolStripComboBox.SelectedItem && filterToolStripTextBox.Text == "" || filterToolStripComboBox.SelectedItem!= filterToolStripComboBox.SelectedItem )
+                    if (filterToolStripComboBox.SelectedItem ==filterToolStripComboBox.SelectedItem && filterToolStripTextBox.Text == "" || filterToolStripComboBox.Text != filterToolStripComboBox.SelectedItem.ToString() )
                     {
 
                     }

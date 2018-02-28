@@ -341,18 +341,19 @@ namespace ProjectPRG299DB
         public static List<Client> GetClientFiltered(string columnName, string columnfilter)
         {
             int filtered = 0;
+            DateTime birthdayFilter;
             List<Client> clientList = new List<Client>();
             SqlConnection connection = PRG299DB.GetConnection();
-            string selectStatement = "SELECT ClientID, FirstName, LastName, BirthDate, StreetName, " +
-                "City, State, ZipCode, CellPhone FROM dbo.Client WHERE CASE WHEN @ColumnName = 'ClientID' THEN = @Filter END "+
-                "CASE WHEN @ColumnName = 'FirstName' THEN = @Filter END " +
-                "CASE WHEN @ColumnName = 'LastName' THEN = @Filter END " +
-                "CASE WHEN @ColumnName = 'BirthDate' THEN = @Filter END " +
-                "CASE WHEN @ColumnName = 'StreetName' THEN = @Filter END " +
-                "CASE WHEN @ColumnName = 'City' THEN = @Filter END " +
-                "CASE WHEN @ColumnName = 'State' THEN = @Filter END " +
-                "CASE WHEN @ColumnName = 'ZipCode' THEN = @Filter END " +
-                "CASE WHEN @ColumnName = 'CellPhone' THEN = @Filter END;";
+            string selectStatement = "SELECT ClientID, FirstName, LastName, BirthDate, StreetName, City, State, ZipCode, CellPhone FROM dbo.Client "+
+                "WHERE CASE WHEN @ColumnName = 'ClientID' AND ClientID = @Filter THEN 1 "+
+                "WHEN @ColumnName = 'FirstName' AND FirstName LIKE '%' + @Filter + '%' THEN 1 "+
+                "WHEN @ColumnName = 'LastName' AND LastName LIKE '%' + @Filter + '%' THEN 1 "+
+                "WHEN @ColumnName = 'BirthDate' AND CASE WHEN ISDATE(@Filter) = 1 THEN CONVERT(DATETIME, @Filter, 101) ELSE NULL END = BirthDate THEN 1 "+
+                "WHEN @ColumnName = 'StreetName' AND StreetName LIKE '%' + @Filter + '%' THEN 1 " +
+                "WHEN @ColumnName = 'City' AND City LIKE '%' + @Filter + '%' THEN 1 "+
+                "WHEN @ColumnName = 'State' AND State LIKE '%' + @Filter + '%' THEN 1 "+
+                "WHEN @ColumnName = 'ZipCode' AND ZipCode LIKE '%' + @Filter + '%' THEN 1 "+
+                "WHEN @ColumnName = 'CellPhone' AND CellPhone LIKE '%' + @Filter + '%' THEN 1 WHEN @ColumnName = '' THEN 1 ELSE 0 END = 1";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             selectCommand.Parameters.AddWithValue("@ColumnName", columnName);
             if (columnName == "ClientID")
@@ -361,10 +362,21 @@ namespace ProjectPRG299DB
                 selectCommand.Parameters.AddWithValue("@Filter", filtered);
                 selectCommand.Parameters["@Filter"].SqlDbType = SqlDbType.Int;
             }
+            else if (columnName == "BirthDate")
+            {
+                if (DateTime.TryParse(columnfilter, out birthdayFilter))
+                { 
+                    selectCommand.Parameters.AddWithValue("@Filter", birthdayFilter);
+                    selectCommand.Parameters["@Filter"].SqlDbType = SqlDbType.DateTime;
+                }
+                else
+                {
+                }
+            }
             else
             {
                 selectCommand.Parameters.AddWithValue("@Filter", columnfilter);
-
+                selectCommand.Parameters["@Filter"].SqlDbType = SqlDbType.VarChar;
             }
 
 
