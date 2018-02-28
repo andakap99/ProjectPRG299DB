@@ -345,7 +345,14 @@ namespace ProjectPRG299DB
             SqlConnection connection = PRG299DB.GetConnection();
             string selectStatement = "SELECT ClientID, FirstName, LastName, BirthDate, StreetName, " +
                 "City, State, ZipCode, CellPhone FROM dbo.Client WHERE CASE WHEN @ColumnName = 'ClientID' THEN = @Filter END "+
-                " CASE WHEN ;";
+                "CASE WHEN @ColumnName = 'FirstName' THEN = @Filter END " +
+                "CASE WHEN @ColumnName = 'LastName' THEN = @Filter END " +
+                "CASE WHEN @ColumnName = 'BirthDate' THEN = @Filter END " +
+                "CASE WHEN @ColumnName = 'StreetName' THEN = @Filter END " +
+                "CASE WHEN @ColumnName = 'City' THEN = @Filter END " +
+                "CASE WHEN @ColumnName = 'State' THEN = @Filter END " +
+                "CASE WHEN @ColumnName = 'ZipCode' THEN = @Filter END " +
+                "CASE WHEN @ColumnName = 'CellPhone' THEN = @Filter END;";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             selectCommand.Parameters.AddWithValue("@ColumnName", columnName);
             if (columnName == "ClientID")
