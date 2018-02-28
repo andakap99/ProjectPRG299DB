@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace ProjectPRG299DB
@@ -298,13 +299,34 @@ namespace ProjectPRG299DB
             }
             return resumeList;
         }
-        public static List<Resume> GetResumeFiltered()
+        public static List<Resume> GetResumeFiltered(string columnName, string columnfilter)
         {
+            int filtered = 0;
+            DateTime birthdayFilter;
+
             List<Resume> resumeList = new List<Resume>();
             SqlConnection connection = PRG299DB.GetConnection();
             string selectStatement = "SELECT ResumeID, RSCDirectoryPath, SchoolID, " +
-                "ClientID FROM dbo.Resume";
+                "ClientID FROM dbo.Resume "+
+                "WHERE CASE WHEN @ColumnName = 'ResumeID' AND ResumeID = @Filter THEN 1 " +
+                "WHEN @ColumnName = 'RSCDirectoryPath' AND RSCDirectoryPath LIKE '%' + @Filter + '%' THEN 1 " +
+                "WHERE CASE WHEN @ColumnName = 'SchoolID' AND SchoolID = @Filter THEN 1 " +
+                "WHERE CASE WHEN @ColumnName = 'ClientID' AND ClientID = @Filter THEN 1 WHEN @ColumnName = '' THEN 1 ELSE 0 END = 1";
+
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            selectCommand.Parameters.AddWithValue("@ColumnName", columnName);
+            if (columnName == "ResumeID" || columnName == "SchoolID" || columnName == "ClientID")
+            {
+                int.TryParse(columnfilter, out filtered);
+                selectCommand.Parameters.AddWithValue("@Filter", filtered);
+                selectCommand.Parameters["@Filter"].SqlDbType = SqlDbType.Int;
+            }
+            else
+            {
+                selectCommand.Parameters.AddWithValue("@Filter", columnfilter);
+                selectCommand.Parameters["@Filter"].SqlDbType = SqlDbType.VarChar;
+            }
+
             try
             {
                 connection.Open();

@@ -673,6 +673,20 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private void filterToolStripTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (filterToolStripTextBox.Text == "")
+            {
+                sortToolStripMenuItem.Visible = true;
+                filterToolStripMenuItem.Visible = false;
+            }
+            else
+            {
+                sortToolStripMenuItem.Visible = false;
+                filterToolStripMenuItem.Visible = true;
+            }
+        }
+
         private void pnlMouseLeave(object sender, EventArgs e)
         {
             
@@ -840,7 +854,9 @@ namespace WindowsFormsApplication1
             }
             catch (Exception x)
             {
-                MessageBox.Show(x.Message, x.GetType().ToString());
+                if (x.Message.Contains("@Filter")) { MessageBox.Show("Please provide Value with correct format."); }
+                else
+                    MessageBox.Show(x.Message, x.GetType().ToString());
 
             }
             finally

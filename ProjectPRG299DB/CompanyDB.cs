@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace ProjectPRG299DB
@@ -360,13 +361,38 @@ namespace ProjectPRG299DB
             }
             return companyList;
         }
-        public static List<Company> GetCompanyFiltered()
+        public static List<Company> GetCompanyFiltered(string columnName, string columnfilter)
         {
+            int filtered = 0;
             List<Company> companyList = new List<Company>();
             SqlConnection connection = PRG299DB.GetConnection();
             string selectStatement = "SELECT CompanyID, CompanyName, BuildingName, BuildingNumber, StreetAddress, " +
-                "City, State, ZipCode, Website, AdditionalNotes FROM dbo.Company";
+                "City, State, ZipCode, Website, AdditionalNotes FROM dbo.Company "+
+            "WHERE CASE WHEN @ColumnName = 'CompanyID' AND CompanyID = @Filter THEN 1 " +
+            "WHEN @ColumnName = 'CompanyName' AND CompanyName LIKE '%' + @Filter + '%' THEN 1 " +
+            "WHEN @ColumnName = 'BuildingName' AND BuildingName LIKE '%' + @Filter + '%' THEN 1 " +
+            "WHEN @ColumnName = 'BuildingNumber' AND BuildingNumber LIKE '%' + @Filter + '%' THEN 1 " +
+            "WHEN @ColumnName = 'StreetAddress' AND StreetAddress LIKE '%' + @Filter + '%' THEN 1 " +
+            "WHEN @ColumnName = 'City' AND City LIKE '%' + @Filter + '%' THEN 1 " +
+            "WHEN @ColumnName = 'State' AND State LIKE '%' + @Filter + '%' THEN 1 " +
+            "WHEN @ColumnName = 'ZipCode' AND ZipCode LIKE '%' + @Filter + '%' THEN 1 " +
+            "WHEN @ColumnName = 'Website' AND Website LIKE '%' + @Filter + '%' THEN 1 " +
+            "WHEN @ColumnName = 'AdditionalNotes' AND AdditionalNotes LIKE '%' + @Filter + '%' THEN 1 WHEN @ColumnName = '' THEN 1 ELSE 0 END = 1";
+
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            selectCommand.Parameters.AddWithValue("@ColumnName", columnName);
+            if (columnName == "CompanyID")
+            {
+                int.TryParse(columnfilter, out filtered);
+                selectCommand.Parameters.AddWithValue("@Filter", filtered);
+                selectCommand.Parameters["@Filter"].SqlDbType = SqlDbType.Int;
+            }
+            else
+            {
+                selectCommand.Parameters.AddWithValue("@Filter", columnfilter);
+                selectCommand.Parameters["@Filter"].SqlDbType = SqlDbType.VarChar;
+            }
+
             try
             {
                 connection.Open();

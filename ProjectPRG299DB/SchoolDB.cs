@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace ProjectPRG299DB
@@ -430,13 +431,38 @@ namespace ProjectPRG299DB
             }
             return SchoolList;
         }
-        public static List<School> GetSchoolFiltered()
+        public static List<School> GetSchoolFiltered(string columnName, string columnfilter)
         {
+            int filtered = 0;
+            DateTime birthdayFilter;
+
             List<School> SchoolList = new List<School>();
             SqlConnection connection = PRG299DB.GetConnection();
             string selectStatement = "SELECT SchoolID, SchoolName, StreetName, " +
-                "City, State, ZipCode, NumberOfYearsAttended, Graduated FROM dbo.School";
+                "City, State, ZipCode, NumberOfYearsAttended, Graduated FROM dbo.School "+
+            "WHERE CASE WHEN @ColumnName = 'SchoolID' AND SchoolID = @Filter THEN 1 " +
+            "WHEN @ColumnName = 'SchoolName' AND SchoolName LIKE '%' + @Filter + '%' THEN 1 " +
+            "WHEN @ColumnName = 'StreetName' AND StreetName LIKE '%' + @Filter + '%' THEN 1 " +
+            "WHEN @ColumnName = 'City' AND City LIKE '%' + @Filter + '%' THEN 1 " +
+            "WHEN @ColumnName = 'State' AND State LIKE '%' + @Filter + '%' THEN 1 " +
+            "WHEN @ColumnName = 'ZipCode' AND ZipCode LIKE '%' + @Filter + '%' THEN 1 " +
+            "WHEN @ColumnName = 'NumberOfYearsAttended' AND NumberOfYearsAttended LIKE '%' + @Filter + '%' THEN 1 " +
+            "WHEN @ColumnName = 'Graduated' AND Graduated LIKE '%' + @Filter + '%' THEN 1 WHEN @ColumnName = '' THEN 1 ELSE 0 END = 1";
+
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            selectCommand.Parameters.AddWithValue("@ColumnName", columnName);
+            if (columnName == "SchoolID")
+            {
+                int.TryParse(columnfilter, out filtered);
+                selectCommand.Parameters.AddWithValue("@Filter", filtered);
+                selectCommand.Parameters["@Filter"].SqlDbType = SqlDbType.Int;
+            }
+            else
+            {
+                selectCommand.Parameters.AddWithValue("@Filter", columnfilter);
+                selectCommand.Parameters["@Filter"].SqlDbType = SqlDbType.VarChar;
+            }
+
             try
             {
                 connection.Open();
