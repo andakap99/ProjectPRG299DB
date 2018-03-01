@@ -23,7 +23,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        public static bool IsPresent(Control control)
+        public static bool IsPresent(Control control) // CHECKS IF ALL THE REQUIRED FEILD ARE FILLED IN.
         {
             if (control.GetType().ToString() == "System.Windows.Forms.TextBox")
             {
@@ -68,7 +68,7 @@ namespace WindowsFormsApplication1
             return true;
         }
 
-        public static bool IsDecimal(TextBox textBox)
+        public static bool IsDecimal(TextBox textBox) // CHECKS IF THE REQUIRED DECIMAL VALUES ARE A DECIMAL
         {
             try
             {
@@ -83,7 +83,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        public static bool IsInt32(TextBox textBox)
+        public static bool IsInt32(TextBox textBox) // CHECKS IF THE REQUIRED INTEGER VALUE IS AN INTEGER 
         {
             try
             {
@@ -105,8 +105,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        public static bool IsStateZipCode(TextBox textBox,
-            int firstZip, int lastZip)
+        public static bool IsStateZipCode(TextBox textBox, int firstZip, int lastZip) // CHECKS IF THE ZIPCODE IS PROPER FOR THE STATE
         {
             int zipCode = 0;
             if (textBox.Text == "" && textBox.Visible)
@@ -131,7 +130,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        public static bool IsPhoneNumber(TextBox textBox)
+        public static bool IsPhoneNumber(TextBox textBox) // CHECKS IF TEXTBOXES ARE PHONE NUMDER TEXTBOXES
         {
             string phoneChars = textBox.Text.Replace(".", "");
             try

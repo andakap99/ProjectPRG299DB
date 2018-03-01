@@ -9,7 +9,7 @@ namespace ProjectPRG299DB
 {
     public static class SchoolDB
     {
-        public static List<School> GetSchool()
+        public static List<School> GetSchool()// USED TO POPULATE THE DATA GRID TABLE ALSO USED TO REFRESH THE DATA GRID
         {
             List<School> SchoolList = new List<School>();
             SqlConnection connection = PRG299DB.GetConnection();
@@ -78,7 +78,7 @@ namespace ProjectPRG299DB
             }
             return SchoolList;
         }
-        public static School GetSchoolByRow(int schoolID)
+        public static School GetSchoolByRow(int schoolID)// GETS ONE ROW AT A TIME FROM THE DATABASE
         {
             School school = new School();
             SqlConnection connection = PRG299DB.GetConnection();
@@ -150,7 +150,7 @@ namespace ProjectPRG299DB
             return school;
         }
 
-        public static bool DeleteSchool(int schoolID)
+        public static bool DeleteSchool(int schoolID)// DELETES A ROW FROM THE DATABASE
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string deleteStatement = "DELETE FROM School WHERE SchoolID = @SchoolID";
@@ -179,7 +179,7 @@ namespace ProjectPRG299DB
             }
         }
 
-        public static int AddSchool(School school)
+        public static int AddSchool(School school) // ADDS A NEW ROW TO THE DATABASE
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string insertStatement =
@@ -243,7 +243,7 @@ namespace ProjectPRG299DB
             }
         }
 
-        public static bool UpdateSchool(School oldSchool, School newSchool)
+        public static bool UpdateSchool(School oldSchool, School newSchool)// MODIFIES THE DATABASE A ROW AT A TIME
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string updateStatement =
@@ -352,7 +352,7 @@ namespace ProjectPRG299DB
                 connection.Close();
             }
         }
-        public static List<School> GetSchoolSorted(string columnName)
+        public static List<School> GetSchoolSorted(string columnName)// SORTS THE DATA IN THE DATABASE
         {
             List<School> SchoolList = new List<School>();
             SqlConnection connection = PRG299DB.GetConnection();
@@ -431,13 +431,18 @@ namespace ProjectPRG299DB
             }
             return SchoolList;
         }
-        public static List<School> GetSchoolFiltered(string columnName, string columnfilter)
+        public static List<School> GetSchoolFiltered(string columnName, string columnfilter)// PUTS A FILTER TO THE DATABASE 
         {
             int filtered = 0;
             DateTime birthdayFilter;
 
             List<School> SchoolList = new List<School>();
             SqlConnection connection = PRG299DB.GetConnection();
+            /* 
+                When you pass any column name and filter which matches to any records and per column name, it will return those records.             
+                When column name matches and no record matches as per column name it fallback to last ELSE part so it won't return any records as expected.
+                In one special case when you don't mention any column name i.e. @ColumnName = '' then all rows will be returned as you didn't want to filter.
+             */
             string selectStatement = "SELECT SchoolID, SchoolName, StreetName, " +
                 "City, State, ZipCode, NumberOfYearsAttended, Graduated FROM dbo.School "+
             "WHERE CASE WHEN @ColumnName = 'SchoolID' AND SchoolID = @Filter THEN 1 " +

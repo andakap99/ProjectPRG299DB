@@ -10,7 +10,7 @@ namespace ProjectPRG299DB
 {
     public static class ClientDB
     {
-        public static List<Client> GetClient()
+        public static List<Client> GetClient() // USED TO POPULATE THE DATA GRID TABLE ALSO USED TO REFRESH THE DATA GRID
         {
             List<Client> clientList = new List<Client>();
             SqlConnection connection = PRG299DB.GetConnection();
@@ -65,7 +65,7 @@ namespace ProjectPRG299DB
             return clientList;
         }
 
-        public static Client GetClientByRow(int clientID)
+        public static Client GetClientByRow(int clientID) // GETS ONE ROW AT A TIME FROM THE DATABASE
         {
             Client client = new Client();
             SqlConnection connection = PRG299DB.GetConnection();
@@ -123,7 +123,7 @@ namespace ProjectPRG299DB
             return client;
         }
 
-        public static bool DeleteClient(int clientID)
+        public static bool DeleteClient(int clientID) // DELETES A ROW FROM THE DATABASE 
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string deleteStatement = "DELETE FROM Client WHERE ClientID = @ClientID";
@@ -152,7 +152,7 @@ namespace ProjectPRG299DB
             }
         }
         
-        public static int AddClient(Client client)
+        public static int AddClient(Client client) // ADDS A NEW ROW TO THE DATABASE 
         {
 
             SqlConnection connection = PRG299DB.GetConnection();
@@ -202,7 +202,7 @@ namespace ProjectPRG299DB
             }
         }
 
-        public static bool UpdateClient(Client oldClient, Client newClient)
+        public static bool UpdateClient(Client oldClient, Client newClient) // MODIFIES THE DATABASE A ROW AT A TIME
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string updateStatement =
@@ -273,11 +273,11 @@ namespace ProjectPRG299DB
                 connection.Close();
             }
         }
-        public static List<Client> GetClientSorted(string columnName)
+        public static List<Client> GetClientSorted(string columnName) // SORTS THE DATA IN THE DATABASE  
         {
             List<Client> clientList = new List<Client>();
             SqlConnection connection = PRG299DB.GetConnection();
-            string selectStatement = "SELECT ClientID, FirstName, LastName, BirthDate, StreetName, " +
+            string selectStatement = "SELECT ClientID, FirstName, LastName, BirthDate, StreetName, " +  
                 "City, State, ZipCode, CellPhone FROM dbo.Client " +
                 "ORDER BY CASE WHEN @ColumnName = 'ClientID' THEN ClientID END ASC, " +
                 "CASE WHEN @ColumnName = 'FirstName' THEN FirstName END ASC, " +
@@ -338,12 +338,17 @@ namespace ProjectPRG299DB
             }
             return clientList;
         }
-        public static List<Client> GetClientFiltered(string columnName, string columnfilter)
+        public static List<Client> GetClientFiltered(string columnName, string columnfilter) // PUTS A FILTER TO THE DATABASE 
         {
             int filtered = 0;
             DateTime birthdayFilter;
             List<Client> clientList = new List<Client>();
             SqlConnection connection = PRG299DB.GetConnection();
+            /* 
+                When you pass any column name and filter which matches to any records and per column name, it will return those records.             
+                When column name matches and no record matches as per column name it fallback to last ELSE part so it won't return any records as expected.
+                In one special case when you don't mention any column name i.e. @ColumnName = '' then all rows will be returned as you didn't want to filter.
+             */
             string selectStatement = "SELECT ClientID, FirstName, LastName, BirthDate, StreetName, City, State, ZipCode, CellPhone FROM dbo.Client "+
                 "WHERE CASE WHEN @ColumnName = 'ClientID' AND ClientID = @Filter THEN 1 "+
                 "WHEN @ColumnName = 'FirstName' AND FirstName LIKE '%' + @Filter + '%' THEN 1 "+
@@ -356,7 +361,7 @@ namespace ProjectPRG299DB
                 "WHEN @ColumnName = 'CellPhone' AND CellPhone LIKE '%' + @Filter + '%' THEN 1 WHEN @ColumnName = '' THEN 1 ELSE 0 END = 1";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             selectCommand.Parameters.AddWithValue("@ColumnName", columnName);
-            if (columnName == "ClientID")
+            if (columnName == "ClientID")   // 
             {
                 int.TryParse(columnfilter, out filtered);
                 selectCommand.Parameters.AddWithValue("@Filter", filtered);

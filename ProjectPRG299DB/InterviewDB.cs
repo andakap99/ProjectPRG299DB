@@ -9,7 +9,7 @@ namespace ProjectPRG299DB
 {
     public static class InterviewDB
     {
-        public static List<Interview> GetInterview()
+        public static List<Interview> GetInterview() // USED TO POPULATE THE DATA GRID TABLE ALSO USED TO REFRESH THE DATA GRID
         {
             List<Interview> interviewList = new List<Interview>();
             SqlConnection connection = PRG299DB.GetConnection();
@@ -55,7 +55,7 @@ namespace ProjectPRG299DB
             }
             return interviewList;
         }
-        public static Interview GetInterviewByRow(int interviewID)
+        public static Interview GetInterviewByRow(int interviewID) // GETS ONE ROW AT A TIME FROM THE DATABASE
         {
             Interview interview = new Interview();
             SqlConnection connection = PRG299DB.GetConnection();
@@ -101,7 +101,7 @@ namespace ProjectPRG299DB
             return interview;
         }
 
-        public static bool DeleteInterview(int interviewID)
+        public static bool DeleteInterview(int interviewID) // DELETES A ROW FROM THE DATABASE
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string deleteStatement = "DELETE FROM Interview WHERE InterviewID = @InterviewID";
@@ -130,7 +130,7 @@ namespace ProjectPRG299DB
             }
         }
 
-        public static int AddInterview(Interview interview)
+        public static int AddInterview(Interview interview) // ADDS A NEW ROW TO THE DATABASE
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string insertStatement =
@@ -173,7 +173,7 @@ namespace ProjectPRG299DB
             }
         }
 
-        public static bool UpdateInterview(Interview oldInterview, Interview newInterview)
+        public static bool UpdateInterview(Interview oldInterview, Interview newInterview) // MODIFIES THE DATABASE A ROW AT A TIME
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string updateStatement =
@@ -232,7 +232,7 @@ namespace ProjectPRG299DB
                 connection.Close();
             }
         }
-        public static List<Interview> GetInterviewSorted(string columnName)
+        public static List<Interview> GetInterviewSorted(string columnName) // SORTS THE DATA IN THE DATABASE
         {
             List<Interview> interviewList = new List<Interview>();
             SqlConnection connection = PRG299DB.GetConnection();
@@ -286,37 +286,40 @@ namespace ProjectPRG299DB
             }
             return interviewList;
         }
-        public static List<Interview> GetInterviewFiltered(string columnName, string columnfilter)
+        public static List<Interview> GetInterviewFiltered(string columnName, string columnfilter) // PUTS A FILTER TO THE DATABASE
         {
             int filtered = 0;
-            DateTime birthdayFilter;
+            DateTime dateFilter;
             List<Interview> interviewList = new List<Interview>();
             SqlConnection connection = PRG299DB.GetConnection();
+            /* 
+                When you pass any column name and filter which matches to any records and per column name, it will return those records.             
+                When column name matches and no record matches as per column name it fallback to last ELSE part so it won't return any records as expected.
+                In one special case when you don't mention any column name i.e. @ColumnName = '' then all rows will be returned as you didn't want to filter.
+             */
+
             string selectStatement = "SELECT InterviewID, PositionID, CompanyID, ContactID," +
-                "DateTime, AdditionalNotes FROM dbo.Interview "+
-                "WHERE CASE WHEN @ColumnName = 'ClientID' AND ClientID = @Filter THEN 1 " +
-                "WHEN @ColumnName = 'FirstName' AND FirstName LIKE '%' + @Filter + '%' THEN 1 " +
-                "WHEN @ColumnName = 'LastName' AND LastName LIKE '%' + @Filter + '%' THEN 1 " +
-                "WHEN @ColumnName = 'BirthDate' AND CASE WHEN ISDATE(@Filter) = 1 THEN CONVERT(DATETIME, @Filter, 101) ELSE NULL END = BirthDate THEN 1 " +
-                "WHEN @ColumnName = 'StreetName' AND StreetName LIKE '%' + @Filter + '%' THEN 1 " +
-                "WHEN @ColumnName = 'City' AND City LIKE '%' + @Filter + '%' THEN 1 " +
-                "WHEN @ColumnName = 'State' AND State LIKE '%' + @Filter + '%' THEN 1 " +
-                "WHEN @ColumnName = 'ZipCode' AND ZipCode LIKE '%' + @Filter + '%' THEN 1 " +
-                "WHEN @ColumnName = 'CellPhone' AND CellPhone LIKE '%' + @Filter + '%' THEN 1 WHEN @ColumnName = '' THEN 1 ELSE 0 END = 1";
+                "DateTime, AdditionalNotes FROM dbo.Interview " +
+                "WHERE CASE WHEN @ColumnName = 'InterviewID' AND InterviewID = @Filter THEN 1 " +
+                "WHEN @ColumnName = 'PositionID' AND PositionID = @Filter THEN 1 " +
+                "WHEN @ColumnName = 'CompanyID' AND CompanyID = @Filter THEN 1 " +
+                "WHEN @ColumnName = 'ContactID' AND ContactID = @Filter THEN 1 " +
+                "WHEN @ColumnName = 'DateTime' AND CASE WHEN ISDATE(@Filter) = 1 THEN CONVERT(DATETIME, @Filter, 101) ELSE NULL END = DateTime THEN 1 " +
+                "WHEN @ColumnName = 'AdditionalNotes' AND AdditionalNotes LIKE '%' + @Filter + '%' THEN 1 WHEN @ColumnName = '' THEN 1 ELSE 0 END = 1";
 
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             selectCommand.Parameters.AddWithValue("@ColumnName", columnName);
-            if (columnName == "ClientID")
+            if (columnName == "InterviewID" || columnName == "PositionID" || columnName == "CompanyID" || columnName == "ContactID")
             {
                 int.TryParse(columnfilter, out filtered);
                 selectCommand.Parameters.AddWithValue("@Filter", filtered);
                 selectCommand.Parameters["@Filter"].SqlDbType = SqlDbType.Int;
             }
-            else if (columnName == "BirthDate")
+            else if (columnName == "DateTimeInterview")
             {
-                if (DateTime.TryParse(columnfilter, out birthdayFilter))
+                if (DateTime.TryParse(columnfilter, out dateFilter))
                 {
-                    selectCommand.Parameters.AddWithValue("@Filter", birthdayFilter);
+                    selectCommand.Parameters.AddWithValue("@Filter", dateFilter);
                     selectCommand.Parameters["@Filter"].SqlDbType = SqlDbType.DateTime;
                 }
                 else

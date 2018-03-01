@@ -9,7 +9,7 @@ namespace ProjectPRG299DB
 {
     public static class CompanyDB
     {
-        public static List<Company> GetCompany()
+        public static List<Company> GetCompany()// USED TO POPULATE THE DATA GRID TABLE ALSO USED TO REFRESH THE DATA GRID
         {
             List<Company> companyList = new List<Company>();
             SqlConnection connection = PRG299DB.GetConnection();
@@ -66,7 +66,7 @@ namespace ProjectPRG299DB
             }
             return companyList;
         }
-        public static Company GetCompanyByRow(int companyID)
+        public static Company GetCompanyByRow(int companyID)// GETS ONE ROW AT A TIME FROM THE DATABASE
         {
             Company company = new Company();
             SqlConnection connection = PRG299DB.GetConnection();
@@ -124,7 +124,7 @@ namespace ProjectPRG299DB
             return company;
         }
 
-        public static bool DeleteCompany(int companyID)
+        public static bool DeleteCompany(int companyID)// DELETES A ROW FROM THE DATABASE
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string deleteStatement = "DELETE FROM Company WHERE CompanyID = @CompanyID";
@@ -153,7 +153,7 @@ namespace ProjectPRG299DB
             }
         }
 
-        public static int AddCompany(Company company)
+        public static int AddCompany(Company company)// ADDS A NEW ROW TO THE DATABASE
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string insertStatement =
@@ -206,7 +206,7 @@ namespace ProjectPRG299DB
             }
         }
 
-        public static bool UpdateCompany(Company oldCompany, Company newCompany)
+        public static bool UpdateCompany(Company oldCompany, Company newCompany)// MODIFIES THE DATABASE A ROW AT A TIME
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string updateStatement =
@@ -292,7 +292,7 @@ namespace ProjectPRG299DB
                 connection.Close();
             }
         }
-        public static List<Company> GetCompanySorted(string columnName)
+        public static List<Company> GetCompanySorted(string columnName) // SORTS THE DATA IN THE DATABASE
         {
             List<Company> companyList = new List<Company>();
             SqlConnection connection = PRG299DB.GetConnection();
@@ -361,11 +361,16 @@ namespace ProjectPRG299DB
             }
             return companyList;
         }
-        public static List<Company> GetCompanyFiltered(string columnName, string columnfilter)
+        public static List<Company> GetCompanyFiltered(string columnName, string columnfilter)// PUTS A FILTER TO THE DATABASE 
         {
             int filtered = 0;
             List<Company> companyList = new List<Company>();
             SqlConnection connection = PRG299DB.GetConnection();
+            /* 
+                When you pass any column name and filter which matches to any records and per column name, it will return those records.             
+                When column name matches and no record matches as per column name it fallback to last ELSE part so it won't return any records as expected.
+                In one special case when you don't mention any column name i.e. @ColumnName = '' then all rows will be returned as you didn't want to filter.
+             */
             string selectStatement = "SELECT CompanyID, CompanyName, BuildingName, BuildingNumber, StreetAddress, " +
                 "City, State, ZipCode, Website, AdditionalNotes FROM dbo.Company "+
             "WHERE CASE WHEN @ColumnName = 'CompanyID' AND CompanyID = @Filter THEN 1 " +

@@ -61,7 +61,7 @@ namespace WindowsFormsApplication1
 
 
 
-        private void LoadClientList()
+        private void LoadClientList() // POPULATES THE DATAGRIDVIEW WITH VALUES FROM THE DATABASE
         {
             try
             {
@@ -75,7 +75,7 @@ namespace WindowsFormsApplication1
         }
 
 
-        private void LoadCompanyList()
+        private void LoadCompanyList() // POPULATES THE DATAGRIDVIEW WITH VALUES FROM THE DATABASE
         {
             try
             {
@@ -87,7 +87,7 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
         }
-        private void LoadContactList()
+        private void LoadContactList() // POPULATES THE DATAGRIDVIEW WITH VALUES FROM THE DATABASE
         {
             try
             {
@@ -99,7 +99,7 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
         }
-        private void LoadContactPostionList()
+        private void LoadContactPostionList() // POPULATES THE DATAGRIDVIEW WITH VALUES FROM THE DATABASE
         {
             try
             {
@@ -111,7 +111,7 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
         }
-        private void LoadInterviewList()
+        private void LoadInterviewList() // POPULATES THE DATAGRIDVIEW WITH VALUES FROM THE DATABASE
         {
             try
             {
@@ -123,7 +123,7 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
         }
-        private void LoadPositionList()
+        private void LoadPositionList() // POPULATES THE DATAGRIDVIEW WITH VALUES FROM THE DATABASE
         {
             try
             {
@@ -135,7 +135,7 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
         }
-        private void LoadResumeList()
+        private void LoadResumeList() // POPULATES THE DATAGRIDVIEW WITH VALUES FROM THE DATABASE
         {
             try
             {
@@ -147,7 +147,7 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
         }
-        private void LoadSchoolList()
+        private void LoadSchoolList() // POPULATES THE DATAGRIDVIEW WITH VALUES FROM THE DATABASE
         {
             try
             {
@@ -160,7 +160,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        public string AddTextToFrmAdUpInDotText()
+        public string AddTextToFrmAdUpInDotText()// SETS THE ADDINGTEXT BASE ON WHICH BUTTON IS CLICKED 
         {
             string addingText = "";
 
@@ -183,8 +183,8 @@ namespace WindowsFormsApplication1
             return addingText;
         }
 
-        private void AddModifyToolStripMenu_Click(object sender, EventArgs e)
-        {
+        private void AddModifyToolStripMenu_Click(object sender, EventArgs e)// BASE ON THE BUTTON CLICKED DEFINES WHAT CONTROLS ARE VISIBLE IN THE UPDATEINSERTFORM
+        {                                                                                       // WHICH ALSO DETERMINES WHAT THE UPDATEINSERTFORM DOES AS A RESULT
             frmAUI UpdateInsertForm = new frmAUI();
             try
             {
@@ -372,7 +372,7 @@ namespace WindowsFormsApplication1
             }
             ReloadDataGrids();
         }
-        private void ReloadDataGrids()
+        private void ReloadDataGrids() // REFRESHES THE DATAGRIDVIEW
         {
             if (btnClientClicked)
                 LoadClientList();
@@ -391,7 +391,7 @@ namespace WindowsFormsApplication1
             if (btnSchoolClicked)
                 LoadSchoolList();
         }
-        private void deleteToolStripMenu_Click(object sender, EventArgs e)
+        private void deleteToolStripMenu_Click(object sender, EventArgs e) // DETERMINES WHICH ROW IS DELETED FROM THE DATABASE
         {
             
             try
@@ -467,7 +467,7 @@ namespace WindowsFormsApplication1
             ReloadDataGrids();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) // SETS UP THE PROPER DATAGRID AND SETS THE SORTS AND FILTER EVENTS 
         {
             filterToolStripComboBox.Items.Clear();
             countlist = 0;
@@ -481,7 +481,7 @@ namespace WindowsFormsApplication1
             panel8.Visible = false; panel5.Visible = false; panel7.Visible = false; panel4.Visible = false;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)// SETS UP THE PROPER DATAGRID AND SETS THE SORTS AND FILTER EVENTS 
         {
             filterToolStripComboBox.Items.Clear();
             countlist = 0;
@@ -496,7 +496,7 @@ namespace WindowsFormsApplication1
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)// SETS UP THE PROPER DATAGRID AND SETS THE SORTS AND FILTER EVENTS 
         {
             filterToolStripComboBox.Items.Clear();
             countlist = 0;
@@ -510,7 +510,7 @@ namespace WindowsFormsApplication1
             panel8.Visible = false; panel5.Visible = false; panel7.Visible = false; panel4.Visible = false;
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)// SETS UP THE PROPER DATAGRID AND SETS THE SORTS AND FILTER EVENTS 
         {
             filterToolStripComboBox.Items.Clear();
             countlist = 0;
@@ -525,7 +525,7 @@ namespace WindowsFormsApplication1
         }
 
 
-        private void button5_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e)// SETS UP THE PROPER DATAGRID AND SETS THE SORTS AND FILTER EVENTS 
         {
             filterToolStripComboBox.Items.Clear();
             countlist = 0;
@@ -539,7 +539,7 @@ namespace WindowsFormsApplication1
             panel8.Visible = true; panel5.Visible = false; panel7.Visible = false; panel4.Visible = false;
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void button6_Click(object sender, EventArgs e)// SETS UP THE PROPER DATAGRID AND SETS THE SORTS AND FILTER EVENTS 
         {
             filterToolStripComboBox.Items.Clear();
             countlist = 0;
@@ -553,7 +553,7 @@ namespace WindowsFormsApplication1
             panel8.Visible = false; panel5.Visible = true; panel7.Visible = false; panel4.Visible = false;
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void button7_Click(object sender, EventArgs e)// SETS UP THE PROPER DATAGRID AND SETS THE SORTS AND FILTER EVENTS 
         {
             filterToolStripComboBox.Items.Clear();
             countlist = 0;
@@ -567,7 +567,7 @@ namespace WindowsFormsApplication1
             panel8.Visible = false; panel5.Visible = false; panel7.Visible = true; panel4.Visible = false;
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void button8_Click(object sender, EventArgs e)// SETS UP THE PROPER DATAGRID AND SETS THE SORTS AND FILTER EVENTS 
         {
             filterToolStripComboBox.Items.Clear();
             countlist = 0;
@@ -582,7 +582,7 @@ namespace WindowsFormsApplication1
         }
 
 
-        private void pnlMouseHover(object sender, EventArgs e)
+        private void pnlMouseHover(object sender, EventArgs e) // OPENS UP THE PANEL 
         {
             panel10.Width = 199;
             if (btnClientClicked) { panel11.Location = new Point(183, 0); }
@@ -596,7 +596,7 @@ namespace WindowsFormsApplication1
 
         }
 
-        private void sortToolStripMenuItem_Click(object sender, EventArgs e)
+        private void sortToolStripMenuItem_Click(object sender, EventArgs e) //PERFORMS THE SORTS
         {
             if (btnClientClicked)
             {
@@ -673,7 +673,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void filterToolStripTextBox_TextChanged(object sender, EventArgs e)
+        private void filterToolStripTextBox_TextChanged(object sender, EventArgs e) //SWITCHES BETWEEN THE SORT AND FILTER BUTTONS
         {
             if (filterToolStripTextBox.Text == "")
             {
@@ -687,7 +687,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void pnlMouseLeave(object sender, EventArgs e)
+        private void pnlMouseLeave(object sender, EventArgs e) //CLOSES THE PANEL
         {
             
             if (btnClientClicked) { panel11.Location = button1.Location; panel10.Width = 10; }
@@ -712,11 +712,11 @@ namespace WindowsFormsApplication1
 
         }
 
-        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e) // CLOSES THE PROGRAM
         {
             Close();
         }
-        private void filterToolStripMenuItem_Click(object sender, EventArgs e)
+        private void filterToolStripMenuItem_Click(object sender, EventArgs e) //PERFORMS THE FILTER ON THE DATABASE
         {
             try
             {
@@ -864,7 +864,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void removeAllFiltersToolStripMenuItem_Click(object sender, EventArgs e)
+        private void removeAllFiltersToolStripMenuItem_Click(object sender, EventArgs e)// RESETS FROM THE SORT OR FILTER 
         {
             try
             {
@@ -878,7 +878,7 @@ namespace WindowsFormsApplication1
 
         }
 
-        private void filterToolStripComboBox_Click(object sender, EventArgs e)
+        private void filterToolStripComboBox_Click(object sender, EventArgs e) // LOADS UP THE TOOLSTRIPCOMBOBOX WITH DATAGRIDS COLUMN NAMES
         {
             try
             { 

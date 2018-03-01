@@ -53,7 +53,7 @@ namespace WindowsFormsApplication1
             if (addMenuClicked)
             {
                 btnInsertUpdate.Text = "Add";
-                if (Text == "Add Client")
+                if (Text == "Add Client") // TEXT IS THE FORM.TEXT
                 {
                     newClient = new Client();
                     clientBindingSource.Clear();
@@ -173,21 +173,18 @@ namespace WindowsFormsApplication1
             }
         }
         
-        private void StateComboBoxes()
+        private void StateComboBoxes() // FILLS IN THE COMBOBOXES.COLLECTIONS WITH STATE NAMES
         {
             try
             {
                 stateList = StateDB.GetStateList();
-                //stateComboBox.DataSource = stateList;
-                //stateComboBox1.DataSource = stateList;
-               // stateComboBox2.DataSource = stateList;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
         }
-        public void PutNewClient()
+        public void PutNewClient() // SETS THE NEW CLIENT 
         {
             try
             { 
@@ -206,7 +203,7 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
         }
-        public void PutNewCompany()
+        public void PutNewCompany() // SETS THE NEW COMPANY
         {
             try
             { 
@@ -227,7 +224,7 @@ namespace WindowsFormsApplication1
             }
 
         }
-        private void PutNewContact()
+        private void PutNewContact() // SETS THE NEW CONTACT
         {
             try
             { 
@@ -246,7 +243,7 @@ namespace WindowsFormsApplication1
 
         }
 
-        private void PutNewContactPosition()
+        private void PutNewContactPosition() // SETS THE NEW CONTACT POSITION
         {
             try { 
             newContactPosition.ContactID = contactPosition.ContactID;
@@ -258,7 +255,7 @@ namespace WindowsFormsApplication1
             }
 
         }
-        private void PutNewInterview()
+        private void PutNewInterview() //SETS THE NEW INTERVIEW
         {
             try
             {
@@ -275,7 +272,7 @@ namespace WindowsFormsApplication1
             }
 
         }
-        private void PutNewPosition()
+        private void PutNewPosition() // SETS THE NEW POSITION
         {
             try { 
             newPostion.PositionID = position.PositionID;
@@ -291,7 +288,7 @@ namespace WindowsFormsApplication1
             }
 
         }
-        private void PutNewResume()
+        private void PutNewResume() //SETS THE NEW RESUME
         {
             try { 
             newResume.ResumeID = resume.ResumeID;
@@ -305,7 +302,7 @@ namespace WindowsFormsApplication1
             }
 
         }
-        private void PutNewSchool()
+        private void PutNewSchool() //SETS THE NEW SCHOOL
         {
             try { 
             newSchool.SchoolID = school.SchoolID;
@@ -324,7 +321,7 @@ namespace WindowsFormsApplication1
 
         }
 
-        public void AllLVVisible(string visible)
+        public void AllLVVisible(string visible) // CHECKS A STRING AND SETS WHICH ONE OF THE LIST VIEW ARE VISIBLE
         {
             if ("Client" != visible)
                 cliLVVisible = false;
@@ -359,7 +356,7 @@ namespace WindowsFormsApplication1
             else
                 schLVVisible = true;
         }
-        public void AllListView()
+        public void AllListView() //CALLS ALL THE LISTVIEWS METHODS
         {
             ClientListView();
             CompanyListView();
@@ -371,7 +368,7 @@ namespace WindowsFormsApplication1
             SchoolListView();
         }
 
-        private void ClientListView()
+        private void ClientListView() // CHECKS WHICH CONTROLS TO SET VISIBLE TO TRUE OR FALSE  
         {
             if (cliLVVisible)
             {
@@ -416,7 +413,7 @@ namespace WindowsFormsApplication1
                 cellPhoneTextBox.Visible = false;
             }
         }
-        private void CompanyListView()
+        private void CompanyListView()// CHECKS WHICH CONTROLS TO SET VISIBLE TO TRUE OR FALSE
         {
             if (comLVVisible)
             {
@@ -465,7 +462,7 @@ namespace WindowsFormsApplication1
                 additionalNotesTextBox.Visible = false;
             }
         }
-        private void ContactListView()
+        private void ContactListView()// CHECKS WHICH CONTROLS TO SET VISIBLE TO TRUE OR FALSE
         {
             if (conLVVisible)
             {
@@ -502,7 +499,7 @@ namespace WindowsFormsApplication1
                 additionalNotesTextBox1.Visible = false;
             }
         }
-        private void ContactPositionListView()
+        private void ContactPositionListView()// CHECKS WHICH CONTROLS TO SET VISIBLE TO TRUE OR FALSE
         {
             if (conPosLVVisible)
             {
@@ -519,7 +516,7 @@ namespace WindowsFormsApplication1
                 positionIDTextBox.Visible = false;
             }
         }
-        private void InterviewListView()
+        private void InterviewListView()// CHECKS WHICH CONTROLS TO SET VISIBLE TO TRUE OR FALSE
         {
             if (intLVVisible)
             {
@@ -552,7 +549,7 @@ namespace WindowsFormsApplication1
                 additionalNotesTextBox2.Visible = false;
             }
         }
-        private void PositionListView()
+        private void PositionListView()// CHECKS WHICH CONTROLS TO SET VISIBLE TO TRUE OR FALSE
         {
             if (posLVVisible)
             {
@@ -585,7 +582,7 @@ namespace WindowsFormsApplication1
                 resumeIDTextBox.Visible = false;
             }
         }
-        private void ResumeListView()
+        private void ResumeListView()// CHECKS WHICH CONTROLS TO SET VISIBLE TO TRUE OR FALSE
         {
             if (resLVVisible)
             {
@@ -610,7 +607,7 @@ namespace WindowsFormsApplication1
                 clientIDTextBox1.Visible = false;
             }
         }
-        private void SchoolListView()
+        private void SchoolListView()// CHECKS WHICH CONTROLS TO SET VISIBLE TO TRUE OR FALSE
         {
             if (schLVVisible)
             {
@@ -652,20 +649,16 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void btnInsertUpdate_Click(object sender, EventArgs e)
-        {
+        private void btnInsertUpdate_Click(object sender, EventArgs e)// CHECKS IF THE DATA ENTERED IS VALID  THEN WHICH BUTTON IS CLICKED  
+        {                                                                            // EXECUTES THE ADD() OR UPDATE() METHODS 
             if (IsDataValid())
             {
                 if (addMenuClicked)
                 {
-                    //newClient.State = stateComboBox.SelectedValue.ToString();
-                    //newCompany.State = stateComboBox1.SelectedValue.ToString();
-                    //newSchool.State = stateComboBox2.SelectedValue.ToString();
                     try
                     {
                         if (cliLVVisible)
                         {
-                            //                       newClient.BirthDate = birthDateDateTimePicker.Value;
                             ClientDB.AddClient(newClient);
                             client = newClient;
                             DialogResult = DialogResult.Retry;
@@ -837,12 +830,12 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void btnCancel_Click(object sender, EventArgs e) // CLOSES THE FORM WHICH AUTOMATICALLY DISPOSES THE ATTEMPED CHANGES 
         {
             Close();
         }
 
-        private void btnMHover(object sender, EventArgs e)
+        private void btnMHover(object sender, EventArgs e) //CHANGES THE FONTSTYLE TO BOLD IN THE TEXT OF THE BUTTONS  
         {
             if (btnInsertUpdate.Focus())
                 btnInsertUpdate.Font = new Font(btnInsertUpdate.Font, FontStyle.Bold);
@@ -851,14 +844,14 @@ namespace WindowsFormsApplication1
 
         }
 
-        private void btnMLeave(object sender, EventArgs e)
+        private void btnMLeave(object sender, EventArgs e)// CHANGES THE FONTSTYLE TO NORMAL IN THE TEXT OF THE BUTTONS
         {
             btnInsertUpdate.Font = new Font(btnInsertUpdate.Font, FontStyle.Regular);
             btnCancel.Font = new Font(btnCancel.Font, FontStyle.Regular);
 
         }
 
-        public bool IsDataValid()
+        public bool IsDataValid()// PREFORMS A TEST ON ALL CONTROLS OF THE FORM TO SEE IF THE ENTERED DATA IS VALID 
         {
             bool isDVB = false;
             
@@ -870,21 +863,6 @@ namespace WindowsFormsApplication1
                 {
                     isDVB = true;
                 }
-                //else if (textBox.Text == "")
-                //{
-                //    if((textBox.Visible && textBox.Text=="" && textBox == cellPhoneTextBox) 
-                //        || (textBox.Visible && textBox.Text == "" && textBox == websiteTextBox && textBox == additionalNotesTextBox)
-                //        || (textBox.Visible && textBox.Text == "" && textBox == emailAddressTextBox && textBox == phoneNumberTextBox && textBox == cellPhoneTextBox1 && textBox == additionalNotesTextBox1)
-                //        || (textBox.Visible && textBox.Text == "" && textBox == additionalNotesTextBox2)
-                //        || (textBox.Visible && textBox.Text == "" && textBox == positionNameTextBox && textBox == descriptionTextBox && textBox == companyIDTextBox1 && textBox == additionalNotesTextBox3 && textBox == resumeIDTextBox)
-            //            || (textBox.Visible && textBox.Text == "" && textBox == rSCDirectoryPathTextBox && textBox == schoolIDTextBox && textBox == clientIDTextBox1)
-            //            || (textBox.Visible && textBox.Text == "" && textBox == schoolNameTextBox && textBox == streetNameTextBox1 && textBox == cityTextBox2 && textBox == zipCodeTextBox2 && textBox == numberOfYearsAttendedTextBox && textBox == graduatedTextBox))
-
-            //        {
-            //        isDVB = true;
-            //    }
-
-            //}
                 else
                 {
                     isDVB = false;

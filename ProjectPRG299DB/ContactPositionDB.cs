@@ -9,7 +9,7 @@ namespace ProjectPRG299DB
 {
     public static class ContactPositionDB
     { 
-        public static List<ContactPosition> GetContactPosition()
+        public static List<ContactPosition> GetContactPosition()// USED TO POPULATE THE DATA GRID TABLE ALSO USED TO REFRESH THE DATA GRID
         {
             List<ContactPosition> contactpositionList = new List<ContactPosition>();
             SqlConnection connection = PRG299DB.GetConnection();
@@ -43,7 +43,7 @@ namespace ProjectPRG299DB
             }
             return contactpositionList;
         }
-        public static ContactPosition GetContactPositionByRow(int contactpositionID)
+        public static ContactPosition GetContactPositionByRow(int contactpositionID)// GETS ONE ROW AT A TIME FROM THE DATABASE
         {
             ContactPosition conpos = new ContactPosition();
             SqlConnection connection = PRG299DB.GetConnection();
@@ -79,7 +79,7 @@ namespace ProjectPRG299DB
             return conpos;
         }
 
-        public static bool DeleteContactPosition(int contactID)
+        public static bool DeleteContactPosition(int contactID) // DELETES A ROW FROM THE DATABASE 
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string deleteStatement = "DELETE FROM ContactPosition WHERE ContactID = @ContactID";
@@ -108,7 +108,7 @@ namespace ProjectPRG299DB
             }
         }
 
-        public static int AddContactPosition(ContactPosition contactposition)
+        public static int AddContactPosition(ContactPosition contactposition)// ADDS A NEW ROW TO THE DATABASE
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string insertStatement =
@@ -142,7 +142,7 @@ namespace ProjectPRG299DB
             }
         }
 
-        public static bool UpdateContactPosition(ContactPosition oldContactPosition, ContactPosition newContactPosition)
+        public static bool UpdateContactPosition(ContactPosition oldContactPosition, ContactPosition newContactPosition) // MODIFIES THE DATABASE A ROW AT A TIME
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string updateStatement =
@@ -183,7 +183,7 @@ namespace ProjectPRG299DB
                 connection.Close();
             }
         }
-        public static List<ContactPosition> GetContactPositionSorted(string columnName)
+        public static List<ContactPosition> GetContactPositionSorted(string columnName) // SORTS THE DATA IN THE DATABASE  
         {
             List<ContactPosition> contactpositionList = new List<ContactPosition>();
             SqlConnection connection = PRG299DB.GetConnection();
@@ -221,42 +221,28 @@ namespace ProjectPRG299DB
             }
             return contactpositionList;
         }
-        public static List<ContactPosition> GetContactPositionFiltered(string columnName, string columnfilter)
+        public static List<ContactPosition> GetContactPositionFiltered(string columnName, string columnfilter)// PUTS A FILTER TO THE DATABASE 
         {
             int filtered = 0;
-            DateTime birthdayFilter;
 
             List<ContactPosition> contactpositionList = new List<ContactPosition>();
             SqlConnection connection = PRG299DB.GetConnection();
+            /* 
+                When you pass any column name and filter which matches to any records and per column name, it will return those records.             
+                When column name matches and no record matches as per column name it fallback to last ELSE part so it won't return any records as expected.
+                In one special case when you don't mention any column name i.e. @ColumnName = '' then all rows will be returned as you didn't want to filter.
+             */
             string selectStatement = "SELECT ContactID, PositionID FROM dbo.ContactPosition "+
-                "WHERE CASE WHEN @ColumnName = 'ClientID' AND ClientID = @Filter THEN 1 " +
-                "WHEN @ColumnName = 'FirstName' AND FirstName LIKE '%' + @Filter + '%' THEN 1 " +
-                "WHEN @ColumnName = 'LastName' AND LastName LIKE '%' + @Filter + '%' THEN 1 " +
-                "WHEN @ColumnName = 'BirthDate' AND CASE WHEN ISDATE(@Filter) = 1 THEN CONVERT(DATETIME, @Filter, 101) ELSE NULL END = BirthDate THEN 1 " +
-                "WHEN @ColumnName = 'StreetName' AND StreetName LIKE '%' + @Filter + '%' THEN 1 " +
-                "WHEN @ColumnName = 'City' AND City LIKE '%' + @Filter + '%' THEN 1 " +
-                "WHEN @ColumnName = 'State' AND State LIKE '%' + @Filter + '%' THEN 1 " +
-                "WHEN @ColumnName = 'ZipCode' AND ZipCode LIKE '%' + @Filter + '%' THEN 1 " +
-                "WHEN @ColumnName = 'CellPhone' AND CellPhone LIKE '%' + @Filter + '%' THEN 1 WHEN @ColumnName = '' THEN 1 ELSE 0 END = 1";
+                "WHERE CASE WHEN @ColumnName = 'ContactID' AND ContactID = @Filter THEN 1 " +
+                "WHEN @ColumnName = 'PositionID' AND PositionID = @Filter THEN 1 WHEN @ColumnName = '' THEN 1 ELSE 0 END = 1";
 
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             selectCommand.Parameters.AddWithValue("@ColumnName", columnName);
-            if (columnName == "ClientID")
+            if (columnName == "ContactID" || columnName == "PositionID")
             {
                 int.TryParse(columnfilter, out filtered);
                 selectCommand.Parameters.AddWithValue("@Filter", filtered);
                 selectCommand.Parameters["@Filter"].SqlDbType = SqlDbType.Int;
-            }
-            else if (columnName == "BirthDate")
-            {
-                if (DateTime.TryParse(columnfilter, out birthdayFilter))
-                {
-                    selectCommand.Parameters.AddWithValue("@Filter", birthdayFilter);
-                    selectCommand.Parameters["@Filter"].SqlDbType = SqlDbType.DateTime;
-                }
-                else
-                {
-                }
             }
             else
             {
