@@ -15,6 +15,15 @@ namespace WindowsFormsApplication1
     public partial class frmPRG299 : Form
     {
         private int countlist = 0;
+        public Client cli;
+        public Company com;
+        public Contact con;
+        public ContactPosition conPos;
+        public Interview interv;
+        public Position pos;
+        public Resume res;
+        public School sch;
+
         private Client client;
         private Company company;
         private Contact contact;

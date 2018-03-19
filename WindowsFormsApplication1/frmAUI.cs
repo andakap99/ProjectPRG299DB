@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -839,7 +839,7 @@ namespace WindowsFormsApplication1
         {
             if (btnInsertUpdate.Focus())
                 btnInsertUpdate.Font = new Font(btnInsertUpdate.Font, FontStyle.Bold);
-            if(btnCancel.Focus())
+            if (btnCancel.Focus())
                 btnCancel.Font = new Font(btnCancel.Font, FontStyle.Bold);
 
         }

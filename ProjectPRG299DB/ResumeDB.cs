@@ -302,7 +302,6 @@ namespace ProjectPRG299DB
         public static List<Resume> GetResumeFiltered(string columnName, string columnfilter)// PUTS A FILTER TO THE DATABASE
         {
             int filtered = 0;
-            DateTime birthdayFilter;
 
             List<Resume> resumeList = new List<Resume>();
             SqlConnection connection = PRG299DB.GetConnection();

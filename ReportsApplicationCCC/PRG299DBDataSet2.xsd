@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="PRG299DBDataSet" targetNamespace="http://tempuri.org/PRG299DBDataSet2.xsd" xmlns:mstns="http://tempuri.org/PRG299DBDataSet2.xsd" xmlns="http://tempuri.org/PRG299DBDataSet2.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="PRG299DBConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="PRG299DBConnectionString1 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.ReportsApplicationCCC.Properties.Settings.GlobalReference.Default.PRG299DBConnectionString1" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable1TableAdapter" GeneratorDataComponentClassName="DataTable1TableAdapter" Name="DataTable1" UserDataComponentName="DataTable1TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="PRG299DBConnectionString1 (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Company.CompanyName + ' /  ' + Contact.PhoneNumber AS [Company / Phone Number], Company.BuildingName AS Location, 
+                         Position.PositionName AS [Position Applied], Contact.FirstName + Contact.LastName AS [Person Contacted], Interview.DateTime AS [Date of Contact], 
+                         Interview.AdditionalNotes AS Notes
+FROM            Company INNER JOIN
+                         Position ON Company.CompanyID = Position.CompanyID INNER JOIN
+                         Interview ON Company.CompanyID = Interview.CompanyID AND Position.PositionID = Interview.PositionID INNER JOIN
+                         ContactPosition ON Position.PositionID = ContactPosition.PositionID INNER JOIN
+                         Contact ON Interview.ContactID = Contact.ContactID AND ContactPosition.ContactID = Contact.ContactID</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Company / Phone Number" DataSetColumn="Company / Phone Number" />
+              <Mapping SourceColumn="Location" DataSetColumn="Location" />
+              <Mapping SourceColumn="Position Applied" DataSetColumn="Position Applied" />
+              <Mapping SourceColumn="Person Contacted" DataSetColumn="Person Contacted" />
+              <Mapping SourceColumn="Date of Contact" DataSetColumn="Date of Contact" />
+              <Mapping SourceColumn="Notes" DataSetColumn="Notes" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="PRG299DBDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="PRG299DBDataSet" msprop:Generator_UserDSName="PRG299DBDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowClassName="DataTable1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Company_x0020__x002F__x0020_Phone_x0020_Number" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="_columnCompany___Phone_Number" msprop:Generator_ColumnPropNameInRow="_Company___Phone_Number" msprop:Generator_ColumnPropNameInTable="_Company___Phone_NumberColumn" msprop:Generator_UserColumnName="Company / Phone Number" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="67" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Location" msprop:Generator_ColumnVarNameInTable="columnLocation" msprop:Generator_ColumnPropNameInRow="Location" msprop:Generator_ColumnPropNameInTable="LocationColumn" msprop:Generator_UserColumnName="Location">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Position_x0020_Applied" msprop:Generator_ColumnVarNameInTable="columnPosition_Applied" msprop:Generator_ColumnPropNameInRow="Position_Applied" msprop:Generator_ColumnPropNameInTable="Position_AppliedColumn" msprop:Generator_UserColumnName="Position Applied" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Person_x0020_Contacted" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPerson_Contacted" msprop:Generator_ColumnPropNameInRow="Person_Contacted" msprop:Generator_ColumnPropNameInTable="Person_ContactedColumn" msprop:Generator_UserColumnName="Person Contacted" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Date_x0020_of_x0020_Contact" msprop:Generator_ColumnVarNameInTable="columnDate_of_Contact" msprop:Generator_ColumnPropNameInRow="Date_of_Contact" msprop:Generator_ColumnPropNameInTable="Date_of_ContactColumn" msprop:Generator_UserColumnName="Date of Contact" type="xs:dateTime" />
+              <xs:element name="Notes" msprop:Generator_ColumnVarNameInTable="columnNotes" msprop:Generator_ColumnPropNameInRow="Notes" msprop:Generator_ColumnPropNameInTable="NotesColumn" msprop:Generator_UserColumnName="Notes" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
