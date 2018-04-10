@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using ProjectPRG299BLL;
 using ProjectPRG299DB;
 
+
 namespace WindowsFormsApplication1
 {
     public partial class frmPRG299 : Form
@@ -694,6 +695,11 @@ namespace WindowsFormsApplication1
                 sortToolStripMenuItem.Visible = false;
                 filterToolStripMenuItem.Visible = true;
             }
+        }
+
+        private void reportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void pnlMouseLeave(object sender, EventArgs e) //CLOSES THE PANEL
