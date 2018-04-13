@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectPRG299BLL;
 using ProjectPRG299DB;
-
+using ReportsApplicationCCC;
 
 namespace WindowsFormsApplication1
 {
@@ -699,7 +699,9 @@ namespace WindowsFormsApplication1
 
         private void reportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            frmReport reportForm = new frmReport();
+            reportForm.ShowDialog();
+                
         }
 
         private void pnlMouseLeave(object sender, EventArgs e) //CLOSES THE PANEL

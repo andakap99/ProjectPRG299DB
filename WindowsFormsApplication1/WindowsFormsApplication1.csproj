@@ -27,6 +27,7 @@
     <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -135,6 +136,10 @@
     <ProjectReference Include="..\ProjectPRG299DB\ProjectPRG299DB.csproj">
       <Project>{48d2d0b5-04f4-4476-8e41-cb1a59a954f6}</Project>
       <Name>ProjectPRG299DB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ReportsApplicationCCC\ReportsApplicationCCC.csproj">
+      <Project>{9199fc58-ce5e-47b7-81b4-4e7b26f77334}</Project>
+      <Name>ReportsApplicationCCC</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

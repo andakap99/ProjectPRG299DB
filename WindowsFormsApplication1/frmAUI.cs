@@ -879,12 +879,13 @@ namespace WindowsFormsApplication1
                 | IsInt32(zipCodeTextBox2))
             {
                 isDVB = true;
-                int firstZip=0;
-                int lastZip=0;
-                int firstZip1=0;
-                int lastZip1=0;
-                int firstZip2=0;
-                int lastZip2=0;
+                int firstZip = 0;
+                int lastZip = 0;
+                int firstZip1 = 0;
+                int lastZip1 = 0;
+                int firstZip2 = 0;
+                int lastZip2 = 0;
+                try { 
                 if (Text.Contains("Client"))
                 {
                     firstZip = stateList[stateComboBox.SelectedIndex].FirstZipCode;
@@ -900,14 +901,19 @@ namespace WindowsFormsApplication1
                     firstZip2 = stateList[stateComboBox2.SelectedIndex].FirstZipCode;
                     lastZip2 = stateList[stateComboBox2.SelectedIndex].LastZipCode;
                 }
-                    if (IsStateZipCode(zipCodeTextBox, firstZip, lastZip)
-                    || IsStateZipCode(zipCodeTextBox1, firstZip1, lastZip1)
-                    || IsStateZipCode(zipCodeTextBox2, firstZip2, lastZip2))
+                if (IsStateZipCode(zipCodeTextBox, firstZip, lastZip)
+                || IsStateZipCode(zipCodeTextBox1, firstZip1, lastZip1)
+                || IsStateZipCode(zipCodeTextBox2, firstZip2, lastZip2))
                 {
                     isDVB = true;
                 }
                 else
                     isDVB = false;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
             else
                 isDVB = false;
