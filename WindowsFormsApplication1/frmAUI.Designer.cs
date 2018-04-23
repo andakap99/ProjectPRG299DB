@@ -1053,10 +1053,14 @@
             // contactIDComboBox1
             // 
             this.contactIDComboBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactPositionBindingSource, "ContactID", true));
+            this.contactIDComboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.contactBindingSource, "ContactID", true));
+            this.contactIDComboBox1.DataSource = this.contactBindingSource;
+            this.contactIDComboBox1.DisplayMember = "LastName";
             this.contactIDComboBox1.Location = new System.Drawing.Point(95, 28);
             this.contactIDComboBox1.Name = "contactIDComboBox1";
-            this.contactIDComboBox1.Size = new System.Drawing.Size(100, 20);
+            this.contactIDComboBox1.Size = new System.Drawing.Size(100, 21);
             this.contactIDComboBox1.TabIndex = 1;
+            this.contactIDComboBox1.ValueMember = "ContactID";
             this.contactIDComboBox1.Visible = false;
             // 
             // contactPositionBindingSource

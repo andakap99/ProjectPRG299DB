@@ -872,7 +872,6 @@ namespace WindowsFormsApplication1
             }
             if (IsPhoneNumber(cellPhoneTextBox) & IsInt32(zipCodeTextBox)
                 | IsPhoneNumber(cellPhoneTextBox1) & IsPhoneNumber(phoneNumberTextBox)
-                | IsInt32(contactIDComboBox1) & IsInt32(positionIDTextBox)
                 | IsInt32(positionIDTextBox1) & IsInt32(companyIDTextBox1) & IsInt32(contactIDTextBox2)
                 | IsInt32(companyIDTextBox2) & IsInt32(resumeIDTextBox)
                 | IsInt32(schoolIDTextBox) & IsInt32(clientIDTextBox1)
