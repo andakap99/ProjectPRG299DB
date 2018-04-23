@@ -504,14 +504,14 @@ namespace WindowsFormsApplication1
             if (conPosLVVisible)
             {
                 contactIDLabel1.Visible = true;
-                contactIDTextBox1.Visible = true;
+                contactIDComboBox1.Visible = true;
                 positionIDLabel.Visible = true;
                 positionIDTextBox.Visible = true;
             }
             else
             {
                 contactIDLabel1.Visible = false;
-                contactIDTextBox1.Visible = false;
+                contactIDComboBox1.Visible = false;
                 positionIDLabel.Visible = false;
                 positionIDTextBox.Visible = false;
             }
@@ -651,6 +651,7 @@ namespace WindowsFormsApplication1
 
         private void btnInsertUpdate_Click(object sender, EventArgs e)// CHECKS IF THE DATA ENTERED IS VALID  THEN WHICH BUTTON IS CLICKED  
         {                                                                            // EXECUTES THE ADD() OR UPDATE() METHODS 
+
             if (IsDataValid())
             {
                 if (addMenuClicked)
@@ -871,7 +872,7 @@ namespace WindowsFormsApplication1
             }
             if (IsPhoneNumber(cellPhoneTextBox) & IsInt32(zipCodeTextBox)
                 | IsPhoneNumber(cellPhoneTextBox1) & IsPhoneNumber(phoneNumberTextBox)
-                | IsInt32(contactIDTextBox1) & IsInt32(positionIDTextBox)
+                | IsInt32(contactIDComboBox1) & IsInt32(positionIDTextBox)
                 | IsInt32(positionIDTextBox1) & IsInt32(companyIDTextBox1) & IsInt32(contactIDTextBox2)
                 | IsInt32(companyIDTextBox2) & IsInt32(resumeIDTextBox)
                 | IsInt32(schoolIDTextBox) & IsInt32(clientIDTextBox1)

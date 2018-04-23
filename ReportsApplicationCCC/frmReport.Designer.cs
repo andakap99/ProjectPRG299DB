@@ -36,6 +36,7 @@
             this.reportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.reportViewer1.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "ReportsApplicationCCC.Report1.rdlc";
             this.reportViewer1.LocalReport.ReportPath = "C:\\Users\\akaplun\\Source\\Repos\\ProjectPRG299DB\\ProjectPRG299DB\\ReportsApplicationC" +
     "CC\\Report1.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);

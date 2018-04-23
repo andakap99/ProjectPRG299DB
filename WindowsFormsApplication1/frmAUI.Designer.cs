@@ -111,7 +111,7 @@
             this.firstNameTextBox1 = new System.Windows.Forms.TextBox();
             this.lastNameTextBox1 = new System.Windows.Forms.TextBox();
             this.phoneNumberTextBox = new System.Windows.Forms.TextBox();
-            this.contactIDTextBox1 = new System.Windows.Forms.TextBox();
+            this.contactIDComboBox1 = new System.Windows.Forms.ComboBox();
             this.contactPositionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.positionIDTextBox = new System.Windows.Forms.TextBox();
             this.additionalNotesTextBox2 = new System.Windows.Forms.TextBox();
@@ -1050,14 +1050,14 @@
             this.phoneNumberTextBox.TabIndex = 4;
             this.phoneNumberTextBox.Visible = false;
             // 
-            // contactIDTextBox1
+            // contactIDComboBox1
             // 
-            this.contactIDTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactPositionBindingSource, "ContactID", true));
-            this.contactIDTextBox1.Location = new System.Drawing.Point(95, 28);
-            this.contactIDTextBox1.Name = "contactIDTextBox1";
-            this.contactIDTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.contactIDTextBox1.TabIndex = 1;
-            this.contactIDTextBox1.Visible = false;
+            this.contactIDComboBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactPositionBindingSource, "ContactID", true));
+            this.contactIDComboBox1.Location = new System.Drawing.Point(95, 28);
+            this.contactIDComboBox1.Name = "contactIDComboBox1";
+            this.contactIDComboBox1.Size = new System.Drawing.Size(100, 20);
+            this.contactIDComboBox1.TabIndex = 1;
+            this.contactIDComboBox1.Visible = false;
             // 
             // contactPositionBindingSource
             // 
@@ -1409,7 +1409,7 @@
             this.Controls.Add(this.positionIDLabel1);
             this.Controls.Add(this.positionIDTextBox1);
             this.Controls.Add(this.contactIDLabel1);
-            this.Controls.Add(this.contactIDTextBox1);
+            this.Controls.Add(this.contactIDComboBox1);
             this.Controls.Add(this.positionIDLabel);
             this.Controls.Add(this.positionIDTextBox);
             this.Controls.Add(this.additionalNotesLabel1);
@@ -1570,7 +1570,7 @@
         public System.Windows.Forms.TextBox firstNameTextBox1;
         public System.Windows.Forms.TextBox lastNameTextBox1;
         public System.Windows.Forms.TextBox phoneNumberTextBox;
-        public System.Windows.Forms.TextBox contactIDTextBox1;
+        public System.Windows.Forms.ComboBox contactIDComboBox1;
         public System.Windows.Forms.TextBox positionIDTextBox;
         public System.Windows.Forms.TextBox additionalNotesTextBox2;
         public System.Windows.Forms.TextBox companyIDTextBox1;

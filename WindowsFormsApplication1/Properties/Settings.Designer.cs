@@ -26,8 +26,8 @@ namespace WindowsFormsApplication1.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS2014;AttachDbFilename=|DataDirectory|\\PRG299DB.mdf;Integr" +
-            "ated Security=True;User Instance=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\PRG299DB.mdf;" +
+            "Integrated Security=True;User Instance=False")]
         public string PRG299DBConnectionString {
             get {
                 return ((string)(this["PRG299DBConnectionString"]));
