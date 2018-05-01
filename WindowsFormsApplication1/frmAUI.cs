@@ -49,13 +49,15 @@ namespace WindowsFormsApplication1
         private void frmAUI_Load(object sender, EventArgs e)
         {
             btnModifyClicked = true;
-            StateComboBoxes();
+            //StateComboBoxes();
             if (addMenuClicked)
             {
                 btnInsertUpdate.Text = "Add";
                 if (Text == "Add Client") // TEXT IS THE FORM.TEXT
                 {
                     newClient = new Client();
+                    stateList = StateDB.GetStateList();
+                    stateComboBox.DataSource = stateList;
                     clientBindingSource.Clear();
                     clientBindingSource.Add(newClient);
 
@@ -109,6 +111,8 @@ namespace WindowsFormsApplication1
                 if (Text == "Modify Client")
                 {
                     newClient = new Client();
+                    stateList = StateDB.GetStateList();
+                    stateComboBox.DataSource = stateList;
                     PutNewClient();
                     clientBindingSource.Clear();
                     clientBindingSource.Add(newClient);
@@ -173,17 +177,17 @@ namespace WindowsFormsApplication1
             }
         }
         
-        private void StateComboBoxes() // FILLS IN THE COMBOBOXES.COLLECTIONS WITH STATE NAMES
-        {
-            try
-            {
-                stateList = StateDB.GetStateList();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
-            }
-        }
+        //private void StateComboBoxes() // FILLS IN THE COMBOBOXES.COLLECTIONS WITH STATE NAMES
+        //{
+        //    try
+        //    {
+        //        stateList = StateDB.GetStateList();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, ex.GetType().ToString());
+        //    }
+        //}
         public void PutNewClient() // SETS THE NEW CLIENT 
         {
             try

@@ -844,7 +844,6 @@
             // 
             this.stateComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.stateComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.stateComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clientBindingSource, "State", true));
             this.stateComboBox.DataSource = this.stateBindingSource;
             this.stateComboBox.DisplayMember = "StateName";
             this.stateComboBox.FormattingEnabled = true;
@@ -942,7 +941,7 @@
             // 
             this.stateComboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.stateComboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.stateComboBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.companyBindingSource, "State", true));
+            this.stateComboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.stateBindingSource, "StateCode", true));
             this.stateComboBox1.DataSource = this.stateBindingSource;
             this.stateComboBox1.DisplayMember = "StateName";
             this.stateComboBox1.FormattingEnabled = true;
@@ -1297,7 +1296,7 @@
             // 
             this.stateComboBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.stateComboBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.stateComboBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.schoolBindingSource, "State", true));
+            this.stateComboBox2.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.stateBindingSource, "StateCode", true));
             this.stateComboBox2.DataSource = this.stateBindingSource;
             this.stateComboBox2.DisplayMember = "StateName";
             this.stateComboBox2.FormattingEnabled = true;

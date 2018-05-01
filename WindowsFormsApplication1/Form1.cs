@@ -205,8 +205,7 @@ namespace WindowsFormsApplication1
                     if(btnClientClicked)
                     {
          //               client = UpdateInsertForm.newClient;                       
-                        UpdateInsertForm.stateList = StateDB.GetStateList();
-                        UpdateInsertForm.stateComboBox.DataSource = UpdateInsertForm.stateList;
+                        
                         clientBindingSource.Clear();
                         clientBindingSource.Add(client);
                         clientDataGridView.DataSource = clientList;
