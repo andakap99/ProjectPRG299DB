@@ -45,11 +45,13 @@ namespace WindowsFormsApplication1
         public Resume newResume;
         public School school;
         public School newSchool;
+        public List<string> listComboBox1 = new List<string>();
+        private frmPRG299 frm = new frmPRG299();
 
         private void frmAUI_Load(object sender, EventArgs e)
         {
             btnModifyClicked = true;
-            //StateComboBoxes();
+            StateComboBoxes();
             if (addMenuClicked)
             {
                 btnInsertUpdate.Text = "Add";
@@ -111,7 +113,6 @@ namespace WindowsFormsApplication1
                 if (Text == "Modify Client")
                 {
                     newClient = new Client();
-                    stateList = StateDB.GetStateList();
                     stateComboBox.DataSource = stateList;
                     PutNewClient();
                     clientBindingSource.Clear();
@@ -176,18 +177,33 @@ namespace WindowsFormsApplication1
                 }
             }
         }
-        
-        //private void StateComboBoxes() // FILLS IN THE COMBOBOXES.COLLECTIONS WITH STATE NAMES
-        //{
-        //    try
-        //    {
-        //        stateList = StateDB.GetStateList();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message, ex.GetType().ToString());
-        //    }
-        //}
+
+        private void StateComboBoxes() // FILLS IN THE COMBOBOXES.COLLECTIONS WITH STATE NAMES
+        {
+            try
+            {
+             //  stateList = StateDB.GetStateList();
+                if (newClient != null || newCompany != null || newSchool != null)
+                {
+                    if (cliLVVisible)
+                    {
+                        stateComboBox.SelectedValue = newClient.State;
+                    }
+                    else if (comLVVisible)
+                    {
+                        stateComboBox1.SelectedValue = newCompany.State;
+                    }
+                    else if (schLVVisible)
+                    {
+                        stateComboBox2.SelectedValue = newSchool.State;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
         public void PutNewClient() // SETS THE NEW CLIENT 
         {
             try
@@ -510,14 +526,14 @@ namespace WindowsFormsApplication1
                 contactIDLabel1.Visible = true;
                 contactIDComboBox1.Visible = true;
                 positionIDLabel.Visible = true;
-                positionIDTextBox.Visible = true;
+                positionIDComboBox.Visible = true;
             }
             else
             {
                 contactIDLabel1.Visible = false;
                 contactIDComboBox1.Visible = false;
                 positionIDLabel.Visible = false;
-                positionIDTextBox.Visible = false;
+                positionIDComboBox.Visible = false;
             }
         }
         private void InterviewListView()// CHECKS WHICH CONTROLS TO SET VISIBLE TO TRUE OR FALSE
@@ -527,11 +543,11 @@ namespace WindowsFormsApplication1
                 interviewIDLabel.Visible = true;
                 interviewIDTextBox.Visible = true;
                 positionIDLabel1.Visible = true;
-                positionIDTextBox1.Visible = true;
+                positionIDComboBox1.Visible = true;
                 companyIDLabel1.Visible = true;
-                companyIDTextBox1.Visible = true;
+                companyIDComboBox1.Visible = true;
                 contactIDLabel2.Visible = true;
-                contactIDTextBox2.Visible = true;
+                contactIDComboBox2.Visible = true;
                 dateTimeInterviewLabel.Visible = true;
                 dateTimeInterviewDateTimePicker.Visible = true;
                 additionalNotesLabel2.Visible = true;
@@ -542,11 +558,11 @@ namespace WindowsFormsApplication1
                 interviewIDLabel.Visible = false;
                 interviewIDTextBox.Visible = false;
                 positionIDLabel1.Visible = false;
-                positionIDTextBox1.Visible = false;
+                positionIDComboBox1.Visible = false;
                 companyIDLabel1.Visible = false;
-                companyIDTextBox1.Visible = false;
+                companyIDComboBox1.Visible = false;
                 contactIDLabel2.Visible = false;
-                contactIDTextBox2.Visible = false;
+                contactIDComboBox2.Visible = false;
                 dateTimeInterviewLabel.Visible = false;
                 dateTimeInterviewDateTimePicker.Visible = false;
                 additionalNotesLabel2.Visible = false;
@@ -564,11 +580,11 @@ namespace WindowsFormsApplication1
                 descriptionLabel.Visible = true;
                 descriptionTextBox.Visible = true;
                 companyIDLabel2.Visible = true;
-                companyIDTextBox2.Visible = true;
+                companyIDComboBox2.Visible = true;
                 additionalNotesLabel3.Visible = true;
                 additionalNotesTextBox3.Visible = true;
                 resumeIDLabel.Visible = true;
-                resumeIDTextBox.Visible = true;
+                resumeIDComboBox.Visible = true;
             }
             else
             {
@@ -579,11 +595,11 @@ namespace WindowsFormsApplication1
                 descriptionLabel.Visible = false;
                 descriptionTextBox.Visible = false;
                 companyIDLabel2.Visible = false;
-                companyIDTextBox2.Visible = false;
+                companyIDComboBox2.Visible = false;
                 additionalNotesLabel3.Visible = false;
                 additionalNotesTextBox3.Visible = false;
                 resumeIDLabel.Visible = false;
-                resumeIDTextBox.Visible = false;
+                resumeIDComboBox.Visible = false;
             }
         }
         private void ResumeListView()// CHECKS WHICH CONTROLS TO SET VISIBLE TO TRUE OR FALSE
@@ -595,9 +611,9 @@ namespace WindowsFormsApplication1
                 rSCDirectoryPathLabel.Visible = true;
                 rSCDirectoryPathTextBox.Visible = true;
                 schoolIDLabel.Visible = true;
-                schoolIDTextBox.Visible = true;
+                schoolIDComboBox.Visible = true;
                 clientIDLabel1.Visible = true;
-                clientIDTextBox1.Visible = true;
+                clientIDComboBox1.Visible = true;
             }
             else
             {
@@ -606,9 +622,9 @@ namespace WindowsFormsApplication1
                 rSCDirectoryPathLabel.Visible = false;
                 rSCDirectoryPathTextBox.Visible = false;
                 schoolIDLabel.Visible = false;
-                schoolIDTextBox.Visible = false;
+                schoolIDComboBox.Visible = false;
                 clientIDLabel1.Visible = false;
-                clientIDTextBox1.Visible = false;
+                clientIDComboBox1.Visible = false;
             }
         }
         private void SchoolListView()// CHECKS WHICH CONTROLS TO SET VISIBLE TO TRUE OR FALSE
@@ -876,9 +892,6 @@ namespace WindowsFormsApplication1
             }
             if (IsPhoneNumber(cellPhoneTextBox) & IsInt32(zipCodeTextBox)
                 | IsPhoneNumber(cellPhoneTextBox1) & IsPhoneNumber(phoneNumberTextBox)
-                | IsInt32(positionIDTextBox1) & IsInt32(companyIDTextBox1) & IsInt32(contactIDTextBox2)
-                | IsInt32(companyIDTextBox2) & IsInt32(resumeIDTextBox)
-                | IsInt32(schoolIDTextBox) & IsInt32(clientIDTextBox1)
                 | IsInt32(zipCodeTextBox1) & IsInt32(buildingNumberTextBox)
                 | IsInt32(zipCodeTextBox2))
             {
@@ -925,6 +938,133 @@ namespace WindowsFormsApplication1
 
             return isDVB;
         
+        }
+
+        private void stateComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (newClient != null || newCompany != null || newSchool != null)
+            {
+                if (cliLVVisible)
+                {
+                    newClient.State = (string)stateComboBox.SelectedValue;
+                }
+                else if (comLVVisible)
+                {
+                    newCompany.State = (string)stateComboBox1.SelectedValue;
+                }
+                else if (schLVVisible)
+                {
+                    newSchool.State = (string)stateComboBox2.SelectedValue;
+                }
+            }
+        }
+
+        private void contactIDComboBox1_Click(object sender, EventArgs e)
+        {
+            try
+            { 
+                contactBindingSource.DataSource = ContactDB.GetContactCombobox();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void positionIDComboBox_Click(object sender, EventArgs e)
+        {
+            try
+            { 
+                positionBindingSource.DataSource = PositionDB.GetPosition();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void positionIDComboBox1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                positionBindingSource.DataSource = PositionDB.GetPosition();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void clientIDComboBox1_Click(object sender, EventArgs e)
+        {
+            try
+            { 
+                clientBindingSource.DataSource = ClientDB.GetClient();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void companyIDComboBox1_Click(object sender, EventArgs e)
+        {
+            try
+            { 
+                companyBindingSource.DataSource = CompanyDB.GetCompany();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void contactIDComboBox2_Click(object sender, EventArgs e)
+        {
+            try
+            { 
+                contactBindingSource.DataSource = ContactDB.GetContact();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void companyIDComboBox2_Click(object sender, EventArgs e)
+        {
+            try
+            { 
+                companyBindingSource.DataSource = CompanyDB.GetCompany();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void resumeIDComboBox_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                resumeBindingSource.DataSource = ResumeDB.GetResume();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void schoolIDComboBox_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                schoolBindingSource.DataSource = SchoolDB.GetSchool();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
         }
     }
 }

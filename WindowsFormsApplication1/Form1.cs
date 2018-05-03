@@ -43,7 +43,7 @@ namespace WindowsFormsApplication1
         private List<School> schoolList;
         private bool btnClientClicked = false, btnCompanyClicked = false, btnContactClicked = false, btnContactPositionClicked = false, btnInterviewClicked = false, btnPositionClicked = false, btnResumeClicked = false, btnSchoolClicked = false;
         public static frmPRG299 mainForm;
-
+        private frmAUI UpdateInsertForm;
         public frmPRG299()
         {
             InitializeComponent();
@@ -67,9 +67,6 @@ namespace WindowsFormsApplication1
 
 
         }
-
-
-
 
         private void LoadClientList() // POPULATES THE DATAGRIDVIEW WITH VALUES FROM THE DATABASE
         {
@@ -195,17 +192,21 @@ namespace WindowsFormsApplication1
 
         private void AddModifyToolStripMenu_Click(object sender, EventArgs e)// BASE ON THE BUTTON CLICKED DEFINES WHAT CONTROLS ARE VISIBLE IN THE UPDATEINSERTFORM
         {                                                                                       // WHICH ALSO DETERMINES WHAT THE UPDATEINSERTFORM DOES AS A RESULT
-            frmAUI UpdateInsertForm = new frmAUI();
+            UpdateInsertForm = new frmAUI();
             try
             {
+               
                 if (sender == AddToolStripMenu || sender == button9)
                 {
                     UpdateInsertForm.Text = "Add " + AddTextToFrmAdUpInDotText();
                     UpdateInsertForm.addMenuClicked = true;
                     if(btnClientClicked)
                     {
-         //               client = UpdateInsertForm.newClient;                       
-                        
+                        //               client = UpdateInsertForm.newClient;                       
+                        if (clientDataGridView.CurrentCell!=null)
+                        {
+                            UpdateInsertForm.newClient = ClientDB.GetClientByRow((int)clientDataGridView.CurrentCell.Value);
+                        }
                         clientBindingSource.Clear();
                         clientBindingSource.Add(client);
                         clientDataGridView.DataSource = clientList;
@@ -214,7 +215,11 @@ namespace WindowsFormsApplication1
                     }
                     if (btnCompanyClicked)
                     {
-                //        company = UpdateInsertForm.newCompany;
+                        if (companyDataGridView.CurrentCell!=null)
+                        {
+                            UpdateInsertForm.newCompany = CompanyDB.GetCompanyByRow((int)companyDataGridView.CurrentCell.Value);
+                        }
+                        //        company = UpdateInsertForm.newCompany;
                         UpdateInsertForm.stateList = StateDB.GetStateList();
                         UpdateInsertForm.stateComboBox1.DataSource = UpdateInsertForm.stateList;
                         companyBindingSource.Clear();
@@ -270,7 +275,11 @@ namespace WindowsFormsApplication1
                     }
                     if (btnSchoolClicked)
                     {
-                //        school = UpdateInsertForm.newSchool;
+                        if (schoolDataGridView.CurrentCell!=null)
+                        {
+                            UpdateInsertForm.newSchool = SchoolDB.GetSchoolByRow((int)schoolDataGridView.CurrentCell.Value);
+                        }
+                        //        school = UpdateInsertForm.newSchool;
                         UpdateInsertForm.stateList = StateDB.GetStateList();
                         UpdateInsertForm.stateComboBox2.DataSource = UpdateInsertForm.stateList;
                         schoolBindingSource.Clear();
@@ -373,7 +382,6 @@ namespace WindowsFormsApplication1
             }
             finally
             {
-
                 UpdateInsertForm.MdiParent = mainForm;
                 UpdateInsertForm.ShowDialog();
                
@@ -702,6 +710,8 @@ namespace WindowsFormsApplication1
             reportForm.ShowDialog();
                 
         }
+
+        
 
         private void pnlMouseLeave(object sender, EventArgs e) //CLOSES THE PANEL
         {
