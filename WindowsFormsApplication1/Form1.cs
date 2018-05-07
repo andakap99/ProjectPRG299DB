@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectPRG299BLL;
 using ProjectPRG299DB;
-using ReportsApplicationCCC;
+using CareerClubContactReport;
 
 namespace WindowsFormsApplication1
 {
@@ -606,10 +606,10 @@ namespace WindowsFormsApplication1
             else if (btnCompanyClicked) { panel11.Location = new Point(183, 70); }
             else if (btnContactClicked) { panel11.Location = new Point(183, 140);  }
             else if (btnContactPositionClicked) { panel11.Location = new Point(183, 210); }
-            else if (btnInterviewClicked) { panel11.Location = new Point(183, 280); }
-            else if (btnPositionClicked) { panel11.Location = new Point(183, 350); }
-            else if (btnResumeClicked) { panel11.Location = new Point(183, 420); }
-            else if (btnSchoolClicked) { panel11.Location = new Point(183, 490); }
+            else if (btnInterviewClicked) { panel11.Location = new Point(183, 210); }
+            else if (btnPositionClicked) { panel11.Location = new Point(183, 280); }
+            else if (btnResumeClicked) { panel11.Location = new Point(183, 350); }
+            else if (btnSchoolClicked) { panel11.Location = new Point(183, 420); }
 
         }
 

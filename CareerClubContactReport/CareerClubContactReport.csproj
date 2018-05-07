@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9199FC58-CE5E-47B7-81B4-4E7B26F77334}</ProjectGuid>
+    <ProjectGuid>{14E06885-6744-493F-A9D8-392CEA38D320}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ReportsApplicationCCC</RootNamespace>
-    <AssemblyName>ReportsApplicationCCC</AssemblyName>
+    <RootNamespace>CareerClubContactReport</RootNamespace>
+    <AssemblyName>CareerClubContactReport</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -42,6 +42,17 @@
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0 Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReport.Designer.cs">
+      <DependentUpon>frmReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PRG299DBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PRG299DBDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -53,8 +64,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Report2.rdlc" />
-    <None Include="ClassDiagram1.cd" />
+    <EmbeddedResource Include="Report1.rdlc" />
+    <None Include="PRG299DBDataSet.xsc">
+      <DependentUpon>PRG299DBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="PRG299DBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PRG299DBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PRG299DBDataSet.xss">
+      <DependentUpon>PRG299DBDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

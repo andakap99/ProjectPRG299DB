@@ -1,6 +1,6 @@
-﻿namespace ReportsApplicationCCC
+﻿namespace ReportsApplication1
 {
-    partial class frmReport
+    partial class Form1
     {
         /// <summary>
         /// Required designer variable.
@@ -33,26 +33,20 @@
             // 
             // reportViewer1
             // 
-            this.reportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportViewer1.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "ReportsApplicationCCC.Report1.rdlc";
-            this.reportViewer1.LocalReport.ReportPath = "C:\\Users\\akaplun\\Source\\Repos\\ProjectPRG299DB\\ProjectPRG299DB\\ReportsApplicationC" +
-    "CC\\Report1.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.Size = new System.Drawing.Size(682, 386);
             this.reportViewer1.TabIndex = 0;
             // 
-            // frmReport
+            // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(682, 386);
             this.Controls.Add(this.reportViewer1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Name = "frmReport";
-            this.Text = "Report";
+            this.Name = "Form1";
+            this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 

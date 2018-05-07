@@ -144,6 +144,7 @@
             this.zipCodeTextBox2 = new System.Windows.Forms.TextBox();
             this.btnInsertUpdate = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.btnPlus = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stateBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).BeginInit();
@@ -1407,12 +1408,23 @@
             this.btnCancel.MouseLeave += new System.EventHandler(this.btnMLeave);
             this.btnCancel.MouseHover += new System.EventHandler(this.btnMHover);
             // 
+            // btnPlus
+            // 
+            this.btnPlus.Location = new System.Drawing.Point(378, 54);
+            this.btnPlus.Name = "btnPlus";
+            this.btnPlus.Size = new System.Drawing.Size(25, 23);
+            this.btnPlus.TabIndex = 103;
+            this.btnPlus.Text = "+";
+            this.btnPlus.UseVisualStyleBackColor = true;
+            this.btnPlus.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmAUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Blue;
             this.ClientSize = new System.Drawing.Size(424, 352);
+            this.Controls.Add(this.btnPlus);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnInsertUpdate);
             this.Controls.Add(this.cityLabel2);
@@ -1653,5 +1665,6 @@
         public System.Windows.Forms.TextBox zipCodeTextBox2;
         public System.Windows.Forms.Button btnInsertUpdate;
         public System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnPlus;
     }
 }

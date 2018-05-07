@@ -1066,5 +1066,11 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmAUI addeditform = new frmAUI();
+            addeditform.ShowDialog();
+        }
     }
 }
