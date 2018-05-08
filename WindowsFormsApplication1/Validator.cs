@@ -40,9 +40,10 @@ namespace WindowsFormsApplication1
                         || textBox.Name.Contains("schoolIDComboBox") || textBox.Name.Contains("clientIDComboBox1")
                         || textBox.Name.Contains("schoolNameTextBox") || textBox.Name.Contains("streetNameTextBox1")
                         || textBox.Name.Contains("cityTextBox2") || textBox.Name.Contains("zipCodeTextBox2")
-                        || textBox.Name.Contains("numberOfYearsAttendedTextBox") || textBox.Name.Contains("graduatedTextBox"))
+                        || textBox.Name.Contains("numberOfYearsAttendedTextBox") || textBox.Name.Contains("graduatedTextBox")
+                        || textBox.Name.Contains("buildingNameTextBox") || textBox.Name.Contains("buildingNumberTextBox"))
                     { return true; }
-                        MessageBox.Show("Fill in the required field.", Title);
+                        MessageBox.Show( textBox.Name.ToString() + " is a  required field.", Title);
                     textBox.Focus();
                     return false;
                 }
@@ -87,7 +88,7 @@ namespace WindowsFormsApplication1
         {
             try
             {
-                if (textBox.Visible && textBox.Enabled)
+                if (textBox.Visible && textBox.Enabled && IsPresent(textBox)!=true)
                 {
                     Convert.ToInt32(textBox.Text);
                     return true;
@@ -99,7 +100,7 @@ namespace WindowsFormsApplication1
             }
             catch (FormatException)
             {
-                MessageBox.Show(" Must be an integer value.", Title);
+                MessageBox.Show(textBox.Name.ToString() + " must be an integer value.", Title);
                 textBox.Focus();
                 return false;
             }
@@ -108,16 +109,14 @@ namespace WindowsFormsApplication1
         public static bool IsStateZipCode(TextBox textBox, int firstZip, int lastZip) // CHECKS IF THE ZIPCODE IS PROPER FOR THE STATE
         {
             int zipCode = 0;
-            if (textBox.Text == "" && textBox.Visible)
-            { return false; }
-            else
-                if (textBox.Visible)
+            if (textBox.Text != "")
             {
                 zipCode = Convert.ToInt32(textBox.Text);
             }
-            else
-                return true;
-            if (zipCode <= firstZip || zipCode >= lastZip)
+
+            if (textBox.Text == "" && textBox.Visible && firstZip==0 || lastZip==0)
+            { return false; }
+            else if (zipCode <= firstZip || zipCode >= lastZip)
             {
                 MessageBox.Show("ZipCode must be within this range: " +
                     firstZip + " to " + lastZip + ".", Title);

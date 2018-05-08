@@ -392,6 +392,7 @@ namespace WindowsFormsApplication1
         {
             if (cliLVVisible)
             {
+                btnPlus.Visible = false;
                 clientIDLabel.Visible = true;
                 clientIDTextBox.Visible = true;
                 firstNameLabel.Visible = true;
@@ -437,6 +438,7 @@ namespace WindowsFormsApplication1
         {
             if (comLVVisible)
             {
+                btnPlus.Visible = false;
                 companyIDLabel.Visible = true;
                 companyIDTextBox.Visible = true;
                 companyNameLabel.Visible = true;
@@ -486,6 +488,8 @@ namespace WindowsFormsApplication1
         {
             if (conLVVisible)
             {
+                btnPlus.Visible = true;
+
                 contactIDLabel.Visible = true;
                 contactIDTextBox.Visible = true;
                 firstNameLabel1.Visible = true;
@@ -523,6 +527,7 @@ namespace WindowsFormsApplication1
         {
             if (conPosLVVisible)
             {
+                btnPlus.Visible = false;
                 contactIDLabel1.Visible = true;
                 contactIDComboBox1.Visible = true;
                 positionIDLabel.Visible = true;
@@ -540,6 +545,8 @@ namespace WindowsFormsApplication1
         {
             if (intLVVisible)
             {
+                btnPlus.Visible = true;
+
                 interviewIDLabel.Visible = true;
                 interviewIDTextBox.Visible = true;
                 positionIDLabel1.Visible = true;
@@ -573,6 +580,8 @@ namespace WindowsFormsApplication1
         {
             if (posLVVisible)
             {
+                btnPlus.Visible = true;
+
                 positionIDLabel2.Visible = true;
                 positionIDTextBox2.Visible = true;
                 positionNameLabel.Visible = true;
@@ -606,6 +615,8 @@ namespace WindowsFormsApplication1
         {
             if (resLVVisible)
             {
+                btnPlus.Visible = true;
+
                 resumeIDLabel1.Visible = true;
                 resumeIDTextBox1.Visible = true;
                 rSCDirectoryPathLabel.Visible = true;
@@ -631,6 +642,8 @@ namespace WindowsFormsApplication1
         {
             if (schLVVisible)
             {
+                btnPlus.Visible = false;
+
                 schoolIDLabel1.Visible = true;
                 schoolIDTextBox1.Visible = true;
                 schoolNameLabel.Visible = true;
@@ -1070,6 +1083,7 @@ namespace WindowsFormsApplication1
         private void button1_Click(object sender, EventArgs e)
         {
             frmAUI addeditform = new frmAUI();
+
             addeditform.ShowDialog();
         }
     }

@@ -1299,6 +1299,7 @@
             // 
             this.cityTextBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.schoolBindingSource, "City", true));
             this.cityTextBox2.Location = new System.Drawing.Point(172, 106);
+            this.cityTextBox2.MaxLength = 50;
             this.cityTextBox2.Name = "cityTextBox2";
             this.cityTextBox2.Size = new System.Drawing.Size(200, 20);
             this.cityTextBox2.TabIndex = 3;
@@ -1308,6 +1309,7 @@
             // 
             this.graduatedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.schoolBindingSource, "Graduated", true));
             this.graduatedTextBox.Location = new System.Drawing.Point(172, 211);
+            this.graduatedTextBox.MaxLength = 5;
             this.graduatedTextBox.Name = "graduatedTextBox";
             this.graduatedTextBox.Size = new System.Drawing.Size(200, 20);
             this.graduatedTextBox.TabIndex = 7;
@@ -1338,6 +1340,7 @@
             // 
             this.schoolNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.schoolBindingSource, "SchoolName", true));
             this.schoolNameTextBox.Location = new System.Drawing.Point(172, 54);
+            this.schoolNameTextBox.MaxLength = 50;
             this.schoolNameTextBox.Name = "schoolNameTextBox";
             this.schoolNameTextBox.Size = new System.Drawing.Size(200, 20);
             this.schoolNameTextBox.TabIndex = 1;
@@ -1364,6 +1367,7 @@
             // 
             this.streetNameTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.schoolBindingSource, "StreetName", true));
             this.streetNameTextBox1.Location = new System.Drawing.Point(172, 80);
+            this.streetNameTextBox1.MaxLength = 50;
             this.streetNameTextBox1.Name = "streetNameTextBox1";
             this.streetNameTextBox1.Size = new System.Drawing.Size(200, 20);
             this.streetNameTextBox1.TabIndex = 2;
@@ -1373,6 +1377,7 @@
             // 
             this.zipCodeTextBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.schoolBindingSource, "ZipCode", true));
             this.zipCodeTextBox2.Location = new System.Drawing.Point(172, 159);
+            this.zipCodeTextBox2.MaxLength = 9;
             this.zipCodeTextBox2.Name = "zipCodeTextBox2";
             this.zipCodeTextBox2.Size = new System.Drawing.Size(200, 20);
             this.zipCodeTextBox2.TabIndex = 5;

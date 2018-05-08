@@ -368,8 +368,12 @@ namespace WindowsFormsApplication1
                         UpdateInsertForm.stateList = StateDB.GetStateList();
                         UpdateInsertForm.stateComboBox2.DataSource = UpdateInsertForm.stateList;
                         UpdateInsertForm.school = SchoolDB.GetSchoolByRow((int)schoolDataGridView.CurrentCell.Value);
+                        UpdateInsertForm.newSchool = SchoolDB.GetSchoolByRow((int)schoolDataGridView.CurrentCell.Value);
                         UpdateInsertForm.schoolBindingSource.Clear();
-                        UpdateInsertForm.schoolBindingSource.Add(UpdateInsertForm.school);
+
+                        school = UpdateInsertForm.newSchool;
+
+                        UpdateInsertForm.schoolBindingSource.Add(school);
                         UpdateInsertForm.AllLVVisible(button8.Text);
                         UpdateInsertForm.AllListView();
                     }
