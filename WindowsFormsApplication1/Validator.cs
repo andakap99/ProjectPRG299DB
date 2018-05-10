@@ -55,12 +55,13 @@ namespace WindowsFormsApplication1
             else if (control.GetType().ToString() == "System.Windows.Forms.ComboBox")
             {
                 ComboBox comboBox = (ComboBox)control;
-                if (comboBox.SelectedIndex == -1 && comboBox.Visible)
+                if (comboBox.SelectedIndex == -1 && comboBox.Visible && comboBox.Name.Contains("stateComboBox"))
                 {
                     MessageBox.Show("State required.", Title);
                     comboBox.Focus();
                     return false;
                 }
+
                 else
                 {
                     return true;
@@ -113,10 +114,11 @@ namespace WindowsFormsApplication1
             {
                 zipCode = Convert.ToInt32(textBox.Text);
             }
-
-            if (textBox.Text == "" && textBox.Visible && firstZip==0 || lastZip==0)
+            if ( textBox.Name.Contains("zipCode")!= true)
+            { return true; }
+            if (textBox.Text == "" && textBox.Visible && firstZip==0 || lastZip==0 && textBox.Visible)
             { return false; }
-            else if (zipCode <= firstZip || zipCode >= lastZip)
+            else if (zipCode <= firstZip && textBox.Visible || zipCode >= lastZip && textBox.Visible)
             {
                 MessageBox.Show("ZipCode must be within this range: " +
                     firstZip + " to " + lastZip + ".", Title);

@@ -145,6 +145,11 @@
             this.btnInsertUpdate = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnPlus = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.contactPositionListBox = new System.Windows.Forms.ListBox();
+            this.contactPositionListBox1 = new System.Windows.Forms.ListBox();
+            this.lblcp1 = new System.Windows.Forms.Label();
+            this.lblcp = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stateBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).BeginInit();
@@ -1067,6 +1072,7 @@
             this.contactIDComboBox1.TabIndex = 1;
             this.contactIDComboBox1.ValueMember = "ContactID";
             this.contactIDComboBox1.Visible = false;
+            this.contactIDComboBox1.SelectedIndexChanged += new System.EventHandler(this.contactIDComboBox1_SelectedIndexChanged);
             this.contactIDComboBox1.Click += new System.EventHandler(this.contactIDComboBox1_Click);
             // 
             // contactPositionBindingSource
@@ -1086,6 +1092,7 @@
             this.positionIDComboBox.TabIndex = 2;
             this.positionIDComboBox.ValueMember = "PositionID";
             this.positionIDComboBox.Visible = false;
+            this.positionIDComboBox.SelectedIndexChanged += new System.EventHandler(this.positionIDComboBox_SelectedIndexChanged);
             this.positionIDComboBox.Click += new System.EventHandler(this.positionIDComboBox_Click);
             // 
             // positionBindingSource
@@ -1388,7 +1395,7 @@
             this.btnInsertUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInsertUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
             this.btnInsertUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnInsertUpdate.Location = new System.Drawing.Point(226, 290);
+            this.btnInsertUpdate.Location = new System.Drawing.Point(226, 355);
             this.btnInsertUpdate.Name = "btnInsertUpdate";
             this.btnInsertUpdate.Size = new System.Drawing.Size(75, 36);
             this.btnInsertUpdate.TabIndex = 15;
@@ -1403,7 +1410,7 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(317, 290);
+            this.btnCancel.Location = new System.Drawing.Point(317, 355);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 36);
             this.btnCancel.TabIndex = 16;
@@ -1421,14 +1428,59 @@
             this.btnPlus.TabIndex = 103;
             this.btnPlus.Text = "+";
             this.btnPlus.UseVisualStyleBackColor = true;
+            this.btnPlus.Visible = false;
             this.btnPlus.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // contactPositionListBox
+            // 
+            this.contactPositionListBox.FormattingEnabled = true;
+            this.contactPositionListBox.Location = new System.Drawing.Point(118, 237);
+            this.contactPositionListBox.Name = "contactPositionListBox";
+            this.contactPositionListBox.Size = new System.Drawing.Size(200, 108);
+            this.contactPositionListBox.TabIndex = 104;
+            this.contactPositionListBox.Visible = false;
+            // 
+            // contactPositionListBox1
+            // 
+            this.contactPositionListBox1.FormattingEnabled = true;
+            this.contactPositionListBox1.Location = new System.Drawing.Point(118, 211);
+            this.contactPositionListBox1.Name = "contactPositionListBox1";
+            this.contactPositionListBox1.Size = new System.Drawing.Size(200, 108);
+            this.contactPositionListBox1.TabIndex = 105;
+            this.contactPositionListBox1.Visible = false;
+            // 
+            // lblcp1
+            // 
+            this.lblcp1.AutoSize = true;
+            this.lblcp1.ForeColor = System.Drawing.Color.White;
+            this.lblcp1.Location = new System.Drawing.Point(32, 264);
+            this.lblcp1.Name = "lblcp1";
+            this.lblcp1.Size = new System.Drawing.Size(80, 13);
+            this.lblcp1.TabIndex = 106;
+            this.lblcp1.Text = "List of Positions";
+            this.lblcp1.Visible = false;
+            // 
+            // lblcp
+            // 
+            this.lblcp.AutoSize = true;
+            this.lblcp.ForeColor = System.Drawing.Color.White;
+            this.lblcp.Location = new System.Drawing.Point(25, 210);
+            this.lblcp.Name = "lblcp";
+            this.lblcp.Size = new System.Drawing.Size(80, 13);
+            this.lblcp.TabIndex = 107;
+            this.lblcp.Text = "List of Contacts";
+            this.lblcp.Visible = false;
             // 
             // frmAUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Blue;
-            this.ClientSize = new System.Drawing.Size(424, 352);
+            this.ClientSize = new System.Drawing.Size(424, 413);
+            this.Controls.Add(this.lblcp);
+            this.Controls.Add(this.lblcp1);
+            this.Controls.Add(this.contactPositionListBox1);
+            this.Controls.Add(this.contactPositionListBox);
             this.Controls.Add(this.btnPlus);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnInsertUpdate);
@@ -1671,5 +1723,10 @@
         public System.Windows.Forms.Button btnInsertUpdate;
         public System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnPlus;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ListBox contactPositionListBox;
+        private System.Windows.Forms.ListBox contactPositionListBox1;
+        private System.Windows.Forms.Label lblcp1;
+        private System.Windows.Forms.Label lblcp;
     }
 }
