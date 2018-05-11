@@ -434,7 +434,6 @@ namespace ProjectPRG299DB
         public static List<School> GetSchoolFiltered(string columnName, string columnfilter)// PUTS A FILTER TO THE DATABASE 
         {
             int filtered = 0;
-            DateTime birthdayFilter;
 
             List<School> SchoolList = new List<School>();
             SqlConnection connection = PRG299DB.GetConnection();

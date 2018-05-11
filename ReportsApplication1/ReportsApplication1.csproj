@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-		<ProjectGuid>186c2e9d-6c41-444e-8423-880c6c56e4d5</ProjectGuid>
+		<ProjectGuid>d808aeeb-edc6-429a-9e68-be0e0be0001b</ProjectGuid>
 		<OutputType>WinExe</OutputType>
 		<AppDesignerFolder>Properties</AppDesignerFolder>
 		<RootNamespace>ReportsApplication1</RootNamespace>

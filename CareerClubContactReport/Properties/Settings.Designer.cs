@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WindowsFormsApplication1.Properties {
+namespace CareerClubContactReport.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -26,8 +26,9 @@ namespace WindowsFormsApplication1.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\PRG299DB.mdf;" +
-            "Integrated Security=True;User Instance=False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\akaplun\\Source\\Repos" +
+            "\\ProjectPRG299DB\\ProjectPRG299DB\\WindowsFormsApplication1\\PRG299DB.mdf;Integrate" +
+            "d Security=True;User Instance=False")]
         public string PRG299DBConnectionString {
             get {
                 return ((string)(this["PRG299DBConnectionString"]));

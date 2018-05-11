@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CareerClubContactReportApplication.Properties {
+namespace ReportsApplicationCCC.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -26,12 +26,12 @@ namespace CareerClubContactReportApplication.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS2014;AttachDbFilename=C:\\Users\\akaplun\\Source\\Repos\\Proje" +
-            "ctPRG299DB\\WindowsFormsApplication1\\PRG299DB.mdf;Integrated Security=True;User I" +
-            "nstance=True")]
-        public string CCCReportConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\akaplun\\Source\\Repos" +
+            "\\ProjectPRG299DB\\ProjectPRG299DB\\WindowsFormsApplication1\\bin\\Debug\\PRG299DB.mdf" +
+            ";Integrated Security=True;Connect Timeout=30;User Instance=False")]
+        public string PRG299DBConnectionString1 {
             get {
-                return ((string)(this["CCCReportConnectionString"]));
+                return ((string)(this["PRG299DBConnectionString1"]));
             }
         }
     }

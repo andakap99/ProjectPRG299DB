@@ -9,12 +9,22 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectPRG299BLL;
 using ProjectPRG299DB;
+using CareerClubContactReport;
 
 namespace WindowsFormsApplication1
 {
     public partial class frmPRG299 : Form
     {
         private int countlist = 0;
+        public Client cli;
+        public Company com;
+        public Contact con;
+        public ContactPosition conPos;
+        public Interview interv;
+        public Position pos;
+        public Resume res;
+        public School sch;
+
         private Client client;
         private Company company;
         private Contact contact;
@@ -33,7 +43,7 @@ namespace WindowsFormsApplication1
         private List<School> schoolList;
         private bool btnClientClicked = false, btnCompanyClicked = false, btnContactClicked = false, btnContactPositionClicked = false, btnInterviewClicked = false, btnPositionClicked = false, btnResumeClicked = false, btnSchoolClicked = false;
         public static frmPRG299 mainForm;
-
+        private frmAUI UpdateInsertForm;
         public frmPRG299()
         {
             InitializeComponent();
@@ -57,9 +67,6 @@ namespace WindowsFormsApplication1
 
 
         }
-
-
-
 
         private void LoadClientList() // POPULATES THE DATAGRIDVIEW WITH VALUES FROM THE DATABASE
         {
@@ -185,18 +192,21 @@ namespace WindowsFormsApplication1
 
         private void AddModifyToolStripMenu_Click(object sender, EventArgs e)// BASE ON THE BUTTON CLICKED DEFINES WHAT CONTROLS ARE VISIBLE IN THE UPDATEINSERTFORM
         {                                                                                       // WHICH ALSO DETERMINES WHAT THE UPDATEINSERTFORM DOES AS A RESULT
-            frmAUI UpdateInsertForm = new frmAUI();
+            UpdateInsertForm = new frmAUI();
             try
             {
+               
                 if (sender == AddToolStripMenu || sender == button9)
                 {
                     UpdateInsertForm.Text = "Add " + AddTextToFrmAdUpInDotText();
                     UpdateInsertForm.addMenuClicked = true;
                     if(btnClientClicked)
                     {
-         //               client = UpdateInsertForm.newClient;                       
-                        UpdateInsertForm.stateList = StateDB.GetStateList();
-                        UpdateInsertForm.stateComboBox.DataSource = UpdateInsertForm.stateList;
+                        //               client = UpdateInsertForm.newClient;                       
+                        if (clientDataGridView.CurrentCell!=null)
+                        {
+                            UpdateInsertForm.newClient = ClientDB.GetClientByRow((int)clientDataGridView.CurrentCell.Value);
+                        }
                         clientBindingSource.Clear();
                         clientBindingSource.Add(client);
                         clientDataGridView.DataSource = clientList;
@@ -205,7 +215,11 @@ namespace WindowsFormsApplication1
                     }
                     if (btnCompanyClicked)
                     {
-                //        company = UpdateInsertForm.newCompany;
+                        if (companyDataGridView.CurrentCell!=null)
+                        {
+                            UpdateInsertForm.newCompany = CompanyDB.GetCompanyByRow((int)companyDataGridView.CurrentCell.Value);
+                        }
+                        //        company = UpdateInsertForm.newCompany;
                         UpdateInsertForm.stateList = StateDB.GetStateList();
                         UpdateInsertForm.stateComboBox1.DataSource = UpdateInsertForm.stateList;
                         companyBindingSource.Clear();
@@ -261,7 +275,11 @@ namespace WindowsFormsApplication1
                     }
                     if (btnSchoolClicked)
                     {
-                //        school = UpdateInsertForm.newSchool;
+                        if (schoolDataGridView.CurrentCell!=null)
+                        {
+                            UpdateInsertForm.newSchool = SchoolDB.GetSchoolByRow((int)schoolDataGridView.CurrentCell.Value);
+                        }
+                        //        school = UpdateInsertForm.newSchool;
                         UpdateInsertForm.stateList = StateDB.GetStateList();
                         UpdateInsertForm.stateComboBox2.DataSource = UpdateInsertForm.stateList;
                         schoolBindingSource.Clear();
@@ -364,7 +382,6 @@ namespace WindowsFormsApplication1
             }
             finally
             {
-
                 UpdateInsertForm.MdiParent = mainForm;
                 UpdateInsertForm.ShowDialog();
                
@@ -589,10 +606,10 @@ namespace WindowsFormsApplication1
             else if (btnCompanyClicked) { panel11.Location = new Point(183, 70); }
             else if (btnContactClicked) { panel11.Location = new Point(183, 140);  }
             else if (btnContactPositionClicked) { panel11.Location = new Point(183, 210); }
-            else if (btnInterviewClicked) { panel11.Location = new Point(183, 280); }
-            else if (btnPositionClicked) { panel11.Location = new Point(183, 350); }
-            else if (btnResumeClicked) { panel11.Location = new Point(183, 420); }
-            else if (btnSchoolClicked) { panel11.Location = new Point(183, 490); }
+            else if (btnInterviewClicked) { panel11.Location = new Point(183, 210); }
+            else if (btnPositionClicked) { panel11.Location = new Point(183, 280); }
+            else if (btnResumeClicked) { panel11.Location = new Point(183, 350); }
+            else if (btnSchoolClicked) { panel11.Location = new Point(183, 420); }
 
         }
 
@@ -686,6 +703,15 @@ namespace WindowsFormsApplication1
                 filterToolStripMenuItem.Visible = true;
             }
         }
+
+        private void reportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReport reportForm = new frmReport();
+            reportForm.ShowDialog();
+                
+        }
+
+        
 
         private void pnlMouseLeave(object sender, EventArgs e) //CLOSES THE PANEL
         {

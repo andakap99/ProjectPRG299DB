@@ -32,6 +32,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AddToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.modifyToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -187,7 +188,8 @@
             // fileToolStripMenu
             // 
             this.fileToolStripMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.closeToolStripMenuItem});
+            this.closeToolStripMenuItem,
+            this.reportToolStripMenuItem});
             this.fileToolStripMenu.Name = "fileToolStripMenu";
             this.fileToolStripMenu.Size = new System.Drawing.Size(44, 24);
             this.fileToolStripMenu.Text = "&File";
@@ -195,9 +197,16 @@
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(114, 24);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(123, 24);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
+            // 
+            // reportToolStripMenuItem
+            // 
+            this.reportToolStripMenuItem.Name = "reportToolStripMenuItem";
+            this.reportToolStripMenuItem.Size = new System.Drawing.Size(123, 24);
+            this.reportToolStripMenuItem.Text = "Report";
+            this.reportToolStripMenuItem.Click += new System.EventHandler(this.reportToolStripMenuItem_Click);
             // 
             // AddToolStripMenu
             // 
@@ -534,10 +543,10 @@
             this.panel10.Controls.Add(this.button7);
             this.panel10.Controls.Add(this.button6);
             this.panel10.Controls.Add(this.button5);
-            this.panel10.Controls.Add(this.button4);
             this.panel10.Controls.Add(this.button3);
             this.panel10.Controls.Add(this.button2);
             this.panel10.Controls.Add(this.button1);
+            this.panel10.Controls.Add(this.button4);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel10.Location = new System.Drawing.Point(0, 38);
             this.panel10.Name = "panel10";
@@ -563,7 +572,7 @@
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button8.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.Location = new System.Drawing.Point(0, 490);
+            this.button8.Location = new System.Drawing.Point(0, 419);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(185, 70);
             this.button8.TabIndex = 7;
@@ -579,7 +588,7 @@
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(0, 420);
+            this.button7.Location = new System.Drawing.Point(0, 349);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(185, 70);
             this.button7.TabIndex = 6;
@@ -595,7 +604,7 @@
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(0, 350);
+            this.button6.Location = new System.Drawing.Point(0, 279);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(185, 70);
             this.button6.TabIndex = 5;
@@ -611,7 +620,7 @@
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(0, 280);
+            this.button5.Location = new System.Drawing.Point(0, 209);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(185, 70);
             this.button5.TabIndex = 4;
@@ -622,17 +631,19 @@
             // 
             // button4
             // 
+            this.button4.Enabled = false;
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(0, 210);
+            this.button4.Location = new System.Drawing.Point(0, 492);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(185, 70);
             this.button4.TabIndex = 3;
             this.button4.Text = "Contact Position";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Visible = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             this.button4.MouseHover += new System.EventHandler(this.pnlMouseHover);
             // 
@@ -1205,7 +1216,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
-        private System.Windows.Forms.DataGridView contactDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
@@ -1214,7 +1224,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
         private System.Windows.Forms.DataGridView clientDataGridView;
-        private System.Windows.Forms.DataGridView contactPositionDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn36;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn37;
         private System.Windows.Forms.DataGridView interviewDataGridView;
@@ -1292,6 +1301,9 @@
         private System.Windows.Forms.ToolStripMenuItem filterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeAllFiltersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sortToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reportToolStripMenuItem;
+        public System.Windows.Forms.DataGridView contactDataGridView;
+        public System.Windows.Forms.DataGridView contactPositionDataGridView;
     }
 }
 

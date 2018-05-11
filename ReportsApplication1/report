@@ -3,11 +3,11 @@
 	<PropertyGroup>
 		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-		<ProjectGuid>5de1c564-ecb2-409c-b36a-ac23c6d36b2c</ProjectGuid>
+		<ProjectGuid>186c2e9d-6c41-444e-8423-880c6c56e4d5</ProjectGuid>
 		<OutputType>WinExe</OutputType>
 		<AppDesignerFolder>Properties</AppDesignerFolder>
-		<RootNamespace>CareerClubContactReportApplication</RootNamespace>
-		<AssemblyName>CareerClubContactReportApplication</AssemblyName>
+		<RootNamespace>ReportsApplication1</RootNamespace>
+		<AssemblyName>ReportsApplication1</AssemblyName>
 		<TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
 		
 	</PropertyGroup>
