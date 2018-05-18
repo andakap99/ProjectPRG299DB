@@ -39,7 +39,7 @@ namespace WindowsFormsApplication1
                         || textBox.Name.Contains("resumeIDComboBox") || textBox.Name.Contains("rSCDirectoryPathTextBox")
                         || textBox.Name.Contains("schoolIDComboBox") || textBox.Name.Contains("clientIDComboBox1")
                         || textBox.Name.Contains("schoolNameTextBox") || textBox.Name.Contains("streetNameTextBox1")
-                        || textBox.Name.Contains("cityTextBox2") || textBox.Name.Contains("zipCodeTextBox2")
+                        || textBox.Name.Contains("cityTextBox2") 
                         || textBox.Name.Contains("numberOfYearsAttendedTextBox") || textBox.Name.Contains("graduatedTextBox")
                         || textBox.Name.Contains("buildingNameTextBox") || textBox.Name.Contains("buildingNumberTextBox"))
                     { return true; }
@@ -96,7 +96,9 @@ namespace WindowsFormsApplication1
                 }
                 else
                 {
+                    
                     return false;
+                    
                 }
             }
             catch (FormatException)

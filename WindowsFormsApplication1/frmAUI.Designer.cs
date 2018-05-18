@@ -82,18 +82,15 @@
             this.zipCodeLabel = new System.Windows.Forms.Label();
             this.birthDateLabel = new System.Windows.Forms.Label();
             this.birthDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.clientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cellPhoneTextBox = new System.Windows.Forms.TextBox();
             this.cityTextBox = new System.Windows.Forms.TextBox();
             this.clientIDTextBox = new System.Windows.Forms.TextBox();
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
             this.lastNameTextBox = new System.Windows.Forms.TextBox();
             this.stateComboBox = new System.Windows.Forms.ComboBox();
-            this.stateBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.streetNameTextBox = new System.Windows.Forms.TextBox();
             this.zipCodeTextBox = new System.Windows.Forms.TextBox();
             this.additionalNotesTextBox = new System.Windows.Forms.TextBox();
-            this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buildingNameTextBox = new System.Windows.Forms.TextBox();
             this.buildingNumberTextBox = new System.Windows.Forms.TextBox();
             this.cityTextBox1 = new System.Windows.Forms.TextBox();
@@ -104,7 +101,6 @@
             this.websiteTextBox = new System.Windows.Forms.TextBox();
             this.zipCodeTextBox1 = new System.Windows.Forms.TextBox();
             this.additionalNotesTextBox1 = new System.Windows.Forms.TextBox();
-            this.contactBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cellPhoneTextBox1 = new System.Windows.Forms.TextBox();
             this.contactIDTextBox = new System.Windows.Forms.TextBox();
             this.emailAddressTextBox = new System.Windows.Forms.TextBox();
@@ -112,11 +108,8 @@
             this.lastNameTextBox1 = new System.Windows.Forms.TextBox();
             this.phoneNumberTextBox = new System.Windows.Forms.TextBox();
             this.contactIDComboBox1 = new System.Windows.Forms.ComboBox();
-            this.contactPositionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.positionIDComboBox = new System.Windows.Forms.ComboBox();
-            this.positionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.additionalNotesTextBox2 = new System.Windows.Forms.TextBox();
-            this.interviewBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.companyIDComboBox1 = new System.Windows.Forms.ComboBox();
             this.contactIDComboBox2 = new System.Windows.Forms.ComboBox();
             this.dateTimeInterviewDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -128,12 +121,10 @@
             this.positionIDTextBox2 = new System.Windows.Forms.TextBox();
             this.positionNameTextBox = new System.Windows.Forms.TextBox();
             this.resumeIDComboBox = new System.Windows.Forms.ComboBox();
-            this.resumeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.clientIDComboBox1 = new System.Windows.Forms.ComboBox();
             this.resumeIDTextBox1 = new System.Windows.Forms.TextBox();
             this.rSCDirectoryPathTextBox = new System.Windows.Forms.TextBox();
             this.schoolIDComboBox = new System.Windows.Forms.ComboBox();
-            this.schoolBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cityTextBox2 = new System.Windows.Forms.TextBox();
             this.graduatedTextBox = new System.Windows.Forms.TextBox();
             this.numberOfYearsAttendedTextBox = new System.Windows.Forms.TextBox();
@@ -150,15 +141,25 @@
             this.contactPositionListBox1 = new System.Windows.Forms.ListBox();
             this.lblcp1 = new System.Windows.Forms.Label();
             this.lblcp = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).BeginInit();
+            this.button12 = new System.Windows.Forms.Button();
+            this.schoolBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.stateBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.resumeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.clientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.positionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.interviewBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.contactBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.contactPositionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.schoolBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stateBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.resumeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.positionBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.interviewBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.contactBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.contactPositionBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.positionBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.interviewBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.resumeBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.schoolBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // additionalNotesLabel1
@@ -794,14 +795,11 @@
             this.birthDateDateTimePicker.TabIndex = 3;
             this.birthDateDateTimePicker.Visible = false;
             // 
-            // clientBindingSource
-            // 
-            this.clientBindingSource.DataSource = typeof(ProjectPRG299DB.Client);
-            // 
             // cellPhoneTextBox
             // 
             this.cellPhoneTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clientBindingSource, "CellPhone", true));
             this.cellPhoneTextBox.Location = new System.Drawing.Point(101, 238);
+            this.cellPhoneTextBox.MaxLength = 13;
             this.cellPhoneTextBox.Name = "cellPhoneTextBox";
             this.cellPhoneTextBox.Size = new System.Drawing.Size(200, 20);
             this.cellPhoneTextBox.TabIndex = 8;
@@ -811,6 +809,7 @@
             // 
             this.cityTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clientBindingSource, "City", true));
             this.cityTextBox.Location = new System.Drawing.Point(101, 159);
+            this.cityTextBox.MaxLength = 50;
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(200, 20);
             this.cityTextBox.TabIndex = 5;
@@ -832,6 +831,7 @@
             // 
             this.firstNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clientBindingSource, "FirstName", true));
             this.firstNameTextBox.Location = new System.Drawing.Point(101, 55);
+            this.firstNameTextBox.MaxLength = 50;
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(200, 20);
             this.firstNameTextBox.TabIndex = 1;
@@ -841,6 +841,7 @@
             // 
             this.lastNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clientBindingSource, "LastName", true));
             this.lastNameTextBox.Location = new System.Drawing.Point(101, 81);
+            this.lastNameTextBox.MaxLength = 50;
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(200, 20);
             this.lastNameTextBox.TabIndex = 2;
@@ -862,14 +863,11 @@
             this.stateComboBox.Visible = false;
             this.stateComboBox.SelectedIndexChanged += new System.EventHandler(this.stateComboBox_SelectedIndexChanged);
             // 
-            // stateBindingSource
-            // 
-            this.stateBindingSource.DataSource = typeof(ProjectPRG299BLL.State);
-            // 
             // streetNameTextBox
             // 
             this.streetNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clientBindingSource, "StreetName", true));
             this.streetNameTextBox.Location = new System.Drawing.Point(101, 133);
+            this.streetNameTextBox.MaxLength = 50;
             this.streetNameTextBox.Name = "streetNameTextBox";
             this.streetNameTextBox.Size = new System.Drawing.Size(200, 20);
             this.streetNameTextBox.TabIndex = 4;
@@ -879,6 +877,7 @@
             // 
             this.zipCodeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clientBindingSource, "ZipCode", true));
             this.zipCodeTextBox.Location = new System.Drawing.Point(101, 212);
+            this.zipCodeTextBox.MaxLength = 9;
             this.zipCodeTextBox.Name = "zipCodeTextBox";
             this.zipCodeTextBox.Size = new System.Drawing.Size(200, 20);
             this.zipCodeTextBox.TabIndex = 7;
@@ -888,19 +887,17 @@
             // 
             this.additionalNotesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.companyBindingSource, "AdditionalNotes", true));
             this.additionalNotesTextBox.Location = new System.Drawing.Point(118, 264);
+            this.additionalNotesTextBox.MaxLength = 5000;
             this.additionalNotesTextBox.Name = "additionalNotesTextBox";
             this.additionalNotesTextBox.Size = new System.Drawing.Size(200, 20);
             this.additionalNotesTextBox.TabIndex = 9;
             this.additionalNotesTextBox.Visible = false;
             // 
-            // companyBindingSource
-            // 
-            this.companyBindingSource.DataSource = typeof(ProjectPRG299DB.Company);
-            // 
             // buildingNameTextBox
             // 
             this.buildingNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.companyBindingSource, "BuildingName", true));
             this.buildingNameTextBox.Location = new System.Drawing.Point(118, 81);
+            this.buildingNameTextBox.MaxLength = 50;
             this.buildingNameTextBox.Name = "buildingNameTextBox";
             this.buildingNameTextBox.Size = new System.Drawing.Size(200, 20);
             this.buildingNameTextBox.TabIndex = 2;
@@ -910,6 +907,7 @@
             // 
             this.buildingNumberTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.companyBindingSource, "BuildingNumber", true));
             this.buildingNumberTextBox.Location = new System.Drawing.Point(118, 107);
+            this.buildingNumberTextBox.MaxLength = 50;
             this.buildingNumberTextBox.Name = "buildingNumberTextBox";
             this.buildingNumberTextBox.Size = new System.Drawing.Size(200, 20);
             this.buildingNumberTextBox.TabIndex = 3;
@@ -919,6 +917,7 @@
             // 
             this.cityTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.companyBindingSource, "City", true));
             this.cityTextBox1.Location = new System.Drawing.Point(118, 159);
+            this.cityTextBox1.MaxLength = 50;
             this.cityTextBox1.Name = "cityTextBox1";
             this.cityTextBox1.Size = new System.Drawing.Size(200, 20);
             this.cityTextBox1.TabIndex = 5;
@@ -940,6 +939,7 @@
             // 
             this.companyNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.companyBindingSource, "CompanyName", true));
             this.companyNameTextBox.Location = new System.Drawing.Point(118, 54);
+            this.companyNameTextBox.MaxLength = 50;
             this.companyNameTextBox.Name = "companyNameTextBox";
             this.companyNameTextBox.Size = new System.Drawing.Size(200, 20);
             this.companyNameTextBox.TabIndex = 1;
@@ -966,6 +966,7 @@
             // 
             this.streetAddressTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.companyBindingSource, "StreetAddress", true));
             this.streetAddressTextBox.Location = new System.Drawing.Point(118, 133);
+            this.streetAddressTextBox.MaxLength = 250;
             this.streetAddressTextBox.Name = "streetAddressTextBox";
             this.streetAddressTextBox.Size = new System.Drawing.Size(200, 20);
             this.streetAddressTextBox.TabIndex = 4;
@@ -975,6 +976,7 @@
             // 
             this.websiteTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.companyBindingSource, "Website", true));
             this.websiteTextBox.Location = new System.Drawing.Point(118, 238);
+            this.websiteTextBox.MaxLength = 250;
             this.websiteTextBox.Name = "websiteTextBox";
             this.websiteTextBox.Size = new System.Drawing.Size(200, 20);
             this.websiteTextBox.TabIndex = 8;
@@ -984,6 +986,7 @@
             // 
             this.zipCodeTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.companyBindingSource, "ZipCode", true));
             this.zipCodeTextBox1.Location = new System.Drawing.Point(118, 212);
+            this.zipCodeTextBox1.MaxLength = 9;
             this.zipCodeTextBox1.Name = "zipCodeTextBox1";
             this.zipCodeTextBox1.Size = new System.Drawing.Size(200, 20);
             this.zipCodeTextBox1.TabIndex = 7;
@@ -993,19 +996,17 @@
             // 
             this.additionalNotesTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactBindingSource, "AdditionalNotes", true));
             this.additionalNotesTextBox1.Location = new System.Drawing.Point(118, 184);
+            this.additionalNotesTextBox1.MaxLength = 5000;
             this.additionalNotesTextBox1.Name = "additionalNotesTextBox1";
             this.additionalNotesTextBox1.Size = new System.Drawing.Size(200, 20);
             this.additionalNotesTextBox1.TabIndex = 6;
             this.additionalNotesTextBox1.Visible = false;
             // 
-            // contactBindingSource
-            // 
-            this.contactBindingSource.DataSource = typeof(ProjectPRG299DB.Contact);
-            // 
             // cellPhoneTextBox1
             // 
             this.cellPhoneTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactBindingSource, "CellPhone", true));
             this.cellPhoneTextBox1.Location = new System.Drawing.Point(118, 158);
+            this.cellPhoneTextBox1.MaxLength = 13;
             this.cellPhoneTextBox1.Name = "cellPhoneTextBox1";
             this.cellPhoneTextBox1.Size = new System.Drawing.Size(200, 20);
             this.cellPhoneTextBox1.TabIndex = 5;
@@ -1027,6 +1028,7 @@
             // 
             this.emailAddressTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactBindingSource, "EmailAddress", true));
             this.emailAddressTextBox.Location = new System.Drawing.Point(118, 106);
+            this.emailAddressTextBox.MaxLength = 520;
             this.emailAddressTextBox.Name = "emailAddressTextBox";
             this.emailAddressTextBox.Size = new System.Drawing.Size(200, 20);
             this.emailAddressTextBox.TabIndex = 3;
@@ -1036,6 +1038,7 @@
             // 
             this.firstNameTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactBindingSource, "FirstName", true));
             this.firstNameTextBox1.Location = new System.Drawing.Point(118, 54);
+            this.firstNameTextBox1.MaxLength = 50;
             this.firstNameTextBox1.Name = "firstNameTextBox1";
             this.firstNameTextBox1.Size = new System.Drawing.Size(200, 20);
             this.firstNameTextBox1.TabIndex = 1;
@@ -1045,6 +1048,7 @@
             // 
             this.lastNameTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactBindingSource, "LastName", true));
             this.lastNameTextBox1.Location = new System.Drawing.Point(118, 80);
+            this.lastNameTextBox1.MaxLength = 50;
             this.lastNameTextBox1.Name = "lastNameTextBox1";
             this.lastNameTextBox1.Size = new System.Drawing.Size(200, 20);
             this.lastNameTextBox1.TabIndex = 2;
@@ -1054,6 +1058,7 @@
             // 
             this.phoneNumberTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactBindingSource, "PhoneNumber", true));
             this.phoneNumberTextBox.Location = new System.Drawing.Point(118, 132);
+            this.phoneNumberTextBox.MaxLength = 13;
             this.phoneNumberTextBox.Name = "phoneNumberTextBox";
             this.phoneNumberTextBox.Size = new System.Drawing.Size(200, 20);
             this.phoneNumberTextBox.TabIndex = 4;
@@ -1072,12 +1077,8 @@
             this.contactIDComboBox1.TabIndex = 1;
             this.contactIDComboBox1.ValueMember = "ContactID";
             this.contactIDComboBox1.Visible = false;
-            this.contactIDComboBox1.SelectedIndexChanged += new System.EventHandler(this.contactIDComboBox1_SelectedIndexChanged);
+            this.contactIDComboBox1.SelectionChangeCommitted += new System.EventHandler(this.contactIDComboBox1_SelectionChangeCommitted);
             this.contactIDComboBox1.Click += new System.EventHandler(this.contactIDComboBox1_Click);
-            // 
-            // contactPositionBindingSource
-            // 
-            this.contactPositionBindingSource.DataSource = typeof(ProjectPRG299DB.ContactPosition);
             // 
             // positionIDComboBox
             // 
@@ -1092,30 +1093,23 @@
             this.positionIDComboBox.TabIndex = 2;
             this.positionIDComboBox.ValueMember = "PositionID";
             this.positionIDComboBox.Visible = false;
-            this.positionIDComboBox.SelectedIndexChanged += new System.EventHandler(this.positionIDComboBox_SelectedIndexChanged);
+            this.positionIDComboBox.SelectionChangeCommitted += new System.EventHandler(this.positionIDComboBox_SelectionChangeCommitted);
             this.positionIDComboBox.Click += new System.EventHandler(this.positionIDComboBox_Click);
-            // 
-            // positionBindingSource
-            // 
-            this.positionBindingSource.DataSource = typeof(ProjectPRG299DB.Position);
             // 
             // additionalNotesTextBox2
             // 
             this.additionalNotesTextBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.interviewBindingSource, "AdditionalNotes", true));
             this.additionalNotesTextBox2.Location = new System.Drawing.Point(138, 158);
+            this.additionalNotesTextBox2.MaxLength = 5000;
             this.additionalNotesTextBox2.Name = "additionalNotesTextBox2";
             this.additionalNotesTextBox2.Size = new System.Drawing.Size(200, 20);
             this.additionalNotesTextBox2.TabIndex = 5;
             this.additionalNotesTextBox2.Visible = false;
             // 
-            // interviewBindingSource
-            // 
-            this.interviewBindingSource.DataSource = typeof(ProjectPRG299DB.Interview);
-            // 
             // companyIDComboBox1
             // 
             this.companyIDComboBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.interviewBindingSource, "CompanyID", true));
-            this.companyIDComboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.companyBindingSource, "CompanyID", true));
+            this.companyIDComboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.interviewBindingSource, "CompanyID", true));
             this.companyIDComboBox1.DataSource = this.companyBindingSource;
             this.companyIDComboBox1.DisplayMember = "CompanyName";
             this.companyIDComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -1130,7 +1124,7 @@
             // contactIDComboBox2
             // 
             this.contactIDComboBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.interviewBindingSource, "ContactID", true));
-            this.contactIDComboBox2.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.contactBindingSource, "ContactID", true));
+            this.contactIDComboBox2.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.interviewBindingSource, "ContactID", true));
             this.contactIDComboBox2.DataSource = this.contactBindingSource;
             this.contactIDComboBox2.DisplayMember = "LastName";
             this.contactIDComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -1166,7 +1160,7 @@
             // positionIDComboBox1
             // 
             this.positionIDComboBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.interviewBindingSource, "PositionID", true));
-            this.positionIDComboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.positionBindingSource, "PositionID", true));
+            this.positionIDComboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.interviewBindingSource, "PositionID", true));
             this.positionIDComboBox1.DataSource = this.positionBindingSource;
             this.positionIDComboBox1.DisplayMember = "PositionName";
             this.positionIDComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -1182,6 +1176,7 @@
             // 
             this.additionalNotesTextBox3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.positionBindingSource, "AdditionalNotes", true));
             this.additionalNotesTextBox3.Location = new System.Drawing.Point(118, 133);
+            this.additionalNotesTextBox3.MaxLength = 5000;
             this.additionalNotesTextBox3.Name = "additionalNotesTextBox3";
             this.additionalNotesTextBox3.Size = new System.Drawing.Size(200, 20);
             this.additionalNotesTextBox3.TabIndex = 4;
@@ -1202,6 +1197,7 @@
             // 
             this.descriptionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.positionBindingSource, "Description", true));
             this.descriptionTextBox.Location = new System.Drawing.Point(118, 81);
+            this.descriptionTextBox.MaxLength = 2500;
             this.descriptionTextBox.Name = "descriptionTextBox";
             this.descriptionTextBox.Size = new System.Drawing.Size(200, 20);
             this.descriptionTextBox.TabIndex = 2;
@@ -1223,6 +1219,7 @@
             // 
             this.positionNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.positionBindingSource, "PositionName", true));
             this.positionNameTextBox.Location = new System.Drawing.Point(118, 55);
+            this.positionNameTextBox.MaxLength = 50;
             this.positionNameTextBox.Name = "positionNameTextBox";
             this.positionNameTextBox.Size = new System.Drawing.Size(200, 20);
             this.positionNameTextBox.TabIndex = 1;
@@ -1243,14 +1240,10 @@
             this.resumeIDComboBox.Visible = false;
             this.resumeIDComboBox.Click += new System.EventHandler(this.resumeIDComboBox_Click);
             // 
-            // resumeBindingSource
-            // 
-            this.resumeBindingSource.DataSource = typeof(ProjectPRG299DB.Resume);
-            // 
             // clientIDComboBox1
             // 
             this.clientIDComboBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.resumeBindingSource, "ClientID", true));
-            this.clientIDComboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.clientBindingSource, "ClientID", true));
+            this.clientIDComboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.resumeBindingSource, "ClientID", true));
             this.clientIDComboBox1.DataSource = this.clientBindingSource;
             this.clientIDComboBox1.DisplayMember = "LastName";
             this.clientIDComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -1278,6 +1271,7 @@
             // 
             this.rSCDirectoryPathTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.resumeBindingSource, "RSCDirectoryPath", true));
             this.rSCDirectoryPathTextBox.Location = new System.Drawing.Point(132, 55);
+            this.rSCDirectoryPathTextBox.MaxLength = 500;
             this.rSCDirectoryPathTextBox.Name = "rSCDirectoryPathTextBox";
             this.rSCDirectoryPathTextBox.Size = new System.Drawing.Size(200, 20);
             this.rSCDirectoryPathTextBox.TabIndex = 1;
@@ -1286,7 +1280,7 @@
             // schoolIDComboBox
             // 
             this.schoolIDComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.resumeBindingSource, "SchoolID", true));
-            this.schoolIDComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.schoolBindingSource, "SchoolID", true));
+            this.schoolIDComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.resumeBindingSource, "SchoolID", true));
             this.schoolIDComboBox.DataSource = this.schoolBindingSource;
             this.schoolIDComboBox.DisplayMember = "SchoolName";
             this.schoolIDComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -1297,10 +1291,6 @@
             this.schoolIDComboBox.ValueMember = "SchoolID";
             this.schoolIDComboBox.Visible = false;
             this.schoolIDComboBox.Click += new System.EventHandler(this.schoolIDComboBox_Click);
-            // 
-            // schoolBindingSource
-            // 
-            this.schoolBindingSource.DataSource = typeof(ProjectPRG299DB.School);
             // 
             // cityTextBox2
             // 
@@ -1442,11 +1432,13 @@
             // 
             // contactPositionListBox1
             // 
+            this.contactPositionListBox1.DisplayMember = "ContactID";
             this.contactPositionListBox1.FormattingEnabled = true;
             this.contactPositionListBox1.Location = new System.Drawing.Point(118, 211);
             this.contactPositionListBox1.Name = "contactPositionListBox1";
             this.contactPositionListBox1.Size = new System.Drawing.Size(200, 108);
             this.contactPositionListBox1.TabIndex = 105;
+            this.contactPositionListBox1.ValueMember = "ContactID";
             this.contactPositionListBox1.Visible = false;
             // 
             // lblcp1
@@ -1471,12 +1463,62 @@
             this.lblcp.Text = "List of Contacts";
             this.lblcp.Visible = false;
             // 
+            // button12
+            // 
+            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button12.ForeColor = System.Drawing.Color.White;
+            this.button12.Location = new System.Drawing.Point(378, 0);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(46, 28);
+            this.button12.TabIndex = 108;
+            this.button12.Text = "X";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // schoolBindingSource
+            // 
+            this.schoolBindingSource.DataSource = typeof(ProjectPRG299DB.School);
+            // 
+            // stateBindingSource
+            // 
+            this.stateBindingSource.DataSource = typeof(ProjectPRG299BLL.State);
+            // 
+            // resumeBindingSource
+            // 
+            this.resumeBindingSource.DataSource = typeof(ProjectPRG299DB.Resume);
+            // 
+            // clientBindingSource
+            // 
+            this.clientBindingSource.DataSource = typeof(ProjectPRG299DB.Client);
+            // 
+            // positionBindingSource
+            // 
+            this.positionBindingSource.DataSource = typeof(ProjectPRG299DB.Position);
+            // 
+            // interviewBindingSource
+            // 
+            this.interviewBindingSource.DataSource = typeof(ProjectPRG299DB.Interview);
+            // 
+            // companyBindingSource
+            // 
+            this.companyBindingSource.DataSource = typeof(ProjectPRG299DB.Company);
+            // 
+            // contactBindingSource
+            // 
+            this.contactBindingSource.DataSource = typeof(ProjectPRG299DB.Contact);
+            // 
+            // contactPositionBindingSource
+            // 
+            this.contactPositionBindingSource.DataSource = typeof(ProjectPRG299DB.ContactPosition);
+            // 
             // frmAUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Blue;
             this.ClientSize = new System.Drawing.Size(424, 413);
+            this.Controls.Add(this.button12);
             this.Controls.Add(this.lblcp);
             this.Controls.Add(this.lblcp1);
             this.Controls.Add(this.contactPositionListBox1);
@@ -1590,17 +1632,18 @@
             this.Controls.Add(this.zipCodeTextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmAUI";
+            this.ShowInTaskbar = false;
             this.Text = "frmAUI";
             this.Load += new System.EventHandler(this.frmAUI_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.schoolBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stateBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.resumeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.positionBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.interviewBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.contactBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.contactPositionBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.positionBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.interviewBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.resumeBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.schoolBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1728,5 +1771,6 @@
         private System.Windows.Forms.ListBox contactPositionListBox1;
         private System.Windows.Forms.Label lblcp1;
         private System.Windows.Forms.Label lblcp;
+        private System.Windows.Forms.Button button12;
     }
 }
