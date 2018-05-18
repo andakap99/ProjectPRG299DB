@@ -39,10 +39,11 @@ namespace WindowsFormsApplication1
                         || textBox.Name.Contains("resumeIDComboBox") || textBox.Name.Contains("rSCDirectoryPathTextBox")
                         || textBox.Name.Contains("schoolIDComboBox") || textBox.Name.Contains("clientIDComboBox1")
                         || textBox.Name.Contains("schoolNameTextBox") || textBox.Name.Contains("streetNameTextBox1")
-                        || textBox.Name.Contains("cityTextBox2") || textBox.Name.Contains("zipCodeTextBox2")
-                        || textBox.Name.Contains("numberOfYearsAttendedTextBox") || textBox.Name.Contains("graduatedTextBox"))
+                        || textBox.Name.Contains("cityTextBox2") 
+                        || textBox.Name.Contains("numberOfYearsAttendedTextBox") || textBox.Name.Contains("graduatedTextBox")
+                        || textBox.Name.Contains("buildingNameTextBox") || textBox.Name.Contains("buildingNumberTextBox"))
                     { return true; }
-                        MessageBox.Show("Fill in the required field.", Title);
+                        MessageBox.Show( textBox.Name.ToString() + " is a  required field.", Title);
                     textBox.Focus();
                     return false;
                 }
@@ -54,12 +55,13 @@ namespace WindowsFormsApplication1
             else if (control.GetType().ToString() == "System.Windows.Forms.ComboBox")
             {
                 ComboBox comboBox = (ComboBox)control;
-                if (comboBox.SelectedIndex == -1 && comboBox.Visible)
+                if (comboBox.SelectedIndex == -1 && comboBox.Visible && comboBox.Name.Contains("stateComboBox"))
                 {
                     MessageBox.Show("State required.", Title);
                     comboBox.Focus();
                     return false;
                 }
+
                 else
                 {
                     return true;
@@ -87,19 +89,21 @@ namespace WindowsFormsApplication1
         {
             try
             {
-                if (textBox.Visible && textBox.Enabled)
+                if (textBox.Visible && textBox.Enabled && IsPresent(textBox)!=true)
                 {
                     Convert.ToInt32(textBox.Text);
                     return true;
                 }
                 else
                 {
+                    
                     return false;
+                    
                 }
             }
             catch (FormatException)
             {
-                MessageBox.Show(" Must be an integer value.", Title);
+                MessageBox.Show(textBox.Name.ToString() + " must be an integer value.", Title);
                 textBox.Focus();
                 return false;
             }
@@ -108,16 +112,15 @@ namespace WindowsFormsApplication1
         public static bool IsStateZipCode(TextBox textBox, int firstZip, int lastZip) // CHECKS IF THE ZIPCODE IS PROPER FOR THE STATE
         {
             int zipCode = 0;
-            if (textBox.Text == "" && textBox.Visible)
-            { return false; }
-            else
-                if (textBox.Visible)
+            if (textBox.Text != "")
             {
                 zipCode = Convert.ToInt32(textBox.Text);
             }
-            else
-                return true;
-            if (zipCode <= firstZip || zipCode >= lastZip)
+            if ( textBox.Name.Contains("zipCode")!= true)
+            { return true; }
+            if (textBox.Text == "" && textBox.Visible && firstZip==0 || lastZip==0 && textBox.Visible)
+            { return false; }
+            else if (zipCode <= firstZip && textBox.Visible || zipCode >= lastZip && textBox.Visible)
             {
                 MessageBox.Show("ZipCode must be within this range: " +
                     firstZip + " to " + lastZip + ".", Title);

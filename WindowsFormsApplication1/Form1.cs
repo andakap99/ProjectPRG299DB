@@ -220,8 +220,7 @@ namespace WindowsFormsApplication1
                             UpdateInsertForm.newCompany = CompanyDB.GetCompanyByRow((int)companyDataGridView.CurrentCell.Value);
                         }
                         //        company = UpdateInsertForm.newCompany;
-                        UpdateInsertForm.stateList = StateDB.GetStateList();
-                        UpdateInsertForm.stateComboBox1.DataSource = UpdateInsertForm.stateList;
+
                         companyBindingSource.Clear();
                         companyBindingSource.Add(company);
                         companyDataGridView.DataSource = companyList;
@@ -280,8 +279,7 @@ namespace WindowsFormsApplication1
                             UpdateInsertForm.newSchool = SchoolDB.GetSchoolByRow((int)schoolDataGridView.CurrentCell.Value);
                         }
                         //        school = UpdateInsertForm.newSchool;
-                        UpdateInsertForm.stateList = StateDB.GetStateList();
-                        UpdateInsertForm.stateComboBox2.DataSource = UpdateInsertForm.stateList;
+
                         schoolBindingSource.Clear();
                         schoolBindingSource.Add(school);
                         UpdateInsertForm.AllLVVisible(button8.Text);
@@ -325,9 +323,11 @@ namespace WindowsFormsApplication1
                     }
                     else if (btnContactClicked)
                     {
+                        UpdateInsertForm.newContact = ContactDB.GetContactByRow((int)contactDataGridView.CurrentCell.Value);
                         UpdateInsertForm.contact = ContactDB.GetContactByRow((int)contactDataGridView.CurrentCell.Value);
                         UpdateInsertForm.contactBindingSource.Clear();
-                        UpdateInsertForm.contactBindingSource.Add(UpdateInsertForm.contact);
+                        contact = UpdateInsertForm.newContact;
+                        UpdateInsertForm.contactBindingSource.Add(contact);
                         UpdateInsertForm.AllLVVisible(button3.Text);
                         UpdateInsertForm.AllListView();
                     }
@@ -341,25 +341,31 @@ namespace WindowsFormsApplication1
                     }
                     else if (btnInterviewClicked)
                     {
+                        UpdateInsertForm.newInterview = InterviewDB.GetInterviewByRow((int)interviewDataGridView.CurrentCell.Value);
                         UpdateInsertForm.interview = InterviewDB.GetInterviewByRow((int)interviewDataGridView.CurrentCell.Value);
                         UpdateInsertForm.interviewBindingSource.Clear();
-                        UpdateInsertForm.interviewBindingSource.Add(UpdateInsertForm.interview);
+                        interview = UpdateInsertForm.newInterview;
+                        UpdateInsertForm.interviewBindingSource.Add(interview);
                         UpdateInsertForm.AllLVVisible(button5.Text);
                         UpdateInsertForm.AllListView();
                     }
                     else if (btnPositionClicked)
                     {
+                        UpdateInsertForm.newPostion = PositionDB.GetPositionByRow((int)positionDataGridView.CurrentCell.Value);
                         UpdateInsertForm.position = PositionDB.GetPositionByRow((int)positionDataGridView.CurrentCell.Value);
                         UpdateInsertForm.positionBindingSource.Clear();
-                        UpdateInsertForm.positionBindingSource.Add(UpdateInsertForm.position);
+                        position = UpdateInsertForm.newPostion;
+                        UpdateInsertForm.positionBindingSource.Add(position);
                         UpdateInsertForm.AllLVVisible(button6.Text);
                         UpdateInsertForm.AllListView();
                     }
                     else if (btnResumeClicked)
                     {
+                        UpdateInsertForm.newResume = ResumeDB.GetResumeByRow((int)resumeDataGridView.CurrentCell.Value);
                         UpdateInsertForm.resume = ResumeDB.GetResumeByRow((int)resumeDataGridView.CurrentCell.Value);
                         UpdateInsertForm.resumeBindingSource.Clear();
-                        UpdateInsertForm.resumeBindingSource.Add(UpdateInsertForm.resume);
+                        resume = UpdateInsertForm.newResume;
+                        UpdateInsertForm.resumeBindingSource.Add(resume);
                         UpdateInsertForm.AllLVVisible(button7.Text);
                         UpdateInsertForm.AllListView();
                     }
@@ -368,8 +374,12 @@ namespace WindowsFormsApplication1
                         UpdateInsertForm.stateList = StateDB.GetStateList();
                         UpdateInsertForm.stateComboBox2.DataSource = UpdateInsertForm.stateList;
                         UpdateInsertForm.school = SchoolDB.GetSchoolByRow((int)schoolDataGridView.CurrentCell.Value);
+                        UpdateInsertForm.newSchool = SchoolDB.GetSchoolByRow((int)schoolDataGridView.CurrentCell.Value);
                         UpdateInsertForm.schoolBindingSource.Clear();
-                        UpdateInsertForm.schoolBindingSource.Add(UpdateInsertForm.school);
+
+                        school = UpdateInsertForm.newSchool;
+
+                        UpdateInsertForm.schoolBindingSource.Add(school);
                         UpdateInsertForm.AllLVVisible(button8.Text);
                         UpdateInsertForm.AllListView();
                     }
@@ -431,7 +441,11 @@ namespace WindowsFormsApplication1
                 {
                     if (MessageBox.Show("Are you sure you want to delete the row?", "Delete " + button3.Text + " row", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
+                        if (ContactPositionDB.DeleteContactPosition((int)contactDataGridView.CurrentCell.Value))
+                        {
                         ContactDB.DeleteContact((int)contactDataGridView.CurrentCell.Value);
+
+                        }
                     }
 
                 }
@@ -439,6 +453,7 @@ namespace WindowsFormsApplication1
                 {
                     if (MessageBox.Show("Are you sure you want to delete the row?", "Delete " + button4.Text + " row", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
+                        
                         ContactPositionDB.DeleteContactPosition((int)contactPositionDataGridView.CurrentCell.Value);
                     }
 
@@ -455,7 +470,11 @@ namespace WindowsFormsApplication1
                 {
                     if (MessageBox.Show("Are you sure you want to delete the row?", "Delete " + button6.Text + " row", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
-                        PositionDB.DeletePosition((int)positionDataGridView.CurrentCell.Value);
+                        if (ContactPositionDB.DeleteContactPosition2((int)positionDataGridView.CurrentCell.Value))
+                        {
+                            PositionDB.DeletePosition((int)positionDataGridView.CurrentCell.Value);
+                        }
+                        
                     }
 
                 }
@@ -711,7 +730,10 @@ namespace WindowsFormsApplication1
                 
         }
 
-        
+        private void button12_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
 
         private void pnlMouseLeave(object sender, EventArgs e) //CLOSES THE PANEL
         {

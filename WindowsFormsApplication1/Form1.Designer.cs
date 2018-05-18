@@ -51,6 +51,7 @@
             this.schoolDataGridView = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button12 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -64,10 +65,10 @@
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel12 = new System.Windows.Forms.Panel();
             this.button11 = new System.Windows.Forms.Button();
@@ -463,6 +464,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.button12);
             this.panel2.Controls.Add(this.menuStrip1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -471,6 +473,19 @@
             this.panel2.TabIndex = 3;
             this.panel2.MouseLeave += new System.EventHandler(this.panel2_MouseLeave);
             this.panel2.MouseHover += new System.EventHandler(this.panel2_MouseHover);
+            // 
+            // button12
+            // 
+            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button12.ForeColor = System.Drawing.Color.White;
+            this.button12.Location = new System.Drawing.Point(952, 0);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(46, 28);
+            this.button12.TabIndex = 1;
+            this.button12.Text = "X";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // panel3
             // 
@@ -570,7 +585,7 @@
             this.button8.FlatAppearance.BorderSize = 0;
             this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button8.ForeColor = System.Drawing.Color.White;
             this.button8.Location = new System.Drawing.Point(0, 419);
             this.button8.Name = "button8";
@@ -586,7 +601,7 @@
             this.button7.FlatAppearance.BorderSize = 0;
             this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.ForeColor = System.Drawing.Color.White;
             this.button7.Location = new System.Drawing.Point(0, 349);
             this.button7.Name = "button7";
@@ -602,7 +617,7 @@
             this.button6.FlatAppearance.BorderSize = 0;
             this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.Color.White;
             this.button6.Location = new System.Drawing.Point(0, 279);
             this.button6.Name = "button6";
@@ -618,7 +633,7 @@
             this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.White;
             this.button5.Location = new System.Drawing.Point(0, 209);
             this.button5.Name = "button5";
@@ -628,6 +643,54 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             this.button5.MouseHover += new System.EventHandler(this.pnlMouseHover);
+            // 
+            // button3
+            // 
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(0, 140);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(185, 70);
+            this.button3.TabIndex = 2;
+            this.button3.Text = "Contact";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.MouseHover += new System.EventHandler(this.pnlMouseHover);
+            // 
+            // button2
+            // 
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(0, 70);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(185, 70);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "Company";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.MouseHover += new System.EventHandler(this.pnlMouseHover);
+            // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(185, 70);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Client";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.MouseHover += new System.EventHandler(this.pnlMouseHover);
             // 
             // button4
             // 
@@ -647,54 +710,6 @@
             this.button4.Click += new System.EventHandler(this.button4_Click);
             this.button4.MouseHover += new System.EventHandler(this.pnlMouseHover);
             // 
-            // button3
-            // 
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(0, 140);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(185, 70);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Contact";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            this.button3.MouseHover += new System.EventHandler(this.pnlMouseHover);
-            // 
-            // button2
-            // 
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(0, 70);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(185, 70);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Company";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            this.button2.MouseHover += new System.EventHandler(this.pnlMouseHover);
-            // 
-            // button1
-            // 
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(185, 70);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Client";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            this.button1.MouseHover += new System.EventHandler(this.pnlMouseHover);
-            // 
             // panel12
             // 
             this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
@@ -711,8 +726,9 @@
             // 
             this.button11.FlatAppearance.BorderSize = 0;
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button11.ForeColor = System.Drawing.Color.White;
-            this.button11.Location = new System.Drawing.Point(595, 9);
+            this.button11.Location = new System.Drawing.Point(624, 8);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(75, 32);
             this.button11.TabIndex = 2;
@@ -724,8 +740,9 @@
             // 
             this.button10.FlatAppearance.BorderSize = 0;
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button10.ForeColor = System.Drawing.Color.White;
-            this.button10.Location = new System.Drawing.Point(670, 9);
+            this.button10.Location = new System.Drawing.Point(699, 8);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(75, 32);
             this.button10.TabIndex = 1;
@@ -737,8 +754,9 @@
             // 
             this.button9.FlatAppearance.BorderSize = 0;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button9.ForeColor = System.Drawing.Color.White;
-            this.button9.Location = new System.Drawing.Point(520, 9);
+            this.button9.Location = new System.Drawing.Point(549, 8);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(75, 32);
             this.button9.TabIndex = 0;
@@ -1028,6 +1046,7 @@
             this.dataGridViewTextBoxColumn47.HeaderText = "CompanyID";
             this.dataGridViewTextBoxColumn47.Name = "dataGridViewTextBoxColumn47";
             this.dataGridViewTextBoxColumn47.ReadOnly = true;
+            this.dataGridViewTextBoxColumn47.Visible = false;
             // 
             // dataGridViewTextBoxColumn48
             // 
@@ -1042,6 +1061,7 @@
             this.dataGridViewTextBoxColumn49.HeaderText = "ResumeID";
             this.dataGridViewTextBoxColumn49.Name = "dataGridViewTextBoxColumn49";
             this.dataGridViewTextBoxColumn49.ReadOnly = true;
+            this.dataGridViewTextBoxColumn49.Visible = false;
             // 
             // positionBindingSource
             // 
@@ -1234,12 +1254,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn42;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn43;
         private System.Windows.Forms.DataGridView positionDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn44;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn45;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn46;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn47;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn48;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn49;
         private System.Windows.Forms.DataGridView resumeDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn50;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn51;
@@ -1304,6 +1318,13 @@
         private System.Windows.Forms.ToolStripMenuItem reportToolStripMenuItem;
         public System.Windows.Forms.DataGridView contactDataGridView;
         public System.Windows.Forms.DataGridView contactPositionDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn44;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn45;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn46;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn47;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn48;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn49;
+        private System.Windows.Forms.Button button12;
     }
 }
 
