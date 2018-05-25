@@ -107,6 +107,34 @@ namespace ProjectPRG299DB
                 connection.Close();
             }
         }
+        public static bool DeleteContactPosition2(int positionID) // DELETES A ROW FROM THE DATABASE 
+        {
+            SqlConnection connection = PRG299DB.GetConnection();
+            string deleteStatement = "DELETE FROM ContactPosition WHERE PositionID = @PositionID";
+            SqlCommand DeleteCommand = new SqlCommand(deleteStatement, connection);
+            DeleteCommand.Parameters.AddWithValue("@PositionID", positionID);
+            try
+            {
+                connection.Open();
+                int count = DeleteCommand.ExecuteNonQuery();
+                if (count > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
 
         public static int AddContactPosition(ContactPosition contactposition)// ADDS A NEW ROW TO THE DATABASE
         {
@@ -123,7 +151,7 @@ namespace ProjectPRG299DB
                 connection.Open();
                 insertCommand.ExecuteNonQuery();
                 string selectStatement =
-                    "SELECT IDENT_CURRENT('ContactPosition') FROM ContactPosition";
+                    "SELECT IDENT_CURRENT('Contact') FROM ContactPosition";
                 SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
                 int vendorID = Convert.ToInt32(selectCommand.ExecuteScalar());
                 return vendorID;

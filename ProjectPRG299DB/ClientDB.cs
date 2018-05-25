@@ -10,6 +10,59 @@ namespace ProjectPRG299DB
 {
     public static class ClientDB
     {
+        public static List<Client> GetClientCombobox() // USED TO POPULATE THE DATA GRID TABLE ALSO USED TO REFRESH THE DATA GRID
+        {
+            List<Client> clientList = new List<Client>();
+            SqlConnection connection = PRG299DB.GetConnection();
+            string selectStatement = "SELECT ClientID, FirstName + ' ' + LastName AS LastName, BirthDate, StreetName, " +
+                "City, State, ZipCode, CellPhone FROM dbo.Client";
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                int cIDOrd = reader.GetOrdinal("ClientID"),
+                    cLOrd = reader.GetOrdinal("LastName"),
+                    cBOrd = reader.GetOrdinal("BirthDate"),
+                    cSTROrd = reader.GetOrdinal("StreetName"),
+                    cCOrd = reader.GetOrdinal("City"),
+                    cSOrd = reader.GetOrdinal("State"),
+                    cZCOrd = reader.GetOrdinal("ZipCode"),
+                    cPOrd = reader.GetOrdinal("CellPhone");
+                while (reader.Read())
+                {
+                    Client clientA = new Client();
+                    clientA.ClientID = reader.GetInt32(cIDOrd);
+                    clientA.LastName = reader.GetString(cLOrd);
+                    clientA.BirthDate = reader.GetDateTime(cBOrd);
+                    clientA.StreetName = reader.GetString(cSTROrd);
+                    clientA.City = reader.GetString(cCOrd);
+                    clientA.State = reader.GetString(cSOrd);
+                    clientA.ZipCode = reader.GetString(cZCOrd);
+                    if (reader["CellPhone"].Equals(DBNull.Value))
+                    {
+                        clientA.CellPhone = "";
+                    }
+                    else
+                        clientA.CellPhone = reader.GetString(cPOrd);
+                    clientList.Add(clientA);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return clientList;
+        }
+
         public static List<Client> GetClient() // USED TO POPULATE THE DATA GRID TABLE ALSO USED TO REFRESH THE DATA GRID
         {
             List<Client> clientList = new List<Client>();
@@ -157,13 +210,11 @@ namespace ProjectPRG299DB
 
             SqlConnection connection = PRG299DB.GetConnection();
             string insertStatement =
-                //            "SET IDENTITY_INSERT Client ON;" +
                 "INSERT INTO Client " +
                   "(FirstName, LastName, BirthDate, StreetName, " +
                 "City, State, ZipCode, CellPhone) " +
                 "VALUES (@FirstName, @LastName, @BirthDate, @StreetName, " +
                 "@City, @State, @ZipCode, @CellPhone);";
-             //   "SET IDENTITY_INSERT Client OFF;";
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
             insertCommand.Parameters.AddWithValue("@FirstName", client.FirstName);
             insertCommand.Parameters.AddWithValue("@LastName", client.LastName);

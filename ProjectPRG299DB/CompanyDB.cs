@@ -35,8 +35,14 @@ namespace ProjectPRG299DB
                     Company comp = new Company();
                     comp.CompanyID = reader.GetInt32(cIDOrd);
                     comp.CompanyName = reader.GetString(cNOrd);
-                    comp.BuildingName = reader.GetString(cBNaOrd);
-                    comp.BuildingNumber = reader.GetString(cBNuOrd);
+                    if (reader["BuildingName"].Equals(DBNull.Value))
+                        comp.BuildingName = "";
+                    else
+                        comp.BuildingName = reader.GetString(cBNaOrd);
+                    if (reader["BuildingNumber"].Equals(DBNull.Value))
+                        comp.BuildingNumber = "";
+                    else
+                        comp.BuildingNumber = reader.GetString(cBNuOrd);
                     comp.StreetAddress = reader.GetString(cAOrd);
                     comp.City = reader.GetString(cCOrd);
                     comp.State = reader.GetString(cSOrd);
@@ -92,8 +98,14 @@ namespace ProjectPRG299DB
                 {
                     company.CompanyID = reader.GetInt32(cIDOrd);
                     company.CompanyName = reader.GetString(cNOrd);
-                    company.BuildingName = reader.GetString(cBNaOrd);
-                    company.BuildingNumber = reader.GetString(cBNuOrd);
+                    if (reader["BuildingName"].Equals(DBNull.Value))
+                        company.BuildingName = "";
+                    else
+                        company.BuildingName = reader.GetString(cBNaOrd);
+                    if (reader["BuildingNumber"].Equals(DBNull.Value))
+                        company.BuildingNumber = "";
+                    else
+                        company.BuildingNumber = reader.GetString(cBNuOrd);
                     company.StreetAddress = reader.GetString(cAOrd);
                     company.City = reader.GetString(cCOrd);
                     company.State = reader.GetString(cSOrd);
@@ -166,8 +178,14 @@ namespace ProjectPRG299DB
     //            " SET IDENTITY_INSERT Company OFF;";
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
             insertCommand.Parameters.AddWithValue("@CompanyName", company.CompanyName);
-            insertCommand.Parameters.AddWithValue("@BuildingName", company.BuildingName);
-            insertCommand.Parameters.AddWithValue("@BuildingNumber", company.BuildingNumber);
+            if (company.BuildingName == null)
+                insertCommand.Parameters.AddWithValue("@BuildingName", DBNull.Value);
+            else
+                insertCommand.Parameters.AddWithValue("@BuildingName", company.BuildingName);
+            if (company.BuildingNumber == null)
+                insertCommand.Parameters.AddWithValue("@BuildingNumber", DBNull.Value);
+            else
+                insertCommand.Parameters.AddWithValue("@BuildingNumber", company.BuildingNumber);
             insertCommand.Parameters.AddWithValue("@StreetAddress", company.StreetAddress);
             insertCommand.Parameters.AddWithValue("@City", company.City);
             insertCommand.Parameters.AddWithValue("@State", company.State);
@@ -222,8 +240,10 @@ namespace ProjectPRG299DB
                   "AdditionalNotes = @NewAdditionalNotes " +
                 "WHERE CompanyID = @OldCompanyID " +
                   "AND CompanyName = @OldCompanyName " +
-                  "AND BuildingName = @OldBuildingName " +
-                  "AND BuildingNumber = @OldBuildingNumber " +
+                  "AND (BuildingName = @OldBuildingName " +
+                      "OR BuildingName IS NULL AND @OldBuildingName IS NULL) " +
+                  "AND (BuildingNumber = @OldBuildingNumber " +
+                      "OR BuildingNumber IS NULL AND @OldBuildingNumber IS NULL) " +
                   "AND StreetAddress = @OldStreetAddress " +
                   "AND City = @OldCity " +
                   "AND State = @OldState " +
@@ -234,8 +254,14 @@ namespace ProjectPRG299DB
                       "OR AdditionalNotes IS NULL AND @OldAdditionalNotes IS NULL)";
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
             updateCommand.Parameters.AddWithValue("@NewCompanyName", newCompany.CompanyName);
-            updateCommand.Parameters.AddWithValue("@NewBuildingName", newCompany.BuildingName);
-            updateCommand.Parameters.AddWithValue("@NewBuildingNumber", newCompany.BuildingNumber);
+            if (newCompany.BuildingName == "")
+                updateCommand.Parameters.AddWithValue("@NewBuildingName", DBNull.Value);
+            else
+                updateCommand.Parameters.AddWithValue("@NewBuildingName", newCompany.BuildingName);
+            if (newCompany.BuildingNumber == "")
+                updateCommand.Parameters.AddWithValue("@NewBuildingNumber", DBNull.Value);                
+            else
+                updateCommand.Parameters.AddWithValue("@NewBuildingNumber", newCompany.BuildingNumber);
             updateCommand.Parameters.AddWithValue("@NewStreetAddress", newCompany.StreetAddress);
             updateCommand.Parameters.AddWithValue("@NewCity", newCompany.City);
             updateCommand.Parameters.AddWithValue("@NewState", newCompany.State);
@@ -253,8 +279,14 @@ namespace ProjectPRG299DB
 
             updateCommand.Parameters.AddWithValue("@OldCompanyID", oldCompany.CompanyID);
             updateCommand.Parameters.AddWithValue("@OldCompanyName", oldCompany.CompanyName);
-            updateCommand.Parameters.AddWithValue("@OldBuildingName", oldCompany.BuildingName);
-            updateCommand.Parameters.AddWithValue("@OldBuildingNumber", oldCompany.BuildingNumber);
+            if (oldCompany.BuildingName == "")
+                updateCommand.Parameters.AddWithValue("@OldBuildingName", DBNull.Value);
+            else
+                updateCommand.Parameters.AddWithValue("@OldBuildingName", oldCompany.BuildingName);
+            if (oldCompany.BuildingNumber == "")
+                updateCommand.Parameters.AddWithValue("@OldBuildingNumber", DBNull.Value);
+            else
+                updateCommand.Parameters.AddWithValue("@OldBuildingNumber", oldCompany.BuildingNumber);
             updateCommand.Parameters.AddWithValue("@OldStreetAddress", oldCompany.StreetAddress);
             updateCommand.Parameters.AddWithValue("@OldCity", oldCompany.City);
             updateCommand.Parameters.AddWithValue("@OldState", oldCompany.State);
@@ -330,8 +362,15 @@ namespace ProjectPRG299DB
                     Company comp = new Company();
                     comp.CompanyID = reader.GetInt32(cIDOrd);
                     comp.CompanyName = reader.GetString(cNOrd);
-                    comp.BuildingName = reader.GetString(cBNaOrd);
-                    comp.BuildingNumber = reader.GetString(cBNuOrd);
+                    if (reader["BuildingName"].Equals(DBNull.Value))
+                        comp.BuildingName = "";
+                    else
+                        comp.BuildingName = reader.GetString(cBNaOrd);
+                    if (reader["BuildingNumber"].Equals(DBNull.Value))
+                        comp.BuildingNumber = "";
+                    else
+
+                        comp.BuildingNumber = reader.GetString(cBNuOrd);
                     comp.StreetAddress = reader.GetString(cAOrd);
                     comp.City = reader.GetString(cCOrd);
                     comp.State = reader.GetString(cSOrd);
@@ -417,8 +456,14 @@ namespace ProjectPRG299DB
                     Company comp = new Company();
                     comp.CompanyID = reader.GetInt32(cIDOrd);
                     comp.CompanyName = reader.GetString(cNOrd);
-                    comp.BuildingName = reader.GetString(cBNaOrd);
-                    comp.BuildingNumber = reader.GetString(cBNuOrd);
+                    if (reader["BuildingName"].Equals(DBNull.Value))
+                        comp.BuildingName = "";
+                    else
+                        comp.BuildingName = reader.GetString(cBNaOrd);
+                    if (reader["BuildingNumber"].Equals(DBNull.Value))
+                        comp.BuildingNumber = "";
+                    else
+                        comp.BuildingNumber = reader.GetString(cBNuOrd);
                     comp.StreetAddress = reader.GetString(cAOrd);
                     comp.City = reader.GetString(cCOrd);
                     comp.State = reader.GetString(cSOrd);

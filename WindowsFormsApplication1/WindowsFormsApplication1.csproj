@@ -12,7 +12,8 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <PublishUrl>publish\</PublishUrl>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\akaplun\Desktop\CareerToWork\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -22,10 +23,13 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ProductName>Career to Work</ProductName>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>9</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -46,6 +50,18 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>85B1DB0E2D3828D6E5A4647400529D28CDE1325C</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>WindowsFormsApplication1_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ProjectPRG299BLL">
@@ -112,11 +128,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="WindowsFormsApplication1_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CareerClubContactReport\CareerClubContactReport.csproj">
+      <Project>{14e06885-6744-493f-a9d8-392cea38d320}</Project>
+      <Name>CareerClubContactReport</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ProjectPRG299DB\ProjectPRG299DB.csproj">
       <Project>{48d2d0b5-04f4-4476-8e41-cb1a59a954f6}</Project>
       <Name>ProjectPRG299DB</Name>
@@ -132,6 +153,21 @@
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.ReportViewer.12.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft Report Viewer 2014 Runtime</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SqlServer.SqlLocalDB.11.1">
+      <Visible>False</Visible>
+      <ProductName>SQL Server 2012 Express LocalDB</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SqlServer.SQLSysClrTypes.12.0.x86">
+      <Visible>False</Visible>
+      <ProductName>Microsoft® System CLR Types for SQL Server® 2014 %28x86%29</ProductName>
+      <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>

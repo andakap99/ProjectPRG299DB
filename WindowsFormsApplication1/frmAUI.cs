@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -18,6 +18,17 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
         }
+        public frmAUI(bool admecli, string txtfrm)
+        {
+            InitializeComponent();
+            addMenuClicked = admecli;
+            Text = txtfrm;
+            btnplusbool = admecli;
+
+        }
+
+        private bool btnplusbool = false;
+        private bool b1=false, b2=false, b3=false, b4=false, b5=false, b6=false, b7=false, b8=false, b9=false;
         public bool btnModifyClicked;
         public bool addMenuClicked;
         public bool cliLVVisible = false;
@@ -28,6 +39,8 @@ namespace WindowsFormsApplication1
         public bool posLVVisible = false;
         public bool resLVVisible = false;
         public bool schLVVisible = false;
+        public List<int> contactIDList = new List<int>();
+        public List<int> positionIDList = new List<int>();
         public List<State> stateList;
         public Client client;
         public Client newClient;
@@ -45,17 +58,32 @@ namespace WindowsFormsApplication1
         public Resume newResume;
         public School school;
         public School newSchool;
+        public List<string> listComboBox1 = new List<string>();
+        private frmPRG299 frm = new frmPRG299();
+        private frmAUI addeditform;
 
         private void frmAUI_Load(object sender, EventArgs e)
         {
+    //        positionIDComboBox.SelectedIndex = -1;
+      //      contactIDComboBox1.SelectedIndex = -1;
+            toolTip1.SetToolTip(btnPlus, "");
             btnModifyClicked = true;
             StateComboBoxes();
-            if (addMenuClicked)
+            if (addeditform!=null)
+            {
+                if (addeditform.b1 || addeditform.b2 || addeditform.b3 || addeditform.b4 || addeditform.b5 || addeditform.b6 || addeditform.b7 || addeditform.b8 || addeditform.b9)
+                {
+
+                }
+            }
+            else if(addMenuClicked)
             {
                 btnInsertUpdate.Text = "Add";
                 if (Text == "Add Client") // TEXT IS THE FORM.TEXT
                 {
                     newClient = new Client();
+                    stateList = StateDB.GetStateList();
+                    stateComboBox.DataSource = stateList;
                     clientBindingSource.Clear();
                     clientBindingSource.Add(newClient);
 
@@ -63,6 +91,8 @@ namespace WindowsFormsApplication1
                 if (Text == "Add Company")
                 {
                     newCompany = new Company();
+                    stateList = StateDB.GetStateList();
+                    stateComboBox1.DataSource = stateList;
                     companyBindingSource.Clear();
                     companyBindingSource.Add(newCompany);
                 }
@@ -71,6 +101,10 @@ namespace WindowsFormsApplication1
                     newContact = new Contact();
                     contactBindingSource.Clear();
                     contactBindingSource.Add(newContact);
+                    if (newContactPosition == null)
+                    {
+                        newContactPosition = new ContactPosition();
+                    }
                 }
                 if (Text == "Add Contact Position")
                 {
@@ -89,6 +123,10 @@ namespace WindowsFormsApplication1
                     newPostion = new Position();
                     positionBindingSource.Clear();
                     positionBindingSource.Add(newPostion);
+                    if (newContactPosition == null)
+                    {
+                        newContactPosition = new ContactPosition();
+                    }
                 }
                 if (Text == "Add Resume")
                 {
@@ -99,16 +137,20 @@ namespace WindowsFormsApplication1
                 if (Text == "Add School")
                 {
                     newSchool = new School();
+                    stateList = StateDB.GetStateList();
+                    stateComboBox2.DataSource = stateList;
                     schoolBindingSource.Clear();
                     schoolBindingSource.Add(newSchool);
                 }
             }
-            else
+        
+            if(addMenuClicked==false)
             {
                 btnInsertUpdate.Text = "Modify";
                 if (Text == "Modify Client")
                 {
                     newClient = new Client();
+                    stateComboBox.DataSource = stateList;
                     PutNewClient();
                     clientBindingSource.Clear();
                     clientBindingSource.Add(newClient);
@@ -171,13 +213,32 @@ namespace WindowsFormsApplication1
                     schoolBindingSource.Add(newSchool);
                 }
             }
+
+           // addeditform.btnInsertUpdate.Text = "Add"; 
+
         }
-        
+
+
         private void StateComboBoxes() // FILLS IN THE COMBOBOXES.COLLECTIONS WITH STATE NAMES
         {
             try
             {
-                stateList = StateDB.GetStateList();
+             //  stateList = StateDB.GetStateList();
+                if (newClient != null || newCompany != null || newSchool != null)
+                {
+                    if (cliLVVisible)
+                    {
+                        stateComboBox.SelectedValue = newClient.State;
+                    }
+                    else if (comLVVisible)
+                    {
+                        stateComboBox1.SelectedValue = newCompany.State;
+                    }
+                    else if (schLVVisible)
+                    {
+                        stateComboBox2.SelectedValue = newSchool.State;
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -361,7 +422,7 @@ namespace WindowsFormsApplication1
             ClientListView();
             CompanyListView();
             ContactListView();
-            ContactPositionListView();
+        //    ContactPositionListView();
             InterviewListView();
             PositionListView();
             ResumeListView();
@@ -372,6 +433,7 @@ namespace WindowsFormsApplication1
         {
             if (cliLVVisible)
             {
+                btnPlus.Visible = false;
                 clientIDLabel.Visible = true;
                 clientIDTextBox.Visible = true;
                 firstNameLabel.Visible = true;
@@ -417,6 +479,7 @@ namespace WindowsFormsApplication1
         {
             if (comLVVisible)
             {
+                btnPlus.Visible = false;
                 companyIDLabel.Visible = true;
                 companyIDTextBox.Visible = true;
                 companyNameLabel.Visible = true;
@@ -466,6 +529,8 @@ namespace WindowsFormsApplication1
         {
             if (conLVVisible)
             {
+                btnPlus.Visible = false;
+
                 contactIDLabel.Visible = true;
                 contactIDTextBox.Visible = true;
                 firstNameLabel1.Visible = true;
@@ -480,6 +545,27 @@ namespace WindowsFormsApplication1
                 cellPhoneTextBox1.Visible = true;
                 additionalNotesLabel1.Visible = true;
                 additionalNotesTextBox1.Visible = true;
+                positionIDLabel.Visible = true;
+                positionIDLabel.Location = new Point(25, 220);
+                positionIDComboBox.Visible = true;
+                positionIDComboBox.Location = new Point(118, 215);
+                positionIDComboBox.Size = new Size(200, 20);
+                lblcp1.Visible = true;
+                contactPositionListBox.Visible = true;
+                if (btnplusbool)
+                {
+                    positionIDLabel.Visible =false;
+                    positionIDComboBox.Visible = false;
+                    lblcp1.Visible = false;
+                    contactPositionListBox.Visible = false;
+                }
+                if (!addMenuClicked)
+                {
+                    positionIDLabel.Visible = false;
+                    positionIDComboBox.Visible = false;
+                    lblcp1.Visible = false;
+                    contactPositionListBox.Visible = false;
+                }
             }
             else
             {
@@ -497,37 +583,44 @@ namespace WindowsFormsApplication1
                 cellPhoneTextBox1.Visible = false;
                 additionalNotesLabel1.Visible = false;
                 additionalNotesTextBox1.Visible = false;
+                positionIDLabel.Visible = false;
+                positionIDComboBox.Visible = false;
+                lblcp1.Visible = false;
+                contactPositionListBox.Visible = false;
             }
         }
         private void ContactPositionListView()// CHECKS WHICH CONTROLS TO SET VISIBLE TO TRUE OR FALSE
         {
             if (conPosLVVisible)
             {
+                btnPlus.Visible = false;
                 contactIDLabel1.Visible = true;
-                contactIDTextBox1.Visible = true;
+                contactIDComboBox1.Visible = true;
                 positionIDLabel.Visible = true;
-                positionIDTextBox.Visible = true;
+                positionIDComboBox.Visible = true;
             }
             else
             {
                 contactIDLabel1.Visible = false;
-                contactIDTextBox1.Visible = false;
+                contactIDComboBox1.Visible = false;
                 positionIDLabel.Visible = false;
-                positionIDTextBox.Visible = false;
+                positionIDComboBox.Visible = false;
             }
         }
         private void InterviewListView()// CHECKS WHICH CONTROLS TO SET VISIBLE TO TRUE OR FALSE
         {
             if (intLVVisible)
             {
+                btnPlus.Visible = false;
+
                 interviewIDLabel.Visible = true;
                 interviewIDTextBox.Visible = true;
                 positionIDLabel1.Visible = true;
-                positionIDTextBox1.Visible = true;
+                positionIDComboBox1.Visible = true;
                 companyIDLabel1.Visible = true;
-                companyIDTextBox1.Visible = true;
+                companyIDComboBox1.Visible = true;
                 contactIDLabel2.Visible = true;
-                contactIDTextBox2.Visible = true;
+                contactIDComboBox2.Visible = true;
                 dateTimeInterviewLabel.Visible = true;
                 dateTimeInterviewDateTimePicker.Visible = true;
                 additionalNotesLabel2.Visible = true;
@@ -538,11 +631,11 @@ namespace WindowsFormsApplication1
                 interviewIDLabel.Visible = false;
                 interviewIDTextBox.Visible = false;
                 positionIDLabel1.Visible = false;
-                positionIDTextBox1.Visible = false;
+                positionIDComboBox1.Visible = false;
                 companyIDLabel1.Visible = false;
-                companyIDTextBox1.Visible = false;
+                companyIDComboBox1.Visible = false;
                 contactIDLabel2.Visible = false;
-                contactIDTextBox2.Visible = false;
+                contactIDComboBox2.Visible = false;
                 dateTimeInterviewLabel.Visible = false;
                 dateTimeInterviewDateTimePicker.Visible = false;
                 additionalNotesLabel2.Visible = false;
@@ -553,6 +646,8 @@ namespace WindowsFormsApplication1
         {
             if (posLVVisible)
             {
+                btnPlus.Visible = false;
+
                 positionIDLabel2.Visible = true;
                 positionIDTextBox2.Visible = true;
                 positionNameLabel.Visible = true;
@@ -560,11 +655,32 @@ namespace WindowsFormsApplication1
                 descriptionLabel.Visible = true;
                 descriptionTextBox.Visible = true;
                 companyIDLabel2.Visible = true;
-                companyIDTextBox2.Visible = true;
+                companyIDComboBox2.Visible = true;
                 additionalNotesLabel3.Visible = true;
                 additionalNotesTextBox3.Visible = true;
                 resumeIDLabel.Visible = true;
-                resumeIDTextBox.Visible = true;
+                resumeIDComboBox.Visible = true;
+                contactIDLabel1.Visible = true;
+                contactIDLabel1.Location = new Point(25, 192);
+                contactIDComboBox1.Visible = true;
+                contactIDComboBox1.Location = new Point(118, 187);
+                contactIDComboBox1.Size = new Size(200, 21);
+                lblcp.Visible = true;
+                contactPositionListBox1.Visible = true;
+                if (!addMenuClicked)
+                {
+                    contactIDLabel1.Visible = false;
+                    contactIDComboBox1.Visible = false;
+                    lblcp.Visible = false;
+                    contactPositionListBox1.Visible = false;
+                }
+                if (btnplusbool)
+                {
+                    contactIDLabel1.Visible = false;
+                    contactIDComboBox1.Visible = false;
+                    lblcp.Visible = false;
+                    contactPositionListBox1.Visible = false;
+                }
             }
             else
             {
@@ -575,25 +691,31 @@ namespace WindowsFormsApplication1
                 descriptionLabel.Visible = false;
                 descriptionTextBox.Visible = false;
                 companyIDLabel2.Visible = false;
-                companyIDTextBox2.Visible = false;
+                companyIDComboBox2.Visible = false;
                 additionalNotesLabel3.Visible = false;
                 additionalNotesTextBox3.Visible = false;
                 resumeIDLabel.Visible = false;
-                resumeIDTextBox.Visible = false;
+                resumeIDComboBox.Visible = false;
+                contactIDLabel1.Visible = false;
+                contactIDComboBox1.Visible = false;
+                lblcp.Visible = false;
+                contactPositionListBox1.Visible = false;
             }
         }
         private void ResumeListView()// CHECKS WHICH CONTROLS TO SET VISIBLE TO TRUE OR FALSE
         {
             if (resLVVisible)
             {
+                btnPlus.Visible = false;
+
                 resumeIDLabel1.Visible = true;
                 resumeIDTextBox1.Visible = true;
                 rSCDirectoryPathLabel.Visible = true;
                 rSCDirectoryPathTextBox.Visible = true;
                 schoolIDLabel.Visible = true;
-                schoolIDTextBox.Visible = true;
+                schoolIDComboBox.Visible = true;
                 clientIDLabel1.Visible = true;
-                clientIDTextBox1.Visible = true;
+                clientIDComboBox1.Visible = true;
             }
             else
             {
@@ -602,15 +724,17 @@ namespace WindowsFormsApplication1
                 rSCDirectoryPathLabel.Visible = false;
                 rSCDirectoryPathTextBox.Visible = false;
                 schoolIDLabel.Visible = false;
-                schoolIDTextBox.Visible = false;
+                schoolIDComboBox.Visible = false;
                 clientIDLabel1.Visible = false;
-                clientIDTextBox1.Visible = false;
+                clientIDComboBox1.Visible = false;
             }
         }
         private void SchoolListView()// CHECKS WHICH CONTROLS TO SET VISIBLE TO TRUE OR FALSE
         {
             if (schLVVisible)
             {
+                btnPlus.Visible = false;
+
                 schoolIDLabel1.Visible = true;
                 schoolIDTextBox1.Visible = true;
                 schoolNameLabel.Visible = true;
@@ -651,6 +775,7 @@ namespace WindowsFormsApplication1
 
         private void btnInsertUpdate_Click(object sender, EventArgs e)// CHECKS IF THE DATA ENTERED IS VALID  THEN WHICH BUTTON IS CLICKED  
         {                                                                            // EXECUTES THE ADD() OR UPDATE() METHODS 
+
             if (IsDataValid())
             {
                 if (addMenuClicked)
@@ -671,9 +796,18 @@ namespace WindowsFormsApplication1
                         }
                         if (conLVVisible)
                         {
-                            ContactDB.AddContact(newContact);
+                            int valueid = ContactDB.AddContact(newContact);
                             contact = newContact;
                             DialogResult = DialogResult.Retry;
+                            if (positionIDList.Count>0)
+                            {
+                                newContactPosition.ContactID = valueid;
+                                for (int i = 0; i < positionIDList.Count; i++)
+                                {
+                                    newContactPosition.PositionID = positionIDList[i];
+                                    ContactPositionDB.AddContactPosition(newContactPosition);
+                                }
+                            }
                         }
                         if (conPosLVVisible)
                         {
@@ -689,9 +823,20 @@ namespace WindowsFormsApplication1
                         }
                         if (posLVVisible)
                         {
-                            PositionDB.AddPosition(newPostion);
+                           int value = PositionDB.AddPosition(newPostion);
                             position = newPostion;
                             DialogResult = DialogResult.Retry;
+                            if(contactIDList.Count>0)
+                            {
+                                newContactPosition.PositionID = value;
+                                for (int add = 0; add < contactIDList.Count; add++)
+                                {
+                                    newContactPosition.ContactID = contactIDList[add];
+                                    ContactPositionDB.AddContactPosition(newContactPosition);
+                                }
+                            }
+                            DialogResult = DialogResult.Retry;
+
                         }
                         if (resLVVisible)
                         {
@@ -839,7 +984,7 @@ namespace WindowsFormsApplication1
         {
             if (btnInsertUpdate.Focus())
                 btnInsertUpdate.Font = new Font(btnInsertUpdate.Font, FontStyle.Bold);
-            if(btnCancel.Focus())
+            if (btnCancel.Focus())
                 btnCancel.Font = new Font(btnCancel.Font, FontStyle.Bold);
 
         }
@@ -865,49 +1010,84 @@ namespace WindowsFormsApplication1
                 }
                 else
                 {
-                    isDVB = false;
-                    break;
+                    return false;
+                    
                 }
             }
-            if (IsPhoneNumber(cellPhoneTextBox) & IsInt32(zipCodeTextBox)
-                | IsPhoneNumber(cellPhoneTextBox1) & IsPhoneNumber(phoneNumberTextBox)
-                | IsInt32(contactIDTextBox1) & IsInt32(positionIDTextBox)
-                | IsInt32(positionIDTextBox1) & IsInt32(companyIDTextBox1) & IsInt32(contactIDTextBox2)
-                | IsInt32(companyIDTextBox2) & IsInt32(resumeIDTextBox)
-                | IsInt32(schoolIDTextBox) & IsInt32(clientIDTextBox1)
-                | IsInt32(zipCodeTextBox1) & IsInt32(buildingNumberTextBox)
-                | IsInt32(zipCodeTextBox2))
+            if (Text.Contains("Client")&& IsPhoneNumber(cellPhoneTextBox) && IsInt32(zipCodeTextBox))
+            {
+                int firstZip = 0;
+                int lastZip = 0;
+                try
+                {
+                    
+                        firstZip = stateList[stateComboBox.SelectedIndex].FirstZipCode;
+                        lastZip = stateList[stateComboBox.SelectedIndex].LastZipCode;
+                    
+                    if (IsStateZipCode(zipCodeTextBox, firstZip, lastZip))
+                    {
+                        isDVB = true;
+                    }
+                    else
+                        isDVB= false;
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+            }
+            else if ( Text.Contains("Contact") & IsPhoneNumber(cellPhoneTextBox1) & IsPhoneNumber(phoneNumberTextBox))
             {
                 isDVB = true;
-                int firstZip=0;
-                int lastZip=0;
-                int firstZip1=0;
-                int lastZip1=0;
-                int firstZip2=0;
-                int lastZip2=0;
-                if (Text.Contains("Client"))
-                {
-                    firstZip = stateList[stateComboBox.SelectedIndex].FirstZipCode;
-                    lastZip = stateList[stateComboBox.SelectedIndex].LastZipCode;
+            }
+            else if (Text.Contains("Company") & IsInt32(zipCodeTextBox1) & IsInt32(buildingNumberTextBox))
+            {
+
+                int firstZip1 = 0;
+                int lastZip1 = 0;
+                try {
+                                        
+                        firstZip1 = stateList[stateComboBox1.SelectedIndex].FirstZipCode;
+                        lastZip1 = stateList[stateComboBox1.SelectedIndex].LastZipCode;
+                    
+                    if (IsStateZipCode(zipCodeTextBox1, firstZip1, lastZip1))
+
+                    {
+                        isDVB = true;
+                    }
+                    else
+                        return false;
+
                 }
-                if (Text.Contains("Company"))
+                catch (Exception ex)
                 {
-                    firstZip1 = stateList[stateComboBox1.SelectedIndex].FirstZipCode;
-                    lastZip1 = stateList[stateComboBox1.SelectedIndex].LastZipCode;
+                    MessageBox.Show(ex.Message);
                 }
-                if (Text.Contains("School"))
+
+            }
+
+            else if (Text.Contains("School") & IsInt32(zipCodeTextBox2))
+            {
+                int firstZip2 = 0;
+                int lastZip2 = 0;
+                try {
+                                                            
+                        firstZip2 = stateList[stateComboBox2.SelectedIndex].FirstZipCode;
+                        lastZip2 = stateList[stateComboBox2.SelectedIndex].LastZipCode;
+                    
+                    if (IsStateZipCode(zipCodeTextBox2, firstZip2, lastZip2))
+                    {
+                        isDVB = true;
+                    }
+                    else
+                        return false;
+                }
+                catch (Exception ex)
                 {
-                    firstZip2 = stateList[stateComboBox2.SelectedIndex].FirstZipCode;
-                    lastZip2 = stateList[stateComboBox2.SelectedIndex].LastZipCode;
+                    MessageBox.Show(ex.Message);
                 }
-                    if (IsStateZipCode(zipCodeTextBox, firstZip, lastZip)
-                    || IsStateZipCode(zipCodeTextBox1, firstZip1, lastZip1)
-                    || IsStateZipCode(zipCodeTextBox2, firstZip2, lastZip2))
-                {
-                    isDVB = true;
-                }
-                else
-                    isDVB = false;
             }
             else
                 isDVB = false;
@@ -915,6 +1095,314 @@ namespace WindowsFormsApplication1
 
             return isDVB;
         
+        }
+
+        private void stateComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (newClient != null || newCompany != null || newSchool != null)
+            {
+                if (cliLVVisible)
+                {
+                    newClient.State = (string)stateComboBox.SelectedValue;
+                }
+                else if (comLVVisible)
+                {
+                    newCompany.State = (string)stateComboBox1.SelectedValue;
+                }
+                else if (schLVVisible)
+                {
+                    newSchool.State = (string)stateComboBox2.SelectedValue;
+                }
+            }
+        }
+
+        private void contactIDComboBox1_Click(object sender, EventArgs e)
+        {
+            try
+            { 
+                contactBindingSource.DataSource = ContactDB.GetContactCombobox();
+                contactIDComboBox1.SelectedIndex = -1;
+                btnPlus.Location = new Point(320, 187);
+                btnPlus.Visible = true;
+                toolTip1.SetToolTip(btnPlus, "Add New Contact");
+                b1 = true; b2 = false; b3 = false; b4 = false; b5 = false; b6 = false; b7 = false; b8 = false; b9 = false;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void positionIDComboBox_Click(object sender, EventArgs e)
+        {
+            try
+            { 
+                positionBindingSource.DataSource = PositionDB.GetPosition();
+                btnPlus.Location = new Point(320, 215);
+                btnPlus.Visible = true;
+                toolTip1.SetToolTip(btnPlus, "Add New Position");
+                b1 = false; b2 = true; b3 = false; b4 = false; b5 = false; b6 = false; b7 = false; b8 = false; b9 = false;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void positionIDComboBox1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                positionIDComboBox1.SelectedIndexChanged -= new EventHandler(positionIDComboBox1_SelectedIndexChanged);
+                positionBindingSource.DataSource = PositionDB.GetPosition();
+                btnPlus.Location = new Point(340, 54);
+                btnPlus.Visible = true;
+                toolTip1.SetToolTip(btnPlus, "Add New Position");
+                b1 = false; b2 = false; b3 = true; b4 = false; b5 = false; b6 = false; b7 = false; b8 = false; b9 = false;
+                positionIDComboBox1.SelectedIndexChanged += new EventHandler(positionIDComboBox1_SelectedIndexChanged);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void contactIDComboBox1_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            
+            if (contactIDComboBox1.SelectedIndex!=-1 && contactIDComboBox1.SelectedValue!=null)
+           {
+           
+                if (!contactPositionListBox1.Items.Contains(contactIDComboBox1.Text))
+                {
+                    contactPositionListBox1.Items.Add(contactIDComboBox1.Text);
+                    contactIDList.Add((int)contactIDComboBox1.SelectedValue);
+                   
+                    
+                }
+                
+            }
+        }
+
+        private void positionIDComboBox_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (positionIDComboBox.SelectedIndex!=-1 && positionIDComboBox.SelectedValue!=null)
+            {
+                if (!contactPositionListBox.Items.Contains(positionIDComboBox.Text))
+                {
+                    contactPositionListBox.Items.Add(positionIDComboBox.Text);
+                    positionIDList.Add((int)positionIDComboBox.SelectedValue);
+                }
+            }
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void contactIDComboBox2_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            newInterview.ContactID = (int) contactIDComboBox2.SelectedValue;
+
+        }
+
+        private void positionIDComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void clientIDComboBox1_Click(object sender, EventArgs e)
+        {
+            try
+            { 
+                clientBindingSource.DataSource = ClientDB.GetClientCombobox();
+                btnPlus.Location = new Point(335, 107);
+                btnPlus.Visible = true;
+                toolTip1.SetToolTip(btnPlus, "Add New Client");
+                b1 = false; b2 = false; b3 = false; b4 = true; b5 = false; b6 = false; b7 = false; b8 = false; b9 = false;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void companyIDComboBox1_Click(object sender, EventArgs e)
+        {
+            try
+            { 
+                companyBindingSource.DataSource = CompanyDB.GetCompany();
+                btnPlus.Location = new Point(320, 80);
+                btnPlus.Visible = true;
+                toolTip1.SetToolTip(btnPlus, "Add New Company");
+                b1 = false; b2 = false; b3 = false; b4 = false; b5 = true; b6 = false; b7 = false; b8 = false; b9 = false;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void contactIDComboBox2_Click(object sender, EventArgs e)
+        {
+            try
+            { 
+                contactBindingSource.DataSource = ContactDB.GetContactCombobox();
+                btnPlus.Location = new Point(320, 106);
+                btnPlus.Visible = true;
+                toolTip1.SetToolTip(btnPlus, "Add New Contact");
+                b1 = false; b2 = false; b3 = false; b4 = false; b5 = false; b6 = true; b7 = false; b8 = false; b9 = false;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void companyIDComboBox2_Click(object sender, EventArgs e)
+        {
+            try
+            { 
+                companyBindingSource.DataSource = CompanyDB.GetCompany();
+                btnPlus.Location = new Point(335, 107);
+                btnPlus.Visible = true;
+                toolTip1.SetToolTip(btnPlus, "Add New Company");
+                b1 = false; b2 = false; b3 = false; b4 = false; b5 = false; b6 = false; b7 = true; b8 = false; b9 = false;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void resumeIDComboBox_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                resumeBindingSource.DataSource = ResumeDB.GetResume(); 
+                btnPlus.Location = new Point(320, 159);
+                btnPlus.Visible = true;
+                toolTip1.SetToolTip(btnPlus, "Add New Resume");
+                b1 = false; b2 = false; b3 = false; b4 = false; b5 = false; b6 = false; b7 = false; b8 = true; b9 = false;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void schoolIDComboBox_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                schoolBindingSource.DataSource = SchoolDB.GetSchool();
+                btnPlus.Location = new Point(335, 81);
+                btnPlus.Visible = true;
+                toolTip1.SetToolTip(btnPlus, "Add New School");
+                b1 = false; b2 = false; b3 = false; b4 = false; b5 = false; b6 = false; b7 = false; b8 = false; b9 = true;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+            string frmTxt = "";
+            string v = "";
+             addMenuClicked = true;
+
+            addeditform = new frmAUI(addMenuClicked, AddText());
+            if (b1)
+            {
+                
+                v = "Contact";
+                addeditform.AllLVVisible(v);
+                addeditform.AllListView();
+                btnPlus.Visible = false;
+            }
+            else if (b2)
+            {
+                
+                v = "Position";
+                addeditform.AllLVVisible(v);
+                addeditform.AllListView();
+            }
+            else if (b3)
+            {
+                
+                v = "Position";
+                addeditform.AllLVVisible(v);
+                addeditform.AllListView();
+            }
+            else if (b4)
+            {
+                v = "Client";
+                addeditform.AllLVVisible(v);
+                addeditform.AllListView();
+            }
+            else if (b5)
+            {
+                v = "Company";
+                addeditform.AllLVVisible(v);
+                addeditform.AllListView();
+            }
+            else if (b6)
+            {
+                v = "Contact";
+                addeditform.AllLVVisible(v);
+                addeditform.AllListView();
+            }
+            else if (b7)
+            {
+                v = "Company";
+                addeditform.AllLVVisible(v);
+                addeditform.AllListView();
+            }
+            else if (b8)
+            {
+                v = "Resume";
+                addeditform.AllLVVisible(v);
+                addeditform.AllListView();
+            }
+            else if (b9)
+            {
+                v = "School";
+                addeditform.AllLVVisible(v);
+                addeditform.AllListView();
+            }
+            frmTxt= "Add " + v;
+
+
+           
+            addeditform.ShowDialog();
+        }
+        private string AddText()
+        {
+            string txtfrm = "Add ";
+            string v = "";
+            if (b1){v = "Contact";}
+            else if (b2){v = "Position";}
+            else if (b3){v = "Position";}
+            else if (b4){v = "Client";}
+            else if (b5){v = "Company";}
+            else if (b6){v = "Contact";}
+            else if (b7){v = "Company";}
+            else if (b8){v = "Resume";}
+            else if (b9){v = "School";}
+            return txtfrm +v;
         }
     }
 }

@@ -72,7 +72,7 @@ namespace ProjectPRG299DB
             Position position = new Position();
             SqlConnection connection = PRG299DB.GetConnection();
             string selectStatement = "SELECT PositionID, PositionName, Description, " +
-                "CompanyID, AdditionalNotes, ResumeID FROM dbo.Position = @PositionID";
+                "CompanyID, AdditionalNotes, ResumeID FROM dbo.Position WHERE PositionID = @PositionID";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             selectCommand.Parameters.AddWithValue("@PositionID", positionID);
             try
@@ -108,6 +108,10 @@ namespace ProjectPRG299DB
                         position.ResumeID = -1;
                     else
                         position.ResumeID = reader.GetInt32(cZCOrd);
+                    if (positionID==position.PositionID)
+                    {
+                        break;
+                    }
                 }
             }
             catch (SqlException ex)
@@ -158,7 +162,7 @@ namespace ProjectPRG299DB
         {
             SqlConnection connection = PRG299DB.GetConnection();
             string insertStatement =
-                "INSERT Position " +
+                "INSERT INTO Position " +
                 "(PositionName, Description, " +
                 "CompanyID, AdditionalNotes, ResumeID) " +
                 "VALUES (@PositionName, @Description, " +
@@ -172,7 +176,7 @@ namespace ProjectPRG299DB
                 insertCommand.Parameters.AddWithValue("@Description", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@Description", position.Description);
-            if(position.CompanyID.ToString() == null)
+            if(position.CompanyID.ToString() == "0")
                 insertCommand.Parameters.AddWithValue("@CompanyID", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@CompanyID", position.CompanyID);
@@ -180,7 +184,7 @@ namespace ProjectPRG299DB
                 insertCommand.Parameters.AddWithValue("@AdditionalNotes", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@AdditionalNotes", position.AdditionalNotes);
-            if(position.ResumeID.ToString() == null)
+            if(position.ResumeID.ToString() == "0")
                 insertCommand.Parameters.AddWithValue("@ResumeID", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@ResumeID", position.ResumeID);
@@ -220,15 +224,15 @@ namespace ProjectPRG299DB
                   "AdditionalNotes = @NewAdditionalNotes, " +
                   "ResumeID = @NewResumeID " +
                 "WHERE PositionID = @OldPositionID " +
-                  "PositionName = @OldPositionName, " +
+                  "AND (PositionName = @OldPositionName " +
                       "OR PositionName IS NULL AND @OldPositionName IS NULL) " +
-                  "Description = @OldDescription, " +
+                  "AND (Description = @OldDescription " +
                       "OR Description IS NULL AND @OldDescription IS NULL) " +
-                  "CompanyID = @OldCompanyID, " +
+                  "AND (CompanyID = @OldCompanyID " +
                       "OR CompanyID IS NULL AND @OldCompanyID IS NULL) " +
-                  "AdditionalNotes = @OldAdditionalNotes, " +
+                  "AND (AdditionalNotes = @OldAdditionalNotes " +
                       "OR AdditionalNotes IS NULL AND @OldAdditionalNotes IS NULL) " +
-                  "ResumeID = @OldResumeID " +
+                  "AND (ResumeID = @OldResumeID " +
                       "OR ResumeID IS NULL AND @OldResumeID IS NULL)";
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
             if (newPosition.PositionName == "")
@@ -261,7 +265,7 @@ namespace ProjectPRG299DB
                 updateCommand.Parameters.AddWithValue("@OldDescription", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@OldDescription", oldPosition.Description);
-            if (oldPosition.CompanyID.ToString() == "")
+            if (oldPosition.CompanyID == -1)
                 updateCommand.Parameters.AddWithValue("@OldCompanyID", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@OldCompanyID", oldPosition.CompanyID);
@@ -269,7 +273,7 @@ namespace ProjectPRG299DB
                 updateCommand.Parameters.AddWithValue("@OldAdditionalNotes", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@OldAdditionalNotes", oldPosition.AdditionalNotes);
-            if (oldPosition.ResumeID.ToString() == "")
+            if (oldPosition.ResumeID == -1)
                 updateCommand.Parameters.AddWithValue("@OldResumeID", DBNull.Value);
             else
                 updateCommand.Parameters.AddWithValue("@OldResumeID", oldPosition.ResumeID);
