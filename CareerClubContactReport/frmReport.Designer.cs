@@ -1,4 +1,4 @@
-﻿namespace CareerClubContactReport
+﻿namespace CareerClubContactReportApplication
 {
     partial class frmReport
     {
