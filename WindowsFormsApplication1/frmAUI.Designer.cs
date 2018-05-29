@@ -1095,6 +1095,7 @@
             this.contactIDComboBox1.Visible = false;
             this.contactIDComboBox1.SelectionChangeCommitted += new System.EventHandler(this.contactIDComboBox1_SelectionChangeCommitted);
             this.contactIDComboBox1.Click += new System.EventHandler(this.contactIDComboBox1_Click);
+            this.contactIDComboBox1.Enter += new System.EventHandler(this.contactIDComboBox1_Enter);
             // 
             // contactPositionBindingSource
             // 
@@ -1115,6 +1116,7 @@
             this.positionIDComboBox.Visible = false;
             this.positionIDComboBox.SelectionChangeCommitted += new System.EventHandler(this.positionIDComboBox_SelectionChangeCommitted);
             this.positionIDComboBox.Click += new System.EventHandler(this.positionIDComboBox_Click);
+            this.positionIDComboBox.Enter += new System.EventHandler(this.positionIDComboBox_Enter);
             // 
             // positionBindingSource
             // 
@@ -1148,6 +1150,7 @@
             this.companyIDComboBox1.ValueMember = "CompanyID";
             this.companyIDComboBox1.Visible = false;
             this.companyIDComboBox1.Click += new System.EventHandler(this.companyIDComboBox1_Click);
+            this.companyIDComboBox1.Enter += new System.EventHandler(this.companyIDComboBox1_Enter);
             // 
             // contactIDComboBox2
             // 
@@ -1164,6 +1167,7 @@
             this.contactIDComboBox2.Visible = false;
             this.contactIDComboBox2.SelectionChangeCommitted += new System.EventHandler(this.contactIDComboBox2_SelectionChangeCommitted);
             this.contactIDComboBox2.Click += new System.EventHandler(this.contactIDComboBox2_Click);
+            this.contactIDComboBox2.Enter += new System.EventHandler(this.contactIDComboBox2_Enter);
             // 
             // dateTimeInterviewDateTimePicker
             // 
@@ -1201,6 +1205,7 @@
             this.positionIDComboBox1.Visible = false;
             this.positionIDComboBox1.SelectedIndexChanged += new System.EventHandler(this.positionIDComboBox1_SelectedIndexChanged);
             this.positionIDComboBox1.Click += new System.EventHandler(this.positionIDComboBox1_Click);
+            this.positionIDComboBox1.Enter += new System.EventHandler(this.positionIDComboBox1_Enter);
             // 
             // additionalNotesTextBox3
             // 
@@ -1226,6 +1231,7 @@
             this.companyIDComboBox2.ValueMember = "CompanyID";
             this.companyIDComboBox2.Visible = false;
             this.companyIDComboBox2.Click += new System.EventHandler(this.companyIDComboBox2_Click);
+            this.companyIDComboBox2.Enter += new System.EventHandler(this.companyIDComboBox2_Enter);
             // 
             // descriptionTextBox
             // 
@@ -1273,6 +1279,7 @@
             this.resumeIDComboBox.ValueMember = "ResumeID";
             this.resumeIDComboBox.Visible = false;
             this.resumeIDComboBox.Click += new System.EventHandler(this.resumeIDComboBox_Click);
+            this.resumeIDComboBox.Enter += new System.EventHandler(this.resumeIDComboBox_Enter);
             // 
             // resumeBindingSource
             // 
@@ -1292,6 +1299,7 @@
             this.clientIDComboBox1.ValueMember = "ClientID";
             this.clientIDComboBox1.Visible = false;
             this.clientIDComboBox1.Click += new System.EventHandler(this.clientIDComboBox1_Click);
+            this.clientIDComboBox1.Enter += new System.EventHandler(this.clientIDComboBox1_Enter);
             // 
             // resumeIDTextBox1
             // 
@@ -1329,6 +1337,7 @@
             this.schoolIDComboBox.ValueMember = "SchoolID";
             this.schoolIDComboBox.Visible = false;
             this.schoolIDComboBox.Click += new System.EventHandler(this.schoolIDComboBox_Click);
+            this.schoolIDComboBox.Enter += new System.EventHandler(this.schoolIDComboBox_Enter);
             // 
             // schoolBindingSource
             // 

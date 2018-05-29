@@ -64,6 +64,7 @@ namespace WindowsFormsApplication1
 
         private void frmAUI_Load(object sender, EventArgs e)
         {
+            ComboBoxLoad();
     //        positionIDComboBox.SelectedIndex = -1;
       //      contactIDComboBox1.SelectedIndex = -1;
             toolTip1.SetToolTip(btnPlus, "");
@@ -1116,58 +1117,56 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void contactIDComboBox1_Click(object sender, EventArgs e)
+        private void ComboBoxLoad()
         {
             try
-            { 
-                contactBindingSource.DataSource = ContactDB.GetContactCombobox();
-                contactIDComboBox1.SelectedIndex = -1;
-                btnPlus.Location = new Point(320, 187);
-                btnPlus.Visible = true;
-                toolTip1.SetToolTip(btnPlus, "Add New Contact");
-                b1 = true; b2 = false; b3 = false; b4 = false; b5 = false; b6 = false; b7 = false; b8 = false; b9 = false;
+            {
+                if (posLVVisible)
+                {
+                    contactBindingSource.DataSource = ContactDB.GetContactCombobox();
+                    contactIDComboBox1.SelectedIndex = -1;
+                    companyBindingSource.DataSource = CompanyDB.GetCompany();
+                    resumeBindingSource.DataSource = ResumeDB.GetResume();
 
+                }
+                else if (conLVVisible)
+                {
+                    positionBindingSource.DataSource = PositionDB.GetPosition();
+                    positionIDComboBox.SelectedIndex = -1;
+                }
+                else if (intLVVisible)
+                {
+                    positionBindingSource.DataSource = PositionDB.GetPosition();
+                    contactBindingSource.DataSource = ContactDB.GetContactCombobox();
+                    companyBindingSource.DataSource = CompanyDB.GetCompany();
+
+                }
+                else if (resLVVisible)
+                {
+                    clientBindingSource.DataSource = ClientDB.GetClientCombobox();
+                    schoolBindingSource.DataSource = SchoolDB.GetSchool();
+
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
+        }
+
+        private void contactIDComboBox1_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void positionIDComboBox_Click(object sender, EventArgs e)
         {
-            try
-            { 
-                positionBindingSource.DataSource = PositionDB.GetPosition();
-                btnPlus.Location = new Point(320, 215);
-                btnPlus.Visible = true;
-                toolTip1.SetToolTip(btnPlus, "Add New Position");
-                b1 = false; b2 = true; b3 = false; b4 = false; b5 = false; b6 = false; b7 = false; b8 = false; b9 = false;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
-            }
+            
         }
 
         private void positionIDComboBox1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                positionIDComboBox1.SelectedIndexChanged -= new EventHandler(positionIDComboBox1_SelectedIndexChanged);
-                positionBindingSource.DataSource = PositionDB.GetPosition();
-                btnPlus.Location = new Point(340, 54);
-                btnPlus.Visible = true;
-                toolTip1.SetToolTip(btnPlus, "Add New Position");
-                b1 = false; b2 = false; b3 = true; b4 = false; b5 = false; b6 = false; b7 = false; b8 = false; b9 = false;
-                positionIDComboBox1.SelectedIndexChanged += new EventHandler(positionIDComboBox1_SelectedIndexChanged);
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
-            }
         }
 
         private void contactIDComboBox1_SelectionChangeCommitted(object sender, EventArgs e)
@@ -1215,106 +1214,181 @@ namespace WindowsFormsApplication1
 
         }
 
-        private void clientIDComboBox1_Click(object sender, EventArgs e)
+        private void positionIDComboBox_Enter(object sender, EventArgs e)
         {
+            btnPlus.Location = new Point(320, 215);
+            btnPlus.Visible = true;
+            toolTip1.SetToolTip(btnPlus, "Add New Position");
+            b1 = false; b2 = true; b3 = false; b4 = false; b5 = false; b6 = false; b7 = false; b8 = false; b9 = false;
+            
+                positionBindingSource.DataSource = PositionDB.GetPosition();
+                positionIDComboBox.SelectedIndex = -1;
+
+        }
+
+        private void clientIDComboBox1_Enter(object sender, EventArgs e)
+        {
+            btnPlus.Location = new Point(335, 107);
+            btnPlus.Visible = true;
+            toolTip1.SetToolTip(btnPlus, "Add New Client");
+            b1 = false; b2 = false; b3 = false; b4 = true; b5 = false; b6 = false; b7 = false; b8 = false; b9 = false;
             try
-            { 
+            {
                 clientBindingSource.DataSource = ClientDB.GetClientCombobox();
-                btnPlus.Location = new Point(335, 107);
-                btnPlus.Visible = true;
-                toolTip1.SetToolTip(btnPlus, "Add New Client");
-                b1 = false; b2 = false; b3 = false; b4 = true; b5 = false; b6 = false; b7 = false; b8 = false; b9 = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void companyIDComboBox1_Enter(object sender, EventArgs e)
+        {
+            btnPlus.Location = new Point(320, 80);
+            btnPlus.Visible = true;
+            toolTip1.SetToolTip(btnPlus, "Add New Company");
+            b1 = false; b2 = false; b3 = false; b4 = false; b5 = true; b6 = false; b7 = false; b8 = false; b9 = false;
+            try
+            {
+                companyBindingSource.DataSource = CompanyDB.GetCompany();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+
+        }
+
+        private void companyIDComboBox2_Enter(object sender, EventArgs e)
+        {
+            btnPlus.Location = new Point(335, 107);
+            btnPlus.Visible = true;
+            toolTip1.SetToolTip(btnPlus, "Add New Company");
+            b1 = false; b2 = false; b3 = false; b4 = false; b5 = false; b6 = false; b7 = true; b8 = false; b9 = false;
+            try
+            {
+                companyBindingSource.DataSource = CompanyDB.GetCompany();
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
+
+        }
+
+        private void contactIDComboBox1_Enter(object sender, EventArgs e)
+        {
+            btnPlus.Location = new Point(320, 187);
+            btnPlus.Visible = true;
+            toolTip1.SetToolTip(btnPlus, "Add New Contact");
+            b1 = true; b2 = false; b3 = false; b4 = false; b5 = false; b6 = false; b7 = false; b8 = false; b9 = false;
+            try
+            {
+                contactBindingSource.DataSource = ContactDB.GetContactCombobox();
+                contactIDComboBox1.SelectedIndex = -1;
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void contactIDComboBox2_Enter(object sender, EventArgs e)
+        {
+            btnPlus.Location = new Point(320, 106);
+            btnPlus.Visible = true;
+            toolTip1.SetToolTip(btnPlus, "Add New Contact");
+            b1 = false; b2 = false; b3 = false; b4 = false; b5 = false; b6 = true; b7 = false; b8 = false; b9 = false;
+            try
+            {
+                contactBindingSource.DataSource = ContactDB.GetContactCombobox();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void positionIDComboBox1_Enter(object sender, EventArgs e)
+        {
+            btnPlus.Location = new Point(340, 54);
+            btnPlus.Visible = true;
+            toolTip1.SetToolTip(btnPlus, "Add New Position");
+            b1 = false; b2 = false; b3 = true; b4 = false; b5 = false; b6 = false; b7 = false; b8 = false; b9 = false;
+            try
+            {
+                positionBindingSource.DataSource = PositionDB.GetPosition();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void resumeIDComboBox_Enter(object sender, EventArgs e)
+        {
+            btnPlus.Location = new Point(320, 159);
+            btnPlus.Visible = true;
+            toolTip1.SetToolTip(btnPlus, "Add New Resume");
+            b1 = false; b2 = false; b3 = false; b4 = false; b5 = false; b6 = false; b7 = false; b8 = true; b9 = false;
+            try
+            {
+                resumeBindingSource.DataSource = ResumeDB.GetResume();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void schoolIDComboBox_Enter(object sender, EventArgs e)
+        {
+            btnPlus.Location = new Point(335, 81);
+            btnPlus.Visible = true;
+            toolTip1.SetToolTip(btnPlus, "Add New School");
+            b1 = false; b2 = false; b3 = false; b4 = false; b5 = false; b6 = false; b7 = false; b8 = false; b9 = true;
+            try
+            {
+                schoolBindingSource.DataSource = SchoolDB.GetSchool();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void clientIDComboBox1_Click(object sender, EventArgs e)
+        {
+            
         }
 
         private void companyIDComboBox1_Click(object sender, EventArgs e)
         {
-            try
-            { 
-                companyBindingSource.DataSource = CompanyDB.GetCompany();
-                btnPlus.Location = new Point(320, 80);
-                btnPlus.Visible = true;
-                toolTip1.SetToolTip(btnPlus, "Add New Company");
-                b1 = false; b2 = false; b3 = false; b4 = false; b5 = true; b6 = false; b7 = false; b8 = false; b9 = false;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
-            }
         }
 
         private void contactIDComboBox2_Click(object sender, EventArgs e)
         {
-            try
-            { 
-                contactBindingSource.DataSource = ContactDB.GetContactCombobox();
-                btnPlus.Location = new Point(320, 106);
-                btnPlus.Visible = true;
-                toolTip1.SetToolTip(btnPlus, "Add New Contact");
-                b1 = false; b2 = false; b3 = false; b4 = false; b5 = false; b6 = true; b7 = false; b8 = false; b9 = false;
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
-            }
         }
 
         private void companyIDComboBox2_Click(object sender, EventArgs e)
         {
-            try
-            { 
-                companyBindingSource.DataSource = CompanyDB.GetCompany();
-                btnPlus.Location = new Point(335, 107);
-                btnPlus.Visible = true;
-                toolTip1.SetToolTip(btnPlus, "Add New Company");
-                b1 = false; b2 = false; b3 = false; b4 = false; b5 = false; b6 = false; b7 = true; b8 = false; b9 = false;
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
-            }
         }
 
         private void resumeIDComboBox_Click(object sender, EventArgs e)
         {
-            try
-            {
-                resumeBindingSource.DataSource = ResumeDB.GetResume(); 
-                btnPlus.Location = new Point(320, 159);
-                btnPlus.Visible = true;
-                toolTip1.SetToolTip(btnPlus, "Add New Resume");
-                b1 = false; b2 = false; b3 = false; b4 = false; b5 = false; b6 = false; b7 = false; b8 = true; b9 = false;
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
-            }
         }
 
         private void schoolIDComboBox_Click(object sender, EventArgs e)
         {
-            try
-            {
-                schoolBindingSource.DataSource = SchoolDB.GetSchool();
-                btnPlus.Location = new Point(335, 81);
-                btnPlus.Visible = true;
-                toolTip1.SetToolTip(btnPlus, "Add New School");
-                b1 = false; b2 = false; b3 = false; b4 = false; b5 = false; b6 = false; b7 = false; b8 = false; b9 = true;
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
-            }
         }
 
         private void button1_Click(object sender, EventArgs e)
