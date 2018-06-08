@@ -189,15 +189,15 @@ namespace ProjectPRG299DB
                 "VALUES (@SchoolName, @StreetName, " +
                 "@City, @State, @ZipCode, @NumberOfYearsAttended, @Graduated);";
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
-            if (school.SchoolName == null)
+            if (school.SchoolName == null|| school.SchoolName=="")
                 insertCommand.Parameters.AddWithValue("@SchoolName", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@SchoolName", school.SchoolName);
-            if (school.StreetName == null)
+            if (school.StreetName == null|| school.StreetName=="")
                 insertCommand.Parameters.AddWithValue("@StreetName", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@StreetName", school.StreetName);
-            if (school.City == null)
+            if (school.City == null||school.City=="")
                 insertCommand.Parameters.AddWithValue("@City", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@City", school.City);
@@ -205,7 +205,7 @@ namespace ProjectPRG299DB
                 insertCommand.Parameters.AddWithValue("@State", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@State", school.State);
-            if (school.ZipCode == null)
+            if (school.ZipCode == null|| school.ZipCode=="")
                 insertCommand.Parameters.AddWithValue("@ZipCode", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@ZipCode", school.ZipCode);
@@ -213,7 +213,7 @@ namespace ProjectPRG299DB
                 insertCommand.Parameters.AddWithValue("@NumberOfYearsAttended", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@NumberOfYearsAttended", school.NumberOfYearsAttended);
-            if (school.Graduated == null)
+            if (school.Graduated == null||school.Graduated=="")
                 insertCommand.Parameters.AddWithValue("@Graduated",
                     DBNull.Value);
             else

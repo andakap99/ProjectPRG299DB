@@ -51,6 +51,8 @@
             this.schoolDataGridView = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button14 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -74,36 +76,8 @@
             this.button11 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contactBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn57 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn58 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -114,28 +88,54 @@
             this.dataGridViewTextBoxColumn56 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn55 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.schoolBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.positionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contactPositionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.resumeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.interviewBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn50 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn51 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn52 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn53 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn44 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn45 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn46 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn47 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn48 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn49 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.positionBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contactPositionBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn50 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn51 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn52 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn53 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.resumeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn38 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn39 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn40 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn41 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn42 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn43 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.interviewBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clientDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyDataGridView)).BeginInit();
@@ -297,6 +297,7 @@
             this.clientDataGridView.Location = new System.Drawing.Point(0, 0);
             this.clientDataGridView.Name = "clientDataGridView";
             this.clientDataGridView.ReadOnly = true;
+            this.clientDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.clientDataGridView.Size = new System.Drawing.Size(200, 100);
             this.clientDataGridView.TabIndex = 0;
             // 
@@ -323,6 +324,7 @@
             this.companyDataGridView.Location = new System.Drawing.Point(0, 0);
             this.companyDataGridView.Name = "companyDataGridView";
             this.companyDataGridView.ReadOnly = true;
+            this.companyDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.companyDataGridView.Size = new System.Drawing.Size(218, 165);
             this.companyDataGridView.TabIndex = 0;
             // 
@@ -346,6 +348,7 @@
             this.contactDataGridView.Location = new System.Drawing.Point(0, 0);
             this.contactDataGridView.Name = "contactDataGridView";
             this.contactDataGridView.ReadOnly = true;
+            this.contactDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.contactDataGridView.Size = new System.Drawing.Size(200, 100);
             this.contactDataGridView.TabIndex = 0;
             // 
@@ -364,6 +367,7 @@
             this.contactPositionDataGridView.Location = new System.Drawing.Point(0, 0);
             this.contactPositionDataGridView.Name = "contactPositionDataGridView";
             this.contactPositionDataGridView.ReadOnly = true;
+            this.contactPositionDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.contactPositionDataGridView.Size = new System.Drawing.Size(200, 100);
             this.contactPositionDataGridView.TabIndex = 0;
             // 
@@ -386,6 +390,7 @@
             this.interviewDataGridView.Location = new System.Drawing.Point(0, 0);
             this.interviewDataGridView.Name = "interviewDataGridView";
             this.interviewDataGridView.ReadOnly = true;
+            this.interviewDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.interviewDataGridView.Size = new System.Drawing.Size(200, 100);
             this.interviewDataGridView.TabIndex = 0;
             // 
@@ -408,6 +413,7 @@
             this.positionDataGridView.Location = new System.Drawing.Point(0, 0);
             this.positionDataGridView.Name = "positionDataGridView";
             this.positionDataGridView.ReadOnly = true;
+            this.positionDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.positionDataGridView.Size = new System.Drawing.Size(200, 100);
             this.positionDataGridView.TabIndex = 0;
             // 
@@ -428,6 +434,7 @@
             this.resumeDataGridView.Location = new System.Drawing.Point(0, 0);
             this.resumeDataGridView.Name = "resumeDataGridView";
             this.resumeDataGridView.ReadOnly = true;
+            this.resumeDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.resumeDataGridView.Size = new System.Drawing.Size(200, 100);
             this.resumeDataGridView.TabIndex = 0;
             // 
@@ -452,6 +459,7 @@
             this.schoolDataGridView.Location = new System.Drawing.Point(0, 0);
             this.schoolDataGridView.Name = "schoolDataGridView";
             this.schoolDataGridView.ReadOnly = true;
+            this.schoolDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.schoolDataGridView.Size = new System.Drawing.Size(200, 100);
             this.schoolDataGridView.TabIndex = 0;
             // 
@@ -477,6 +485,31 @@
             this.panel2.TabIndex = 3;
             this.panel2.MouseLeave += new System.EventHandler(this.panel2_MouseLeave);
             this.panel2.MouseHover += new System.EventHandler(this.panel2_MouseHover);
+            // 
+            // button14
+            // 
+            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button14.ForeColor = System.Drawing.Color.White;
+            this.button14.Location = new System.Drawing.Point(860, 0);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(46, 28);
+            this.button14.TabIndex = 3;
+            this.button14.Text = "_";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // button13
+            // 
+            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button13.ForeColor = System.Drawing.Color.White;
+            this.button13.Location = new System.Drawing.Point(906, 0);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(46, 28);
+            this.button13.TabIndex = 2;
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // button12
             // 
@@ -768,30 +801,185 @@
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.AddModifyToolStripMenu_Click);
             // 
-            // button13
+            // companyBindingSource
             // 
-            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.ForeColor = System.Drawing.Color.White;
-            this.button13.Location = new System.Drawing.Point(906, 0);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(46, 28);
-            this.button13.TabIndex = 2;
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
+            this.companyBindingSource.DataSource = typeof(ProjectPRG299DB.Company);
             // 
-            // button14
+            // contactBindingSource
             // 
-            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button14.ForeColor = System.Drawing.Color.White;
-            this.button14.Location = new System.Drawing.Point(860, 0);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(46, 28);
-            this.button14.TabIndex = 3;
-            this.button14.Text = "_";
-            this.button14.UseVisualStyleBackColor = true;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
+            this.contactBindingSource.DataSource = typeof(ProjectPRG299DB.Contact);
+            // 
+            // clientBindingSource
+            // 
+            this.clientBindingSource.DataSource = typeof(ProjectPRG299DB.Client);
+            // 
+            // dataGridViewTextBoxColumn57
+            // 
+            this.dataGridViewTextBoxColumn57.DataPropertyName = "SchoolID";
+            this.dataGridViewTextBoxColumn57.HeaderText = "SchoolID";
+            this.dataGridViewTextBoxColumn57.Name = "dataGridViewTextBoxColumn57";
+            this.dataGridViewTextBoxColumn57.ReadOnly = true;
+            this.dataGridViewTextBoxColumn57.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn58
+            // 
+            this.dataGridViewTextBoxColumn58.DataPropertyName = "SchoolName";
+            this.dataGridViewTextBoxColumn58.HeaderText = "SchoolName";
+            this.dataGridViewTextBoxColumn58.Name = "dataGridViewTextBoxColumn58";
+            this.dataGridViewTextBoxColumn58.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn60
+            // 
+            this.dataGridViewTextBoxColumn60.DataPropertyName = "StreetName";
+            this.dataGridViewTextBoxColumn60.HeaderText = "StreetName";
+            this.dataGridViewTextBoxColumn60.Name = "dataGridViewTextBoxColumn60";
+            this.dataGridViewTextBoxColumn60.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn54
+            // 
+            this.dataGridViewTextBoxColumn54.DataPropertyName = "City";
+            this.dataGridViewTextBoxColumn54.HeaderText = "City";
+            this.dataGridViewTextBoxColumn54.Name = "dataGridViewTextBoxColumn54";
+            this.dataGridViewTextBoxColumn54.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn59
+            // 
+            this.dataGridViewTextBoxColumn59.DataPropertyName = "State";
+            this.dataGridViewTextBoxColumn59.HeaderText = "State";
+            this.dataGridViewTextBoxColumn59.Name = "dataGridViewTextBoxColumn59";
+            this.dataGridViewTextBoxColumn59.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn61
+            // 
+            this.dataGridViewTextBoxColumn61.DataPropertyName = "ZipCode";
+            this.dataGridViewTextBoxColumn61.HeaderText = "ZipCode";
+            this.dataGridViewTextBoxColumn61.Name = "dataGridViewTextBoxColumn61";
+            this.dataGridViewTextBoxColumn61.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn56
+            // 
+            this.dataGridViewTextBoxColumn56.DataPropertyName = "NumberOfYearsAttended";
+            this.dataGridViewTextBoxColumn56.HeaderText = "NumberOfYearsAttended";
+            this.dataGridViewTextBoxColumn56.Name = "dataGridViewTextBoxColumn56";
+            this.dataGridViewTextBoxColumn56.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn55
+            // 
+            this.dataGridViewTextBoxColumn55.DataPropertyName = "Graduated";
+            this.dataGridViewTextBoxColumn55.HeaderText = "Graduated";
+            this.dataGridViewTextBoxColumn55.Name = "dataGridViewTextBoxColumn55";
+            this.dataGridViewTextBoxColumn55.ReadOnly = true;
+            // 
+            // schoolBindingSource
+            // 
+            this.schoolBindingSource.DataSource = typeof(ProjectPRG299DB.School);
+            // 
+            // positionBindingSource
+            // 
+            this.positionBindingSource.DataSource = typeof(ProjectPRG299DB.Position);
+            // 
+            // dataGridViewTextBoxColumn36
+            // 
+            this.dataGridViewTextBoxColumn36.DataPropertyName = "ContactID";
+            this.dataGridViewTextBoxColumn36.HeaderText = "ContactID";
+            this.dataGridViewTextBoxColumn36.Name = "dataGridViewTextBoxColumn36";
+            this.dataGridViewTextBoxColumn36.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn37
+            // 
+            this.dataGridViewTextBoxColumn37.DataPropertyName = "PositionID";
+            this.dataGridViewTextBoxColumn37.HeaderText = "PositionID";
+            this.dataGridViewTextBoxColumn37.Name = "dataGridViewTextBoxColumn37";
+            this.dataGridViewTextBoxColumn37.ReadOnly = true;
+            // 
+            // contactPositionBindingSource
+            // 
+            this.contactPositionBindingSource.DataSource = typeof(ProjectPRG299DB.ContactPosition);
+            // 
+            // resumeBindingSource
+            // 
+            this.resumeBindingSource.DataSource = typeof(ProjectPRG299DB.Resume);
+            // 
+            // interviewBindingSource
+            // 
+            this.interviewBindingSource.DataSource = typeof(ProjectPRG299DB.Interview);
+            // 
+            // dataGridViewTextBoxColumn50
+            // 
+            this.dataGridViewTextBoxColumn50.DataPropertyName = "ResumeID";
+            this.dataGridViewTextBoxColumn50.HeaderText = "ResumeID";
+            this.dataGridViewTextBoxColumn50.Name = "dataGridViewTextBoxColumn50";
+            this.dataGridViewTextBoxColumn50.ReadOnly = true;
+            this.dataGridViewTextBoxColumn50.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn51
+            // 
+            this.dataGridViewTextBoxColumn51.DataPropertyName = "RSCDirectoryPath";
+            this.dataGridViewTextBoxColumn51.HeaderText = "RSCDirectoryPath";
+            this.dataGridViewTextBoxColumn51.Name = "dataGridViewTextBoxColumn51";
+            this.dataGridViewTextBoxColumn51.ReadOnly = true;
+            this.dataGridViewTextBoxColumn51.Width = 700;
+            // 
+            // dataGridViewTextBoxColumn52
+            // 
+            this.dataGridViewTextBoxColumn52.DataPropertyName = "SchoolID";
+            this.dataGridViewTextBoxColumn52.HeaderText = "SchoolID";
+            this.dataGridViewTextBoxColumn52.Name = "dataGridViewTextBoxColumn52";
+            this.dataGridViewTextBoxColumn52.ReadOnly = true;
+            this.dataGridViewTextBoxColumn52.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn53
+            // 
+            this.dataGridViewTextBoxColumn53.DataPropertyName = "ClientID";
+            this.dataGridViewTextBoxColumn53.HeaderText = "ClientID";
+            this.dataGridViewTextBoxColumn53.Name = "dataGridViewTextBoxColumn53";
+            this.dataGridViewTextBoxColumn53.ReadOnly = true;
+            this.dataGridViewTextBoxColumn53.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn44
+            // 
+            this.dataGridViewTextBoxColumn44.DataPropertyName = "PositionID";
+            this.dataGridViewTextBoxColumn44.HeaderText = "PositionID";
+            this.dataGridViewTextBoxColumn44.Name = "dataGridViewTextBoxColumn44";
+            this.dataGridViewTextBoxColumn44.ReadOnly = true;
+            this.dataGridViewTextBoxColumn44.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn45
+            // 
+            this.dataGridViewTextBoxColumn45.DataPropertyName = "PositionName";
+            this.dataGridViewTextBoxColumn45.HeaderText = "PositionName";
+            this.dataGridViewTextBoxColumn45.Name = "dataGridViewTextBoxColumn45";
+            this.dataGridViewTextBoxColumn45.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn46
+            // 
+            this.dataGridViewTextBoxColumn46.DataPropertyName = "Description";
+            this.dataGridViewTextBoxColumn46.HeaderText = "Description";
+            this.dataGridViewTextBoxColumn46.Name = "dataGridViewTextBoxColumn46";
+            this.dataGridViewTextBoxColumn46.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn47
+            // 
+            this.dataGridViewTextBoxColumn47.DataPropertyName = "CompanyID";
+            this.dataGridViewTextBoxColumn47.HeaderText = "CompanyID";
+            this.dataGridViewTextBoxColumn47.Name = "dataGridViewTextBoxColumn47";
+            this.dataGridViewTextBoxColumn47.ReadOnly = true;
+            this.dataGridViewTextBoxColumn47.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn48
+            // 
+            this.dataGridViewTextBoxColumn48.DataPropertyName = "AdditionalNotes";
+            this.dataGridViewTextBoxColumn48.HeaderText = "AdditionalNotes";
+            this.dataGridViewTextBoxColumn48.Name = "dataGridViewTextBoxColumn48";
+            this.dataGridViewTextBoxColumn48.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn49
+            // 
+            this.dataGridViewTextBoxColumn49.DataPropertyName = "ResumeID";
+            this.dataGridViewTextBoxColumn49.HeaderText = "ResumeID";
+            this.dataGridViewTextBoxColumn49.Name = "dataGridViewTextBoxColumn49";
+            this.dataGridViewTextBoxColumn49.ReadOnly = true;
+            this.dataGridViewTextBoxColumn49.Visible = false;
             // 
             // dataGridViewTextBoxColumn10
             // 
@@ -799,6 +987,7 @@
             this.dataGridViewTextBoxColumn10.HeaderText = "CompanyID";
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            this.dataGridViewTextBoxColumn10.Visible = false;
             // 
             // dataGridViewTextBoxColumn11
             // 
@@ -863,69 +1052,13 @@
             this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
             this.dataGridViewTextBoxColumn19.ReadOnly = true;
             // 
-            // companyBindingSource
-            // 
-            this.companyBindingSource.DataSource = typeof(ProjectPRG299DB.Company);
-            // 
-            // dataGridViewTextBoxColumn20
-            // 
-            this.dataGridViewTextBoxColumn20.DataPropertyName = "ContactID";
-            this.dataGridViewTextBoxColumn20.HeaderText = "ContactID";
-            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
-            this.dataGridViewTextBoxColumn20.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn21
-            // 
-            this.dataGridViewTextBoxColumn21.DataPropertyName = "FirstName";
-            this.dataGridViewTextBoxColumn21.HeaderText = "FirstName";
-            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
-            this.dataGridViewTextBoxColumn21.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn22
-            // 
-            this.dataGridViewTextBoxColumn22.DataPropertyName = "LastName";
-            this.dataGridViewTextBoxColumn22.HeaderText = "LastName";
-            this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
-            this.dataGridViewTextBoxColumn22.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn23
-            // 
-            this.dataGridViewTextBoxColumn23.DataPropertyName = "EmailAddress";
-            this.dataGridViewTextBoxColumn23.HeaderText = "EmailAddress";
-            this.dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
-            this.dataGridViewTextBoxColumn23.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn24
-            // 
-            this.dataGridViewTextBoxColumn24.DataPropertyName = "PhoneNumber";
-            this.dataGridViewTextBoxColumn24.HeaderText = "PhoneNumber";
-            this.dataGridViewTextBoxColumn24.Name = "dataGridViewTextBoxColumn24";
-            this.dataGridViewTextBoxColumn24.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn25
-            // 
-            this.dataGridViewTextBoxColumn25.DataPropertyName = "CellPhone";
-            this.dataGridViewTextBoxColumn25.HeaderText = "CellPhone";
-            this.dataGridViewTextBoxColumn25.Name = "dataGridViewTextBoxColumn25";
-            this.dataGridViewTextBoxColumn25.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn26
-            // 
-            this.dataGridViewTextBoxColumn26.DataPropertyName = "AdditionalNotes";
-            this.dataGridViewTextBoxColumn26.HeaderText = "AdditionalNotes";
-            this.dataGridViewTextBoxColumn26.Name = "dataGridViewTextBoxColumn26";
-            this.dataGridViewTextBoxColumn26.ReadOnly = true;
-            // 
-            // contactBindingSource
-            // 
-            this.contactBindingSource.DataSource = typeof(ProjectPRG299DB.Contact);
-            // 
             // dataGridViewTextBoxColumn27
             // 
             this.dataGridViewTextBoxColumn27.DataPropertyName = "ClientID";
             this.dataGridViewTextBoxColumn27.HeaderText = "ClientID";
             this.dataGridViewTextBoxColumn27.Name = "dataGridViewTextBoxColumn27";
             this.dataGridViewTextBoxColumn27.ReadOnly = true;
+            this.dataGridViewTextBoxColumn27.Visible = false;
             // 
             // dataGridViewTextBoxColumn28
             // 
@@ -984,174 +1117,13 @@
             this.dataGridViewTextBoxColumn35.Name = "dataGridViewTextBoxColumn35";
             this.dataGridViewTextBoxColumn35.ReadOnly = true;
             // 
-            // clientBindingSource
-            // 
-            this.clientBindingSource.DataSource = typeof(ProjectPRG299DB.Client);
-            // 
-            // dataGridViewTextBoxColumn57
-            // 
-            this.dataGridViewTextBoxColumn57.DataPropertyName = "SchoolID";
-            this.dataGridViewTextBoxColumn57.HeaderText = "SchoolID";
-            this.dataGridViewTextBoxColumn57.Name = "dataGridViewTextBoxColumn57";
-            this.dataGridViewTextBoxColumn57.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn58
-            // 
-            this.dataGridViewTextBoxColumn58.DataPropertyName = "SchoolName";
-            this.dataGridViewTextBoxColumn58.HeaderText = "SchoolName";
-            this.dataGridViewTextBoxColumn58.Name = "dataGridViewTextBoxColumn58";
-            this.dataGridViewTextBoxColumn58.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn60
-            // 
-            this.dataGridViewTextBoxColumn60.DataPropertyName = "StreetName";
-            this.dataGridViewTextBoxColumn60.HeaderText = "StreetName";
-            this.dataGridViewTextBoxColumn60.Name = "dataGridViewTextBoxColumn60";
-            this.dataGridViewTextBoxColumn60.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn54
-            // 
-            this.dataGridViewTextBoxColumn54.DataPropertyName = "City";
-            this.dataGridViewTextBoxColumn54.HeaderText = "City";
-            this.dataGridViewTextBoxColumn54.Name = "dataGridViewTextBoxColumn54";
-            this.dataGridViewTextBoxColumn54.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn59
-            // 
-            this.dataGridViewTextBoxColumn59.DataPropertyName = "State";
-            this.dataGridViewTextBoxColumn59.HeaderText = "State";
-            this.dataGridViewTextBoxColumn59.Name = "dataGridViewTextBoxColumn59";
-            this.dataGridViewTextBoxColumn59.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn61
-            // 
-            this.dataGridViewTextBoxColumn61.DataPropertyName = "ZipCode";
-            this.dataGridViewTextBoxColumn61.HeaderText = "ZipCode";
-            this.dataGridViewTextBoxColumn61.Name = "dataGridViewTextBoxColumn61";
-            this.dataGridViewTextBoxColumn61.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn56
-            // 
-            this.dataGridViewTextBoxColumn56.DataPropertyName = "NumberOfYearsAttended";
-            this.dataGridViewTextBoxColumn56.HeaderText = "NumberOfYearsAttended";
-            this.dataGridViewTextBoxColumn56.Name = "dataGridViewTextBoxColumn56";
-            this.dataGridViewTextBoxColumn56.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn55
-            // 
-            this.dataGridViewTextBoxColumn55.DataPropertyName = "Graduated";
-            this.dataGridViewTextBoxColumn55.HeaderText = "Graduated";
-            this.dataGridViewTextBoxColumn55.Name = "dataGridViewTextBoxColumn55";
-            this.dataGridViewTextBoxColumn55.ReadOnly = true;
-            // 
-            // schoolBindingSource
-            // 
-            this.schoolBindingSource.DataSource = typeof(ProjectPRG299DB.School);
-            // 
-            // dataGridViewTextBoxColumn44
-            // 
-            this.dataGridViewTextBoxColumn44.DataPropertyName = "PositionID";
-            this.dataGridViewTextBoxColumn44.HeaderText = "PositionID";
-            this.dataGridViewTextBoxColumn44.Name = "dataGridViewTextBoxColumn44";
-            this.dataGridViewTextBoxColumn44.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn45
-            // 
-            this.dataGridViewTextBoxColumn45.DataPropertyName = "PositionName";
-            this.dataGridViewTextBoxColumn45.HeaderText = "PositionName";
-            this.dataGridViewTextBoxColumn45.Name = "dataGridViewTextBoxColumn45";
-            this.dataGridViewTextBoxColumn45.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn46
-            // 
-            this.dataGridViewTextBoxColumn46.DataPropertyName = "Description";
-            this.dataGridViewTextBoxColumn46.HeaderText = "Description";
-            this.dataGridViewTextBoxColumn46.Name = "dataGridViewTextBoxColumn46";
-            this.dataGridViewTextBoxColumn46.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn47
-            // 
-            this.dataGridViewTextBoxColumn47.DataPropertyName = "CompanyID";
-            this.dataGridViewTextBoxColumn47.HeaderText = "CompanyID";
-            this.dataGridViewTextBoxColumn47.Name = "dataGridViewTextBoxColumn47";
-            this.dataGridViewTextBoxColumn47.ReadOnly = true;
-            this.dataGridViewTextBoxColumn47.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn48
-            // 
-            this.dataGridViewTextBoxColumn48.DataPropertyName = "AdditionalNotes";
-            this.dataGridViewTextBoxColumn48.HeaderText = "AdditionalNotes";
-            this.dataGridViewTextBoxColumn48.Name = "dataGridViewTextBoxColumn48";
-            this.dataGridViewTextBoxColumn48.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn49
-            // 
-            this.dataGridViewTextBoxColumn49.DataPropertyName = "ResumeID";
-            this.dataGridViewTextBoxColumn49.HeaderText = "ResumeID";
-            this.dataGridViewTextBoxColumn49.Name = "dataGridViewTextBoxColumn49";
-            this.dataGridViewTextBoxColumn49.ReadOnly = true;
-            this.dataGridViewTextBoxColumn49.Visible = false;
-            // 
-            // positionBindingSource
-            // 
-            this.positionBindingSource.DataSource = typeof(ProjectPRG299DB.Position);
-            // 
-            // dataGridViewTextBoxColumn36
-            // 
-            this.dataGridViewTextBoxColumn36.DataPropertyName = "ContactID";
-            this.dataGridViewTextBoxColumn36.HeaderText = "ContactID";
-            this.dataGridViewTextBoxColumn36.Name = "dataGridViewTextBoxColumn36";
-            this.dataGridViewTextBoxColumn36.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn37
-            // 
-            this.dataGridViewTextBoxColumn37.DataPropertyName = "PositionID";
-            this.dataGridViewTextBoxColumn37.HeaderText = "PositionID";
-            this.dataGridViewTextBoxColumn37.Name = "dataGridViewTextBoxColumn37";
-            this.dataGridViewTextBoxColumn37.ReadOnly = true;
-            // 
-            // contactPositionBindingSource
-            // 
-            this.contactPositionBindingSource.DataSource = typeof(ProjectPRG299DB.ContactPosition);
-            // 
-            // dataGridViewTextBoxColumn50
-            // 
-            this.dataGridViewTextBoxColumn50.DataPropertyName = "ResumeID";
-            this.dataGridViewTextBoxColumn50.HeaderText = "ResumeID";
-            this.dataGridViewTextBoxColumn50.Name = "dataGridViewTextBoxColumn50";
-            this.dataGridViewTextBoxColumn50.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn51
-            // 
-            this.dataGridViewTextBoxColumn51.DataPropertyName = "RSCDirectoryPath";
-            this.dataGridViewTextBoxColumn51.HeaderText = "RSCDirectoryPath";
-            this.dataGridViewTextBoxColumn51.Name = "dataGridViewTextBoxColumn51";
-            this.dataGridViewTextBoxColumn51.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn52
-            // 
-            this.dataGridViewTextBoxColumn52.DataPropertyName = "SchoolID";
-            this.dataGridViewTextBoxColumn52.HeaderText = "SchoolID";
-            this.dataGridViewTextBoxColumn52.Name = "dataGridViewTextBoxColumn52";
-            this.dataGridViewTextBoxColumn52.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn53
-            // 
-            this.dataGridViewTextBoxColumn53.DataPropertyName = "ClientID";
-            this.dataGridViewTextBoxColumn53.HeaderText = "ClientID";
-            this.dataGridViewTextBoxColumn53.Name = "dataGridViewTextBoxColumn53";
-            this.dataGridViewTextBoxColumn53.ReadOnly = true;
-            // 
-            // resumeBindingSource
-            // 
-            this.resumeBindingSource.DataSource = typeof(ProjectPRG299DB.Resume);
-            // 
             // dataGridViewTextBoxColumn38
             // 
             this.dataGridViewTextBoxColumn38.DataPropertyName = "InterviewID";
             this.dataGridViewTextBoxColumn38.HeaderText = "InterviewID";
             this.dataGridViewTextBoxColumn38.Name = "dataGridViewTextBoxColumn38";
             this.dataGridViewTextBoxColumn38.ReadOnly = true;
+            this.dataGridViewTextBoxColumn38.Visible = false;
             // 
             // dataGridViewTextBoxColumn39
             // 
@@ -1159,6 +1131,7 @@
             this.dataGridViewTextBoxColumn39.HeaderText = "PositionID";
             this.dataGridViewTextBoxColumn39.Name = "dataGridViewTextBoxColumn39";
             this.dataGridViewTextBoxColumn39.ReadOnly = true;
+            this.dataGridViewTextBoxColumn39.Visible = false;
             // 
             // dataGridViewTextBoxColumn40
             // 
@@ -1166,6 +1139,7 @@
             this.dataGridViewTextBoxColumn40.HeaderText = "CompanyID";
             this.dataGridViewTextBoxColumn40.Name = "dataGridViewTextBoxColumn40";
             this.dataGridViewTextBoxColumn40.ReadOnly = true;
+            this.dataGridViewTextBoxColumn40.Visible = false;
             // 
             // dataGridViewTextBoxColumn41
             // 
@@ -1173,6 +1147,7 @@
             this.dataGridViewTextBoxColumn41.HeaderText = "ContactID";
             this.dataGridViewTextBoxColumn41.Name = "dataGridViewTextBoxColumn41";
             this.dataGridViewTextBoxColumn41.ReadOnly = true;
+            this.dataGridViewTextBoxColumn41.Visible = false;
             // 
             // dataGridViewTextBoxColumn42
             // 
@@ -1187,10 +1162,57 @@
             this.dataGridViewTextBoxColumn43.HeaderText = "AdditionalNotes";
             this.dataGridViewTextBoxColumn43.Name = "dataGridViewTextBoxColumn43";
             this.dataGridViewTextBoxColumn43.ReadOnly = true;
+            this.dataGridViewTextBoxColumn43.Width = 359;
             // 
-            // interviewBindingSource
+            // dataGridViewTextBoxColumn20
             // 
-            this.interviewBindingSource.DataSource = typeof(ProjectPRG299DB.Interview);
+            this.dataGridViewTextBoxColumn20.DataPropertyName = "ContactID";
+            this.dataGridViewTextBoxColumn20.HeaderText = "ContactID";
+            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
+            this.dataGridViewTextBoxColumn20.ReadOnly = true;
+            this.dataGridViewTextBoxColumn20.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn21
+            // 
+            this.dataGridViewTextBoxColumn21.DataPropertyName = "FirstName";
+            this.dataGridViewTextBoxColumn21.HeaderText = "FirstName";
+            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
+            this.dataGridViewTextBoxColumn21.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn22
+            // 
+            this.dataGridViewTextBoxColumn22.DataPropertyName = "LastName";
+            this.dataGridViewTextBoxColumn22.HeaderText = "LastName";
+            this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
+            this.dataGridViewTextBoxColumn22.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn23
+            // 
+            this.dataGridViewTextBoxColumn23.DataPropertyName = "EmailAddress";
+            this.dataGridViewTextBoxColumn23.HeaderText = "EmailAddress";
+            this.dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
+            this.dataGridViewTextBoxColumn23.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn24
+            // 
+            this.dataGridViewTextBoxColumn24.DataPropertyName = "PhoneNumber";
+            this.dataGridViewTextBoxColumn24.HeaderText = "PhoneNumber";
+            this.dataGridViewTextBoxColumn24.Name = "dataGridViewTextBoxColumn24";
+            this.dataGridViewTextBoxColumn24.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn25
+            // 
+            this.dataGridViewTextBoxColumn25.DataPropertyName = "CellPhone";
+            this.dataGridViewTextBoxColumn25.HeaderText = "CellPhone";
+            this.dataGridViewTextBoxColumn25.Name = "dataGridViewTextBoxColumn25";
+            this.dataGridViewTextBoxColumn25.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn26
+            // 
+            this.dataGridViewTextBoxColumn26.DataPropertyName = "AdditionalNotes";
+            this.dataGridViewTextBoxColumn26.HeaderText = "AdditionalNotes";
+            this.dataGridViewTextBoxColumn26.Name = "dataGridViewTextBoxColumn26";
+            this.dataGridViewTextBoxColumn26.ReadOnly = true;
             // 
             // frmPRG299
             // 
@@ -1256,57 +1278,13 @@
         private System.Windows.Forms.ToolStripMenuItem modifyToolStripMenu;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenu;
         private System.Windows.Forms.DataGridView companyDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
         private System.Windows.Forms.DataGridView clientDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn36;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn37;
         private System.Windows.Forms.DataGridView interviewDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn38;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn39;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn40;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn41;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn42;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn43;
         private System.Windows.Forms.DataGridView positionDataGridView;
         private System.Windows.Forms.DataGridView resumeDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn50;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn51;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn52;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn53;
         private System.Windows.Forms.DataGridView schoolDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn57;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn58;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn60;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn54;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn59;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn61;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn56;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn55;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn28;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn29;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn30;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn31;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn32;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn33;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn34;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn35;
         private System.Windows.Forms.BindingSource companyBindingSource;
         private System.Windows.Forms.BindingSource contactBindingSource;
         private System.Windows.Forms.BindingSource clientBindingSource;
@@ -1348,15 +1326,59 @@
         private System.Windows.Forms.ToolStripMenuItem reportToolStripMenuItem;
         public System.Windows.Forms.DataGridView contactDataGridView;
         public System.Windows.Forms.DataGridView contactPositionDataGridView;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn57;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn58;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn60;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn54;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn59;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn61;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn56;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn55;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn28;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn29;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn30;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn31;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn32;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn33;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn34;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn35;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn38;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn39;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn40;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn41;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn42;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn43;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn44;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn45;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn46;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn47;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn48;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn49;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn50;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn51;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn52;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn53;
     }
 }
 

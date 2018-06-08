@@ -168,11 +168,11 @@ namespace ProjectPRG299DB
                 "VALUES (@PositionName, @Description, " +
                 "@CompanyID, @AdditionalNotes, @ResumeID);";
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
-            if(position.PositionName == null)
+            if(position.PositionName == null||position.PositionName=="")
                 insertCommand.Parameters.AddWithValue("@PositionName", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@PositionName", position.PositionName);
-            if(position.Description == null)
+            if(position.Description == null || position.Description=="")
                 insertCommand.Parameters.AddWithValue("@Description", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@Description", position.Description);
@@ -180,7 +180,7 @@ namespace ProjectPRG299DB
                 insertCommand.Parameters.AddWithValue("@CompanyID", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@CompanyID", position.CompanyID);
-            if(position.AdditionalNotes == null)
+            if(position.AdditionalNotes == null || position.AdditionalNotes=="")
                 insertCommand.Parameters.AddWithValue("@AdditionalNotes", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@AdditionalNotes", position.AdditionalNotes);

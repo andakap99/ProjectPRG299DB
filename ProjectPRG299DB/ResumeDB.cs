@@ -144,7 +144,7 @@ namespace ProjectPRG299DB
                 "VALUES (@RSCDirectoryPath, @SchoolID, " +
                 "@ClientID);"; 
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
-            if (resume.RSCDirectoryPath == null)
+            if (resume.RSCDirectoryPath == null|| resume.RSCDirectoryPath=="")
                 insertCommand.Parameters.AddWithValue("@RSCDirectoryPath", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@RSCDirectoryPath", resume.RSCDirectoryPath);
@@ -189,11 +189,11 @@ namespace ProjectPRG299DB
                   "SchoolID = @NewSchoolID, " +
                   "ClientID = @NewClientID " +
                 "WHERE ResumeID = @OldResumeID " +
-                  "AND RSCDirectoryPath = @OldRSCDirectoryPath " +
+                  "AND (RSCDirectoryPath = @OldRSCDirectoryPath " +
                       "OR RSCDirectoryPath IS NULL AND @OldRSCDirectoryPath IS NULL) " +
-                  "AND SchoolID = @OldSchoolID " +
+                  "AND (SchoolID = @OldSchoolID " +
                       "OR SchoolID IS NULL AND @OldSchoolID IS NULL) " +
-                  "AND ClientID = @OldClientID " +
+                  "AND (ClientID = @OldClientID " +
                       "OR ClientID IS NULL AND @OldClientID IS NULL)";
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
             if (newResume.RSCDirectoryPath == "")

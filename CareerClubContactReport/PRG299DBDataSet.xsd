@@ -9,14 +9,13 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable1TableAdapter" GeneratorDataComponentClassName="DataTable1TableAdapter" Name="DataTable1" UserDataComponentName="DataTable1TableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="PRG299DBConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="PRG299DBConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Company.CompanyName, Contact.PhoneNumber, Position.PositionName, Contact.FirstName, Contact.LastName, Interview.DateTime, Interview.AdditionalNotes, 
-                         Position.AdditionalNotes AS Expr1
-FROM            Company INNER JOIN
-                         Position ON Company.CompanyID = Position.CompanyID INNER JOIN
-                         Interview ON Company.CompanyID = Interview.CompanyID AND Position.PositionID = Interview.PositionID INNER JOIN
+                    <CommandText>SELECT        Company.CompanyName, Contact.PhoneNumber, Position.PositionName, Contact.FirstName, Contact.LastName, Interview.DateTime, Interview.AdditionalNotes
+FROM            Company JOIN
+                         Position ON Company.CompanyID = Position.CompanyID JOIN
+                         Interview ON Company.CompanyID = Interview.CompanyID AND Position.PositionID = Interview.PositionID JOIN
                          Contact ON Interview.ContactID = Contact.ContactID</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -31,7 +30,6 @@ FROM            Company INNER JOIN
               <Mapping SourceColumn="LastName" DataSetColumn="LastName" />
               <Mapping SourceColumn="DateTime" DataSetColumn="DateTime" />
               <Mapping SourceColumn="AdditionalNotes" DataSetColumn="AdditionalNotes" />
-              <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -83,13 +81,6 @@ FROM            Company INNER JOIN
               </xs:element>
               <xs:element name="DateTime" msprop:Generator_ColumnVarNameInTable="columnDateTime" msprop:Generator_ColumnPropNameInRow="DateTime" msprop:Generator_ColumnPropNameInTable="DateTimeColumn" msprop:Generator_UserColumnName="DateTime" type="xs:dateTime" />
               <xs:element name="AdditionalNotes" msprop:Generator_ColumnVarNameInTable="columnAdditionalNotes" msprop:Generator_ColumnPropNameInRow="AdditionalNotes" msprop:Generator_ColumnPropNameInTable="AdditionalNotesColumn" msprop:Generator_UserColumnName="AdditionalNotes" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="5000" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Expr1" msprop:Generator_ColumnVarNameInTable="columnExpr1" msprop:Generator_ColumnPropNameInRow="Expr1" msprop:Generator_ColumnPropNameInTable="Expr1Column" msprop:Generator_UserColumnName="Expr1" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="5000" />

@@ -293,8 +293,6 @@ namespace CareerClubContactReport {
             
             private global::System.Data.DataColumn columnAdditionalNotes;
             
-            private global::System.Data.DataColumn columnExpr1;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DataTable1DataTable() {
@@ -386,14 +384,6 @@ namespace CareerClubContactReport {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Expr1Column {
-                get {
-                    return this.columnExpr1;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -429,7 +419,7 @@ namespace CareerClubContactReport {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DataTable1Row AddDataTable1Row(string CompanyName, string PhoneNumber, string PositionName, string FirstName, string LastName, System.DateTime DateTime, string AdditionalNotes, string Expr1) {
+            public DataTable1Row AddDataTable1Row(string CompanyName, string PhoneNumber, string PositionName, string FirstName, string LastName, System.DateTime DateTime, string AdditionalNotes) {
                 DataTable1Row rowDataTable1Row = ((DataTable1Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         CompanyName,
@@ -438,8 +428,7 @@ namespace CareerClubContactReport {
                         FirstName,
                         LastName,
                         DateTime,
-                        AdditionalNotes,
-                        Expr1};
+                        AdditionalNotes};
                 rowDataTable1Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDataTable1Row);
                 return rowDataTable1Row;
@@ -469,7 +458,6 @@ namespace CareerClubContactReport {
                 this.columnLastName = base.Columns["LastName"];
                 this.columnDateTime = base.Columns["DateTime"];
                 this.columnAdditionalNotes = base.Columns["AdditionalNotes"];
-                this.columnExpr1 = base.Columns["Expr1"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -489,8 +477,6 @@ namespace CareerClubContactReport {
                 base.Columns.Add(this.columnDateTime);
                 this.columnAdditionalNotes = new global::System.Data.DataColumn("AdditionalNotes", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAdditionalNotes);
-                this.columnExpr1 = new global::System.Data.DataColumn("Expr1", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnExpr1);
                 this.columnCompanyName.AllowDBNull = false;
                 this.columnCompanyName.MaxLength = 50;
                 this.columnPhoneNumber.MaxLength = 13;
@@ -501,7 +487,6 @@ namespace CareerClubContactReport {
                 this.columnLastName.MaxLength = 50;
                 this.columnDateTime.AllowDBNull = false;
                 this.columnAdditionalNotes.MaxLength = 5000;
-                this.columnExpr1.MaxLength = 5000;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -736,22 +721,6 @@ namespace CareerClubContactReport {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Expr1 {
-                get {
-                    try {
-                        return ((string)(this[this.tableDataTable1.Expr1Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Expr1\' in table \'DataTable1\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataTable1.Expr1Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsPhoneNumberNull() {
                 return this.IsNull(this.tableDataTable1.PhoneNumberColumn);
             }
@@ -784,18 +753,6 @@ namespace CareerClubContactReport {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetAdditionalNotesNull() {
                 this[this.tableDataTable1.AdditionalNotesColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsExpr1Null() {
-                return this.IsNull(this.tableDataTable1.Expr1Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetExpr1Null() {
-                this[this.tableDataTable1.Expr1Column] = global::System.Convert.DBNull;
             }
         }
         
@@ -965,7 +922,6 @@ namespace CareerClubContactReport.PRG299DBDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("LastName", "LastName");
             tableMapping.ColumnMappings.Add("DateTime", "DateTime");
             tableMapping.ColumnMappings.Add("AdditionalNotes", "AdditionalNotes");
-            tableMapping.ColumnMappings.Add("Expr1", "Expr1");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -982,11 +938,10 @@ namespace CareerClubContactReport.PRG299DBDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        Company.CompanyName, Contact.PhoneNumber, Position.PositionName, Contact.FirstName, Contact.LastName, Interview.DateTime, Interview.AdditionalNotes, 
-                         Position.AdditionalNotes AS Expr1
-FROM            Company INNER JOIN
-                         Position ON Company.CompanyID = Position.CompanyID INNER JOIN
-                         Interview ON Company.CompanyID = Interview.CompanyID AND Position.PositionID = Interview.PositionID INNER JOIN
+            this._commandCollection[0].CommandText = @"SELECT        Company.CompanyName, Contact.PhoneNumber, Position.PositionName, Contact.FirstName, Contact.LastName, Interview.DateTime, Interview.AdditionalNotes
+FROM            Company JOIN
+                         Position ON Company.CompanyID = Position.CompanyID JOIN
+                         Interview ON Company.CompanyID = Interview.CompanyID AND Position.PositionID = Interview.PositionID JOIN
                          Contact ON Interview.ContactID = Contact.ContactID";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }

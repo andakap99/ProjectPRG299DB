@@ -134,6 +134,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CareerClubContactReport\CareerClubContactReport.csproj">
+      <Project>{14e06885-6744-493f-a9d8-392cea38d320}</Project>
+      <Name>CareerClubContactReport</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ProjectPRG299DB\ProjectPRG299DB.csproj">
       <Project>{48d2d0b5-04f4-4476-8e41-cb1a59a954f6}</Project>
       <Name>ProjectPRG299DB</Name>

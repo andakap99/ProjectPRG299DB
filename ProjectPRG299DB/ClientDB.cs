@@ -224,7 +224,7 @@ namespace ProjectPRG299DB
             insertCommand.Parameters.AddWithValue("@City", client.City );
             insertCommand.Parameters.AddWithValue("@State", client.State);
             insertCommand.Parameters.AddWithValue("@ZipCode", client.ZipCode);
-            if (client.CellPhone == null)
+            if (client.CellPhone == null || client.CellPhone=="")
                 insertCommand.Parameters.AddWithValue("@CellPhone", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@CellPhone", client.CellPhone);

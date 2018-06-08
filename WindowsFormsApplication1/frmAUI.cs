@@ -14,6 +14,14 @@ namespace WindowsFormsApplication1
 {
     public partial class frmAUI : Form
     {
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+        // code above is for dragging the form around on the screen
         public frmAUI()
         {
             InitializeComponent();
@@ -1030,7 +1038,7 @@ namespace WindowsFormsApplication1
                         isDVB = true;
                     }
                     else
-                        isDVB= false;
+                        return false;
 
                 }
                 catch (Exception ex)
@@ -1091,7 +1099,7 @@ namespace WindowsFormsApplication1
                 }
             }
             else
-                isDVB = false;
+                isDVB = true;
 
 
             return isDVB;
@@ -1154,20 +1162,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void contactIDComboBox1_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void positionIDComboBox_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void positionIDComboBox1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void contactIDComboBox1_SelectionChangeCommitted(object sender, EventArgs e)
         {
@@ -1221,7 +1216,7 @@ namespace WindowsFormsApplication1
             toolTip1.SetToolTip(btnPlus, "Add New Position");
             b1 = false; b2 = true; b3 = false; b4 = false; b5 = false; b6 = false; b7 = false; b8 = false; b9 = false;
             
-                positionBindingSource.DataSource = PositionDB.GetPosition();
+      //          positionBindingSource.DataSource = PositionDB.GetPosition();
                 positionIDComboBox.SelectedIndex = -1;
 
         }
@@ -1234,7 +1229,7 @@ namespace WindowsFormsApplication1
             b1 = false; b2 = false; b3 = false; b4 = true; b5 = false; b6 = false; b7 = false; b8 = false; b9 = false;
             try
             {
-                clientBindingSource.DataSource = ClientDB.GetClientCombobox();
+        //        clientBindingSource.DataSource = ClientDB.GetClientCombobox();
             }
             catch (Exception ex)
             {
@@ -1250,13 +1245,22 @@ namespace WindowsFormsApplication1
             b1 = false; b2 = false; b3 = false; b4 = false; b5 = true; b6 = false; b7 = false; b8 = false; b9 = false;
             try
             {
-                companyBindingSource.DataSource = CompanyDB.GetCompany();
+          //      companyBindingSource.DataSource = CompanyDB.GetCompany();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
 
+        }
+
+        private void frmAUI_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
         }
 
         private void companyIDComboBox2_Enter(object sender, EventArgs e)
@@ -1267,7 +1271,7 @@ namespace WindowsFormsApplication1
             b1 = false; b2 = false; b3 = false; b4 = false; b5 = false; b6 = false; b7 = true; b8 = false; b9 = false;
             try
             {
-                companyBindingSource.DataSource = CompanyDB.GetCompany();
+            //    companyBindingSource.DataSource = CompanyDB.GetCompany();
 
             }
             catch (Exception ex)
@@ -1285,8 +1289,8 @@ namespace WindowsFormsApplication1
             b1 = true; b2 = false; b3 = false; b4 = false; b5 = false; b6 = false; b7 = false; b8 = false; b9 = false;
             try
             {
-                contactBindingSource.DataSource = ContactDB.GetContactCombobox();
-                contactIDComboBox1.SelectedIndex = -1;
+              //  contactBindingSource.DataSource = ContactDB.GetContactCombobox();
+              //  contactIDComboBox1.SelectedIndex = -1;
 
 
             }
@@ -1304,7 +1308,7 @@ namespace WindowsFormsApplication1
             b1 = false; b2 = false; b3 = false; b4 = false; b5 = false; b6 = true; b7 = false; b8 = false; b9 = false;
             try
             {
-                contactBindingSource.DataSource = ContactDB.GetContactCombobox();
+                //contactBindingSource.DataSource = ContactDB.GetContactCombobox();
             }
             catch (Exception ex)
             {
@@ -1320,7 +1324,7 @@ namespace WindowsFormsApplication1
             b1 = false; b2 = false; b3 = true; b4 = false; b5 = false; b6 = false; b7 = false; b8 = false; b9 = false;
             try
             {
-                positionBindingSource.DataSource = PositionDB.GetPosition();
+                //positionBindingSource.DataSource = PositionDB.GetPosition();
             }
             catch (Exception ex)
             {
@@ -1336,7 +1340,7 @@ namespace WindowsFormsApplication1
             b1 = false; b2 = false; b3 = false; b4 = false; b5 = false; b6 = false; b7 = false; b8 = true; b9 = false;
             try
             {
-                resumeBindingSource.DataSource = ResumeDB.GetResume();
+               // resumeBindingSource.DataSource = ResumeDB.GetResume();
             }
             catch (Exception ex)
             {
@@ -1352,7 +1356,7 @@ namespace WindowsFormsApplication1
             b1 = false; b2 = false; b3 = false; b4 = false; b5 = false; b6 = false; b7 = false; b8 = false; b9 = true;
             try
             {
-                schoolBindingSource.DataSource = SchoolDB.GetSchool();
+            //    schoolBindingSource.DataSource = SchoolDB.GetSchool();
 
 
             }
@@ -1362,34 +1366,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void clientIDComboBox1_Click(object sender, EventArgs e)
-        {
-            
-        }
 
-        private void companyIDComboBox1_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void contactIDComboBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void companyIDComboBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void resumeIDComboBox_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void schoolIDComboBox_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -1462,6 +1439,7 @@ namespace WindowsFormsApplication1
 
            
             addeditform.ShowDialog();
+            ComboBoxLoad();
         }
         private string AddText()
         {

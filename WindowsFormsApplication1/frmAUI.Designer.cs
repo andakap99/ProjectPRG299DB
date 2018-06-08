@@ -111,7 +111,6 @@
             this.firstNameTextBox1 = new System.Windows.Forms.TextBox();
             this.lastNameTextBox1 = new System.Windows.Forms.TextBox();
             this.phoneNumberTextBox = new System.Windows.Forms.TextBox();
-            this.contactIDComboBox1 = new System.Windows.Forms.ComboBox();
             this.contactPositionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.positionIDComboBox = new System.Windows.Forms.ComboBox();
             this.positionBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -151,6 +150,7 @@
             this.lblcp1 = new System.Windows.Forms.Label();
             this.lblcp = new System.Windows.Forms.Label();
             this.button12 = new System.Windows.Forms.Button();
+            this.contactIDComboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stateBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).BeginInit();
@@ -1080,31 +1080,12 @@
             this.phoneNumberTextBox.TabIndex = 4;
             this.phoneNumberTextBox.Visible = false;
             // 
-            // contactIDComboBox1
-            // 
-            this.contactIDComboBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactPositionBindingSource, "ContactID", true));
-            this.contactIDComboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.contactBindingSource, "ContactID", true));
-            this.contactIDComboBox1.DataSource = this.contactBindingSource;
-            this.contactIDComboBox1.DisplayMember = "LastName";
-            this.contactIDComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.contactIDComboBox1.Location = new System.Drawing.Point(95, 28);
-            this.contactIDComboBox1.Name = "contactIDComboBox1";
-            this.contactIDComboBox1.Size = new System.Drawing.Size(100, 21);
-            this.contactIDComboBox1.TabIndex = 1;
-            this.contactIDComboBox1.ValueMember = "ContactID";
-            this.contactIDComboBox1.Visible = false;
-            this.contactIDComboBox1.SelectionChangeCommitted += new System.EventHandler(this.contactIDComboBox1_SelectionChangeCommitted);
-            this.contactIDComboBox1.Click += new System.EventHandler(this.contactIDComboBox1_Click);
-            this.contactIDComboBox1.Enter += new System.EventHandler(this.contactIDComboBox1_Enter);
-            // 
             // contactPositionBindingSource
             // 
             this.contactPositionBindingSource.DataSource = typeof(ProjectPRG299DB.ContactPosition);
             // 
             // positionIDComboBox
             // 
-            this.positionIDComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactPositionBindingSource, "PositionID", true));
-            this.positionIDComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.positionBindingSource, "PositionID", true));
             this.positionIDComboBox.DataSource = this.positionBindingSource;
             this.positionIDComboBox.DisplayMember = "PositionName";
             this.positionIDComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -1115,7 +1096,6 @@
             this.positionIDComboBox.ValueMember = "PositionID";
             this.positionIDComboBox.Visible = false;
             this.positionIDComboBox.SelectionChangeCommitted += new System.EventHandler(this.positionIDComboBox_SelectionChangeCommitted);
-            this.positionIDComboBox.Click += new System.EventHandler(this.positionIDComboBox_Click);
             this.positionIDComboBox.Enter += new System.EventHandler(this.positionIDComboBox_Enter);
             // 
             // positionBindingSource
@@ -1149,7 +1129,6 @@
             this.companyIDComboBox1.TabIndex = 2;
             this.companyIDComboBox1.ValueMember = "CompanyID";
             this.companyIDComboBox1.Visible = false;
-            this.companyIDComboBox1.Click += new System.EventHandler(this.companyIDComboBox1_Click);
             this.companyIDComboBox1.Enter += new System.EventHandler(this.companyIDComboBox1_Enter);
             // 
             // contactIDComboBox2
@@ -1166,7 +1145,6 @@
             this.contactIDComboBox2.ValueMember = "ContactID";
             this.contactIDComboBox2.Visible = false;
             this.contactIDComboBox2.SelectionChangeCommitted += new System.EventHandler(this.contactIDComboBox2_SelectionChangeCommitted);
-            this.contactIDComboBox2.Click += new System.EventHandler(this.contactIDComboBox2_Click);
             this.contactIDComboBox2.Enter += new System.EventHandler(this.contactIDComboBox2_Enter);
             // 
             // dateTimeInterviewDateTimePicker
@@ -1204,7 +1182,6 @@
             this.positionIDComboBox1.ValueMember = "PositionID";
             this.positionIDComboBox1.Visible = false;
             this.positionIDComboBox1.SelectedIndexChanged += new System.EventHandler(this.positionIDComboBox1_SelectedIndexChanged);
-            this.positionIDComboBox1.Click += new System.EventHandler(this.positionIDComboBox1_Click);
             this.positionIDComboBox1.Enter += new System.EventHandler(this.positionIDComboBox1_Enter);
             // 
             // additionalNotesTextBox3
@@ -1230,7 +1207,6 @@
             this.companyIDComboBox2.TabIndex = 3;
             this.companyIDComboBox2.ValueMember = "CompanyID";
             this.companyIDComboBox2.Visible = false;
-            this.companyIDComboBox2.Click += new System.EventHandler(this.companyIDComboBox2_Click);
             this.companyIDComboBox2.Enter += new System.EventHandler(this.companyIDComboBox2_Enter);
             // 
             // descriptionTextBox
@@ -1278,7 +1254,6 @@
             this.resumeIDComboBox.TabIndex = 5;
             this.resumeIDComboBox.ValueMember = "ResumeID";
             this.resumeIDComboBox.Visible = false;
-            this.resumeIDComboBox.Click += new System.EventHandler(this.resumeIDComboBox_Click);
             this.resumeIDComboBox.Enter += new System.EventHandler(this.resumeIDComboBox_Enter);
             // 
             // resumeBindingSource
@@ -1298,7 +1273,6 @@
             this.clientIDComboBox1.TabIndex = 3;
             this.clientIDComboBox1.ValueMember = "ClientID";
             this.clientIDComboBox1.Visible = false;
-            this.clientIDComboBox1.Click += new System.EventHandler(this.clientIDComboBox1_Click);
             this.clientIDComboBox1.Enter += new System.EventHandler(this.clientIDComboBox1_Enter);
             // 
             // resumeIDTextBox1
@@ -1336,7 +1310,6 @@
             this.schoolIDComboBox.TabIndex = 2;
             this.schoolIDComboBox.ValueMember = "SchoolID";
             this.schoolIDComboBox.Visible = false;
-            this.schoolIDComboBox.Click += new System.EventHandler(this.schoolIDComboBox_Click);
             this.schoolIDComboBox.Enter += new System.EventHandler(this.schoolIDComboBox_Enter);
             // 
             // schoolBindingSource
@@ -1527,12 +1500,27 @@
             this.button12.UseVisualStyleBackColor = true;
             this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
+            // contactIDComboBox1
+            // 
+            this.contactIDComboBox1.DataSource = this.contactBindingSource;
+            this.contactIDComboBox1.DisplayMember = "LastName";
+            this.contactIDComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.contactIDComboBox1.Location = new System.Drawing.Point(95, 28);
+            this.contactIDComboBox1.Name = "contactIDComboBox1";
+            this.contactIDComboBox1.Size = new System.Drawing.Size(121, 21);
+            this.contactIDComboBox1.TabIndex = 109;
+            this.contactIDComboBox1.ValueMember = "ContactID";
+            this.contactIDComboBox1.Visible = false;
+            this.contactIDComboBox1.SelectionChangeCommitted += new System.EventHandler(this.contactIDComboBox1_SelectionChangeCommitted);
+            this.contactIDComboBox1.Enter += new System.EventHandler(this.contactIDComboBox1_Enter);
+            // 
             // frmAUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Blue;
             this.ClientSize = new System.Drawing.Size(424, 413);
+            this.Controls.Add(this.contactIDComboBox1);
             this.Controls.Add(this.button12);
             this.Controls.Add(this.lblcp);
             this.Controls.Add(this.lblcp1);
@@ -1590,7 +1578,6 @@
             this.Controls.Add(this.positionIDLabel1);
             this.Controls.Add(this.positionIDComboBox1);
             this.Controls.Add(this.contactIDLabel1);
-            this.Controls.Add(this.contactIDComboBox1);
             this.Controls.Add(this.positionIDLabel);
             this.Controls.Add(this.positionIDComboBox);
             this.Controls.Add(this.additionalNotesLabel1);
@@ -1650,6 +1637,7 @@
             this.ShowInTaskbar = false;
             this.Text = "frmAUI";
             this.Load += new System.EventHandler(this.frmAUI_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmAUI_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stateBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).EndInit();
@@ -1752,7 +1740,6 @@
         public System.Windows.Forms.TextBox firstNameTextBox1;
         public System.Windows.Forms.TextBox lastNameTextBox1;
         public System.Windows.Forms.TextBox phoneNumberTextBox;
-        public System.Windows.Forms.ComboBox contactIDComboBox1;
         public System.Windows.Forms.ComboBox positionIDComboBox;
         public System.Windows.Forms.TextBox additionalNotesTextBox2;
         public System.Windows.Forms.ComboBox companyIDComboBox1;
@@ -1787,5 +1774,6 @@
         private System.Windows.Forms.Label lblcp1;
         private System.Windows.Forms.Label lblcp;
         private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.ComboBox contactIDComboBox1;
     }
 }

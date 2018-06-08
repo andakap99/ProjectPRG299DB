@@ -178,11 +178,11 @@ namespace ProjectPRG299DB
     //            " SET IDENTITY_INSERT Company OFF;";
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
             insertCommand.Parameters.AddWithValue("@CompanyName", company.CompanyName);
-            if (company.BuildingName == null)
+            if (company.BuildingName == null || company.BuildingName=="")
                 insertCommand.Parameters.AddWithValue("@BuildingName", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@BuildingName", company.BuildingName);
-            if (company.BuildingNumber == null)
+            if (company.BuildingNumber == null || company.BuildingNumber=="")
                 insertCommand.Parameters.AddWithValue("@BuildingNumber", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@BuildingNumber", company.BuildingNumber);
@@ -190,11 +190,11 @@ namespace ProjectPRG299DB
             insertCommand.Parameters.AddWithValue("@City", company.City);
             insertCommand.Parameters.AddWithValue("@State", company.State);
             insertCommand.Parameters.AddWithValue("@ZipCode", company.ZipCode);
-            if (company.Website == null)
+            if (company.Website == null || company.Website=="")
                 insertCommand.Parameters.AddWithValue("@Website", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@Website", company.Website);
-            if (company.AdditionalNotes == null)
+            if (company.AdditionalNotes == null || company.AdditionalNotes=="")
                 insertCommand.Parameters.AddWithValue("@AdditionalNotes",
                     DBNull.Value);
             else

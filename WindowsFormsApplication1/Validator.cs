@@ -35,14 +35,14 @@ namespace WindowsFormsApplication1
                         || textBox.Name.Contains("phoneNumberTextBox") || textBox.Name.Contains("cellPhoneTextBox1")
                         || textBox.Name.Contains("additionalNotesTextBox1") || textBox.Name.Contains("additionalNotesTextBox2")
                         || textBox.Name.Contains("positionNameTextBox") || textBox.Name.Contains("descriptionTextBox")
-                        || textBox.Name.Contains("companyIDComboBox1") || textBox.Name.Contains("additionalNotesTextBox3")
-                        || textBox.Name.Contains("resumeIDComboBox") || textBox.Name.Contains("rSCDirectoryPathTextBox")
-                        || textBox.Name.Contains("schoolIDComboBox") || textBox.Name.Contains("clientIDComboBox1")
-                        || textBox.Name.Contains("schoolNameTextBox") || textBox.Name.Contains("streetNameTextBox1")
+                        || textBox.Name.Contains("additionalNotesTextBox3")
+                        || textBox.Name.Contains("rSCDirectoryPathTextBox")
+                        || textBox.Name.Contains("streetNameTextBox1")
                         || textBox.Name.Contains("cityTextBox2") 
                         || textBox.Name.Contains("numberOfYearsAttendedTextBox") || textBox.Name.Contains("graduatedTextBox")
                         || textBox.Name.Contains("buildingNameTextBox") || textBox.Name.Contains("buildingNumberTextBox"))
                     { return true; }
+
                         MessageBox.Show( textBox.Name.ToString() + " is a  required field.", Title);
                     textBox.Focus();
                     return false;

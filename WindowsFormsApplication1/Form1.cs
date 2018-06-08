@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectPRG299BLL;
 using ProjectPRG299DB;
+using CareerClubContactReport;
 
 namespace WindowsFormsApplication1
 {
@@ -198,199 +199,276 @@ namespace WindowsFormsApplication1
         }
 
         private void AddModifyToolStripMenu_Click(object sender, EventArgs e)// BASE ON THE BUTTON CLICKED DEFINES WHAT CONTROLS ARE VISIBLE IN THE UPDATEINSERTFORM
-        {                                                                                       // WHICH ALSO DETERMINES WHAT THE UPDATEINSERTFORM DOES AS A RESULT
+        {
+            // WHICH ALSO DETERMINES WHAT THE UPDATEINSERTFORM DOES AS A RESULT
+
+            int clientIDDGV = 0, companyIDDGV = 0, contactIDDGV = 0, interviewIDDGV = 0, positionIDDGV = 0, resuneIDDGV = 0, schoolIDDGV = 0;
+            
             UpdateInsertForm = new frmAUI();
-            try
-            {
-               
-                if (sender == AddToolStripMenu || sender == button9)
+              if (btnClientClicked || btnCompanyClicked || btnContactClicked || btnInterviewClicked || btnPositionClicked || btnResumeClicked || btnSchoolClicked)
                 {
-                    UpdateInsertForm.Text = "Add " + AddTextToFrmAdUpInDotText();
-                    UpdateInsertForm.addMenuClicked = true;
-                    if(btnClientClicked)
+                try
+                {
+                    if (btnClientClicked)
                     {
-                        //               client = UpdateInsertForm.newClient;                       
-                        if (clientDataGridView.CurrentCell!=null)
+                        if (clientDataGridView.Rows.Count > 0)
                         {
-                            UpdateInsertForm.newClient = ClientDB.GetClientByRow((int)clientDataGridView.CurrentCell.Value);
+                            int rowIndex = clientDataGridView.CurrentCell.RowIndex;
+                            DataGridViewRow row = clientDataGridView.Rows[rowIndex];
+                            DataGridViewCell cell = row.Cells[0];
+                            clientIDDGV = (int)cell.Value;
                         }
-                        clientBindingSource.Clear();
-                        clientBindingSource.Add(client);
-                        clientDataGridView.DataSource = clientList;
-                        UpdateInsertForm.AllLVVisible(button1.Text);
-                        UpdateInsertForm.AllListView();
                     }
                     if (btnCompanyClicked)
                     {
-                        if (companyDataGridView.CurrentCell!=null)
+                        if (companyDataGridView.Rows.Count > 0)
                         {
-                            UpdateInsertForm.newCompany = CompanyDB.GetCompanyByRow((int)companyDataGridView.CurrentCell.Value);
+                            int rowIndex = companyDataGridView.CurrentCell.RowIndex;
+                            DataGridViewRow row = companyDataGridView.Rows[rowIndex];
+                            DataGridViewCell cell = row.Cells[0];
+                            companyIDDGV = (int)cell.Value;
                         }
-                        //        company = UpdateInsertForm.newCompany;
-
-                        companyBindingSource.Clear();
-                        companyBindingSource.Add(company);
-                        companyDataGridView.DataSource = companyList;
-                        UpdateInsertForm.AllLVVisible(button2.Text);
-                        UpdateInsertForm.AllListView();
                     }
-                     if (btnContactClicked)
+                    if (btnContactClicked)
                     {
-        //                contact = UpdateInsertForm.newContact;
-                        contactBindingSource.Clear();
-                        contactBindingSource.Add(contact);
-                        contactDataGridView.DataSource = contactList;
-                        UpdateInsertForm.AllLVVisible(button3.Text);
-                        UpdateInsertForm.AllListView();
-                    }
-                    if (btnContactPositionClicked)
-                    {
-                     //   coPo = UpdateInsertForm.newContactPosition;
-                        contactPositionBindingSource.Clear();
-                        contactPositionBindingSource.Add(coPo);
-                        contactPositionDataGridView.DataSource = coPoList;
-                        UpdateInsertForm.AllLVVisible(button4.Text);
-                        UpdateInsertForm.AllListView();
+                        if (contactDataGridView.Rows.Count > 0)
+                        {
+                            int rowIndex = contactDataGridView.CurrentCell.RowIndex;
+                            DataGridViewRow row = contactDataGridView.Rows[rowIndex];
+                            DataGridViewCell cell = row.Cells[0];
+                            contactIDDGV = (int)cell.Value;
+                        }
                     }
                     if (btnInterviewClicked)
                     {
-                       // interview = UpdateInsertForm.newInterview;
-                        interviewBindingSource.Clear();
-                        interviewBindingSource.Add(interview);
-                        interviewDataGridView.DataSource = interviewList;
-                        UpdateInsertForm.AllLVVisible(button5.Text);
-                        UpdateInsertForm.AllListView();
+                        if (interviewDataGridView.Rows.Count > 0)
+                        {
+                            int rowIndex = interviewDataGridView.CurrentCell.RowIndex;
+                            DataGridViewRow row = interviewDataGridView.Rows[rowIndex];
+                            DataGridViewCell cell = row.Cells[0];
+                            interviewIDDGV = (int)cell.Value;
+                        }
                     }
                     if (btnPositionClicked)
                     {
-            //            position = UpdateInsertForm.newPostion;
-                        positionBindingSource.Clear();
-                        positionBindingSource.Add(position);
-                        positionDataGridView.DataSource = positionList;
-                        UpdateInsertForm.AllLVVisible(button6.Text);
-                        UpdateInsertForm.AllListView();
+                        if (positionDataGridView.Rows.Count > 0)
+                        {
+                            int rowIndex = positionDataGridView.CurrentCell.RowIndex;
+                            DataGridViewRow row = positionDataGridView.Rows[rowIndex];
+                            DataGridViewCell cell = row.Cells[0];
+                            positionIDDGV = (int)cell.Value;
+                        }
                     }
                     if (btnResumeClicked)
                     {
-              //          resume = UpdateInsertForm.newResume;
-                        resumeBindingSource.Clear();
-                        resumeBindingSource.Add(resume);
-                        resumeDataGridView.DataSource = resumeList;
-                        UpdateInsertForm.AllLVVisible(button7.Text);
-                        UpdateInsertForm.AllListView();
+                        if (resumeDataGridView.Rows.Count > 0)
+                        {
+                            int rowIndex = resumeDataGridView.CurrentCell.RowIndex;
+                            DataGridViewRow row = resumeDataGridView.Rows[rowIndex];
+                            DataGridViewCell cell = row.Cells[0];
+                            resuneIDDGV = (int)cell.Value;
+                        }
                     }
                     if (btnSchoolClicked)
                     {
-                        if (schoolDataGridView.CurrentCell!=null)
+                        if (schoolDataGridView.Rows.Count > 0)
                         {
-                            UpdateInsertForm.newSchool = SchoolDB.GetSchoolByRow((int)schoolDataGridView.CurrentCell.Value);
+                            int rowIndex = schoolDataGridView.CurrentCell.RowIndex;
+                            DataGridViewRow row = schoolDataGridView.Rows[rowIndex];
+                            DataGridViewCell cell = row.Cells[0];
+                            schoolIDDGV = (int)cell.Value;
                         }
-                        //        school = UpdateInsertForm.newSchool;
-
-                        schoolBindingSource.Clear();
-                        schoolBindingSource.Add(school);
-                        UpdateInsertForm.AllLVVisible(button8.Text);
-                        UpdateInsertForm.AllListView();
-                    }                    
-                }
-                else if (sender == modifyToolStripMenu || sender == button11)
-                {
-                    UpdateInsertForm.Text = "Modify " + AddTextToFrmAdUpInDotText();
-                    UpdateInsertForm.addMenuClicked = false;
-                    if (btnClientClicked)
+                    }
+              
+                    if (sender == AddToolStripMenu || sender == button9)
                     {
-                       UpdateInsertForm.stateList = StateDB.GetStateList();
-                        UpdateInsertForm.stateComboBox.DataSource = UpdateInsertForm.stateList;
-                        UpdateInsertForm.newClient = ClientDB.GetClientByRow((int)clientDataGridView.CurrentCell.Value);
-                       UpdateInsertForm.client = ClientDB.GetClientByRow((int)clientDataGridView.CurrentCell.Value);
-                        UpdateInsertForm.clientBindingSource.Clear();
-                        //foreach (DataGridViewRow row in clientDataGridView.Rows)
-                        //{
-                        //    UpdateInsertForm.newClient = (Client)row.DataBoundItem;
+                        UpdateInsertForm.Text = "Add " + AddTextToFrmAdUpInDotText();
+                        UpdateInsertForm.addMenuClicked = true;
+                        if (btnClientClicked)
+                        {
+                            
+                            //               client = UpdateInsertForm.newClient;                       
+                            if (clientDataGridView.CurrentCell != null)
+                            {
+                                UpdateInsertForm.newClient = ClientDB.GetClientByRow(clientIDDGV);
+                            }
+                            clientBindingSource.Clear();
+                            clientBindingSource.Add(client);
+                            clientDataGridView.DataSource = clientList;
+                            UpdateInsertForm.AllLVVisible(button1.Text);
+                            UpdateInsertForm.AllListView();
+                        }
+                        if (btnCompanyClicked)
+                        {
+                            if (companyDataGridView.CurrentCell != null)
+                            {
+                                UpdateInsertForm.newCompany = CompanyDB.GetCompanyByRow(companyIDDGV);
+                            }
+                            //        company = UpdateInsertForm.newCompany;
+
+                            companyBindingSource.Clear();
+                            companyBindingSource.Add(company);
+                            companyDataGridView.DataSource = companyList;
+                            UpdateInsertForm.AllLVVisible(button2.Text);
+                            UpdateInsertForm.AllListView();
+                        }
+                        if (btnContactClicked)
+                        {
+                            //                contact = UpdateInsertForm.newContact;
+                            contactBindingSource.Clear();
+                            contactBindingSource.Add(contact);
+                            contactDataGridView.DataSource = contactList;
+                            UpdateInsertForm.AllLVVisible(button3.Text);
+                            UpdateInsertForm.AllListView();
+                        }
+                        if (btnContactPositionClicked)
+                        {
+                            //   coPo = UpdateInsertForm.newContactPosition;
+                            contactPositionBindingSource.Clear();
+                            contactPositionBindingSource.Add(coPo);
+                            contactPositionDataGridView.DataSource = coPoList;
+                            UpdateInsertForm.AllLVVisible(button4.Text);
+                            UpdateInsertForm.AllListView();
+                        }
+                        if (btnInterviewClicked)
+                        {
+                            // interview = UpdateInsertForm.newInterview;
+                            interviewBindingSource.Clear();
+                            interviewBindingSource.Add(interview);
+                            interviewDataGridView.DataSource = interviewList;
+                            UpdateInsertForm.AllLVVisible(button5.Text);
+                            UpdateInsertForm.AllListView();
+                        }
+                        if (btnPositionClicked)
+                        {
+                            //            position = UpdateInsertForm.newPostion;
+                            positionBindingSource.Clear();
+                            positionBindingSource.Add(position);
+                            positionDataGridView.DataSource = positionList;
+                            UpdateInsertForm.AllLVVisible(button6.Text);
+                            UpdateInsertForm.AllListView();
+                        }
+                        if (btnResumeClicked)
+                        {
+                            //          resume = UpdateInsertForm.newResume;
+                            resumeBindingSource.Clear();
+                            resumeBindingSource.Add(resume);
+                            resumeDataGridView.DataSource = resumeList;
+                            UpdateInsertForm.AllLVVisible(button7.Text);
+                            UpdateInsertForm.AllListView();
+                        }
+                        if (btnSchoolClicked)
+                        {
+                            if (schoolDataGridView.CurrentCell != null)
+                            {
+                                UpdateInsertForm.newSchool = SchoolDB.GetSchoolByRow(schoolIDDGV);
+                            }
+                            //        school = UpdateInsertForm.newSchool;
+
+                            schoolBindingSource.Clear();
+                            schoolBindingSource.Add(school);
+                            UpdateInsertForm.AllLVVisible(button8.Text);
+                            UpdateInsertForm.AllListView();
+                        }
+                    }
+                    else if (sender == modifyToolStripMenu || sender == button11)
+                    {
+                        UpdateInsertForm.Text = "Modify " + AddTextToFrmAdUpInDotText();
+                        UpdateInsertForm.addMenuClicked = false;
+                        if (btnClientClicked)
+                        {
+                            UpdateInsertForm.stateList = StateDB.GetStateList();
+                            UpdateInsertForm.stateComboBox.DataSource = UpdateInsertForm.stateList;
+                            UpdateInsertForm.newClient = ClientDB.GetClientByRow(clientIDDGV);
+                            UpdateInsertForm.client = ClientDB.GetClientByRow(clientIDDGV);
+                            UpdateInsertForm.clientBindingSource.Clear();
+                            //foreach (DataGridViewRow row in clientDataGridView.Rows)
+                            //{
+                            //    UpdateInsertForm.newClient = (Client)row.DataBoundItem;
                             client = UpdateInsertForm.newClient;
-                        //}
-                        UpdateInsertForm.clientBindingSource.Add(client);
-                        UpdateInsertForm.AllLVVisible(button1.Text);
-                        UpdateInsertForm.AllListView();
+                            //}
+                            UpdateInsertForm.clientBindingSource.Add(client);
+                            UpdateInsertForm.AllLVVisible(button1.Text);
+                            UpdateInsertForm.AllListView();
 
-                    }
-                    else if (btnCompanyClicked)
-                    {
-                        UpdateInsertForm.stateList = StateDB.GetStateList();
-                        UpdateInsertForm.stateComboBox1.DataSource = UpdateInsertForm.stateList;
-                        UpdateInsertForm.newCompany = CompanyDB.GetCompanyByRow((int)companyDataGridView.CurrentCell.Value);
-                       UpdateInsertForm.company = CompanyDB.GetCompanyByRow((int)companyDataGridView.CurrentCell.Value);
-                        UpdateInsertForm.companyBindingSource.Clear();
+                        }
+                        else if (btnCompanyClicked)
+                        {
+                            UpdateInsertForm.stateList = StateDB.GetStateList();
+                            UpdateInsertForm.stateComboBox1.DataSource = UpdateInsertForm.stateList;
+                            UpdateInsertForm.newCompany = CompanyDB.GetCompanyByRow(companyIDDGV);
+                            UpdateInsertForm.company = CompanyDB.GetCompanyByRow(companyIDDGV);
+                            UpdateInsertForm.companyBindingSource.Clear();
 
-                        company = UpdateInsertForm.newCompany;
+                            company = UpdateInsertForm.newCompany;
 
-                        UpdateInsertForm.companyBindingSource.Add(company);
-                        UpdateInsertForm.AllLVVisible(button2.Text);
-                        UpdateInsertForm.AllListView();
-                    }
-                    else if (btnContactClicked)
-                    {
-                        UpdateInsertForm.newContact = ContactDB.GetContactByRow((int)contactDataGridView.CurrentCell.Value);
-                        UpdateInsertForm.contact = ContactDB.GetContactByRow((int)contactDataGridView.CurrentCell.Value);
-                        UpdateInsertForm.contactBindingSource.Clear();
-                        contact = UpdateInsertForm.newContact;
-                        UpdateInsertForm.contactBindingSource.Add(contact);
-                        UpdateInsertForm.AllLVVisible(button3.Text);
-                        UpdateInsertForm.AllListView();
-                    }
-                    else if (btnContactPositionClicked)
-                    {
-                        UpdateInsertForm.contactPosition = ContactPositionDB.GetContactPositionByRow((int)contactPositionDataGridView.CurrentCell.Value);
-                        UpdateInsertForm.contactPositionBindingSource.Clear();
-                        UpdateInsertForm.contactPositionBindingSource.Add(UpdateInsertForm.contactPosition);
-                        UpdateInsertForm.AllLVVisible(button4.Text);
-                        UpdateInsertForm.AllListView();
-                    }
-                    else if (btnInterviewClicked)
-                    {
-                        UpdateInsertForm.newInterview = InterviewDB.GetInterviewByRow((int)interviewDataGridView.CurrentCell.Value);
-                        UpdateInsertForm.interview = InterviewDB.GetInterviewByRow((int)interviewDataGridView.CurrentCell.Value);
-                        UpdateInsertForm.interviewBindingSource.Clear();
-                        interview = UpdateInsertForm.newInterview;
-                        UpdateInsertForm.interviewBindingSource.Add(interview);
-                        UpdateInsertForm.AllLVVisible(button5.Text);
-                        UpdateInsertForm.AllListView();
-                    }
-                    else if (btnPositionClicked)
-                    {
-                        UpdateInsertForm.newPostion = PositionDB.GetPositionByRow((int)positionDataGridView.CurrentCell.Value);
-                        UpdateInsertForm.position = PositionDB.GetPositionByRow((int)positionDataGridView.CurrentCell.Value);
-                        UpdateInsertForm.positionBindingSource.Clear();
-                        position = UpdateInsertForm.newPostion;
-                        UpdateInsertForm.positionBindingSource.Add(position);
-                        UpdateInsertForm.AllLVVisible(button6.Text);
-                        UpdateInsertForm.AllListView();
-                    }
-                    else if (btnResumeClicked)
-                    {
-                        UpdateInsertForm.newResume = ResumeDB.GetResumeByRow((int)resumeDataGridView.CurrentCell.Value);
-                        UpdateInsertForm.resume = ResumeDB.GetResumeByRow((int)resumeDataGridView.CurrentCell.Value);
-                        UpdateInsertForm.resumeBindingSource.Clear();
-                        resume = UpdateInsertForm.newResume;
-                        UpdateInsertForm.resumeBindingSource.Add(resume);
-                        UpdateInsertForm.AllLVVisible(button7.Text);
-                        UpdateInsertForm.AllListView();
-                    }
-                    else if (btnSchoolClicked)
-                    {
-                        UpdateInsertForm.stateList = StateDB.GetStateList();
-                        UpdateInsertForm.stateComboBox2.DataSource = UpdateInsertForm.stateList;
-                        UpdateInsertForm.school = SchoolDB.GetSchoolByRow((int)schoolDataGridView.CurrentCell.Value);
-                        UpdateInsertForm.newSchool = SchoolDB.GetSchoolByRow((int)schoolDataGridView.CurrentCell.Value);
-                        UpdateInsertForm.schoolBindingSource.Clear();
+                            UpdateInsertForm.companyBindingSource.Add(company);
+                            UpdateInsertForm.AllLVVisible(button2.Text);
+                            UpdateInsertForm.AllListView();
+                        }
+                        else if (btnContactClicked)
+                        {
+                            UpdateInsertForm.newContact = ContactDB.GetContactByRow(contactIDDGV);
+                            UpdateInsertForm.contact = ContactDB.GetContactByRow(contactIDDGV);
+                            UpdateInsertForm.contactBindingSource.Clear();
+                            contact = UpdateInsertForm.newContact;
+                            UpdateInsertForm.contactBindingSource.Add(contact);
+                            UpdateInsertForm.AllLVVisible(button3.Text);
+                            UpdateInsertForm.AllListView();
+                        }
+                        else if (btnContactPositionClicked)
+                        {
+                            UpdateInsertForm.contactPosition = ContactPositionDB.GetContactPositionByRow((int)contactPositionDataGridView.CurrentCell.Value);
+                            UpdateInsertForm.contactPositionBindingSource.Clear();
+                            UpdateInsertForm.contactPositionBindingSource.Add(UpdateInsertForm.contactPosition);
+                            UpdateInsertForm.AllLVVisible(button4.Text);
+                            UpdateInsertForm.AllListView();
+                        }
+                        else if (btnInterviewClicked)
+                        {
+                            UpdateInsertForm.newInterview = InterviewDB.GetInterviewByRow(interviewIDDGV);
+                            UpdateInsertForm.interview = InterviewDB.GetInterviewByRow(interviewIDDGV);
+                            UpdateInsertForm.interviewBindingSource.Clear();
+                            interview = UpdateInsertForm.newInterview;
+                            UpdateInsertForm.interviewBindingSource.Add(interview);
+                            UpdateInsertForm.AllLVVisible(button5.Text);
+                            UpdateInsertForm.AllListView();
+                        }
+                        else if (btnPositionClicked)
+                        {
+                            UpdateInsertForm.newPostion = PositionDB.GetPositionByRow(positionIDDGV);
+                            UpdateInsertForm.position = PositionDB.GetPositionByRow(positionIDDGV);
+                            UpdateInsertForm.positionBindingSource.Clear();
+                            position = UpdateInsertForm.newPostion;
+                            UpdateInsertForm.positionBindingSource.Add(position);
+                            UpdateInsertForm.AllLVVisible(button6.Text);
+                            UpdateInsertForm.AllListView();
+                        }
+                        else if (btnResumeClicked)
+                        {
+                            UpdateInsertForm.newResume = ResumeDB.GetResumeByRow(resuneIDDGV);
+                            UpdateInsertForm.resume = ResumeDB.GetResumeByRow(resuneIDDGV);
+                            UpdateInsertForm.resumeBindingSource.Clear();
+                            resume = UpdateInsertForm.newResume;
+                            UpdateInsertForm.resumeBindingSource.Add(resume);
+                            UpdateInsertForm.AllLVVisible(button7.Text);
+                            UpdateInsertForm.AllListView();
+                        }
+                        else if (btnSchoolClicked)
+                        {
+                            UpdateInsertForm.stateList = StateDB.GetStateList();
+                            UpdateInsertForm.stateComboBox2.DataSource = UpdateInsertForm.stateList;
+                            UpdateInsertForm.school = SchoolDB.GetSchoolByRow(schoolIDDGV);
+                            UpdateInsertForm.newSchool = SchoolDB.GetSchoolByRow(schoolIDDGV);
+                            UpdateInsertForm.schoolBindingSource.Clear();
 
-                        school = UpdateInsertForm.newSchool;
+                            school = UpdateInsertForm.newSchool;
 
-                        UpdateInsertForm.schoolBindingSource.Add(school);
-                        UpdateInsertForm.AllLVVisible(button8.Text);
-                        UpdateInsertForm.AllListView();
+                            UpdateInsertForm.schoolBindingSource.Add(school);
+                            UpdateInsertForm.AllLVVisible(button8.Text);
+                            UpdateInsertForm.AllListView();
+                        }
                     }
-                }
                 
             }
             catch (Exception x)
@@ -404,6 +482,11 @@ namespace WindowsFormsApplication1
                
 
             }
+        }
+                else
+                {
+                    MessageBox.Show("Please Click one of the following on the left side", "Follow The Directions:");
+                }
             ReloadDataGrids();
         }
         private void ReloadDataGrids() // REFRESHES THE DATAGRIDVIEW
@@ -427,30 +510,106 @@ namespace WindowsFormsApplication1
         }
         private void deleteToolStripMenu_Click(object sender, EventArgs e) // DETERMINES WHICH ROW IS DELETED FROM THE DATABASE
         {
-            
+            int clientIDDGV = 0, companyIDDGV = 0, contactIDDGV = 0, interviewIDDGV = 0, positionIDDGV = 0, resuneIDDGV = 0, schoolIDDGV = 0;
             try
             {
+                if (btnClientClicked)
+                {
+                    if (clientDataGridView.Rows.Count > 0)
+                    {
+                        int rowIndex = clientDataGridView.CurrentCell.RowIndex;
+                        DataGridViewRow row = clientDataGridView.Rows[rowIndex];
+                        DataGridViewCell cell = row.Cells[0];
+                        clientIDDGV = (int)cell.Value;
+                    }
+                }
+                if (btnCompanyClicked)
+                {
+                    if (companyDataGridView.Rows.Count > 0)
+                    {
+                        int rowIndex = companyDataGridView.CurrentCell.RowIndex;
+                        DataGridViewRow row = companyDataGridView.Rows[rowIndex];
+                        DataGridViewCell cell = row.Cells[0];
+                        companyIDDGV = (int)cell.Value;
+                    }
+                }
+                if (btnContactClicked)
+                {
+                    if (contactDataGridView.Rows.Count > 0)
+                    {
+                        int rowIndex = contactDataGridView.CurrentCell.RowIndex;
+                        DataGridViewRow row = contactDataGridView.Rows[rowIndex];
+                        DataGridViewCell cell = row.Cells[0];
+                        contactIDDGV = (int)cell.Value;
+                    }
+                }
+                if (btnInterviewClicked)
+                {
+                    if (interviewDataGridView.Rows.Count > 0)
+                    {
+                        int rowIndex = interviewDataGridView.CurrentCell.RowIndex;
+                        DataGridViewRow row = interviewDataGridView.Rows[rowIndex];
+                        DataGridViewCell cell = row.Cells[0];
+                        interviewIDDGV = (int)cell.Value;
+                    }
+                }
+                if (btnPositionClicked)
+                {
+                    if (positionDataGridView.Rows.Count > 0)
+                    {
+                        int rowIndex = positionDataGridView.CurrentCell.RowIndex;
+                        DataGridViewRow row = positionDataGridView.Rows[rowIndex];
+                        DataGridViewCell cell = row.Cells[0];
+                        positionIDDGV = (int)cell.Value;
+                    }
+                }
+                if (btnResumeClicked)
+                {
+                    if (resumeDataGridView.Rows.Count > 0)
+                    {
+                        int rowIndex = resumeDataGridView.CurrentCell.RowIndex;
+                        DataGridViewRow row = resumeDataGridView.Rows[rowIndex];
+                        DataGridViewCell cell = row.Cells[0];
+                        resuneIDDGV = (int)cell.Value;
+                    }
+                }
+                if (btnSchoolClicked)
+                {
+                    if (schoolDataGridView.Rows.Count > 0)
+                    {
+                        int rowIndex = schoolDataGridView.CurrentCell.RowIndex;
+                        DataGridViewRow row = schoolDataGridView.Rows[rowIndex];
+                        DataGridViewCell cell = row.Cells[0];
+                        schoolIDDGV = (int)cell.Value;
+                    }
+                }
+
                 if (panel3.Visible)
                 {
                     if (MessageBox.Show("Are you sure you want to delete the row?", "Delete " + button1.Text + " row", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
-                        ClientDB.DeleteClient((int)clientDataGridView.CurrentCell.Value);
+                        ClientDB.DeleteClient(clientIDDGV);
                     }                
                 }
                 if(panel1.Visible)
                 {
                     if (MessageBox.Show("Are you sure you want to delete the row?", "Delete " + button2.Text + " row", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
-                        CompanyDB.DeleteCompany((int)companyDataGridView.CurrentCell.Value);
+                        CompanyDB.DeleteCompany(companyIDDGV);
                     }
                 }
                 if(panel9.Visible)
                 {
                     if (MessageBox.Show("Are you sure you want to delete the row?", "Delete " + button3.Text + " row", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
-                        if (ContactPositionDB.DeleteContactPosition((int)contactDataGridView.CurrentCell.Value))
+                        if (ContactPositionDB.DeleteContactPosition(contactIDDGV))
                         {
-                        ContactDB.DeleteContact((int)contactDataGridView.CurrentCell.Value);
+                        ContactDB.DeleteContact(contactIDDGV);
+
+                        }
+                        else if (!ContactPositionDB.DeleteContactPosition(contactIDDGV))
+                        {
+                            ContactDB.DeleteContact(contactIDDGV);
 
                         }
                     }
@@ -469,7 +628,7 @@ namespace WindowsFormsApplication1
                 {
                     if (MessageBox.Show("Are you sure you want to delete the row?", "Delete " + button5.Text + " row", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
-                        InterviewDB.DeleteInterview((int)interviewDataGridView.CurrentCell.Value);
+                        InterviewDB.DeleteInterview(interviewIDDGV);
                     }
 
                 }
@@ -477,11 +636,14 @@ namespace WindowsFormsApplication1
                 {
                     if (MessageBox.Show("Are you sure you want to delete the row?", "Delete " + button6.Text + " row", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
-                        if (ContactPositionDB.DeleteContactPosition2((int)positionDataGridView.CurrentCell.Value))
+                        if (ContactPositionDB.DeleteContactPosition2(positionIDDGV))
                         {
-                            PositionDB.DeletePosition((int)positionDataGridView.CurrentCell.Value);
+                            PositionDB.DeletePosition(positionIDDGV);
                         }
-                        
+                        else if (!ContactPositionDB.DeleteContactPosition2(positionIDDGV))
+                        {
+                            PositionDB.DeletePosition(positionIDDGV);
+                        }
                     }
 
                 }
@@ -489,7 +651,7 @@ namespace WindowsFormsApplication1
                 {
                     if (MessageBox.Show("Are you sure you want to delete the row?", "Delete " + button7.Text + " row", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
-                        ResumeDB.DeleteResume((int)resumeDataGridView.CurrentCell.Value);
+                        ResumeDB.DeleteResume(resuneIDDGV);
                     }
 
                 }
@@ -497,7 +659,7 @@ namespace WindowsFormsApplication1
                 {
                     if (MessageBox.Show("Are you sure you want to delete the row?", "Delete " + button8.Text + " row", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
-                        SchoolDB.DeleteSchool((int)schoolDataGridView.CurrentCell.Value);
+                        SchoolDB.DeleteSchool(schoolIDDGV);
                     }
 
                 }
@@ -513,6 +675,7 @@ namespace WindowsFormsApplication1
         private void button1_Click(object sender, EventArgs e) // SETS UP THE PROPER DATAGRID AND SETS THE SORTS AND FILTER EVENTS 
         {
             filterToolStripComboBox.Items.Clear();
+            filterToolStripComboBox.Text = "";
             countlist = 0;
             panel11.Visible = true;
             panel11.Height = button1.Height;
@@ -526,7 +689,7 @@ namespace WindowsFormsApplication1
 
         private void button2_Click(object sender, EventArgs e)// SETS UP THE PROPER DATAGRID AND SETS THE SORTS AND FILTER EVENTS 
         {
-            filterToolStripComboBox.Items.Clear();
+            filterToolStripComboBox.Items.Clear(); filterToolStripComboBox.Text = "";
             countlist = 0;
             panel11.Visible = true;
             panel11.Height = button2.Height;
@@ -541,7 +704,7 @@ namespace WindowsFormsApplication1
 
         private void button3_Click(object sender, EventArgs e)// SETS UP THE PROPER DATAGRID AND SETS THE SORTS AND FILTER EVENTS 
         {
-            filterToolStripComboBox.Items.Clear();
+            filterToolStripComboBox.Items.Clear(); filterToolStripComboBox.Text = "";
             countlist = 0;
             panel11.Visible = true;
             panel11.Height = button3.Height;
@@ -555,7 +718,7 @@ namespace WindowsFormsApplication1
 
         private void button4_Click(object sender, EventArgs e)// SETS UP THE PROPER DATAGRID AND SETS THE SORTS AND FILTER EVENTS 
         {
-            filterToolStripComboBox.Items.Clear();
+            filterToolStripComboBox.Items.Clear(); filterToolStripComboBox.Text = "";
             countlist = 0;
             panel11.Visible = true;
             panel11.Height = button4.Height;
@@ -570,7 +733,7 @@ namespace WindowsFormsApplication1
 
         private void button5_Click(object sender, EventArgs e)// SETS UP THE PROPER DATAGRID AND SETS THE SORTS AND FILTER EVENTS 
         {
-            filterToolStripComboBox.Items.Clear();
+            filterToolStripComboBox.Items.Clear(); filterToolStripComboBox.Text = "";
             countlist = 0;
             panel11.Visible = true;
             panel11.Height = button5.Height;
@@ -584,7 +747,7 @@ namespace WindowsFormsApplication1
 
         private void button6_Click(object sender, EventArgs e)// SETS UP THE PROPER DATAGRID AND SETS THE SORTS AND FILTER EVENTS 
         {
-            filterToolStripComboBox.Items.Clear();
+            filterToolStripComboBox.Items.Clear(); filterToolStripComboBox.Text = "";
             countlist = 0;
             panel11.Visible = true;
             panel11.Height = button6.Height;
@@ -598,7 +761,7 @@ namespace WindowsFormsApplication1
 
         private void button7_Click(object sender, EventArgs e)// SETS UP THE PROPER DATAGRID AND SETS THE SORTS AND FILTER EVENTS 
         {
-            filterToolStripComboBox.Items.Clear();
+            filterToolStripComboBox.Items.Clear(); filterToolStripComboBox.Text = "";
             countlist = 0;
             panel11.Visible = true;
             panel11.Height = button7.Height;
@@ -612,7 +775,7 @@ namespace WindowsFormsApplication1
 
         private void button8_Click(object sender, EventArgs e)// SETS UP THE PROPER DATAGRID AND SETS THE SORTS AND FILTER EVENTS 
         {
-            filterToolStripComboBox.Items.Clear();
+            filterToolStripComboBox.Items.Clear(); filterToolStripComboBox.Text = "";
             countlist = 0;
             panel11.Visible = true;
             panel11.Height = button8.Height;
@@ -732,7 +895,8 @@ namespace WindowsFormsApplication1
 
         private void reportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            CareerClubContactReport.frmReport report = new frmReport();
+            report.ShowDialog();
                 
         }
 
@@ -970,7 +1134,10 @@ namespace WindowsFormsApplication1
             { 
                 if (panel3.Visible && countlist==0)
                 {
-
+                    if (filterToolStripComboBox.Items!=null)
+                    {
+                        filterToolStripComboBox.Items.Clear();
+                    }
                     List<string> columnNameList = new List<string>();
                     foreach (DataGridViewColumn col in clientDataGridView.Columns)
                     {
@@ -986,6 +1153,10 @@ namespace WindowsFormsApplication1
                 }
                 if (panel1.Visible)
                 {
+                    if (filterToolStripComboBox.Items != null)
+                    {
+                        filterToolStripComboBox.Items.Clear();
+                    }
                     List<string> columnNameList = new List<string>();
                     foreach (DataGridViewColumn col in companyDataGridView.Columns)
                     {
@@ -1001,6 +1172,10 @@ namespace WindowsFormsApplication1
                 }
                 if (panel9.Visible)
                 {
+                    if (filterToolStripComboBox.Items != null)
+                    {
+                        filterToolStripComboBox.Items.Clear();
+                    }
                     List<string> columnNameList = new List<string>();
                     foreach (DataGridViewColumn col in contactDataGridView.Columns)
                     {
@@ -1016,6 +1191,10 @@ namespace WindowsFormsApplication1
                 }
                 if (panel6.Visible)
                 {
+                    if (filterToolStripComboBox.Items != null)
+                    {
+                        filterToolStripComboBox.Items.Clear();
+                    }
                     List<string> columnNameList = new List<string>();
                     foreach (DataGridViewColumn col in contactPositionDataGridView.Columns)
                     {
@@ -1031,6 +1210,10 @@ namespace WindowsFormsApplication1
                 }
                 if (panel8.Visible)
                 {
+                    if (filterToolStripComboBox.Items != null)
+                    {
+                        filterToolStripComboBox.Items.Clear();
+                    }
                     List<string> columnNameList = new List<string>();
                     foreach (DataGridViewColumn col in interviewDataGridView.Columns)
                     {
@@ -1046,6 +1229,10 @@ namespace WindowsFormsApplication1
                 }
                 if (panel5.Visible)
                 {
+                    if (filterToolStripComboBox.Items != null)
+                    {
+                        filterToolStripComboBox.Items.Clear();
+                    }
                     List<string> columnNameList = new List<string>();
                     foreach (DataGridViewColumn col in positionDataGridView.Columns)
                     {
@@ -1061,6 +1248,10 @@ namespace WindowsFormsApplication1
                 }
                 if (panel7.Visible)
                 {
+                    if (filterToolStripComboBox.Items != null)
+                    {
+                        filterToolStripComboBox.Items.Clear();
+                    }
                     List<string> columnNameList = new List<string>();
                     foreach (DataGridViewColumn col in resumeDataGridView.Columns)
                     {
@@ -1076,6 +1267,10 @@ namespace WindowsFormsApplication1
                 }
                 if (panel4.Visible)
                 {
+                    if (filterToolStripComboBox.Items != null)
+                    {
+                        filterToolStripComboBox.Items.Clear();
+                    }
                     List<string> columnNameList = new List<string>();
                     foreach (DataGridViewColumn col in schoolDataGridView.Columns)
                     {

@@ -222,19 +222,19 @@ namespace ProjectPRG299DB
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
             insertCommand.Parameters.AddWithValue("@FirstName", contact.FirstName);
             insertCommand.Parameters.AddWithValue("@LastName", contact.LastName);
-            if(contact.EmailAddress == null)
+            if(contact.EmailAddress == null || contact.EmailAddress=="")
                 insertCommand.Parameters.AddWithValue("@EmailAddress", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@EmailAddress", contact.EmailAddress);
-            if(contact.PhoneNumber == null)
+            if(contact.PhoneNumber == null|| contact.PhoneNumber=="")
                 insertCommand.Parameters.AddWithValue("@PhoneNumber", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@PhoneNumber", contact.PhoneNumber);
-            if(contact.CellPhone == null)
+            if(contact.CellPhone == null||contact.CellPhone=="")
                 insertCommand.Parameters.AddWithValue("@CellPhone", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@CellPhone", contact.CellPhone);
-            if(contact.AdditionalNotes == null)
+            if(contact.AdditionalNotes == null||contact.AdditionalNotes=="")
                 insertCommand.Parameters.AddWithValue("@AdditionalNotes", DBNull.Value);
             else
                 insertCommand.Parameters.AddWithValue("@AdditionalNotes", contact.AdditionalNotes);
